@@ -10,7 +10,7 @@ y para modelar objetos,
 
 3
 00:00:28,340 --> 00:00:31,610
-pienso en que hagamos un poco
+pienso en hacer un poco
 de programación de un tipo
 
 4
@@ -24,8 +24,8 @@ con este tipo de cosas.
 
 6
 00:00:40,430 --> 00:00:44,800
-Supongo, como dije antes, que estamos
-motivos por sistemas físicos
+Supongan, como dije antes, que estamos
+motivados por sistemas físicos
 
 7
 00:00:44,800 --> 00:00:47,199
@@ -57,7 +57,7 @@ en el modelo--
 
 13
 00:01:04,410 --> 00:01:07,899
-tenemos un mundo y un modelos
+tenemos un mundo y un modelo
 en nuestras mentes y en las
 
 14
@@ -100,7 +100,7 @@ cosas en la computadora.
 
 22
 00:01:30,840 --> 00:01:34,740
-Esto no provee modularidad.
+Esto nos provee modularidad.
 
 23
 00:01:34,740 --> 00:01:37,786
@@ -119,7 +119,7 @@ sólo podríamos modelar las cosas
 
 26
 00:01:43,850 --> 00:01:47,290
-que sona así, entonces podríamos
+que son así, entonces podríamos
 heredar la modularidad
 
 27
@@ -152,7 +152,7 @@ eléctricos realmente son los
 
 33
 00:02:10,270 --> 00:02:14,220
-mejores objetos del físico.
+mejores objetos del mundo físico.
 
 34
 00:02:14,220 --> 00:02:16,760
@@ -197,7 +197,7 @@ No hay ninguna conexión entre ellos
 
 43
 00:02:41,190 --> 00:02:44,740
-que no describí.
+que no haya descrito.
 
 44
 00:02:44,740 --> 00:02:48,000
@@ -216,7 +216,7 @@ clara.
 
 47
 00:02:53,620 --> 00:02:56,220
-No hay otras conexiones que sepamos.
+No hay otras conexiones que conozcamos.
 
 48
 00:02:56,220 --> 00:02:59,250
@@ -262,7 +262,7 @@ más allá y hablar
 
 57
 00:03:24,310 --> 00:03:27,830
-de los los sistemas eléctricos
+de los sistemas eléctricos
 más abstractos que tenemos,
 
 58
@@ -303,11 +303,11 @@ señales abstractas.
 66
 00:03:55,610 --> 00:03:57,390
 No nos interesan como variables
-físico si
+físicas si
 
 67
 00:03:57,390 --> 00:04:00,190
-estos son voltajes o corrientes o
+son voltajes o corrientes o
 alguna combinación
 
 68
@@ -336,7 +336,7 @@ ahora mismo, es que vamos
 
 73
 00:04:17,730 --> 00:04:22,650
-a construir a construir un lenguaje
+a construir un lenguaje
 inventado en Lisp, integrado
 
 74
@@ -347,12 +347,12 @@ lenguaje de imágenes de Henderson
 75
 00:04:24,590 --> 00:04:29,780
 lo estaba, que no es de la misma 
-manera en que el lenguaje de
+manera en que lo estaba el lenguaje de
 
 76
 00:04:29,780 --> 00:04:32,700
 pattern match y sustitución 
-se hizo ayer.
+que se hizo ayer.
 
 77
 00:04:32,700 --> 00:04:35,724
@@ -365,7 +365,7 @@ por un programa Lisp.
 
 79
 00:04:38,160 --> 00:04:40,920
-Para la integración del lenguaje
+Pero la integración del lenguaje
 de Henderson era que
 
 80
@@ -422,7 +422,7 @@ Y E es un cable.
 
 92
 00:05:04,830 --> 00:05:06,880
-Y S es un cablle.
+Y S es un cable.
 
 93
 00:05:06,880 --> 00:05:12,380
