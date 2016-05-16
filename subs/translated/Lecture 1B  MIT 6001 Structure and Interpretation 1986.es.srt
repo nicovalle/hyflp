@@ -1,0 +1,4515 @@
+1
+00:00:00,000 --> 00:00:14,550
+[SUENA MÚSICA POR J. S. BACH]
+
+2
+00:00:14,550 --> 00:00:16,320
+PROFESOR: Hola
+
+3
+00:00:16,320 --> 00:00:20,050
+Han visto que el trabajo de un programador
+es diseñar
+
+4
+00:00:20,050 --> 00:00:24,070
+procesos que cumplan objetivos
+particulares, como
+
+5
+00:00:24,070 --> 00:00:27,050
+encontrar la raíz cuadrada de números
+u otro tipo
+
+6
+00:00:27,050 --> 00:00:28,830
+de cosas que podrían querer realizar.
+
+7
+00:00:28,830 --> 00:00:32,080
+No hemos presentado otra cosa aún.
+
+8
+00:00:32,080 --> 00:00:34,370
+Desde ya, la manera en que un
+programador hace esto
+
+9
+00:00:34,370 --> 00:00:39,440
+es construyendo hechizos, los cuales
+se conforman de procedimientos
+
+10
+00:00:39,440 --> 00:00:41,050
+y expresiones.
+
+11
+00:00:41,050 --> 00:00:46,000
+Y estos hechizos de algna manera
+dirigen un proceso
+
+12
+00:00:46,000 --> 00:00:49,190
+para alcanzar el objetivo
+buscado por el programador.
+
+13
+00:00:49,190 --> 00:00:51,670
+Para que un programador pueda hacer esto
+con éxito debe
+
+14
+00:00:51,670 --> 00:00:54,330
+entender cómo se relacionan
+las cosas que escribe,
+
+15
+00:00:54,330 --> 00:00:56,830
+estos particulares hechizos, y el
+
+16
+00:00:56,830 --> 00:01:01,630
+comportamiento de los procesos
+que desea controlar.
+
+17
+00:01:01,630 --> 00:01:03,560
+Entonces, lo que pretendemos con esta
+clase es tratar de
+
+18
+00:01:03,560 --> 00:01:07,630
+establecer esta conexión 
+lo más claro posible.
+
+19
+00:01:07,630 --> 00:01:10,450
+Trataremos de entender cómo
+
+20
+00:01:10,450 --> 00:01:15,300
+patrones de procedimientos y expresiones
+
+21
+00:01:15,300 --> 00:01:17,230
+conllevan ciertos patrones de ejecución,
+
+22
+00:01:17,230 --> 00:01:19,050
+comportamientos particulares de los procesos.
+
+23
+00:01:22,420 --> 00:01:24,190
+Comencemos.
+
+24
+00:01:24,190 --> 00:01:28,240
+Empezaré con un programa sencillo.
+
+25
+00:01:28,240 --> 00:01:29,680
+Este es un programa para computar
+la suma de
+
+26
+00:01:29,680 --> 00:01:33,630
+los cuadrados de dos números.
+
+27
+00:01:33,630 --> 00:01:45,970
+Y definiremos la suma de los cuadrados
+de x e y como
+
+28
+00:01:45,970 --> 00:01:49,835
+la suma del cuadrado de x--
+
+29
+00:01:49,835 --> 00:01:51,460
+Lo voy a escribir de esa manera--
+
+30
+00:01:51,460 --> 00:02:08,690
+y el cuadrado de y, donde el
+cuadrado de x es
+
+31
+00:02:08,690 --> 00:02:10,830
+el producto de x por x.
+
+32
+00:02:14,220 --> 00:02:17,670
+Supongamos que fuera a decirle
+algo a esto,
+
+33
+00:02:17,670 --> 00:02:20,845
+al sistema, luego de haber definido
+estas cosas,
+
+34
+00:02:20,845 --> 00:02:26,420
+por ejemplo la suma de los
+cuadrados de 3 y 4.
+
+35
+00:02:26,420 --> 00:02:29,310
+Espero obtener 25 como respuesta.
+
+36
+00:02:29,310 --> 00:02:33,090
+Porque el cuadrado de 3 es 9
+y el de 4 es 16,
+
+37
+00:02:33,090 --> 00:02:34,900
+y 25 es la suma de ambos.
+
+38
+00:02:34,900 --> 00:02:36,720
+¿Pero cómo sucede eso?
+
+39
+00:02:36,720 --> 00:02:39,730
+Si vamos a entender procesos
+y cómo controlarlos,
+
+40
+00:02:39,730 --> 00:02:43,910
+debemos vincular los mecanismos
+
+41
+00:02:43,910 --> 00:02:49,540
+de este procedimiento al
+comportamiento de estos procesos.
+
+42
+00:02:49,540 --> 00:02:52,380
+Vamos a tener un modelo mecánico
+formal o semi-formal
+
+43
+00:02:52,380 --> 00:02:56,180
+para entender como una máquina
+
+44
+00:02:56,180 --> 00:02:57,920
+podría en teoría hacer esto.
+
+45
+00:02:57,920 --> 00:03:00,660
+Que la máquina en cuestión
+realmente haga
+
+46
+00:03:00,660 --> 00:03:01,860
+lo que estoy por decirles
+
+47
+00:03:01,860 --> 00:03:03,840
+es irrelevante ahora.
+
+48
+00:03:03,840 --> 00:03:06,290
+De hecho, este es un modelo
+de ingeniería
+
+49
+00:03:06,290 --> 00:03:09,600
+al igual que para resistencia eléctrica
+
+50
+00:03:09,600 --> 00:03:12,330
+escribimos v = i * r es
+aproximadamente verdadero.
+
+51
+00:03:12,330 --> 00:03:13,880
+No es realmente cierto.
+
+52
+00:03:13,880 --> 00:03:16,860
+Mucha corriente en la resistencia y...
+boom!
+
+53
+00:03:16,860 --> 00:03:20,410
+Así que el voltaje no siempre
+es proporcional a la corriente,
+
+54
+00:03:20,410 --> 00:03:24,200
+pero en ciertos casos
+el modelo es apropiado.
+
+55
+00:03:24,200 --> 00:03:26,640
+El modelo que vamos a 
+describir ahora,
+
+56
+00:03:26,640 --> 00:03:29,770
+que lo llamo de sustitución,
+es el modelo maás simple
+
+57
+00:03:29,770 --> 00:03:32,700
+que tenemos para entender cómo
+funcionan los procedimientos
+
+58
+00:03:32,700 --> 00:03:34,310
+y los procesos.
+
+59
+00:03:34,310 --> 00:03:36,350
+Cómo procedimientos producen procesos.
+
+60
+00:03:36,350 --> 00:03:39,150
+Y ese modelo de sustitución
+será adecuado para la
+
+61
+00:03:39,150 --> 00:03:41,790
+mayoría de los temas que trataremos
+en los próximos días.
+
+62
+00:03:41,790 --> 00:03:45,240
+Pero eventualmente se volverá
+imposible sostener
+
+63
+00:03:45,240 --> 00:03:47,060
+la ilusión de que así trabajan
+las computadoras, y veremos
+
+64
+00:03:47,060 --> 00:03:50,490
+otros modelos más específicos
+
+65
+00:03:50,490 --> 00:03:53,590
+que mostrarán más detalles.
+
+66
+00:03:53,590 --> 00:03:58,200
+Ok, lo primero que nos preguntamos es
+
+67
+00:03:58,200 --> 00:03:59,170
+¿qué cosas tenemos aquí?
+
+68
+00:03:59,170 --> 00:04:00,550
+Unos símbolos crípticos
+
+69
+00:04:00,550 --> 00:04:04,350
+que están hechos de distintas piezas.
+
+70
+00:04:04,350 --> 00:04:05,990
+Hay ciertas expresiones.
+
+71
+00:04:05,990 --> 00:04:07,410
+Así que escribamos aquí
+
+72
+00:04:07,410 --> 00:04:08,660
+los tipos de expresiones
+que hay.
+
+73
+00:04:08,660 --> 00:04:17,890
+"TIPOS DE EXPRESIONES"
+
+74
+00:04:17,890 --> 00:04:20,295
+Veo números.
+
+75
+00:04:25,370 --> 00:04:28,030
+Veo símbolos como ese.
+
+76
+00:04:32,160 --> 00:04:35,430
+Hemos visto cosas como
+expresiones lambda,
+
+77
+00:04:35,430 --> 00:04:36,190
+pero no están aquí.
+
+78
+00:04:36,190 --> 00:04:37,180
+Por ahora las dejo.
+
+79
+00:04:37,180 --> 00:04:39,650
+Luego nos preocuparemos.
+
+80
+00:04:44,630 --> 00:04:45,880
+Expresiones como definiciones.
+
+81
+00:04:51,900 --> 00:04:53,150
+Y condicionales.
+
+82
+00:04:58,410 --> 00:05:00,155
+Y finalmente, combinaciones.
+
+83
+00:05:07,040 --> 00:05:10,470
+Este tipo de expresiones son--
+
+84
+00:05:10,470 --> 00:05:12,880
+Me preocuparé luego--
+
+85
+00:05:12,880 --> 00:05:16,030
+Estas son formas especiales.
+
+86
+00:05:16,030 --> 00:05:17,670
+Hay reglas particulares para
+cada una de estas.
+
+87
+00:05:17,670 --> 00:05:19,950
+Les voy a explicar las reglas para
+
+88
+00:05:19,950 --> 00:05:21,120
+un caso general.
+
+89
+00:05:21,120 --> 00:05:23,510
+¿Cómo se evalúa combinación?
+
+90
+00:05:23,510 --> 00:05:25,820
+Porque aquí sólo tengo
+
+91
+00:05:25,820 --> 00:05:29,180
+combinaciones, y algunos
+símbolos y números.
+
+92
+00:05:29,180 --> 00:05:31,290
+Y las cosas simples como un número, bueno,
+
+93
+00:05:31,290 --> 00:05:33,370
+se evaluará a su valor.
+
+94
+00:05:33,370 --> 00:05:35,180
+En el modelo que tengo
+para ustedes
+
+95
+00:05:35,180 --> 00:05:37,170
+los símbolos desaparecerán.
+
+96
+00:05:37,170 --> 00:05:40,220
+No estarán allí cuando los necesiten,
+
+97
+00:05:40,220 --> 00:05:41,680
+cuando quieran acudir a ellos.
+
+98
+00:05:41,680 --> 00:05:44,000
+Así que lo único que debo explicar
+
+99
+00:05:44,000 --> 00:05:45,250
+es ¿cómo evaluamos combinaciones?
+
+100
+00:05:48,350 --> 00:05:50,340
+Ok, veámoslo.
+
+101
+00:05:50,340 --> 00:05:54,430
+Quiero que vean la primera
+diapositiva.
+
+102
+00:05:54,430 --> 00:05:58,450
+Aquí está la regla para evaluar
+una aplicación.
+
+103
+00:06:01,430 --> 00:06:07,030
+Tenemos un regla que dice
+que para evaluar una
+
+104
+00:06:07,030 --> 00:06:08,530
+combinación, hay dos partes,
+
+105
+00:06:08,530 --> 00:06:09,740
+tres partes en la regla.
+
+106
+00:06:09,740 --> 00:06:12,390
+La combinación tiene varias.
+
+107
+00:06:12,390 --> 00:06:16,630
+Tiene operadores y operandos.
+
+108
+00:06:16,630 --> 00:06:20,180
+El operador devuelve un procedimiento.
+
+109
+00:06:20,180 --> 00:06:22,480
+SI evaluamos el operador,
+obtenemos un procedimiento.
+
+110
+00:06:22,480 --> 00:06:25,330
+Vieron cómo antes tipié "+"
+
+111
+00:06:25,330 --> 00:06:28,880
+y devolvió un procedimiento
+compuesto.
+
+112
+00:06:28,880 --> 00:06:31,940
+Y los operandos devuelven argumentos.
+
+113
+00:06:31,940 --> 00:06:35,690
+Una vez evaluado el operador
+
+114
+00:06:35,690 --> 00:06:38,050
+y obtenido un procedimiento,
+
+115
+00:06:38,050 --> 00:06:39,550
+y evaluados los operandos 
+para tener argumentos--
+
+116
+00:06:39,550 --> 00:06:43,320
+aplicamos este procedimiento
+
+117
+00:06:43,320 --> 00:06:46,000
+copiando los argumentos a su cuerpo,
+que es la expresión a partir de la cual
+
+118
+00:06:46,000 --> 00:06:47,800
+está definido ese procedimiento.
+
+119
+00:06:47,800 --> 00:06:49,500
+¿Qué se supone que debe hacer?
+
+120
+00:06:49,500 --> 00:06:53,060
+Substituir los parámetros formales,
+
+121
+00:06:53,060 --> 00:06:56,120
+es decir, los nombres definidos
+en la declaración del procedimiento
+
+122
+00:06:56,120 --> 00:06:59,100
+por los argumentos provistos.
+
+123
+00:06:59,100 --> 00:07:02,700
+Luego, evaluamos el nuevo cuerpo,
+resultante de
+
+124
+00:07:02,700 --> 00:07:07,350
+haber copiado el viejo con las
+sustituciones realizadas.
+
+125
+00:07:07,350 --> 00:07:10,900
+Es una regla muy simple, y la
+vamos a seguir estrictamente
+
+126
+00:07:10,900 --> 00:07:12,300
+por un tiempo.
+
+127
+00:07:12,300 --> 00:07:15,620
+Porque durante las próximas clases
+
+128
+00:07:15,620 --> 00:07:18,330
+quiero que piensen: "si no entiendo
+algo
+
+129
+00:07:18,330 --> 00:07:21,260
+sé bien mecánico y haz esto".
+
+130
+00:07:23,890 --> 00:07:26,360
+Así que veamos.
+
+131
+00:07:26,360 --> 00:07:28,590
+Consideremos una evaluación particular,
+
+132
+00:07:28,590 --> 00:07:29,550
+la que discutíamos al principio.
+
+133
+00:07:29,550 --> 00:07:33,330
+La suma de los cuadrados
+
+134
+00:07:33,330 --> 00:07:35,900
+de 3 y 4.
+
+135
+00:07:35,900 --> 00:07:37,010
+¿Qué significa?
+
+136
+00:07:37,010 --> 00:07:38,600
+Dice, toma--
+
+137
+00:07:38,600 --> 00:07:41,470
+Bueno, podría averiguar
+qué hay
+
+138
+00:07:41,470 --> 00:07:43,500
+en el cuadrado... un procedimiento,
+y no me voy a preocupar
+
+139
+00:07:43,500 --> 00:07:44,870
+por la representación, y no lo
+voy a escribir
+
+140
+00:07:44,870 --> 00:07:46,800
+en el pizarrón.
+
+141
+00:07:46,800 --> 00:07:50,650
+Tengo que 3 representa
+un número, pero si
+
+142
+00:07:50,650 --> 00:07:52,690
+tengo que repetir el número,
+no puedo decírselos.
+
+143
+00:07:52,690 --> 00:07:54,580
+En sí mismo, el número es
+algo abstracto.
+
+144
+00:07:54,580 --> 00:07:56,670
+Hay un numeral que lo representa,
+
+145
+00:07:56,670 --> 00:07:59,680
+lo llamaré 3 y lo usaré
+en mi sustitución.
+
+146
+00:07:59,680 --> 00:08:01,880
+Y 4 es también un número.
+
+147
+00:08:01,880 --> 00:08:07,420
+Substituiré "x" por 3 e "y" por 4 en
+el cuerpo
+
+148
+00:08:07,420 --> 00:08:09,540
+del procedimiento que
+ven por aquí.
+
+149
+00:08:09,540 --> 00:08:11,560
+Aquí está el cuerpo
+del procedimiento.
+
+150
+00:08:11,560 --> 00:08:13,300
+Corresponde a esta
+
+151
+00:08:13,300 --> 00:08:14,860
+combinación, que es una
+suma.
+
+152
+00:08:17,500 --> 00:08:21,210
+A lo que eso reduce, a través
+de un paso de reducción,
+
+153
+00:08:21,210 --> 00:08:30,450
+es a la suma del cuadrado de 3
+y del cuadrado de 4.
+
+154
+00:08:30,450 --> 00:08:34,200
+Ahora, ¿cuál es el siguiente paso
+que tengo aquí?
+
+155
+00:08:34,200 --> 00:08:36,100
+Tengo que evaluar esto.
+
+156
+00:08:36,100 --> 00:08:40,299
+De acuerdo con la regla anterior
+
+157
+00:08:40,299 --> 00:08:44,430
+lo que teníamos es que debemos
+
+158
+00:08:44,430 --> 00:08:46,260
+evaluar los operandos
+
+159
+00:08:46,260 --> 00:08:48,220
+aquí están los operandos, este
+es uno
+
+160
+00:08:48,220 --> 00:08:49,120
+y aquí está el siguiente--
+
+161
+00:08:51,060 --> 00:08:52,830
+El orden no importa.
+
+162
+00:08:52,830 --> 00:08:56,810
+Y vamos a aplicar el procedimiento,
+que es suma,
+
+163
+00:08:56,810 --> 00:08:59,830
+y eso mágicamente producirá
+la respuesta.
+
+164
+00:08:59,830 --> 00:09:02,500
+No voy a meterme dentro de la
+suma para ver cómo funciona.
+
+165
+00:09:02,500 --> 00:09:05,380
+Para evaluar los operandos,
+elijamos algún
+
+166
+00:09:05,380 --> 00:09:06,780
+orden arbitrario y hagámoslo.
+
+167
+00:09:06,780 --> 00:09:08,540
+Iré de derecha a izquierda.
+
+168
+00:09:08,540 --> 00:09:10,530
+Para evaluar este operando, debo
+
+169
+00:09:10,530 --> 00:09:14,350
+evaluar las partes con la misma regla.
+
+170
+00:09:14,350 --> 00:09:16,260
+Y las partes son - debo encontrar qué es
+el cuadrado...
+
+171
+00:09:16,260 --> 00:09:19,580
+es algún procedimiento, que
+tiene parámetro "x".
+
+172
+00:09:19,580 --> 00:09:25,510
+Y también tengo el operando 4,
+
+173
+00:09:25,510 --> 00:09:28,710
+por el que sustituyo "x" en el 
+cuerpo de "cuadrado".
+
+174
+00:09:28,710 --> 00:09:32,170
+El próximo paso es básicamente
+decir que esto es la suma de
+
+175
+00:09:32,170 --> 00:09:40,990
+el cuadrado de 3 y el producto de 4 por 4.
+
+176
+00:09:40,990 --> 00:09:44,460
+Podría meterme dentro de "*"
+si quisiera--
+
+177
+00:09:44,460 --> 00:09:46,920
+la operación de multiplicar--
+
+178
+00:09:46,920 --> 00:09:47,900
+pero no lo voy a hacer.
+
+179
+00:09:47,900 --> 00:09:50,610
+La consideraré una primitiva.
+
+180
+00:09:50,610 --> 00:09:53,320
+En cualquier nivel de detalle, si miran
+dentro de
+
+181
+00:09:53,320 --> 00:09:55,540
+esta máquina, van a encontrar
+que hay múltiples
+
+182
+00:09:55,540 --> 00:09:58,250
+niveles por debajo de los que no
+saben nada.
+
+183
+00:09:58,250 --> 00:09:59,620
+Pero una de las cosas que debemos
+aprender es
+
+184
+00:09:59,620 --> 00:10:02,520
+a ignorar los detalles.
+
+185
+00:10:02,520 --> 00:10:04,960
+La clave para entender cosas complicadas
+
+186
+00:10:04,960 --> 00:10:07,710
+es saber qué no mirar, qué
+no computar
+
+187
+00:10:07,710 --> 00:10:09,500
+y qué no pensar.
+
+188
+00:10:09,500 --> 00:10:12,380
+Así que vamos a parar aquí y decir,
+
+189
+00:10:12,380 --> 00:10:14,510
+que es el producto de dos cosas.
+
+190
+00:10:14,510 --> 00:10:15,930
+Vamos a hacerlo.
+
+191
+00:10:15,930 --> 00:10:19,220
+Así que esto no es más que
+
+192
+00:10:19,220 --> 00:10:23,340
+la suma del cuadrado de 3 y 16.
+
+193
+00:10:23,340 --> 00:10:27,910
+Y ahora tengo que evaluar otra cosa,
+
+194
+00:10:27,910 --> 00:10:29,430
+pero ese cuadrado de 3, bueno, es lo
+mismo que recién.
+
+195
+00:10:29,430 --> 00:10:36,910
+La suma del producto de 3 por 3 con 16.
+
+196
+00:10:36,910 --> 00:10:44,830
+O sea, la suma de 9 y 16, que es 25.
+
+197
+00:10:44,830 --> 00:10:49,366
+Se ve entonces el método básico
+para realizar sustituciones.
+
+198
+00:10:49,366 --> 00:10:54,980
+Y les advierto, esta no es una descripción
+perfecta
+
+199
+00:10:54,980 --> 00:10:57,200
+de lo que hace la computadora.
+
+200
+00:10:57,200 --> 00:11:00,800
+Pero es lo suficientemente buena para
+los problemas
+
+201
+00:11:00,800 --> 00:11:03,090
+que tenemos en las pŕoximas clases,
+
+202
+00:11:03,090 --> 00:11:05,220
+así que deberían tomarlo 
+al pie de la letra.
+
+203
+00:11:05,220 --> 00:11:07,880
+Y así es cómo la máquina funciona
+por ahora.
+
+204
+00:11:07,880 --> 00:11:09,130
+Más tarde seremos más minuciosos.
+
+205
+00:11:12,090 --> 00:11:14,500
+Ahora bien, yo tomé una decisión
+específica respecto del orden
+
+206
+00:11:14,500 --> 00:11:15,780
+de evaluación.
+
+207
+00:11:15,780 --> 00:11:17,180
+Hay otras posibilidades.
+
+208
+00:11:17,180 --> 00:11:21,360
+Si volvemos a la pantalla y miramos
+
+209
+00:11:21,360 --> 00:11:25,130
+la regla de sustitución, vemos
+que yo evalué el operador
+
+210
+00:11:25,130 --> 00:11:27,910
+para obtener procedimientos, y los
+operandos para obtener
+
+211
+00:11:27,910 --> 00:11:31,110
+los argumentos primero, antes de
+realizar la aplicación.
+
+212
+00:11:31,110 --> 00:11:33,320
+Es muy posible, y hay reglas alternativas
+
+213
+00:11:33,320 --> 00:11:36,570
+llamadas evaluación de orden normal,
+a partir de las cuales
+
+214
+00:11:36,570 --> 00:11:41,150
+se pueden sustituir las expresiones
+que son
+
+215
+00:11:41,150 --> 00:11:44,580
+los operandos para los parámetros formales
+dentro del cuerpo
+
+216
+00:11:44,580 --> 00:11:48,880
+primero. Y también obtendrán la misma
+respuesta.
+
+217
+00:11:48,880 --> 00:11:50,970
+Pero ahora, en concreto, y porque esta
+
+218
+00:11:50,970 --> 00:11:53,780
+es la manera en que la máquina
+realmente lo hace,
+
+219
+00:11:53,780 --> 00:11:56,510
+voy a darles esta regla que tiene
+un orden particular.
+
+220
+00:11:56,510 --> 00:11:58,440
+Pero este orden es en cierta forma
+arbitrario también.
+
+221
+00:12:01,110 --> 00:12:03,110
+A la larga, hay motivos por los cuales
+ustedes podrían
+
+222
+00:12:03,110 --> 00:12:04,920
+elegir un orden u otro, y abordaremos eso
+
+223
+00:12:04,920 --> 00:12:06,170
+más adelante en la materia.
+
+224
+00:12:12,320 --> 00:12:15,500
+Ok, ahora lo único que resta decirles,
+
+225
+00:12:15,500 --> 00:12:17,530
+sólo para entender qué sucede, miremos
+
+226
+00:12:17,530 --> 00:12:19,840
+la regla para condicionales.
+
+227
+00:12:19,840 --> 00:12:27,200
+Los condicionales son muy simples.
+
+228
+00:12:27,200 --> 00:12:32,490
+Un condicional es algo que es si--
+
+229
+00:12:32,490 --> 00:12:33,720
+también está cond
+
+230
+00:12:33,720 --> 00:12:35,980
+pero voy a nombrar las partes.
+
+231
+00:12:35,980 --> 00:12:39,340
+Hay un predicado, que es verdadero
+
+232
+00:12:39,340 --> 00:12:40,900
+o falso.
+
+233
+00:12:40,900 --> 00:12:46,920
+Y un consecuente, que es lo que
+
+234
+00:12:46,920 --> 00:12:48,370
+se hace si el predicado es verdadero.
+
+235
+00:12:48,370 --> 00:12:53,970
+Y hay una alternativa, que es lo que
+
+236
+00:12:53,970 --> 00:12:55,470
+se hace si el predicado es falso.
+
+237
+00:12:55,470 --> 00:13:00,202
+Es imporante tener nombres para
+
+238
+00:13:00,202 --> 00:13:03,810
+las partes de las expresiones.
+
+239
+00:13:03,810 --> 00:13:06,410
+Una de las cosas que cualquier hechicero
+te dirá es que si conoces
+
+240
+00:13:06,410 --> 00:13:10,350
+el nombre de un espíritu,
+tienes poder sobre él.
+
+241
+00:13:10,350 --> 00:13:12,320
+Así que tienen que aprender los nombres
+
+242
+00:13:12,320 --> 00:13:13,790
+para poder discutir sobre estas cosas.
+
+243
+00:13:13,790 --> 00:13:16,570
+Tenemos un predicado,
+un consecuente
+
+244
+00:13:16,570 --> 00:13:17,860
+y una alternativa.
+
+245
+00:13:17,860 --> 00:13:21,830
+Usando estas palabras vemos
+
+246
+00:13:21,830 --> 00:13:25,160
+que si los problemas del predicado
+evalúan a verdadero
+
+247
+00:13:25,160 --> 00:13:29,630
+entonces se evalúa el consecuente.
+
+248
+00:13:29,630 --> 00:13:31,975
+De otra forma, se evalúa la
+expresión alternativa.
+
+249
+00:13:34,880 --> 00:13:39,290
+Quiero ilustrar esto en el contexto de
+
+250
+00:13:39,290 --> 00:13:43,600
+un pequeño programa.
+
+251
+00:13:43,600 --> 00:13:44,620
+Voy a escribir un programa que vamos
+
+252
+00:13:44,620 --> 00:13:45,870
+ver muchas veces.
+
+253
+00:13:51,770 --> 00:13:58,380
+Es la suma de "x" e "y" mediante
+aritmética de Peano,
+
+254
+00:13:58,380 --> 00:14:00,140
+que consiste en incrementar
+
+255
+00:14:00,140 --> 00:14:01,510
+y decrementar en 1.
+
+256
+00:14:01,510 --> 00:14:03,070
+Vamos a verlo un poco.
+
+257
+00:14:03,070 --> 00:14:06,240
+Es un programa muy importante.
+
+258
+00:14:06,240 --> 00:14:12,190
+Si "x" equivale a 0, luego el resultado
+es "y".
+
+259
+00:14:12,190 --> 00:14:17,980
+Si no, es la suma del decremento de "x"
+
+260
+00:14:17,980 --> 00:14:20,590
+y el incremento de "y".
+
+261
+00:14:23,720 --> 00:14:28,000
+Vamos a mirar esto mucho más en el futuro.
+
+262
+00:14:28,000 --> 00:14:29,360
+Miremos la pantalla.
+
+263
+00:14:29,360 --> 00:14:31,830
+Tenemos este procedimiento,
+
+264
+00:14:31,830 --> 00:14:33,930
+y vamos a mirar cómo se realizan las
+sustituciones,
+
+265
+00:14:33,930 --> 00:14:36,110
+la secuencie de sustituciones.
+
+266
+00:14:36,110 --> 00:14:38,370
+Voy a tratar de sumar 3 con 4.
+
+267
+00:14:38,370 --> 00:14:40,950
+Usando la primera regla que les enseñé,
+
+268
+00:14:40,950 --> 00:14:44,840
+sustituímos "x" por 3 e "y" por 4 en
+
+269
+00:14:44,840 --> 00:14:45,980
+el cuerpo de este procedimiento.
+
+270
+00:14:45,980 --> 00:14:49,000
+El cuerpo del procedimiento es
+lo que empieza con "if"
+
+271
+00:14:49,000 --> 00:14:51,410
+y termina por aquí.
+
+272
+00:14:51,410 --> 00:14:54,025
+Obtenemos que si 3 es 0, entonces
+
+273
+00:14:54,025 --> 00:14:56,010
+el resultado es 4.
+
+274
+00:14:56,010 --> 00:14:58,960
+Si no, es la suma del decremento de 3
+
+275
+00:14:58,960 --> 00:15:01,360
+y el incremento de 4.
+
+276
+00:15:01,360 --> 00:15:03,320
+Pero no me voy a preocupar por
+esto ahora,
+
+277
+00:15:03,320 --> 00:15:05,610
+porque 3 no es 0.
+
+278
+00:15:05,610 --> 00:15:08,310
+Así que la respuesta no es 4.
+
+279
+00:15:08,310 --> 00:15:12,250
+Entonces, este "if" reduce a una
+evaluación de la expresión
+
+280
+00:15:12,250 --> 00:15:14,550
+"suma del decremento de 3
+
+281
+00:15:14,550 --> 00:15:16,860
+y el incremento de 4".
+
+282
+00:15:16,860 --> 00:15:19,540
+Siguiendo con mi evaluación,
+presumo que el incremento
+
+283
+00:15:19,540 --> 00:15:23,010
+es una primitiva, así que
+obtengo un 5.
+
+284
+00:15:23,010 --> 00:15:26,090
+El decremento también es primitiva,
+así que tengo 2.
+
+285
+00:15:26,090 --> 00:15:28,560
+Cambié entonces el problema a uno
+más simple.
+
+286
+00:15:28,560 --> 00:15:33,480
+En vez de sumar 3 a 4, estoy
+sumando 2 a 5.
+
+287
+00:15:33,480 --> 00:15:35,380
+El motivo por el cual es más simple 
+es que estoy contando hacia abajo en "x",
+
+288
+00:15:35,380 --> 00:15:40,540
+con lo cual eventualmente
+será 0.
+
+289
+00:15:46,090 --> 00:15:49,240
+Por lo general, no voy a escribir
+pasos inmediatos
+
+290
+00:15:49,240 --> 00:15:52,160
+al sustituir "ifs",
+
+291
+00:15:52,160 --> 00:15:55,520
+porque la expansión es más complicada.
+
+292
+00:15:55,520 --> 00:15:58,160
+Diremos que la suma de 3 y 4 resulta
+en la suma de 2 y 5, que reduce
+
+293
+00:15:58,160 --> 00:16:02,463
+a la suma de 2 y 5, que a su vez
+
+294
+00:16:02,463 --> 00:16:07,100
+reduce a la suma de 1 y 6,
+
+295
+00:16:07,100 --> 00:16:11,410
+que reduce a la suma de 0 y 7,
+
+296
+00:16:11,410 --> 00:16:14,130
+que reduce a 7.
+
+297
+00:16:14,130 --> 00:16:16,550
+Eso es lo que veremos.
+
+298
+00:16:16,550 --> 00:16:20,600
+¿Hay alguna duda sobre el primer segmento?
+
+299
+00:16:20,600 --> 00:16:21,942
+¿Sí?
+
+300
+00:16:21,942 --> 00:16:24,858
+ESTUDIANTE: Estás usando "1+" y "-1+".
+
+301
+00:16:24,858 --> 00:16:25,830
+¿Son esas operaciones primitivas?
+
+302
+00:16:25,830 --> 00:16:26,810
+PROFESOR: Sí.
+
+303
+00:16:26,810 --> 00:16:29,370
+Verán que sin pensarlo
+
+304
+00:16:29,370 --> 00:16:33,360
+iré introduciendo más y más
+
+305
+00:16:33,360 --> 00:16:36,180
+operaciones primitivas.
+
+306
+00:16:36,180 --> 00:16:38,400
+Presuntamente, hay una gran biblioteca
+
+307
+00:16:38,400 --> 00:16:39,830
+de operaciones primitivas.
+
+308
+00:16:39,830 --> 00:16:41,620
+Pero no importa que lo sean--
+
+309
+00:16:41,620 --> 00:16:43,860
+Podría haber un manual que las enumere.
+
+310
+00:16:43,860 --> 00:16:45,900
+Si les digo que hacen, sabrán
+
+311
+00:16:45,900 --> 00:16:46,960
+qué hacen.
+
+312
+00:16:46,960 --> 00:16:49,070
+Una decrementa, "-1+",
+
+313
+00:16:49,070 --> 00:16:50,960
+y otra incrementa,
+
+314
+00:16:50,960 --> 00:16:53,310
+que es "1+".
+
+315
+00:16:53,310 --> 00:16:53,840
+Gracias.
+
+316
+00:16:55,662 --> 00:17:19,230
+[SUENA MÚSICA POR J. S. BACH]
+
+317
+00:17:19,230 --> 00:17:22,079
+PROFESOR: Ahora que tenemos una 
+manera mecánica y razonable para
+
+318
+00:17:22,079 --> 00:17:28,348
+entender cómo un programa hecho
+de procedimientos y expresiones
+
+319
+00:17:28,348 --> 00:17:32,390
+evoluciona a un proceso. Me gustaría
+desarrollar
+
+320
+00:17:32,390 --> 00:17:36,920
+cierta intuición sobre cómo programas
+
+321
+00:17:36,920 --> 00:17:39,930
+devienen en procesos, qué forma deben 
+tener ciertos programas
+
+322
+00:17:39,930 --> 00:17:42,940
+para obtener procesos con cierta forma.
+
+323
+00:17:42,940 --> 00:17:47,110
+Se trata de pre-visualizar.
+
+324
+00:17:47,110 --> 00:17:49,230
+Es una palabra de fotografía.
+
+325
+00:17:49,230 --> 00:17:53,140
+Solía estar muy interesado en fotografía,
+y una
+
+326
+00:17:53,140 --> 00:17:55,140
+de las cosas que descubres al tratar de
+aprender sobre fotogtafía es que si uno
+
+327
+00:17:55,140 --> 00:17:57,330
+dice: "me gustaría ser un
+
+328
+00:17:57,330 --> 00:17:58,910
+fotógrafo creativo",
+
+329
+00:17:58,910 --> 00:18:01,820
+aún sabiendo las reglas -
+
+330
+00:18:01,820 --> 00:18:03,430
+apretar botones, ajustar la apertura -
+
+331
+00:18:03,430 --> 00:18:06,710
+se necesita en algún punto
+
+332
+00:18:06,710 --> 00:18:09,595
+realizar cierto análisis.
+
+333
+00:18:09,595 --> 00:18:13,880
+Saber qué voy a obtener en la
+película
+
+334
+00:18:13,880 --> 00:18:17,170
+antes de apretar el botón.
+
+335
+00:18:17,170 --> 00:18:23,060
+¿Puedo imaginarme la foto resultante
+de manera precisa
+
+336
+00:18:23,060 --> 00:18:28,300
+y clara como consecuencia del encuadre,
+
+337
+00:18:28,300 --> 00:18:32,620
+de la apertura elegida, el foco,
+y cosas del estilo?
+
+338
+00:18:32,620 --> 00:18:35,755
+Eso es parte del arte de hacer
+cosas de ese tipo.
+
+339
+00:18:35,755 --> 00:18:39,230
+Y aprender mucho de eso implica
+
+340
+00:18:39,230 --> 00:18:40,970
+tiras de prueba.
+
+341
+00:18:40,970 --> 00:18:44,950
+Tomas imágenes muy simples con
+
+342
+00:18:44,950 --> 00:18:47,870
+variaciones leves de densidad, por ejemplo,
+y examinas cómo se ven
+
+343
+00:18:47,870 --> 00:18:51,630
+en un pedazo de papel al ampliarlas.
+
+344
+00:18:51,630 --> 00:18:54,270
+Así encuentras cuál es el rango de
+contrastes que
+
+345
+00:18:54,270 --> 00:18:55,850
+puedes ver.
+
+346
+00:18:55,850 --> 00:18:58,650
+Y qué, en una escena real,
+
+347
+00:18:58,650 --> 00:19:02,790
+correspondería a varios niveles
+y zonas de densidad
+
+348
+00:19:02,790 --> 00:19:05,440
+que tienes en una imagen.
+
+349
+00:19:05,440 --> 00:19:08,410
+Hoy quiero dedicarme a tiras de prueba
+muy particulares,
+
+350
+00:19:08,410 --> 00:19:12,000
+y una está aquí en la pantalla,
+
+351
+00:19:12,000 --> 00:19:14,880
+así que pasemos a verla.
+
+352
+00:19:14,880 --> 00:19:19,350
+Hay un par de programas muy importantes
+
+353
+00:19:19,350 --> 00:19:24,500
+para entender qué sucede en la evolución
+de un proceso
+
+354
+00:19:24,500 --> 00:19:27,320
+a partir de la ejecución de un programa.
+
+355
+00:19:27,320 --> 00:19:29,090
+Tenemos aquí dos procedimientos
+
+356
+00:19:29,090 --> 00:19:30,340
+que son prácticamente idénticos.
+
+357
+00:19:32,820 --> 00:19:35,440
+Casi no hay diferencias entre ellos.
+
+358
+00:19:35,440 --> 00:19:38,860
+Apenas unos caracteres los distinguen.
+
+359
+00:19:38,860 --> 00:19:42,140
+Se trata de dos maneras de sumar números.
+
+360
+00:19:42,140 --> 00:19:48,660
+La primera, que ven aquí, es la suma
+
+361
+00:19:48,660 --> 00:19:50,880
+de dos números tal cual lo hicimos antes.
+
+362
+00:19:50,880 --> 00:19:52,580
+Si el primero es 0, la respuesta
+
+363
+00:19:52,580 --> 00:19:53,600
+es el segundo.
+
+364
+00:19:53,600 --> 00:19:56,480
+Si no, es la suma del
+
+365
+00:19:56,480 --> 00:19:57,960
+decremento del primero, y el 
+incremento del segundo.
+
+366
+00:19:57,960 --> 00:20:04,480
+Pueden pensar en dos pilas.
+
+367
+00:20:04,480 --> 00:20:06,280
+Y la forma en que sumo
+
+368
+00:20:06,280 --> 00:20:10,560
+es moviendo pesas de una a otra.
+
+369
+00:20:10,560 --> 00:20:11,640
+Nada más que eso.
+
+370
+00:20:11,640 --> 00:20:13,520
+Eventualmente, cuando agoto una pila,
+
+371
+00:20:13,520 --> 00:20:15,650
+la suma es la altura de la otra.
+
+372
+00:20:15,650 --> 00:20:20,690
+Sin embargo, el segundo procedimiento
+es distinto.
+
+373
+00:20:20,690 --> 00:20:22,960
+Dice, si el primer número es 0, luego
+
+374
+00:20:22,960 --> 00:20:24,330
+la respuesta es el segundo.
+
+375
+00:20:24,330 --> 00:20:28,550
+Si no, es el incremento de
+
+376
+00:20:28,550 --> 00:20:31,360
+la suma del decremento del primero
+y el segundo.
+
+377
+00:20:31,360 --> 00:20:35,930
+Lo que dice es, suma el decremento del
+
+378
+00:20:35,930 --> 00:20:38,870
+primer y segundo número - más simple, sin
+dudas -
+
+379
+00:20:38,870 --> 00:20:43,190
+y luego cambia ese resultado
+incrementándolo.
+
+380
+00:20:43,190 --> 00:20:45,900
+Esto significa que si lo piensan en
+términos de pilas,
+
+381
+00:20:45,900 --> 00:20:49,320
+quiere decir que estoy sosteniendo
+en mi mano
+
+382
+00:20:49,320 --> 00:20:52,120
+lo que voy a sumar después.
+
+383
+00:20:52,120 --> 00:20:53,990
+Y luego los voy a agregar.
+
+384
+00:20:53,990 --> 00:20:57,710
+Mientras decremento una pila a 0,
+
+385
+00:20:57,710 --> 00:21:00,330
+tengo lo que queda aquí, y luego lo
+voy a agregar.
+
+386
+00:21:00,330 --> 00:21:02,360
+Dos maneras diferentes de sumar.
+
+387
+00:21:02,360 --> 00:21:05,270
+Lo interesante de estos programas
+
+388
+00:21:05,270 --> 00:21:06,580
+es que son prácticamente iguales.
+
+389
+00:21:06,580 --> 00:21:09,530
+Lo que cambia es dónde
+incremento.
+
+390
+00:21:09,530 --> 00:21:11,860
+Un par de caracteres cambiados.
+
+391
+00:21:11,860 --> 00:21:15,370
+Quiero entender el tipo de comportamiento
+
+392
+00:21:15,370 --> 00:21:18,200
+que obtendremos de cada programa,
+para que queden bien asentados
+
+393
+00:21:18,200 --> 00:21:19,670
+en sus mentes--
+
+394
+00:21:19,670 --> 00:21:22,120
+Usualmente, no soy tan
+cuidadoso
+
+395
+00:21:22,120 --> 00:21:24,490
+pero para que les queden grabados,
+voy a escribir
+
+396
+00:21:24,490 --> 00:21:26,155
+los programas otra vez en el pizarrón
+
+397
+00:21:26,155 --> 00:21:28,150
+y luego voy a decantar un proceso.
+
+398
+00:21:28,150 --> 00:21:29,350
+Y veremos qué sucede.
+
+399
+00:21:29,350 --> 00:21:31,910
+Miremos la forma del proceso
+
+400
+00:21:31,910 --> 00:21:34,390
+como consecuencia del programa.
+
+401
+00:21:34,390 --> 00:21:44,170
+Empezamos con la suma de "x" e "y" tal que
+
+402
+00:21:44,170 --> 00:21:51,160
+si "x" es 0, entonces el resultado es "y".
+
+403
+00:21:51,160 --> 00:21:56,090
+Si no, es la suma del decremento de "x"
+
+404
+00:21:56,090 --> 00:21:58,630
+y el incremento de "y".
+
+405
+00:22:01,740 --> 00:22:07,080
+Supongamos que queremos sumar 3 y 4,
+
+406
+00:22:07,080 --> 00:22:10,900
+¿cómo es eso?
+
+407
+00:22:10,900 --> 00:22:14,580
+Debo sustituir los parámetros formales del cuerpo
+
+408
+00:22:14,580 --> 00:22:17,750
+por los argumentos.
+
+409
+00:22:17,750 --> 00:22:19,940
+Hago eso mentalmente
+
+410
+00:22:19,940 --> 00:22:22,830
+y digo " "x" es sustituído por 3, pero 3
+
+411
+00:22:22,830 --> 00:22:28,650
+no es 0", así que voy directo a esta parte
+
+412
+00:22:28,650 --> 00:22:30,710
+y escribo el consecuente simplificado aquí.
+
+413
+00:22:30,710 --> 00:22:33,420
+Porque estoy realmente interesado en
+
+414
+00:22:33,420 --> 00:22:34,400
+el comportamiento de la suma.
+¿Qué es eso entonces?
+
+415
+00:22:34,400 --> 00:22:38,460
+Se vuelve la suma
+de 2 y 5.
+
+416
+00:22:38,460 --> 00:22:41,750
+Reduje el problema inicial a este otro
+problema.
+
+417
+00:22:41,750 --> 00:22:48,450
+Luego, reduzco a la suma de 1 y 6,
+y así
+
+418
+00:22:48,450 --> 00:22:53,390
+una vez más, obtengo la suma de 0 y 7.
+
+419
+00:22:53,390 --> 00:22:57,110
+Y ahí es donde "x" equivale a 0, luego
+el resultado es "y",
+
+420
+00:22:57,110 --> 00:23:00,260
+entonces escribo aquí un 7.
+
+421
+00:23:00,260 --> 00:23:03,790
+Este es el comportamiento devenido de
+
+422
+00:23:03,790 --> 00:23:07,410
+sumar 3 y 4 con este programa.
+
+423
+00:23:07,410 --> 00:23:20,060
+Para el otro programa, definiré
+
+424
+00:23:20,060 --> 00:23:23,376
+la suma de "x" e "y".
+
+425
+00:23:23,376 --> 00:23:24,626
+¿Y qué es?
+
+426
+00:23:27,260 --> 00:23:32,100
+Si "x" es 0, el resultado es "y" -
+casi igual -
+
+427
+00:23:32,100 --> 00:23:36,200
+si no, es el incremento de la suma
+
+428
+00:23:36,200 --> 00:23:40,550
+del decremento de "x" e "y".
+
+429
+00:23:47,770 --> 00:23:49,020
+No.
+
+430
+00:23:56,490 --> 00:23:59,060
+Hagamoslo ahora.
+
+431
+00:23:59,060 --> 00:24:01,560
+La suma de 3 y 4.
+
+432
+00:24:01,560 --> 00:24:03,660
+Esto es un poco más interesante.
+
+433
+00:24:03,660 --> 00:24:07,930
+3 no es 0, como antes, así que eso
+resulta en
+
+434
+00:24:07,930 --> 00:24:14,240
+el incremento de la suma del decremento
+de "x", que es 2
+
+435
+00:24:14,240 --> 00:24:23,240
+y 4, que es el incremento de la suma
+de 1 y--
+
+436
+00:24:23,240 --> 00:24:26,000
+Ups, el incremento del incremento.
+
+437
+00:24:26,000 --> 00:24:30,040
+Ahora tengo que computar esto.
+
+438
+00:24:30,040 --> 00:24:31,310
+Tengo que evaluarlo.
+
+439
+00:24:31,310 --> 00:24:33,530
+Es decir, el resultado de
+
+440
+00:24:33,530 --> 00:24:35,690
+sustituir "x" e "y" con 2 y 4.
+
+441
+00:24:35,690 --> 00:24:44,810
+Pero ese es el incremento de la suma
+de 1 y 4,
+
+442
+00:24:44,810 --> 00:24:47,820
+que es-- bueno, debo expandir esto.
+
+443
+00:24:47,820 --> 00:24:52,520
+Pero ese es el incremento del incremento
+
+444
+00:24:52,520 --> 00:24:56,520
+del incremento de la suma de 0 y 4.
+
+445
+00:25:00,050 --> 00:25:03,190
+Ahora empiezo a ver cosas que puedo hacer.
+
+446
+00:25:03,190 --> 00:25:07,430
+El incremento del incremento del
+incremento, bueno,
+
+447
+00:25:07,430 --> 00:25:08,850
+la suma de 0 y 4 es 4.
+
+448
+00:25:12,430 --> 00:25:14,235
+El incremento de 4 es 5.
+
+449
+00:25:14,235 --> 00:25:20,880
+Esto es el incremento del incremento
+de 5,
+
+450
+00:25:20,880 --> 00:25:26,112
+que es el incremento de 6, que es 7.
+
+451
+00:25:26,112 --> 00:25:29,960
+Dos maneras distintas de computar la suma.
+
+452
+00:25:29,960 --> 00:25:31,430
+Veamos.
+
+453
+00:25:31,430 --> 00:25:34,250
+Estos procedimientos
+difieren.
+
+454
+00:25:34,250 --> 00:25:36,760
+Quiero que sientan sus formas.
+
+455
+00:25:36,760 --> 00:25:40,740
+Es el sentimiento de las
+formas lo que importa.
+
+456
+00:25:40,740 --> 00:25:43,000
+¿Qué podemos deducir de esto?
+
+457
+00:25:43,000 --> 00:25:45,650
+Esto es de alguna forma directo.
+
+458
+00:25:45,650 --> 00:25:47,750
+Va en esta dirección - derecho.
+
+459
+00:25:47,750 --> 00:25:54,130
+Este eje derecho no varía en tamaño.
+
+460
+00:25:54,130 --> 00:25:57,610
+En cambio este, primero se vuelve 
+más grande
+
+461
+00:25:57,610 --> 00:25:58,860
+y luego se achica.
+
+462
+00:26:01,240 --> 00:26:03,110
+No sé qué significa aún,
+
+463
+00:26:03,110 --> 00:26:04,080
+¿pero qué estamos viendo?
+
+464
+00:26:04,080 --> 00:26:09,170
+Vemos que estos
+
+465
+00:26:09,170 --> 00:26:13,070
+incrementos se expanden y
+luego se contraen.
+
+466
+00:26:13,070 --> 00:26:16,470
+Estamos construyendo varios
+para computarlos después.
+
+467
+00:26:16,470 --> 00:26:18,960
+No puedo hacerlos ahora.
+
+468
+00:26:18,960 --> 00:26:21,770
+Hay cosas para postergar.
+
+469
+00:26:21,770 --> 00:26:23,000
+Veamos.
+
+470
+00:26:23,000 --> 00:26:24,830
+Puedo imaginar una máquina
+
+471
+00:26:24,830 --> 00:26:26,680
+abstracta. Podría construirse una
+física
+
+472
+00:26:26,680 --> 00:26:29,260
+que lo hiciera, que ejecutara estos
+programas
+
+473
+00:26:29,260 --> 00:26:31,730
+exactamente como se los cuento,
+sustituyendo caracteres
+
+474
+00:26:31,730 --> 00:26:34,540
+de strings así.
+
+475
+00:26:34,540 --> 00:26:37,910
+El número de pasos que le tome a 
+dicha máquina es una
+
+476
+00:26:37,910 --> 00:26:40,040
+aproximación del tiempo que le tomaría.
+
+477
+00:26:40,040 --> 00:26:41,290
+Así que esta forma toma tiempo.
+
+478
+00:26:45,510 --> 00:26:48,890
+Y el ancho representa cuánto debo
+recordar
+
+479
+00:26:48,890 --> 00:26:50,150
+para poder seguir procesando.
+
+480
+00:26:50,150 --> 00:26:51,400
+Y esto equivale a espacio.
+
+481
+00:26:53,920 --> 00:26:58,800
+Lo que vemos es un proceso que toma tiempo,
+
+482
+00:26:58,800 --> 00:27:02,710
+el cual es proporcional al argumento "x".
+
+483
+00:27:02,710 --> 00:27:05,820
+Porque si "x" aumentara en 1,
+tendría una línea extra.
+
+484
+00:27:08,810 --> 00:27:12,080
+Este es un proceso que es
+
+485
+00:27:12,080 --> 00:27:14,640
+tiempo.
+
+486
+00:27:14,640 --> 00:27:20,630
+El tiempo que toma este proceso
+es de orden "x".
+
+487
+00:27:20,630 --> 00:27:24,390
+Es decir, es proporcional a "x"
+por una constante
+
+488
+00:27:24,390 --> 00:27:26,430
+de proporcionalidad, y no estoy
+interesado
+
+489
+00:27:26,430 --> 00:27:28,580
+en cuál es esa constante.
+
+490
+00:27:28,580 --> 00:27:31,360
+Lo otro que vemos es que la cantidad
+de espacio
+
+491
+00:27:31,360 --> 00:27:35,150
+que toma es constante, es proporcional
+a 1.
+
+492
+00:27:35,150 --> 00:27:42,070
+Así que la complejidad espacial es
+del orden de 1.
+
+493
+00:27:42,070 --> 00:27:44,180
+Tenemos un nombre para dicho proceso.
+
+494
+00:27:44,180 --> 00:27:45,950
+Se lo llama iteración.
+
+495
+00:27:51,000 --> 00:27:55,390
+Lo que importa no es que
+una máquina particular
+
+496
+00:27:55,390 --> 00:27:58,590
+que yo diseñé y de la cual
+les hablé y llamé
+
+497
+00:27:58,590 --> 00:28:00,240
+máquina de sustitución, o lo que sea -
+
+498
+00:28:00,240 --> 00:28:01,480
+modelo de sustitución -
+
+499
+00:28:01,480 --> 00:28:04,550
+haya podido hacerlo en
+
+500
+00:28:04,550 --> 00:28:07,140
+espacio constante. Lo que importa es que
+nos da una cota.
+
+501
+00:28:07,140 --> 00:28:09,680
+Cualquier máquina puede hacerlo en
+espacio constante.
+
+502
+00:28:09,680 --> 00:28:13,275
+El algoritmo representado por este
+procedimiento es ejecutable
+
+503
+00:28:13,275 --> 00:28:15,250
+en espacio constante.
+
+504
+00:28:15,250 --> 00:28:18,330
+Este modelo ignora algunas cosas,
+
+505
+00:28:18,330 --> 00:28:19,120
+cosas estándares.
+
+506
+00:28:19,120 --> 00:28:22,390
+Como que números
+
+507
+00:28:22,390 --> 00:28:23,990
+más grandes toman más espacio. Pero ese
+es un nivel de abstracción
+
+508
+00:28:23,990 --> 00:28:24,360
+que estoy despreciando.
+
+509
+00:28:24,360 --> 00:28:25,290
+¿Cómo representamos números?
+
+510
+00:28:25,290 --> 00:28:28,090
+Considero a todos los
+
+511
+00:28:28,090 --> 00:28:30,540
+números del mismo tamaño.
+Y crecen lento para la cantidad de
+
+512
+00:28:30,540 --> 00:28:34,240
+espacio que toman y su tamaño.
+
+513
+00:28:34,240 --> 00:28:38,000
+Este algoritmo es diferente en complejidad.
+
+514
+00:28:38,000 --> 00:28:42,850
+Como vemos, tiene complejidad temporal
+
+515
+00:28:42,850 --> 00:28:48,220
+que es proporcional a la entrada,
+
+516
+00:28:48,220 --> 00:28:49,460
+el argumento "x".
+
+517
+00:28:49,460 --> 00:28:53,040
+Si fuéramos a sumar 1 con 3,
+
+518
+00:28:53,040 --> 00:28:56,170
+si hiciera un problema más grande, en 1,
+agregaría una línea
+
+519
+00:28:56,170 --> 00:28:57,670
+al principio, y otra al final.
+
+520
+00:29:00,650 --> 00:29:03,300
+Y el hecho de que sea una cantidad
+constante, por ejemplo
+
+521
+00:29:03,300 --> 00:29:05,420
+esto es el doble de líneas, no es
+interesante al nivel
+
+522
+00:29:05,420 --> 00:29:08,030
+de detalle que estoy abordando ahora.
+
+523
+00:29:08,030 --> 00:29:13,020
+Entonces, este tiene orden de complejidad
+temporal "x".
+
+524
+00:29:13,020 --> 00:29:18,500
+La complejidad espacial es más
+interesante.
+
+525
+00:29:18,500 --> 00:29:21,130
+Hay cierta sobrecarga, que se ve aquí
+
+526
+00:29:21,130 --> 00:29:23,670
+que es aproximadamente constante.
+
+527
+00:29:23,670 --> 00:29:24,620
+Sobrecarga constante.
+
+528
+00:29:24,620 --> 00:29:27,240
+Pero luego tengo algo
+
+529
+00:29:27,240 --> 00:29:29,950
+que incrementa y decrementa, y es
+proporcional a la entrada "x".
+
+530
+00:29:29,950 --> 00:29:31,350
+El argumento es 3.
+
+531
+00:29:31,350 --> 00:29:34,590
+Por eso hay 3 incrementos
+postergados
+
+532
+00:29:34,590 --> 00:29:36,700
+esperando por aquí.
+
+533
+00:29:36,700 --> 00:29:37,720
+¿Se ve?
+
+534
+00:29:37,720 --> 00:29:42,060
+Así que la complejidad
+
+535
+00:29:42,060 --> 00:29:44,835
+espacial también es de orden "x".
+Y a este tipo de proceso
+
+536
+00:29:44,835 --> 00:29:46,085
+se lo llama una recursión.
+
+537
+00:29:50,770 --> 00:29:56,020
+Lo llamaré recursión lineal
+
+538
+00:29:56,020 --> 00:29:57,920
+ya que es proporcional
+al argumento de entrada
+
+539
+00:29:57,920 --> 00:29:59,170
+tanto en tiempo como en espacio.
+
+540
+00:30:01,560 --> 00:30:03,225
+Podría haber sido una interación lineal.
+
+541
+00:30:13,960 --> 00:30:16,740
+¿Cuál es la esencia de este tema?
+
+542
+00:30:16,740 --> 00:30:19,100
+No es tan obvio.
+
+543
+00:30:19,100 --> 00:30:21,320
+Quizás haya modelos a partir
+de los cuales describir
+
+544
+00:30:21,320 --> 00:30:23,780
+las diferencias entre procesos iterativos
+y recursivos,
+
+545
+00:30:23,780 --> 00:30:25,520
+pues esto es difícil ahora.
+
+546
+00:30:25,520 --> 00:30:27,975
+Esas son definiciones recursivas.
+
+547
+00:30:27,975 --> 00:30:32,020
+Ambas son definiciones recursivas,
+
+548
+00:30:32,020 --> 00:30:34,170
+definiciones que refieren a la cosa
+
+549
+00:30:34,170 --> 00:30:35,330
+siendo definida en la definición.
+
+550
+00:30:35,330 --> 00:30:37,770
+Pero llevan a diferentes
+
+551
+00:30:37,770 --> 00:30:42,220
+procesos. No hay nada especial con
+que la definición
+
+552
+00:30:42,220 --> 00:30:46,140
+recursiva lleve a un proceso recursivo.
+
+553
+00:30:46,140 --> 00:30:48,770
+Ok.
+
+554
+00:30:48,770 --> 00:30:50,210
+Pensemos en otro modelo.
+
+555
+00:30:50,210 --> 00:30:52,940
+Les hablaré de la burocracia.
+
+556
+00:30:52,940 --> 00:30:54,730
+Es en cierta forma interesante.
+
+557
+00:30:54,730 --> 00:31:00,076
+Aquí vemos en la diapositiva
+una iteración.
+
+558
+00:31:00,076 --> 00:31:04,220
+Es una suerte de proceso divertido.
+
+559
+00:31:04,220 --> 00:31:06,150
+Imaginemos que hay un sujeto llamado GJS--
+
+560
+00:31:06,150 --> 00:31:08,140
+ese sería yo--
+
+561
+00:31:08,140 --> 00:31:13,240
+y tiene un problema: quiere
+sumar 3 con 4.
+
+562
+00:31:13,240 --> 00:31:16,176
+Este tipo quiere sumar 3 con 4.
+
+563
+00:31:16,176 --> 00:31:18,850
+La forma en que lo hará, es vago,
+
+564
+00:31:18,850 --> 00:31:21,420
+va a buscar a alguien más
+que lo ayude a hacerlo.
+
+565
+00:31:21,420 --> 00:31:22,340
+La forma en que encuentra a alguien más--
+
+566
+00:31:22,340 --> 00:31:25,300
+Le dice,
+
+567
+00:31:25,300 --> 00:31:28,040
+dame el resultado para 3 y 4.
+
+568
+00:31:28,040 --> 00:31:32,040
+Toma un pedazo de papel, y dice
+
+569
+00:31:32,040 --> 00:31:33,140
+"anda, resuelve este problema
+
+570
+00:31:33,140 --> 00:31:35,310
+y dame el resultado".
+
+571
+00:31:35,310 --> 00:31:38,370
+Y este otro tipo, es vago también,
+
+572
+00:31:38,370 --> 00:31:41,310
+no quiere volver a ver ese papel,
+
+573
+00:31:41,310 --> 00:31:46,550
+arma un nuevo problema, y le dice a otro:
+"haz la suma de
+
+574
+00:31:46,550 --> 00:31:50,420
+2 y 5, y devuélvele el resultado a GJS".
+
+575
+00:31:50,420 --> 00:31:52,290
+"No lo quiero volver a ver".
+
+576
+00:31:52,290 --> 00:31:56,130
+Esta persona tampoco quiere volver
+a ver el papel.
+
+577
+00:31:56,130 --> 00:32:01,070
+Crea un nuevo problema, que es
+
+578
+00:32:01,070 --> 00:32:04,120
+la suma de 1 con 6, y se lo da
+
+579
+00:32:04,120 --> 00:32:08,440
+a otro tipo, y le pide que produzca el
+resultado y se lo de a GJS.
+
+580
+00:32:08,440 --> 00:32:11,270
+Y eso produce un nuevo problema, que es 
+sumar 0 con 7
+
+581
+00:32:11,270 --> 00:32:14,190
+y cuyo resultado será devuelto a GJS.
+
+582
+00:32:14,190 --> 00:32:16,650
+Este último tipo dice, "sí, la respuesta
+es 7",
+
+583
+00:32:16,650 --> 00:32:18,480
+y se la envía devuelta a GJS.
+
+584
+00:32:18,480 --> 00:32:20,160
+Eso es una iteración.
+
+585
+00:32:20,160 --> 00:32:22,680
+Por contraste, la recursión es un
+
+586
+00:32:22,680 --> 00:32:23,930
+tipo de proceso levemente distinto.
+
+587
+00:32:26,390 --> 00:32:28,520
+Este implica más burocracia.
+
+588
+00:32:28,520 --> 00:32:30,150
+Mantiene a más gente ocupada.
+
+589
+00:32:30,150 --> 00:32:32,680
+Mantiene a más gente empleada.
+
+590
+00:32:32,680 --> 00:32:35,850
+Quizás es mejor por ese motivo.
+
+591
+00:32:35,850 --> 00:32:38,860
+Quiero la solución a la suma de 3 y 4,
+
+592
+00:32:38,860 --> 00:32:40,780
+así que tomo un papel que dice
+
+593
+00:32:40,780 --> 00:32:43,260
+"dame la respuesta".
+
+594
+00:32:43,260 --> 00:32:44,670
+Se lo doy a un tipo,
+
+595
+00:32:44,670 --> 00:32:48,050
+el cual dice "voy a recordar que tengo que
+
+596
+00:32:48,050 --> 00:32:51,550
+sumar después, y quiero obtener el
+resultado de sumar 2 con 4,
+
+597
+00:32:51,550 --> 00:32:55,980
+le doy ese problema a Harry,
+
+598
+00:32:55,980 --> 00:32:56,710
+y le pido que me de la respuesta".
+
+599
+00:32:56,710 --> 00:32:58,830
+Soy Joe.
+
+600
+00:32:58,830 --> 00:33:01,800
+Cuando vuelve la respuesta de Harry,
+que es 6,
+
+601
+00:33:01,800 --> 00:33:07,600
+yo hago el incremento y le doy
+un 7 a GJS.
+
+602
+00:33:07,600 --> 00:33:10,240
+Hay más papeles visibles en el proceso
+
+603
+00:33:10,240 --> 00:33:12,600
+recursivo que en el iterativo.
+
+604
+00:33:16,890 --> 00:33:19,850
+Hay otra manera de pensar qué es
+una iteración
+
+605
+00:33:19,850 --> 00:33:21,780
+y la diferencia entre ésta y una recursión.
+
+606
+00:33:21,780 --> 00:33:27,090
+La pregunta es, ¿cuánto hay
+debajo de la mesa?
+
+607
+00:33:27,090 --> 00:33:28,650
+Si fuera a parar--
+
+608
+00:33:28,650 --> 00:33:32,250
+supongamos que fuera a parar
+esta
+
+609
+00:33:32,250 --> 00:33:37,040
+computadora ahora, ¿ok? En
+este punto pierdo el estado de las cosas.
+
+610
+00:33:37,040 --> 00:33:40,340
+Podría continuar el cómputo desde aquí,
+pero todo
+
+611
+00:33:40,340 --> 00:33:43,860
+lo que necesito para continuar está
+
+612
+00:33:43,860 --> 00:33:48,050
+en las variables definidas en el procedimiento
+
+613
+00:33:48,050 --> 00:33:49,300
+que el programador escribió para mí.
+
+614
+00:33:49,300 --> 00:33:53,080
+Una iteración es un sistema
+
+615
+00:33:53,080 --> 00:33:54,330
+cuyo estado está explícito en las variables.
+
+616
+00:33:56,990 --> 00:34:01,290
+En cambio, en la recursión
+es distinto.
+
+617
+00:34:01,290 --> 00:34:05,820
+Si fuera a perder esta pila de 
+basura aquí, y todo lo que
+
+618
+00:34:05,820 --> 00:34:08,070
+me quedara fuera la suma de 1 y 4,
+esa no es información
+
+619
+00:34:08,070 --> 00:34:11,290
+suficiente para continuar el proceso
+para obtener
+
+620
+00:34:11,290 --> 00:34:14,870
+el 7 a partir de la suma de 3 y 4.
+
+621
+00:34:14,870 --> 00:34:20,570
+Además de la información
+que está en las variables de
+
+622
+00:34:20,570 --> 00:34:24,190
+los parámetros formales del programa,
+también hay información
+
+623
+00:34:24,190 --> 00:34:27,360
+debajo de la mesa, perteneciente
+a la computadora,
+
+624
+00:34:27,360 --> 00:34:30,440
+que es lo que fue postergado para después.
+
+625
+00:34:30,440 --> 00:34:33,500
+Hay una analogía para esto,
+
+626
+00:34:33,500 --> 00:34:38,300
+en las ecuaciones diferenciales por ejemplo,
+
+627
+00:34:38,300 --> 00:34:42,300
+cuando hablamos de algo como
+dibujar un círculo.
+
+628
+00:34:42,300 --> 00:34:45,920
+Podemos dibujar un círculo a partir
+de una ecuación diferencial
+
+629
+00:34:45,920 --> 00:34:51,940
+que dice que el cambio en mi estado
+
+630
+00:34:51,940 --> 00:34:53,190
+está en función de mi estado actual.
+
+631
+00:34:53,190 --> 00:34:55,830
+Entonces, si mi estado
+
+632
+00:34:55,830 --> 00:35:00,020
+corresponde a valores específicos
+de "x" e "y", puedo computar
+
+633
+00:35:00,020 --> 00:35:03,480
+a partir de ellos la derivada que dice
+cómo debe cambiar mi estado.
+
+634
+00:35:03,480 --> 00:35:09,470
+De hecho, pueden ver que era un círculo
+
+635
+00:35:09,470 --> 00:35:15,510
+ya que si estoy en el (1,0)
+
+636
+00:35:15,510 --> 00:35:21,240
+por ejemplo en este gráfico, luego
+significa que la derivada
+
+637
+00:35:21,240 --> 00:35:23,620
+de "y" es "x", lo cual vemos aquí.
+
+638
+00:35:23,620 --> 00:35:26,140
+Es 1, así que estoy yendo hacia arriba.
+
+639
+00:35:26,140 --> 00:35:29,075
+Y la derivada de "x" es "-y", lo cual
+
+640
+00:35:29,075 --> 00:35:31,510
+implica que estoy yendo hacia atrás.
+
+641
+00:35:31,510 --> 00:35:33,580
+No estoy haciendo nada, luego empiezo
+
+642
+00:35:33,580 --> 00:35:37,920
+a ir hacia atrás a medida que "y" aumenta.
+
+643
+00:35:37,920 --> 00:35:40,090
+Así es como construyes un círculo.
+
+644
+00:35:40,090 --> 00:35:43,960
+Lo interesante es ver un pequeño
+programa que
+
+645
+00:35:43,960 --> 00:35:45,400
+dibuje un círculo a partir
+de este método.
+
+646
+00:35:45,400 --> 00:35:47,675
+En verdad, no dibujará un
+
+647
+00:35:47,675 --> 00:35:49,230
+círculo porque eventualmente
+
+648
+00:35:49,230 --> 00:35:51,090
+se irá en espiral.
+
+649
+00:35:51,090 --> 00:35:52,200
+Pero por un rato describirá
+un círculo
+
+650
+00:35:52,200 --> 00:35:54,240
+antes de salirse de control.
+
+651
+00:35:54,240 --> 00:35:58,050
+Lo que vemos son variables
+de estado "x" e "y",
+
+652
+00:35:58,050 --> 00:36:01,120
+y hay una iteración que dice, 
+para armar un círculo
+
+653
+00:36:01,120 --> 00:36:03,920
+dados "x" e "y", quiero
+tomar los siguientes valores
+
+654
+00:36:03,920 --> 00:36:08,260
+siendo "x" decrementado en "y" por dt -
+
+655
+00:36:08,260 --> 00:36:14,140
+donde dt es el paso de tiempo - e "y"
+incrementado
+
+656
+00:36:14,140 --> 00:36:17,560
+en "x" por dt, dando los nuevos valores
+
+657
+00:36:17,560 --> 00:36:18,810
+de "x" e "y".
+
+658
+00:36:21,390 --> 00:36:25,360
+Ahora tienen la idea de al menos
+dos tipos de
+
+659
+00:36:25,360 --> 00:36:28,900
+procesos que pueden obtenerse
+
+660
+00:36:28,900 --> 00:36:30,150
+a partir de casi el mismo programa.
+
+661
+00:36:32,600 --> 00:36:34,630
+Y con un poco de análisis de perturbación,
+
+662
+00:36:34,630 --> 00:36:37,320
+ver cómo al cambiar un poco un programa
+
+663
+00:36:37,320 --> 00:36:41,940
+esto cambia el proceso; así obtenemos una
+intuición.
+
+664
+00:36:41,940 --> 00:36:44,320
+Pronto utilizaremos esa intuición para
+construir grandes,
+
+665
+00:36:44,320 --> 00:36:45,060
+peludos y complicados
+
+666
+00:36:45,060 --> 00:36:47,627
+sistemas. Gracias.
+
+667
+00:36:47,627 --> 00:37:06,513
+[MÚSICA SONANDO POR J. S. BACH]
+
+668
+00:37:06,513 --> 00:37:09,100
+PROFESOR: Han visto un simple análisis
+de perturbaciones
+
+669
+00:37:09,100 --> 00:37:13,690
+sobre algunos programas. Tomé uno
+
+670
+00:37:13,690 --> 00:37:16,580
+que era muy similar a otro, observé ambos
+
+671
+00:37:16,580 --> 00:37:18,540
+e inspeccioné cómo resultaban en procesos.
+
+672
+00:37:18,540 --> 00:37:20,580
+Quiero mostrar algo de variedad,
+exhibiendo
+
+673
+00:37:20,580 --> 00:37:25,033
+otros procesos con otras formas
+que puedan tener.
+
+674
+00:37:25,033 --> 00:37:27,140
+Tomaremos programas muy sencillos
+
+675
+00:37:27,140 --> 00:37:29,070
+que nunca irían a escribir.
+
+676
+00:37:29,070 --> 00:37:32,565
+Probablemente serían la peor forma
+
+677
+00:37:32,565 --> 00:37:34,080
+de computar lo que vamos a calcular.
+
+678
+00:37:34,080 --> 00:37:36,040
+Pero sólo los voy a mostrar
+
+679
+00:37:36,040 --> 00:37:42,750
+con el fin de ver cómo el programa
+
+680
+00:37:42,750 --> 00:37:46,486
+determina la evolución de un proceso.
+
+681
+00:37:46,486 --> 00:37:50,770
+Consideremos algo divertido,
+como los números de Fibonacci.
+
+682
+00:37:50,770 --> 00:37:53,340
+Probablemente los conocen.
+
+683
+00:37:53,340 --> 00:37:57,740
+Alguien, no recuerdo bien, estaba
+interesado
+
+684
+00:37:57,740 --> 00:38:00,035
+en el crecimiento de conejeras.
+
+685
+00:38:00,035 --> 00:38:03,670
+Y por algún motivo, las
+conejeras
+
+686
+00:38:03,670 --> 00:38:05,870
+crecen de manera exponencial.
+
+687
+00:38:05,870 --> 00:38:09,700
+Tenemos un buen modelo para este
+proceso,
+
+688
+00:38:09,700 --> 00:38:13,750
+comenzamos con el 0 y el 1.
+
+689
+00:38:13,750 --> 00:38:16,000
+Y luego, cada número siguiente es la suma
+
+690
+00:38:16,000 --> 00:38:18,040
+de los dos anteriores.
+
+691
+00:38:18,040 --> 00:38:20,240
+Así que tenemos un 1.
+
+692
+00:38:20,240 --> 00:38:22,760
+La suma de 1 y 1 es 2.
+
+693
+00:38:22,760 --> 00:38:24,570
+La suma de estos últimos es 3.
+
+694
+00:38:24,570 --> 00:38:26,465
+Luego 5,
+
+695
+00:38:26,465 --> 00:38:28,640
+la suma de esos dos es 8,
+
+696
+00:38:28,640 --> 00:38:31,650
+luego 13,
+
+697
+00:38:31,650 --> 00:38:34,800
+21,
+
+698
+00:38:34,800 --> 00:38:36,940
+34,
+
+699
+00:38:36,940 --> 00:38:38,160
+55,
+
+700
+00:38:38,160 --> 00:38:40,640
+etcétera.
+
+701
+00:38:40,640 --> 00:38:43,170
+Si los enumeramos, digamos
+
+702
+00:38:43,170 --> 00:38:46,280
+este es número cero, el número uno,
+el número dos,
+
+703
+00:38:46,280 --> 00:38:47,780
+el número 3, el número 4, etc.
+
+704
+00:38:47,780 --> 00:38:51,850
+Este es el número 10.
+
+705
+00:38:51,850 --> 00:38:56,010
+Estos números crecen muy rápido.
+Tal como los conejos.
+
+706
+00:38:56,010 --> 00:38:59,750
+No voy a arriesgar una explicación
+para este comportamiento.
+
+707
+00:38:59,750 --> 00:39:02,550
+Ahora, voy a tratar de escribir
+para ustedes
+
+708
+00:39:02,550 --> 00:39:05,740
+el programa más sencillo que computa
+los números de Fibonacci.
+
+709
+00:39:08,300 --> 00:39:13,375
+Lo que quiero es un programa,
+tal que dado un n, va a
+
+710
+00:39:13,375 --> 00:39:14,625
+producir el n-ésimo número de
+Fibonacci.
+
+711
+00:39:18,220 --> 00:39:19,470
+¿Está bien?
+
+712
+00:39:21,830 --> 00:39:23,080
+Lo escribiré aquí.
+
+713
+00:39:28,240 --> 00:39:33,275
+Quiero el Fibonacci de n, es decir--
+
+714
+00:39:33,275 --> 00:39:36,066
+este es n, y este es el Fibonacci de n.
+
+715
+00:39:36,066 --> 00:39:38,160
+Y acá está el tema.
+
+716
+00:39:38,160 --> 00:39:45,330
+Si n es menor a 2, luego 
+el resultado es n.
+
+717
+00:39:45,330 --> 00:39:47,260
+Porque esto es lo que son.
+
+718
+00:39:47,260 --> 00:39:49,090
+Así es como se empieza.
+
+719
+00:39:49,090 --> 00:39:58,870
+Si no, el resultado es la suma
+de Fib de n-1
+
+720
+00:39:58,870 --> 00:40:01,344
+y Fib de n-2.
+
+721
+00:40:10,540 --> 00:40:13,620
+Esta es una especificación simple
+y directa
+
+722
+00:40:13,620 --> 00:40:16,765
+de la descripción de los números
+de Fibonacci que les di
+
+723
+00:40:16,765 --> 00:40:18,460
+cuando introduje estos números.
+
+724
+00:40:18,460 --> 00:40:21,670
+Representa la relación recurrente
+
+725
+00:40:21,670 --> 00:40:23,650
+de la manera más simple.
+
+726
+00:40:23,650 --> 00:40:24,920
+¿Cómo usamos algo así?
+
+727
+00:40:24,920 --> 00:40:27,230
+Dibujemos el proceso.
+
+728
+00:40:27,230 --> 00:40:29,610
+Tratemos de entender qué realiza.
+
+729
+00:40:29,610 --> 00:40:31,620
+Consideremos algo fácil, computando
+
+730
+00:40:31,620 --> 00:40:32,870
+Fibonacci de 4.
+
+731
+00:40:35,679 --> 00:40:39,070
+Para computar Fibonacci de 4, 
+¿qué debo hacer?
+
+732
+00:40:39,070 --> 00:40:41,080
+Bien, dice que debo--
+
+733
+00:40:41,080 --> 00:40:43,070
+No es menor a 2.
+
+734
+00:40:43,070 --> 00:40:45,500
+Luego, es la suma de dos cosas.
+
+735
+00:40:45,500 --> 00:40:47,430
+Para computar eso debo calcular
+
+736
+00:40:47,430 --> 00:40:52,860
+Fibonacci de 3 y FIbonacci de 2.
+
+737
+00:40:57,200 --> 00:41:00,940
+Para computar Fibonacci de 3, debo
+computar
+
+738
+00:41:00,940 --> 00:41:04,340
+Fibonacci de 2 y de 1.
+
+739
+00:41:08,000 --> 00:41:10,730
+Para computar Fibonacci de 2, debo calcular
+
+740
+00:41:10,730 --> 00:41:12,090
+Fibonacci de 1 y de 0.
+
+741
+00:41:16,890 --> 00:41:20,010
+La respuesta a Fibonacci de 1 es 1.
+
+742
+00:41:20,010 --> 00:41:26,070
+Eso es por el caso base
+de esta recursión.
+
+743
+00:41:26,070 --> 00:41:28,923
+Y para computar Fibonacci de 0,
+bueno
+
+744
+00:41:28,923 --> 00:41:30,480
+la respuesta es 0, por el mismo
+caso base.
+
+745
+00:41:30,480 --> 00:41:33,200
+Y acá hay un 1.
+
+746
+00:41:33,200 --> 00:41:38,238
+Y Fibonacci de 2 es en verdad
+la suma de Fibonacci de 1
+
+747
+00:41:38,238 --> 00:41:43,023
+y Fibonacci de 0, obtengo un 1
+
+748
+00:41:43,023 --> 00:41:44,273
+y acá tengo un 0.
+
+749
+00:41:47,010 --> 00:41:50,310
+He construído un árbol.
+
+750
+00:41:50,310 --> 00:41:53,700
+Podemos observar algunas cosas
+sobre este árbol.
+
+751
+00:41:53,700 --> 00:41:56,340
+Podemos ver por qué esta
+es una pésima manera de calcular
+
+752
+00:41:56,340 --> 00:41:58,420
+números de FIbonacci.
+
+753
+00:41:58,420 --> 00:41:59,960
+Para computar Fibonacci de 4,
+he tenido que
+
+754
+00:41:59,960 --> 00:42:03,045
+computar el sub-árbol
+
+755
+00:42:03,045 --> 00:42:07,670
+de Fibonacci de 2 dos veces.
+
+756
+00:42:07,670 --> 00:42:10,326
+Si quisiera agregar uno más,
+supongamos que quisiera
+
+757
+00:42:10,326 --> 00:42:13,940
+calcular Fibonacci de 5.
+Lo que debo hacer
+
+758
+00:42:13,940 --> 00:42:18,100
+es computar Fibonacci de 4 más
+Fibonacci de 3.
+
+759
+00:42:18,100 --> 00:42:21,045
+Pero el sub-árbol de FIb 3
+ya ha sido computado.
+
+760
+00:42:24,870 --> 00:42:27,700
+Esta es una especificación
+para un proceso
+
+761
+00:42:27,700 --> 00:42:30,570
+que es exponencial en tiempo.
+
+762
+00:42:30,570 --> 00:42:33,740
+Para agregar 1, debo multiplicar por algo
+ya que tomo una
+
+763
+00:42:33,740 --> 00:42:38,350
+proporción existente y la vuelvo a agregar
+
+764
+00:42:38,350 --> 00:42:39,880
+sólo para calcular un paso más.
+
+765
+00:42:39,880 --> 00:42:48,270
+Así que esto tiene un orden
+
+766
+00:42:48,270 --> 00:42:50,520
+de complejidad temporal de
+Fibonacci de n.
+
+767
+00:42:56,230 --> 00:43:01,130
+Es algo que crece exactamente al ritmo
+de los números de Fibonacci.
+
+768
+00:43:01,130 --> 00:43:02,620
+Es una cosa horrible.
+
+769
+00:43:02,620 --> 00:43:03,640
+No querrían hacer algo así.
+
+770
+00:43:03,640 --> 00:43:06,170
+El motivo por el cuál
+
+771
+00:43:06,170 --> 00:43:07,110
+el tiempo crece así es
+porque estamos presumiendo
+
+772
+00:43:07,110 --> 00:43:09,220
+en el modelo
+
+773
+00:43:09,220 --> 00:43:14,130
+de sustitución - que no estoy
+abordando formalmente -
+
+774
+00:43:14,130 --> 00:43:17,880
+que las operaciones se hacen
+secuencialmente.
+
+775
+00:43:17,880 --> 00:43:19,810
+Que cada uno de los nodos
+
+776
+00:43:19,810 --> 00:43:21,350
+en este árbol debe ser
+examinado.
+
+777
+00:43:24,740 --> 00:43:27,350
+Luego, como el número de nodos
+en el árbol crece
+
+778
+00:43:27,350 --> 00:43:29,960
+exponencialmente, ya que agrego
+una proporción de los nodos
+
+779
+00:43:29,960 --> 00:43:35,820
+existentes al árbol para computar
+un paso más, vemos
+
+780
+00:43:35,820 --> 00:43:38,860
+que hay una explosión exponencial.
+
+781
+00:43:38,860 --> 00:43:40,610
+Veamos si podemos pensar
+
+782
+00:43:40,610 --> 00:43:41,860
+cuánto espacio ocupa esto.
+
+783
+00:43:44,520 --> 00:43:46,140
+Bueno, no está tan mal.
+
+784
+00:43:46,140 --> 00:43:48,020
+Depende de cuánto debamos recordar
+
+785
+00:43:48,020 --> 00:43:50,220
+para continuar ejecutando.
+
+786
+00:43:50,220 --> 00:43:51,650
+Eso no es tan difícil.
+
+787
+00:43:51,650 --> 00:43:54,815
+Para saber dónde estoy
+
+788
+00:43:54,815 --> 00:43:56,760
+en el árbol, debo tener un
+camino de vuelta a la raíz.
+
+789
+00:43:56,760 --> 00:43:59,210
+Consideremos el camino
+
+790
+00:43:59,210 --> 00:44:00,795
+que tendría al ejecutar esto.
+
+791
+00:44:00,795 --> 00:44:03,190
+Diría, bien, voy por este camino.
+
+792
+00:44:03,190 --> 00:44:04,950
+No importa en qué dirección voy.
+
+793
+00:44:04,950 --> 00:44:06,265
+Tengo que hacer esto.
+
+794
+00:44:06,265 --> 00:44:06,935
+Luego hacer esto.
+
+795
+00:44:09,300 --> 00:44:12,040
+Debo recorrer el árbol de
+manera extraña.
+
+796
+00:44:12,040 --> 00:44:13,290
+Voy a atravesar este agradable camino.
+
+797
+00:44:13,290 --> 00:44:15,740
+Vuelvo aquí.
+
+798
+00:44:15,740 --> 00:44:18,050
+Debo recordar a dónde debo ir luego.
+
+799
+00:44:18,050 --> 00:44:20,110
+Hay que tener eso en cuenta.
+
+800
+00:44:20,110 --> 00:44:21,240
+Así que debo saber
+lo que ya recorrí.
+
+801
+00:44:21,240 --> 00:44:22,740
+Y debo saber qué resta.
+
+802
+00:44:22,740 --> 00:44:26,793
+Para computar Fibonacci de 4,
+
+803
+00:44:26,793 --> 00:44:28,580
+en cierto punto debo estar aquí abajo.
+
+804
+00:44:28,580 --> 00:44:32,170
+Y debo recordar que debo volver,
+
+805
+00:44:32,170 --> 00:44:33,750
+luego regresar a realizar esta suma,
+
+806
+00:44:33,750 --> 00:44:35,200
+y finalmente volver aquí a sumar
+
+807
+00:44:35,200 --> 00:44:38,060
+a algo que todavía no toqué.
+
+808
+00:44:38,060 --> 00:44:40,390
+La cantidad de espacio que esto requiere
+
+809
+00:44:40,390 --> 00:44:42,800
+es el camino más largo.
+
+810
+00:44:42,800 --> 00:44:45,920
+Su extensión.
+
+811
+00:44:45,920 --> 00:44:48,360
+Y eso crece como n.
+
+812
+00:44:48,360 --> 00:44:50,550
+Así que el espacio--
+
+813
+00:44:50,550 --> 00:44:53,040
+porque ese es el largo
+de la rama
+
+814
+00:44:53,040 --> 00:44:54,660
+más alta del árbol--
+
+815
+00:44:54,660 --> 00:44:59,210
+el espacio es de orden n.
+
+816
+00:44:59,210 --> 00:45:00,460
+Es un proceso bastante malo.
+
+817
+00:45:09,010 --> 00:45:13,930
+Quiero entender
+
+818
+00:45:13,930 --> 00:45:15,660
+qué está pasando.
+
+819
+00:45:15,660 --> 00:45:17,460
+¿Cómo está relacionado
+
+820
+00:45:17,460 --> 00:45:20,712
+este programa a este proceso?
+
+821
+00:45:20,712 --> 00:45:22,150
+¿Qué estamos viendo aquí?
+
+822
+00:45:22,150 --> 00:45:25,110
+En verdad, hay sólo dos
+cosas
+
+823
+00:45:25,110 --> 00:45:27,460
+que el programa hace.
+
+824
+00:45:27,460 --> 00:45:29,950
+Digamos que el programa consiste
+en dos reglas.
+
+825
+00:45:29,950 --> 00:45:36,100
+Una regla, que dice que Fibonacci de n
+es la suma que ven
+
+826
+00:45:36,100 --> 00:45:42,120
+por aquí, que es un nodo
+con esta forma.
+
+827
+00:45:42,120 --> 00:45:45,165
+Muestra que partimos el problema en dos.
+
+828
+00:45:48,340 --> 00:45:52,890
+Si n es mayor a 2,
+
+829
+00:45:52,890 --> 00:45:56,880
+luego el nodo se parte
+en dos pedazos.
+
+830
+00:45:56,880 --> 00:45:57,920
+Menor a 2.
+
+831
+00:45:57,920 --> 00:45:58,390
+No.
+
+832
+00:46:00,704 --> 00:46:01,830
+Mayor a 2, sí.
+
+833
+00:46:01,830 --> 00:46:04,700
+La otra regla es
+
+834
+00:46:04,700 --> 00:46:05,950
+una reducción que luce así.
+
+835
+00:46:08,780 --> 00:46:10,950
+Y este es tal caso.
+
+836
+00:46:10,950 --> 00:46:14,470
+Si es menor a 2, luego la
+respuesta es el mismo n.
+
+837
+00:46:14,470 --> 00:46:16,990
+Lo que vemos aquí es que
+el proceso resultante localmente
+
+838
+00:46:16,990 --> 00:46:22,210
+en cada lugar es una instancia
+de esta regla.
+
+839
+00:46:22,210 --> 00:46:24,130
+Aquí hay una instancia
+de la regla.
+
+840
+00:46:24,130 --> 00:46:26,350
+Aquí hay otra instancia.
+
+841
+00:46:26,350 --> 00:46:28,460
+La razón por la que la gente
+piensa que programar
+
+842
+00:46:28,460 --> 00:46:32,230
+es difícil, es porque debes escribir
+
+843
+00:46:32,230 --> 00:46:37,310
+una regla general que va a ser 
+utilizada en múltiples instancias,
+
+844
+00:46:37,310 --> 00:46:39,710
+para cada instancia particular--
+
+845
+00:46:39,710 --> 00:46:43,900
+Va a controlar cada instancia particular
+por tí.
+
+846
+00:46:43,900 --> 00:46:46,820
+Debes escribir algo general en términos
+de variables,
+
+847
+00:46:46,820 --> 00:46:48,400
+y debes tener en cuenta todas
+las posibilidades
+
+848
+00:46:48,400 --> 00:46:50,640
+para esas variables, de manera
+que
+
+849
+00:46:50,640 --> 00:46:53,600
+eso conlleve a los procesos deseados.
+
+850
+00:46:53,600 --> 00:46:57,770
+Particularmente, debes partir
+tu proceso en partes
+
+851
+00:46:57,770 --> 00:46:59,490
+que puedan ser representadas
+en términos
+
+852
+00:46:59,490 --> 00:47:00,740
+de estas reglas locales específicas.
+
+853
+00:47:03,540 --> 00:47:05,030
+Bien, veamos.
+
+854
+00:47:05,030 --> 00:47:08,190
+Los Fibonacci no son tan
+divertidos.
+
+855
+00:47:08,190 --> 00:47:09,180
+Sí lo son.
+
+856
+00:47:09,180 --> 00:47:12,820
+Están relacionados a
+
+857
+00:47:12,820 --> 00:47:15,420
+la proporción áurea; quizás veamos
+más de eso luego.
+
+858
+00:47:15,420 --> 00:47:16,840
+Hablemos de otra cosa.
+
+859
+00:47:16,840 --> 00:47:20,310
+Hay un famoso juego llamado
+
+860
+00:47:20,310 --> 00:47:24,170
+las Torres de Hanoi, pues quiero
+enseñarles a pensarlas recursivamente.
+
+861
+00:47:24,170 --> 00:47:29,700
+Hay varios discos,
+
+862
+00:47:29,700 --> 00:47:34,130
+hay algunas estacas, y se
+rumorea que en algún lugar de Oriente
+
+863
+00:47:34,130 --> 00:47:38,420
+hay una torre de 64 pisos, y la tarea
+de varios monjes
+
+864
+00:47:38,420 --> 00:47:41,320
+es mover estas estacas
+
+865
+00:47:41,320 --> 00:47:43,860
+en cierta forma tal que eventualmente--
+
+866
+00:47:43,860 --> 00:47:45,220
+estos discos--
+
+867
+00:47:45,220 --> 00:47:49,450
+tal que eventualmente
+
+868
+00:47:49,450 --> 00:47:50,555
+se hayan movido todos los discos
+de una estaca a otra.
+
+869
+00:47:50,555 --> 00:47:54,000
+Y si tiene 64 discos,
+
+870
+00:47:54,000 --> 00:47:57,746
+y va a tomar 2 a la 64 movimientos,
+eso es mucho tiempo.
+
+871
+00:47:57,746 --> 00:48:03,820
+Dicen que al acabar 
+será el fin del Universo.
+
+872
+00:48:03,820 --> 00:48:05,630
+Veamos.
+
+873
+00:48:05,630 --> 00:48:08,830
+Para construir un proceso
+recursivo
+
+874
+00:48:08,830 --> 00:48:11,990
+hay que tener mucha fé.
+
+875
+00:48:11,990 --> 00:48:14,600
+Hay que creer.
+
+876
+00:48:14,600 --> 00:48:15,610
+Así que la idea...
+
+877
+00:48:15,610 --> 00:48:20,360
+Suponiendo que quiera
+
+878
+00:48:20,360 --> 00:48:25,400
+mover la pila de la estaca 1 a la 2, bueno
+eso no es tan difícil.
+
+879
+00:48:25,400 --> 00:48:28,470
+Supongamos que por arte de magia,
+
+880
+00:48:28,470 --> 00:48:29,310
+porque tengo un problema
+más simple, muevo una
+
+881
+00:48:29,310 --> 00:48:31,240
+pila de 3 aquí--
+
+882
+00:48:31,240 --> 00:48:32,070
+Sólo puedo mover un disco a la vez,
+
+883
+00:48:32,070 --> 00:48:33,900
+así que no importa cómo lo hice.
+
+884
+00:48:33,900 --> 00:48:37,910
+Pero suponiendo que puedo hacerlo,
+luego
+
+885
+00:48:37,910 --> 00:48:41,500
+puedo tomar este disco y moverlo aquí.
+
+886
+00:48:41,500 --> 00:48:42,980
+Y ahora tengo un problema simple.
+
+887
+00:48:42,980 --> 00:48:44,110
+Debo mover una torre de 3 acá,
+
+888
+00:48:44,110 --> 00:48:46,220
+lo cual no es un problema.
+
+889
+00:48:46,220 --> 00:48:48,860
+Así que con 2 movimientos de torres de 3,
+más
+
+890
+00:48:48,860 --> 00:48:53,140
+el movimiento de un disco, puedo
+mover la torre de aquí a aquí.
+
+891
+00:48:55,680 --> 00:48:57,530
+Ahora bien,
+
+892
+00:48:57,530 --> 00:49:02,730
+no es obvio que esto funcione.
+
+893
+00:49:02,730 --> 00:49:04,300
+¿Por qué?
+
+894
+00:49:04,300 --> 00:49:07,320
+¿Por qué puedo presumir
+
+895
+00:49:07,320 --> 00:49:08,570
+que puedo mover la torre de 3?
+
+896
+00:49:11,430 --> 00:49:14,550
+La respuesta es que siempre estoy
+contando hacia atrás,
+
+897
+00:49:14,550 --> 00:49:16,840
+y eventualmente obtendré una torre vacía,
+
+898
+00:49:16,840 --> 00:49:20,070
+y mover esa torre no requiere movimientos.
+
+899
+00:49:20,070 --> 00:49:24,060
+Así que escribamos 
+el algoritmo correspondiente.
+
+900
+00:49:24,060 --> 00:49:26,670
+Es muy fácil.
+
+901
+00:49:26,670 --> 00:49:29,260
+Voy a enumerar estas torres,
+
+902
+00:49:29,260 --> 00:49:31,120
+pero no importa que número
+le asigne a cada una.
+
+903
+00:49:31,120 --> 00:49:35,020
+El problema consiste en mover una torre
+
+904
+00:49:35,020 --> 00:49:37,785
+de n pisos, de la estaca "Desde"
+a la estaca "Hacia", utilizando
+
+905
+00:49:37,785 --> 00:49:39,968
+una de paso llamada "Libre".
+
+906
+00:49:39,968 --> 00:49:41,414
+Eso es lo que haremos.
+
+907
+00:49:50,240 --> 00:49:53,070
+Usando el algoritmo que describí
+informalmente,
+
+908
+00:49:53,070 --> 00:50:02,532
+mover una torre de n pisos
+desde "Desde" hacia "Hacia" con "Libre".
+
+909
+00:50:06,300 --> 00:50:11,540
+Analizando como antes,
+
+910
+00:50:11,540 --> 00:50:14,840
+tengo dos casos.
+
+911
+00:50:20,285 --> 00:50:23,160
+Si n es 0, entonces--
+
+912
+00:50:23,160 --> 00:50:24,600
+Voy a poner algunas respuestas.
+
+913
+00:50:24,600 --> 00:50:26,870
+Listo.
+
+914
+00:50:26,870 --> 00:50:29,530
+No sé qué significa.
+
+915
+00:50:29,530 --> 00:50:32,200
+Nunca usaremos esa respuesta para algo.
+
+916
+00:50:32,200 --> 00:50:34,350
+Haremos estos movimientos.
+
+917
+00:50:34,350 --> 00:50:36,640
+"Else" [Si no]
+
+918
+00:50:36,640 --> 00:50:37,890
+Voy a hacer un movimiento.
+
+919
+00:50:40,250 --> 00:50:44,495
+Mover una torre de altura menor a n,
+
+920
+00:50:44,495 --> 00:50:48,140
+de altura n-1
+
+921
+00:50:48,140 --> 00:50:51,030
+Voy a moverla a la estaca "Libre".
+
+922
+00:50:51,030 --> 00:50:55,220
+La idea es mover esto de acá a acá,
+
+923
+00:50:55,220 --> 00:50:57,550
+de la estaca "Desde" a la "Libre".
+
+924
+00:51:03,050 --> 00:51:04,700
+usando "Hacia" como sobrante.
+
+925
+00:51:08,960 --> 00:51:14,680
+Más tarde moveré esa torre de altura n-1,
+
+926
+00:51:14,680 --> 00:51:17,340
+una vez que haya hecho esto.
+
+927
+00:51:17,340 --> 00:51:21,650
+De la estaca "Libre" hacia
+
+928
+00:51:21,650 --> 00:51:24,750
+la estaca "Hacia", utilizando
+
+929
+00:51:24,750 --> 00:51:26,380
+la estaca "Desde" como sobrante.
+
+930
+00:51:29,390 --> 00:51:40,410
+De la estaca "Libre" a la "Hacia" usando
+
+931
+00:51:40,410 --> 00:51:44,225
+"Desde" de paso.
+
+932
+00:51:48,780 --> 00:51:51,670
+Todo lo que tengo que hacer ahora,
+cuando esté en esta condición, entre
+
+933
+00:51:51,670 --> 00:51:56,600
+estos dos movimientos de una torre entera--
+
+934
+00:51:56,600 --> 00:51:57,950
+estoy en esa condición--
+
+935
+00:51:57,950 --> 00:52:03,100
+ahora sólo debo mover un disco.
+
+936
+00:52:03,100 --> 00:52:04,543
+Voy a decir que esto imprime un movimiento.
+
+937
+00:52:04,543 --> 00:52:05,793
+No me importa cómo funciona.
+
+938
+00:52:11,680 --> 00:52:13,660
+"Desde"... "Hacia".
+
+939
+00:52:17,890 --> 00:52:20,410
+La razón por la que muestro esto ahora
+
+940
+00:52:20,410 --> 00:52:24,800
+es que este es un programa casi idéntico
+
+941
+00:52:24,800 --> 00:52:26,980
+a este otro, en cierto sentido.
+
+942
+00:52:26,980 --> 00:52:29,810
+No está computando
+el mismo valor matemático,
+
+943
+00:52:29,810 --> 00:52:34,620
+no es exactamente el mismo árbol,
+pero va a producir uno.
+
+944
+00:52:34,620 --> 00:52:38,760
+La forma general de realizar estos
+movimientos nos llevará
+
+945
+00:52:38,760 --> 00:52:41,760
+a un árbol exponencial.
+
+946
+00:52:41,760 --> 00:52:43,060
+Hagámoslo para n = 4.
+
+947
+00:52:45,720 --> 00:52:50,660
+Tengo mi machete acá, 
+si no me voy a confundir.
+
+948
+00:52:54,720 --> 00:52:57,320
+Vamos a mover una torre de altura 4
+
+949
+00:52:57,320 --> 00:53:10,080
+de la estaca 1 a la 2, usando la 3
+
+950
+00:53:10,080 --> 00:53:11,980
+como sobrante.
+
+951
+00:53:11,980 --> 00:53:14,190
+Eso es todo lo que haré.
+
+952
+00:53:14,190 --> 00:53:15,550
+Ya saben, hagámoslo.
+
+953
+00:53:15,550 --> 00:53:17,140
+No voy a preocuparme por
+
+954
+00:53:17,140 --> 00:53:17,950
+escribir la traza de esto.
+Pueden
+
+955
+00:53:17,950 --> 00:53:21,950
+hacerlo ustedes.
+
+956
+00:53:21,950 --> 00:53:26,680
+Voy a mover un disco de 1 a 3.
+
+957
+00:53:26,680 --> 00:53:28,760
+¿Cómo sé que debo hacer este movimiento?
+
+958
+00:53:28,760 --> 00:53:29,530
+¿Cómo lo sé? Supongo que
+sí debemos ver
+
+959
+00:53:29,530 --> 00:53:32,790
+la traza.
+
+960
+00:53:32,790 --> 00:53:33,810
+¿Qué estoy haciendo?
+
+961
+00:53:33,810 --> 00:53:36,560
+Bueno, n no es 0.
+
+962
+00:53:36,560 --> 00:53:38,650
+Así que miraré aquí abajo.
+
+963
+00:53:38,650 --> 00:53:41,000
+Esto requerirá realizar dos movimientos.
+
+964
+00:53:41,000 --> 00:53:42,320
+Veamos el primero.
+
+965
+00:53:42,320 --> 00:53:43,570
+Requiere mover--
+
+966
+00:53:47,860 --> 00:53:49,010
+¿Por qué le puse este nombre?
+
+967
+00:53:49,010 --> 00:53:52,910
+Debería ser "move"
+
+968
+00:53:52,910 --> 00:53:59,950
+Voy a mover una torre de altura 3
+desde "Desde"...
+
+969
+00:54:16,944 --> 00:54:18,370
+Perdón.
+
+970
+00:54:19,710 --> 00:54:26,230
+Desde 1 a la 3 usando 2 como extra.
+
+971
+00:54:26,230 --> 00:54:27,520
+Eso es.
+
+972
+00:54:27,520 --> 00:54:32,940
+Y luego hay otro movimiento aquí.
+
+973
+00:54:32,940 --> 00:54:37,790
+Eso requiere que mueva una torre
+de altura 2
+
+974
+00:54:37,790 --> 00:54:42,950
+de 1 a 2 usando 3 como extra.
+
+975
+00:54:42,950 --> 00:54:45,760
+Y eso requerirá que mueva
+
+976
+00:54:45,760 --> 00:54:52,470
+una torre de altura 1 de 1 a 3
+
+977
+00:54:52,470 --> 00:54:53,720
+usando 2 como extra.
+
+978
+00:54:57,740 --> 00:54:59,720
+Bueno, hay muchas otras cosas por hacer.
+
+979
+00:55:03,510 --> 00:55:09,265
+Muevo la torre de altura 1 de 1 a 3
+
+980
+00:55:09,265 --> 00:55:11,490
+usando 2 como libre, con la cual no
+hice nada.
+
+981
+00:55:11,490 --> 00:55:15,570
+Bueno, esto sigue bastante fácil.
+
+982
+00:55:15,570 --> 00:55:17,652
+Muevo esta de 1 a 2.
+
+983
+00:55:17,652 --> 00:55:21,500
+Y muevo este disco de 3 a 2.
+
+984
+00:55:21,500 --> 00:55:23,060
+En verdad no quiero hacerlo, pero
+
+985
+00:55:23,060 --> 00:55:24,310
+muevo de 1 a 3.
+
+986
+00:55:24,310 --> 00:55:29,390
+Luego de 2 a 1.
+
+987
+00:55:29,390 --> 00:55:32,150
+Luego de 2 a 3.
+
+988
+00:55:32,150 --> 00:55:36,310
+Y de 1 a 3.
+
+989
+00:55:36,310 --> 00:55:39,620
+1 a 2.
+
+990
+00:55:39,620 --> 00:55:41,390
+3 a 2.
+
+991
+00:55:41,390 --> 00:55:44,055
+3 a 1.
+
+992
+00:55:44,055 --> 00:55:46,380
+Esto estaba preparado, obviamente.
+
+993
+00:55:46,380 --> 00:55:48,090
+2 a 1.
+
+994
+00:55:48,090 --> 00:55:50,810
+3 a 2.
+
+995
+00:55:50,810 --> 00:55:52,950
+1 a 3.
+
+996
+00:55:52,950 --> 00:55:54,176
+ESTUDIANTE: [indistinguible]
+
+997
+00:55:54,176 --> 00:55:55,650
+PROFESOR: Sí, 1 a 3.
+
+998
+00:55:55,650 --> 00:55:55,823
+Perdón.
+
+999
+00:55:55,823 --> 00:55:56,460
+Gracias.
+
+1000
+00:55:56,460 --> 00:55:59,020
+1 a 2.
+
+1001
+00:55:59,020 --> 00:56:00,850
+Finalmente 3 a 2.
+
+1002
+00:56:00,850 --> 00:56:02,100
+¡Uf!
+
+1003
+00:56:04,250 --> 00:56:07,920
+Quiero que piensen - acaban de ver
+
+1004
+00:56:07,920 --> 00:56:09,920
+un algoritmo recursivo para hacer esto
+
+1005
+00:56:09,920 --> 00:56:11,040
+que toma tiempo exponencial, claro.
+
+1006
+00:56:11,040 --> 00:56:12,530
+Ahora, no sé si hay
+
+1007
+00:56:12,530 --> 00:56:14,820
+algún algoritmo que no tome
+
+1008
+00:56:14,820 --> 00:56:16,320
+tiempo exponencial. Tiene que ser así.
+
+1009
+00:56:16,320 --> 00:56:17,890
+Sólo puedo mover un disco a la vez.
+
+1010
+00:56:17,890 --> 00:56:18,590
+No hay algoritmo que no vaya
+a tomar
+
+1011
+00:56:18,590 --> 00:56:20,570
+tiempo exponencial.
+
+1012
+00:56:20,570 --> 00:56:24,420
+Pero ¿pueden escribir un algoritmo
+iterativo
+
+1013
+00:56:24,420 --> 00:56:25,670
+en vez de recursivo?
+
+1014
+00:56:28,740 --> 00:56:30,700
+Es una de las cosas que me gusta pensar.
+
+1015
+00:56:33,590 --> 00:56:38,970
+¿Pueden escribir uno que, en vez
+de romper el problema en dos
+
+1016
+00:56:38,970 --> 00:56:41,510
+sub-problemas tal como lo mostré,
+
+1017
+00:56:41,510 --> 00:56:45,250
+vaya un paso a la vez usando una regla
+más local?
+
+1018
+00:56:48,160 --> 00:56:50,660
+Eso sería divertido.
+
+1019
+00:56:50,660 --> 00:56:52,025
+Muchas gracias por este tercer segmento.
+
+1020
+00:56:56,310 --> 00:56:57,910
+¿Hay preguntas?
+
+1021
+00:56:57,910 --> 00:57:01,670
+ESTUDIANTE: [...] reducir un árbol
+
+1022
+00:57:01,670 --> 00:57:06,970
+o problema de recursión, ¿cómo guardar
+
+1023
+00:57:06,970 --> 00:57:08,985
+el trabajo hecho para Fibonacci?
+
+1024
+00:57:08,985 --> 00:57:12,760
+PROFESOR: Una forma es hacer lo que
+
+1025
+00:57:12,760 --> 00:57:13,890
+acabas de decir.
+
+1026
+00:57:13,890 --> 00:57:16,480
+Dijiste:
+
+1027
+00:57:16,480 --> 00:57:16,960
+"guardar el trabajo inmediato",
+¿no?
+
+1028
+00:57:16,960 --> 00:57:19,310
+Dejenme decirles--
+
+1029
+00:57:19,310 --> 00:57:21,010
+Lo veremos luego--
+
+1030
+00:57:21,010 --> 00:57:24,710
+Supongamos que cada vez que
+computo algo,
+
+1031
+00:57:24,710 --> 00:57:28,240
+cualquiera de estos números de Fibonacci,
+recuerdo la tabla
+
+1032
+00:57:28,240 --> 00:57:32,790
+tal que toma tiempo lineal buscar
+la respuesta.
+
+1033
+00:57:32,790 --> 00:57:35,180
+Luego, si vuelvo a ver Fib n,
+en vez de desarrollar el sub-árbol,
+
+1034
+00:57:35,180 --> 00:57:37,050
+puedo buscar la respuesta.
+
+1035
+00:57:37,050 --> 00:57:39,820
+Acabo de transformar el problema original
+
+1036
+00:57:39,820 --> 00:57:41,380
+en uno mucho más sencillo.
+
+1037
+00:57:41,380 --> 00:57:44,380
+Hay muchas maneras de hacer esto.
+
+1038
+00:57:44,380 --> 00:57:47,240
+Hay una llamada "memoización", que verán
+
+1039
+00:57:47,240 --> 00:57:48,280
+luego en este semestre.
+
+1040
+00:57:48,280 --> 00:57:53,890
+Pero en definitiva
+
+1041
+00:57:53,890 --> 00:57:57,110
+hay un simple tiempo lineal, un modelo
+iterativo, para computar Fibonaccis,
+
+1042
+00:57:57,110 --> 00:58:00,320
+y esa es otra cosa que deberían sentarse
+a pensar.
+
+1043
+00:58:00,320 --> 00:58:01,340
+Eso es importante.
+
+1044
+00:58:01,340 --> 00:58:05,560
+Es importante ver cómo hacer esto.
+
+1045
+00:58:05,560 --> 00:58:07,310
+Quiero que practiquen.

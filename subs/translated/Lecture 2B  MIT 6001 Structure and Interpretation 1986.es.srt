@@ -1,0 +1,5677 @@
+1
+00:00:05,892 --> 00:00:22,120
+[MÚSICA SONANDO]
+
+2
+00:00:22,120 --> 00:00:24,170
+PROFESOR: Bueno, por el momento
+hemos hablado
+
+3
+00:00:24,170 --> 00:00:27,680
+sobre procedimientos, y recordando
+
+4
+00:00:27,680 --> 00:00:31,090
+el framework que introdujimos
+para hablar de lenguajes,
+
+5
+00:00:31,090 --> 00:00:33,980
+discutimos acerca de los
+elementos primitivos
+
+6
+00:00:33,980 --> 00:00:36,040
+que están incluídos en el sistema.
+
+7
+00:00:36,040 --> 00:00:39,710
+Mencionamos algunos métodos de 
+combinación a partir de los cuales
+
+8
+00:00:39,710 --> 00:00:42,530
+tomas los elementos primitivos
+y construyes cosas más complejas.
+
+9
+00:00:42,530 --> 00:00:44,610
+Luego hablamos sobre los
+métodos de abstracción,
+
+10
+00:00:44,610 --> 00:00:47,190
+cómo tomando esas cosas
+complejas y nombrándolas
+
+11
+00:00:47,190 --> 00:00:49,770
+podemos utilizarlas como bloques
+de construcción.
+
+12
+00:00:49,770 --> 00:00:51,750
+Y la última vez fuimos mucho más allá.
+
+13
+00:00:51,750 --> 00:00:55,830
+Vimos que utilizando procedimientos
+de alto orden podemos
+
+14
+00:00:55,830 --> 00:00:58,400
+expresar métodos generales de cómputo.
+
+15
+00:00:58,400 --> 00:01:01,540
+Como el método de punto fijo, o el
+
+16
+00:01:01,540 --> 00:01:05,280
+método de Newton; el increíble
+poder de expresión que se obtiene
+
+17
+00:01:05,280 --> 00:01:08,730
+al combinar estas formas de
+abstracción.
+
+18
+00:01:08,730 --> 00:01:13,260
+La idea crucial en todo esto es que
+
+19
+00:01:13,260 --> 00:01:15,210
+construímos un sistema en capas.
+
+20
+00:01:15,210 --> 00:01:17,570
+Por ejemplo, si escribimos el
+procedimiento para
+
+21
+00:01:17,570 --> 00:01:24,950
+la raíz cuadrada, en algún lugar
+se utiliza un procedimiento llamado
+
+22
+00:01:24,950 --> 00:01:33,130
+"buena aproximación", y allí 
+se está realizando una suerte
+
+23
+00:01:33,130 --> 00:01:35,220
+de abstracción de cota.
+
+24
+00:01:38,060 --> 00:01:41,620
+Es casi como si al escribir la raíz
+cuadrada, vamos
+
+25
+00:01:41,620 --> 00:01:45,940
+y establecemos un contrato con George,
+le decimos que su trabajo
+
+26
+00:01:45,940 --> 00:01:49,600
+es ecribir "buena aproximación", y que
+
+27
+00:01:49,600 --> 00:01:52,630
+mientras el procedimiento funcione, no nos
+importa cómo lo hace.
+
+28
+00:01:52,630 --> 00:01:54,380
+No nos importa cómo está implementado.
+
+29
+00:01:54,380 --> 00:01:58,360
+Hay ciertos niveles de detalle que serán
+preocupación de George
+
+30
+00:01:58,360 --> 00:02:00,450
+y no nuestra.
+
+31
+00:02:00,450 --> 00:02:03,680
+Quizás George utilice un procedimiento
+
+32
+00:02:03,680 --> 00:02:07,370
+para valor absoluto escrito por Harry,
+y no nos importa
+
+33
+00:02:07,370 --> 00:02:10,065
+acerca de esto, o incluso 
+que Harry exista.
+
+34
+00:02:13,830 --> 00:02:16,910
+Lo fundamental es que al construir
+programas,
+
+35
+00:02:16,910 --> 00:02:22,600
+seaparamos la tarea de construir cosas
+de la de
+
+36
+00:02:22,600 --> 00:02:23,850
+implementar las partes.
+
+37
+00:02:27,690 --> 00:02:30,110
+Obviamente, en un sistema grande,
+tenemos
+
+38
+00:02:30,110 --> 00:02:34,180
+barreras de abstracción como ésta en
+muchos y muchos niveles.
+
+39
+00:02:34,180 --> 00:02:36,700
+Esa es la idea que pusimos en
+práctica
+
+40
+00:02:36,700 --> 00:02:38,290
+al implementar procedimientos.
+
+41
+00:02:38,290 --> 00:02:41,220
+Bien, ahora lo que haremos
+será mirar el mismo problema
+
+42
+00:02:41,220 --> 00:02:44,170
+para los datos.
+
+43
+00:02:44,170 --> 00:02:46,350
+Veremos que el sistema tiene
+valores primitivos.
+
+44
+00:02:46,350 --> 00:02:47,470
+En verdad, ya lo vimos.
+
+45
+00:02:47,470 --> 00:02:50,270
+Hemos hablado de los números
+como valores primitivos.
+
+46
+00:02:50,270 --> 00:02:51,300
+Y veremos las maneras
+
+47
+00:02:51,300 --> 00:02:52,390
+de combinar valores.
+
+48
+00:02:52,390 --> 00:02:55,940
+Hay un pegamento que nos permite
+combinar datos
+
+49
+00:02:55,940 --> 00:02:59,500
+para construir tipos de datos
+más complicados, compuestos.
+
+50
+00:02:59,500 --> 00:03:04,840
+Luego veremos una metodología
+de abstracción,
+
+51
+00:03:04,840 --> 00:03:07,330
+la cual es buena aplicar cuando se
+construyen datos
+
+52
+00:03:07,330 --> 00:03:09,090
+en función de otros más simples.
+
+53
+00:03:09,090 --> 00:03:11,790
+Otra vez, la idea clave es que
+van a construir
+
+54
+00:03:11,790 --> 00:03:15,700
+el sistema en capas, y establecerán
+barreras de abstracción
+
+55
+00:03:15,700 --> 00:03:20,250
+que ocultarán detalles implementativos
+de niveles más bajos
+
+56
+00:03:20,250 --> 00:03:21,630
+a los niveles superiores.
+
+57
+00:03:21,630 --> 00:03:23,270
+Los detalles a menor nivel de capa,
+
+58
+00:03:23,270 --> 00:03:25,260
+las ideas, no importarán.
+
+59
+00:03:25,260 --> 00:03:27,680
+Serán problema de George, porque
+ha firmado
+
+60
+00:03:27,680 --> 00:03:30,430
+este contrato con nosotros donde
+asume la responsabilidad
+
+61
+00:03:30,430 --> 00:03:36,250
+sobre cómo se comporta lo que implementa,
+y cómo lo hace; es su problema.
+
+62
+00:03:36,250 --> 00:03:37,890
+Muy bien, veamos un ejemplo.
+
+63
+00:03:37,890 --> 00:03:40,990
+El ejemplo del que hablaré
+es un sistema
+
+64
+00:03:40,990 --> 00:03:43,010
+de aritmética sobre números racionales.
+
+65
+00:03:43,010 --> 00:03:46,160
+Lo que tengo en mente es que
+deberíamos tener algo
+
+66
+00:03:46,160 --> 00:03:52,220
+en la computadora que nos permitiera
+decirle: "¿cuánto es la suma
+
+67
+00:03:52,220 --> 00:04:00,590
+de 1/2 y 3/4?", tal que el sistema
+responda:
+
+68
+00:04:00,590 --> 00:04:02,890
+"Eso da 3/4".
+
+69
+00:04:02,890 --> 00:04:11,370
+O preguntarle: "¿cuánto es 3/4 por 2/3?"
+
+70
+00:04:11,370 --> 00:04:13,650
+Y el sistema respondería: "eso es 1/2".
+
+71
+00:04:16,500 --> 00:04:16,730
+¿Verdad?
+
+72
+00:04:16,730 --> 00:04:17,990
+Saben lo que imagino.
+
+73
+00:04:17,990 --> 00:04:20,700
+Y saben hacerlo desde, no sé, quinto
+
+74
+00:04:20,700 --> 00:04:22,410
+o sexto grado.
+
+75
+00:04:22,410 --> 00:04:26,510
+Existen estas fórmulas que dicen,
+si tengo una fracción -
+
+76
+00:04:26,510 --> 00:04:29,350
+que es un numerador sobre un denominador -
+y quiero agregarle
+
+77
+00:04:29,350 --> 00:04:33,600
+otra fracción - que es otro numerador
+sobre otro denominador -
+
+78
+00:04:33,600 --> 00:04:38,200
+luego la respuesta es
+
+79
+00:04:38,200 --> 00:04:41,920
+el primer numerador 
+por el segundo denominador
+
+80
+00:04:41,920 --> 00:04:45,885
+más el segundo numerador por el primer
+denominador.
+
+81
+00:04:45,885 --> 00:04:49,930
+Ese es el numerador de la respuesta,
+
+82
+00:04:49,930 --> 00:04:53,260
+y el denominador resultante es el
+producto de ambos denominadores.
+
+83
+00:04:53,260 --> 00:04:53,400
+¿No?
+
+84
+00:04:53,400 --> 00:04:56,850
+Eso es de aritmética de fracciones
+de quinto o sexto
+
+85
+00:04:56,850 --> 00:04:57,570
+grado.
+
+86
+00:04:57,570 --> 00:05:00,320
+De la misma forma, si quiero multiplicar
+dos cosas,
+
+87
+00:05:00,320 --> 00:05:06,710
+n1 sobre d1 multiplicado por n2 sobre d2
+
+88
+00:05:06,710 --> 00:05:10,510
+es el producto de los numeradores
+sobre el producto de los denominadores.
+
+89
+00:05:14,330 --> 00:05:18,880
+Parece no haber problema con esto,
+
+90
+00:05:18,880 --> 00:05:21,460
+no hay problema en el cómputo que
+pensamos
+
+91
+00:05:21,460 --> 00:05:23,760
+para sumar y multiplicar estas fracciones.
+
+92
+00:05:23,760 --> 00:05:26,010
+Pero ni bien vamos a implementarlo,
+
+93
+00:05:26,010 --> 00:05:27,920
+nos encontramos con algo.
+
+94
+00:05:27,920 --> 00:05:33,320
+No tenemos números racionales.
+
+95
+00:05:33,320 --> 00:05:36,840
+Dijimos que el sistema nos da
+números enteros,
+
+96
+00:05:36,840 --> 00:05:43,700
+podemos tener 5 y 3, pero no tenemos
+forma
+
+97
+00:05:43,700 --> 00:05:47,970
+de decir que hay algo que tenga
+3 y 4 a la vez,
+
+98
+00:05:47,970 --> 00:05:49,850
+o 2 y 3.
+
+99
+00:05:49,850 --> 00:05:55,110
+Es como si quisiéramos imaginar
+que hay unas nubes,
+
+100
+00:05:55,110 --> 00:06:00,820
+y una nube contiene
+tanto un numerador
+
+101
+00:06:00,820 --> 00:06:03,590
+como un denominador,
+y es en función de
+
+102
+00:06:03,590 --> 00:06:04,840
+esta idea que trabajaremos.
+
+103
+00:06:06,820 --> 00:06:08,320
+¿Cómo vamos a resolver esto?
+
+104
+00:06:08,320 --> 00:06:11,360
+Resolverémos el problema
+utilizando
+
+105
+00:06:11,360 --> 00:06:14,450
+esta poderosa estrategia de diseño
+
+106
+00:06:14,450 --> 00:06:16,580
+que ya nos han visto usar una
+y otra vez.
+
+107
+00:06:16,580 --> 00:06:18,330
+Y esa es la estrategia de tener fe.
+
+108
+00:06:25,700 --> 00:06:27,870
+Tal como antes, cuando no teníamos
+un procedimiento
+
+109
+00:06:27,870 --> 00:06:31,420
+decíamos: "bueno, imaginemos que
+ese procedimiento ya existe".
+
+110
+00:06:31,420 --> 00:06:36,100
+Diremos entonces, "bueno, imaginemos
+que ya contamos con estas nubes".
+
+111
+00:06:36,100 --> 00:06:42,400
+En particular, vamos a imaginar
+que tenemos
+
+112
+00:06:42,400 --> 00:06:45,120
+tres procedimientos: uno, "make-RAT".
+
+113
+00:06:47,740 --> 00:06:54,696
+"make-RAT" va a tomar dos
+argumentos numéricos,
+
+114
+00:06:54,696 --> 00:06:58,800
+los llamaré numerador y denominador,
+y devolverá
+
+115
+00:06:58,800 --> 00:07:02,860
+una nube--
+
+116
+00:07:02,860 --> 00:07:05,300
+una de estas nubes.
+
+117
+00:07:05,300 --> 00:07:07,030
+No sé exactamente qué es una nube.
+
+118
+00:07:07,030 --> 00:07:11,500
+Es aquello que "make-RAT" devuelva,
+es su asunto.
+
+119
+00:07:11,500 --> 00:07:13,400
+También tendremos,
+dada una de estas nubes
+
+120
+00:07:13,400 --> 00:07:17,800
+un procedimiento "numer"
+que toma una nube
+
+121
+00:07:17,800 --> 00:07:21,462
+que tiene "n" y "d" dentro (lo que sea
+que sea esa nube, yo no lo sé)
+
+122
+00:07:21,462 --> 00:07:23,990
+y devolverá la parte
+
+123
+00:07:23,990 --> 00:07:26,980
+del numerador, "n".
+
+124
+00:07:26,980 --> 00:07:31,750
+Asumimos también que está
+el procedimiento "denom",
+
+125
+00:07:31,750 --> 00:07:36,610
+que toma una nube - sea lo que sea -
+
+126
+00:07:36,610 --> 00:07:37,850
+y devuelve el denominador, "d":
+
+127
+00:07:37,850 --> 00:07:42,530
+Esto es como antes, si estamos
+construyendo raíz cuadrada
+
+128
+00:07:42,530 --> 00:07:45,440
+asumimos que tenemos "buena
+aproximación"
+
+129
+00:07:45,440 --> 00:07:45,600
+¿Verdad?
+
+130
+00:07:45,600 --> 00:07:48,310
+Buscaremos a George y le diremos
+
+131
+00:07:48,310 --> 00:07:50,480
+"Es tu responsabilidad
+construirnos
+
+132
+00:07:50,480 --> 00:07:52,280
+estos procedimientos.
+
+133
+00:07:52,280 --> 00:07:54,170
+Cómo decidas implementar estas nubes,
+
+134
+00:07:54,170 --> 00:07:55,060
+es tu problema.
+
+135
+00:07:55,060 --> 00:07:56,310
+No queremos saberlo."
+
+136
+00:07:58,670 --> 00:08:03,740
+Habiéndole delegado la tarea
+a George,
+
+137
+00:08:03,740 --> 00:08:05,520
+es fácil hacer la otra parte.
+
+138
+00:08:05,520 --> 00:08:08,360
+Teniendo las nubes,
+es bastante sencillo
+
+139
+00:08:08,360 --> 00:08:11,820
+escribir la adición
+de números racionales.
+
+140
+00:08:11,820 --> 00:08:17,820
+Podemos definir, digamos
+"+RAT".
+
+141
+00:08:21,980 --> 00:08:25,450
+"+RAT" tomará dos números racionales
+
+142
+00:08:25,450 --> 00:08:28,110
+"x" e "y".
+
+143
+00:08:28,110 --> 00:08:31,880
+Ambos son estas nubes.
+
+144
+00:08:31,880 --> 00:08:32,539
+¿Y qué hace?
+
+145
+00:08:32,539 --> 00:08:35,840
+Nos va a devolver un número racional.
+
+146
+00:08:40,299 --> 00:08:41,460
+¿Qué número?
+
+147
+00:08:41,460 --> 00:08:43,659
+Tenemos las fórmulas.
+
+148
+00:08:43,659 --> 00:08:49,620
+El numerador será la suma
+del producto
+
+149
+00:08:49,620 --> 00:08:56,550
+del numerador de "x" y el
+denominador de "y".
+
+150
+00:09:02,580 --> 00:09:03,950
+Esa es una cosa en la suma.
+
+151
+00:09:03,950 --> 00:09:07,310
+El otro elemento en el numerador
+es el producto
+
+152
+00:09:07,310 --> 00:09:19,060
+del numerador de "y" por el
+denominador de "x".
+
+153
+00:09:19,060 --> 00:09:20,910
+Cierro el producto, cierro la suma.
+
+154
+00:09:20,910 --> 00:09:23,830
+Ese es el primer argumento de
+"make-RAT", o sea
+
+155
+00:09:23,830 --> 00:09:26,080
+el numerador del racional
+que estoy construyendo.
+
+156
+00:09:26,080 --> 00:09:28,860
+Lo otro que va a "make-RAT"
+
+157
+00:09:28,860 --> 00:09:32,950
+es el denominador de la respuesta,
+que es el producto
+
+158
+00:09:32,950 --> 00:09:42,230
+del denominador de "x" y el
+denominador de "y".
+
+159
+00:09:42,230 --> 00:09:43,480
+Así.
+
+160
+00:09:46,050 --> 00:09:46,500
+¿Ok?
+
+161
+00:09:46,500 --> 00:09:50,480
+Ahí tenemos la forma manual
+
+162
+00:09:50,480 --> 00:09:51,710
+de sumar racionales.
+
+163
+00:09:51,710 --> 00:09:54,030
+Y no es problema asumiendo
+
+164
+00:09:54,030 --> 00:09:55,280
+que tenemos estas nubes.
+
+165
+00:09:59,020 --> 00:10:00,810
+También podemos construir
+
+166
+00:10:00,810 --> 00:10:02,250
+la multiplicación de la misma
+forma.
+
+167
+00:10:05,570 --> 00:10:10,030
+Definimos el producto de dos
+racionales,
+
+168
+00:10:10,030 --> 00:10:13,080
+lo llamamos "*RAT".
+
+169
+00:10:13,080 --> 00:10:20,950
+Toma dos de estas nubes,
+"x" e "y", y revuelve
+
+170
+00:10:20,950 --> 00:10:27,100
+un número racional, "make-RAT", cuyo
+numerador es el producto de
+
+171
+00:10:27,100 --> 00:10:28,350
+los numeradores--
+
+172
+00:10:30,270 --> 00:10:38,170
+numerador de "x" por
+el numerador de "y".
+
+173
+00:10:38,170 --> 00:10:41,780
+Y el denominador de lo que
+vamos a devolver es el producto
+
+174
+00:10:41,780 --> 00:10:43,030
+de los denominadores.
+
+175
+00:10:57,930 --> 00:11:01,550
+Dejando de lado que no les dije
+qué son estas nubes,
+
+176
+00:11:01,550 --> 00:11:04,510
+eso es todo para estos problemas.
+
+177
+00:11:04,510 --> 00:11:05,280
+¿Ven lo que hice?
+
+178
+00:11:05,280 --> 00:11:08,510
+Asumí, teniendo fe, que existía
+y tenía un nuevo
+
+179
+00:11:08,510 --> 00:11:10,490
+tipo de datos.
+
+180
+00:11:10,490 --> 00:11:14,780
+En particular, asumí que
+tenía maneras de crear
+
+181
+00:11:14,780 --> 00:11:16,360
+estos objetos.
+
+182
+00:11:16,360 --> 00:11:18,140
+"make-RAT" crea una de estas cosas.
+A eso
+
+183
+00:11:18,140 --> 00:11:19,390
+le llamamos constructor.
+
+184
+00:11:25,720 --> 00:11:29,750
+Tengo algo que construye estos objetos.
+
+185
+00:11:29,750 --> 00:11:34,370
+Y luego asumo que, teniéndolos,
+también tengo
+
+186
+00:11:34,370 --> 00:11:35,940
+maneras de obtener sus partes.
+
+187
+00:11:35,940 --> 00:11:37,550
+A esas las llamamos selectores.
+
+188
+00:11:42,850 --> 00:11:45,750
+Formalmente, asumí que
+tenía estos procedimientos -
+
+189
+00:11:45,750 --> 00:11:48,450
+constructores y selectores
+de estos objetos -
+
+190
+00:11:48,450 --> 00:11:52,090
+y simplemente los usé.
+
+191
+00:11:52,090 --> 00:11:55,010
+Esto no difiere de haber dicho
+
+192
+00:11:55,010 --> 00:11:57,240
+que teníamos el procedimiento
+"buena aproximación"
+
+193
+00:11:57,240 --> 00:11:58,490
+y haberlo usado para
+la raíz.
+
+194
+00:12:00,850 --> 00:12:06,940
+Antes de continuar, preguntémonos
+
+195
+00:12:06,940 --> 00:12:08,660
+¿por qué hacemos esto, en definitiva?
+
+196
+00:12:08,660 --> 00:12:14,170
+¿Por qué queremos un procedimiento
+como "+RAT", que toma
+
+197
+00:12:14,170 --> 00:12:20,340
+dos racionales y devuelve otro?
+
+198
+00:12:20,340 --> 00:12:22,140
+Otra manera de pensarlo
+
+199
+00:12:22,140 --> 00:12:23,390
+es que tenemos esta fórmula.
+
+200
+00:12:25,160 --> 00:12:28,060
+Y también tengo que implementar
+
+201
+00:12:28,060 --> 00:12:29,890
+algo que sume racionales.
+
+202
+00:12:29,890 --> 00:12:32,240
+Pensemos que está esto,
+
+203
+00:12:32,240 --> 00:12:34,850
+donde ingreso cuatro números,
+n1, d1,
+
+204
+00:12:34,850 --> 00:12:36,600
+n2 y d2.
+
+205
+00:12:36,600 --> 00:12:41,610
+Y eso asigna en algunos registros
+de la máquina a este numerador
+
+206
+00:12:41,610 --> 00:12:42,440
+y este denominador.
+
+207
+00:12:42,440 --> 00:12:44,380
+Podría decir: "¿por qué no
+sumo racionales
+
+208
+00:12:44,380 --> 00:12:46,640
+simplemente tipeando cuatro números -
+numeradores
+
+209
+00:12:46,640 --> 00:12:48,950
+y denominadores - y obteniendo
+dos números, que son
+
+210
+00:12:48,950 --> 00:12:51,000
+un numerador y un denominador?".
+
+211
+00:12:51,000 --> 00:12:54,020
+¿Por qué nos preocupamos
+por construir
+
+212
+00:12:54,020 --> 00:12:55,270
+las cosas de esta manera?
+
+213
+00:12:58,620 --> 00:13:02,390
+La respuesta es, supongan
+que quieren
+
+214
+00:13:02,390 --> 00:13:06,620
+expresar algo como esto,
+supongan que quieren
+
+215
+00:13:06,620 --> 00:13:14,840
+expresar la idea de tomar dos racionales,
+"x" más "y",
+
+216
+00:13:14,840 --> 00:13:20,720
+y multiplicarlos por la suma
+
+217
+00:13:20,720 --> 00:13:23,670
+de otros dos racionales.
+
+218
+00:13:23,670 --> 00:13:28,650
+La manera de hacer eso, teniendo
+"+RAT" y "*RAT", es decir
+
+219
+00:13:28,650 --> 00:13:33,930
+que eso es simplemente un producto.
+
+220
+00:13:33,930 --> 00:13:51,570
+Eso es "*RAT" de la suma de "x" e "y"
+y la suma de "s" y "t".
+
+221
+00:13:51,570 --> 00:13:57,710
+Así que salvo la sintaxis, obtengo
+una expresión que luce
+
+222
+00:13:57,710 --> 00:13:59,490
+como lo pensamos
+matemáticamente.
+
+223
+00:13:59,490 --> 00:14:02,080
+Quiero decir que hay dos números.
+
+224
+00:14:02,080 --> 00:14:06,060
+Hay algo que es la suma de ellos,
+y hay algo
+
+225
+00:14:06,060 --> 00:14:07,490
+que es la suma de estos otros.
+
+226
+00:14:07,490 --> 00:14:10,780
+Eso es esto y esto.
+
+227
+00:14:10,780 --> 00:14:12,530
+Y luego los multiplico.
+Así que obtengo
+
+228
+00:14:12,530 --> 00:14:14,640
+una expresión que se condice con esta.
+
+229
+00:14:14,640 --> 00:14:17,720
+Si lo hiciera de la otra manera,
+si lo pensara
+
+230
+00:14:17,720 --> 00:14:20,770
+como que ingreso en mi máquina
+cuatro números,
+
+231
+00:14:20,770 --> 00:14:24,140
+que son los numeradores y denominadores
+de "x" e "y",
+
+232
+00:14:24,140 --> 00:14:26,540
+y luego otros cuatro números,
+que serían los numeradores
+
+233
+00:14:26,540 --> 00:14:29,140
+y denominadores de "s" y "t".
+
+234
+00:14:29,140 --> 00:14:30,460
+Luego tendría--
+
+235
+00:14:30,460 --> 00:14:31,340
+¿Qué haría?
+
+236
+00:14:31,340 --> 00:14:34,380
+Sumaría estos, y de alguna forma
+tendría que tener dos
+
+237
+00:14:34,380 --> 00:14:37,090
+variables temporales, que son
+los numeradores y denominadores
+
+238
+00:14:37,090 --> 00:14:39,710
+de la suma. Los almacenaría
+en algún lado.
+
+239
+00:14:42,500 --> 00:14:44,670
+Luego vendría aquí, ingresaría
+otros 4 números más,
+
+240
+00:14:44,670 --> 00:14:47,140
+obtendría dos variables
+temporales más,
+
+241
+00:14:47,140 --> 00:14:50,180
+que son los numeradores y 
+denominadores de "s" y "t".
+
+242
+00:14:50,180 --> 00:14:55,000
+Finalmente, juntaría todo
+multiplicándolos.
+
+243
+00:14:55,000 --> 00:14:56,890
+Lo que empieza a suceder
+es que todas
+
+244
+00:14:56,890 --> 00:15:01,450
+estas variables temporales,
+que en definitiva son las entrañas
+
+245
+00:15:01,450 --> 00:15:04,320
+de los racionales, están desparramadas
+
+246
+00:15:04,320 --> 00:15:06,190
+a lo largo del sistema.
+
+247
+00:15:06,190 --> 00:15:08,050
+Desde ya, si tuviera más y más
+
+248
+00:15:08,050 --> 00:15:10,380
+expresiones complicadas, habría
+más tripas colgando
+
+249
+00:15:10,380 --> 00:15:13,010
+que confundirían mi
+desarrollo.
+
+250
+00:15:13,010 --> 00:15:15,920
+Aquellos de ustedes que programaban así,
+
+251
+00:15:15,920 --> 00:15:18,440
+sumando números en assembler,
+
+252
+00:15:18,440 --> 00:15:20,280
+de pronto ven que deben ocuparse
+
+253
+00:15:20,280 --> 00:15:23,040
+de estas variables temporales.
+
+254
+00:15:23,040 --> 00:15:28,350
+Más importante aún que confundir
+mi programación,
+
+255
+00:15:28,350 --> 00:15:29,760
+confundirán mi mente.
+
+256
+00:15:29,760 --> 00:15:34,700
+Porque el punto de este juego
+es que queremos que
+
+257
+00:15:34,700 --> 00:15:38,750
+los lenguajes de programación
+expresen los conceptos
+
+258
+00:15:38,750 --> 00:15:41,350
+que tenemos en nuestras cabezas,
+como los racionales
+
+259
+00:15:41,350 --> 00:15:44,770
+que son cosas que puedes sumar, y
+a ese resultado multiplicarlo, etc.
+
+260
+00:15:48,760 --> 00:15:50,010
+Paremos para consultas.
+
+261
+00:15:59,570 --> 00:16:00,080
+¿Sí?
+
+262
+00:16:00,080 --> 00:16:03,240
+AUDIENCIA: No veo la necesidad. Cuando
+vimos "make-RAT"
+
+263
+00:16:03,240 --> 00:16:05,150
+con un numerador y un
+denominador
+
+264
+00:16:05,150 --> 00:16:07,590
+había que pasarlos como parámetros
+
+265
+00:16:07,590 --> 00:16:10,420
+para construir la nube, pero luego
+extraíamos esos valores
+
+266
+00:16:10,420 --> 00:16:11,720
+que teníamos originalmente.
+
+267
+00:16:11,720 --> 00:16:13,740
+PROFESOR: Eso es cierto.
+
+268
+00:16:13,740 --> 00:16:16,310
+La pregunta es, si tengo
+el numerador
+
+269
+00:16:16,310 --> 00:16:20,690
+y el denominador, ¿por qué
+me preocupo por tener la nube
+
+270
+00:16:20,690 --> 00:16:23,500
+dado que debo obtener sus partes?
+
+271
+00:16:23,500 --> 00:16:26,310
+Eso es un poco lo que traté de decir
+al final, pero déjenme
+
+272
+00:16:26,310 --> 00:16:27,250
+intentar decirlo
+
+273
+00:16:27,250 --> 00:16:29,390
+otra vez, porque esta
+es la motivación crucial.
+
+274
+00:16:29,390 --> 00:16:32,540
+El punto es que quiero
+llevar juntos al numerador denominador
+
+275
+00:16:32,540 --> 00:16:36,816
+en todo momento.
+
+276
+00:16:36,816 --> 00:16:39,570
+Es casi como si dijera,
+
+277
+00:16:39,570 --> 00:16:42,350
+sé que ahí dentro hay un numerador
+y un denominador, pero
+
+278
+00:16:42,350 --> 00:16:50,180
+también quiero decir que desde otro
+punto de vista eso es "x".
+
+279
+00:16:50,180 --> 00:16:53,040
+Y llevo a "x" por todas partes, y lo llamo
+"x", y lo sostengo.
+
+280
+00:16:53,040 --> 00:16:56,520
+Y puedo decir cosas como la
+suma de "x" e "y" en vez de
+
+281
+00:16:56,520 --> 00:16:59,180
+tener que-- no es tan malo
+si sólo pienso en "x",
+
+282
+00:16:59,180 --> 00:17:02,360
+pero si tengo un sistema con 10
+racionales, de pronto
+
+283
+00:17:02,360 --> 00:17:04,770
+tengo 20 numeradores y denominadores
+
+284
+00:17:04,770 --> 00:17:05,930
+que no son necesariamente--
+
+285
+00:17:05,930 --> 00:17:08,608
+Si no los vinculo, entonces son sólo
+20 números arbitrarios
+
+286
+00:17:08,608 --> 00:17:10,560
+que no se relacionan de ninguna
+manera particular.
+
+287
+00:17:10,560 --> 00:17:14,400
+Es como decir, tengo estas instrucciones
+que son el cuerpo de un procedimiento
+
+288
+00:17:14,400 --> 00:17:16,098
+¿para qué quiero empaquetarlas
+y decir que
+
+289
+00:17:16,098 --> 00:17:17,970
+son un procedimiento?
+
+290
+00:17:17,970 --> 00:17:19,220
+Es la misma idea
+
+291
+00:17:31,875 --> 00:17:33,840
+¿No?
+
+292
+00:17:33,840 --> 00:17:35,120
+Ok.
+
+293
+00:17:35,120 --> 00:17:36,870
+Paremos, estirémonos
+y que alguien--
+
+294
+00:17:36,870 --> 00:17:38,349
+[INDISTINGUIBLE]
+
+295
+00:17:38,349 --> 00:18:27,080
+[MÚSICA SONANDO]
+
+296
+00:18:27,080 --> 00:18:29,790
+Estuvimos trabajando en esta
+aritmética
+
+297
+00:18:29,790 --> 00:18:34,590
+de números racionales,
+y lo importante
+
+298
+00:18:34,590 --> 00:18:37,430
+de lo que hicimos es que abordamos
+el problema
+
+299
+00:18:37,430 --> 00:18:40,160
+partiéndolo en pedazos.
+
+300
+00:18:40,160 --> 00:18:43,580
+Dijimos, asumamos que existe
+este contrato con George,
+
+301
+00:18:43,580 --> 00:18:46,200
+y que George ha descubierto
+cómo construir
+
+302
+00:18:46,200 --> 00:18:50,900
+estas nubes, nos ha dado procedimientos,
+"make-RAT", que es un
+
+303
+00:18:50,900 --> 00:18:54,340
+constructor, y los selectores
+que nos dan el numerador
+
+304
+00:18:54,340 --> 00:18:55,040
+y denominador.
+
+305
+00:18:55,040 --> 00:18:57,580
+En función de éstos, nos mandamos
+a implementar
+
+306
+00:18:57,580 --> 00:19:00,630
+la adición y multiplicación
+de racionales.
+
+307
+00:19:00,630 --> 00:19:03,640
+Ahora veamos el problema
+de George.
+
+308
+00:19:03,640 --> 00:19:06,910
+¿Cómo podemos empaquetar
+un numerador y denominador juntos
+
+309
+00:19:06,910 --> 00:19:09,360
+y construir una de estas nubes?
+
+310
+00:19:09,360 --> 00:19:15,760
+Necesitamos una suerte de pegamento
+para objetos de datos
+
+311
+00:19:15,760 --> 00:19:18,040
+que nos permita juntar cosas.
+
+312
+00:19:18,040 --> 00:19:23,170
+Lisp provee ese pegamento,
+y se lo llama
+
+313
+00:19:23,170 --> 00:19:24,420
+estructura de lista.
+
+314
+00:19:30,410 --> 00:19:35,700
+Una estructura de lista permite
+pegar cosas,
+
+315
+00:19:35,700 --> 00:19:40,750
+y más precisamente, Lisp provee
+una manera para construir
+
+316
+00:19:40,750 --> 00:19:42,000
+cosas llamadas pares.
+
+317
+00:19:44,750 --> 00:19:52,222
+Hay un operador primitivo en Lisp
+llamado "cons".
+
+318
+00:19:52,222 --> 00:19:54,920
+Podemos echarle un vistazo.
+
+319
+00:19:54,920 --> 00:19:57,170
+Hay algo llamado "cons".
+
+320
+00:20:00,620 --> 00:20:03,880
+"cons" es un operador que toma
+dos argumentos
+
+321
+00:20:03,880 --> 00:20:08,800
+llamados "x" e "y", y devuelve
+algo llamado un par.
+
+322
+00:20:11,510 --> 00:20:17,520
+Un par tiene una primera parte
+
+323
+00:20:17,520 --> 00:20:18,770
+y una segunda parte.
+
+324
+00:20:22,250 --> 00:20:25,450
+Así que "cons" toma dos objetos.
+
+325
+00:20:25,450 --> 00:20:26,780
+Hay algo llamado par.
+
+326
+00:20:26,780 --> 00:20:30,700
+La primera parte de "cons" es "x",
+y la segunda parte
+
+327
+00:20:30,700 --> 00:20:31,600
+de "cons" es "y".
+
+328
+00:20:31,600 --> 00:20:34,090
+Y eso es lo que construye.
+
+329
+00:20:34,090 --> 00:20:35,740
+Asumimos que tenemos manera
+
+330
+00:20:35,740 --> 00:20:36,880
+de obtener cosas del par.
+
+331
+00:20:36,880 --> 00:20:41,820
+Dado un par, hay algo llamado
+"car",
+
+332
+00:20:41,820 --> 00:20:44,760
+y "car" de un par "p" nos da
+
+333
+00:20:44,760 --> 00:20:46,640
+la primera parte del par "p".
+
+334
+00:20:46,640 --> 00:20:49,650
+Y hay algo llamado "cdr",
+y "cdr" del par "p"
+
+335
+00:20:49,650 --> 00:20:54,310
+devuelve la segunda parte.
+
+336
+00:20:54,310 --> 00:20:56,710
+Ok, así es como construímos
+las cosas entonces.
+
+337
+00:20:56,710 --> 00:21:01,720
+Hay una manera convencional para dibujar
+
+338
+00:21:01,720 --> 00:21:02,800
+estas cosas.
+
+339
+00:21:02,800 --> 00:21:09,070
+Así como escribimos eso
+como convención para
+
+340
+00:21:09,070 --> 00:21:17,480
+denotar la idea de Plato de un dos,
+la forma en que dibujaríamos
+
+341
+00:21:17,480 --> 00:21:21,510
+un diagrama para representar
+"cons" de dos y tres es así.
+
+342
+00:21:21,510 --> 00:21:23,912
+Dibujamos una pequeña caja.
+
+343
+00:21:23,912 --> 00:21:27,140
+Esta es la caja a la que nos referimos,
+y tiene
+
+344
+00:21:27,140 --> 00:21:30,070
+dos flechas que salen de ella.
+
+345
+00:21:30,070 --> 00:21:35,890
+La primera parte de este par es 2,
+y la segunda parte
+
+346
+00:21:35,890 --> 00:21:38,250
+de este par es 3.
+
+347
+00:21:38,250 --> 00:21:41,180
+A esta notación la llamamos
+
+348
+00:21:41,180 --> 00:21:44,855
+notación de caja y puntero.
+
+349
+00:21:56,050 --> 00:21:58,340
+Déjenme aclarar que muchas
+personas se confunden
+
+350
+00:21:58,340 --> 00:22:01,650
+y piensan que hay un significado
+geométrico
+
+351
+00:22:01,650 --> 00:22:03,640
+en las direcciones en que dibujo
+los punteros.
+
+352
+00:22:03,640 --> 00:22:06,090
+Algunas personas piensan que sería
+distinto si tomara
+
+353
+00:22:06,090 --> 00:22:08,660
+este puntero y lo subiera hacia aquí,
+y pusiera el 3 acá.
+
+354
+00:22:08,660 --> 00:22:10,760
+Eso no hace ninguna diferencia.
+
+355
+00:22:10,760 --> 00:22:10,940
+¿Está bien?
+
+356
+00:22:10,940 --> 00:22:13,240
+Simplemente se trata de un montón
+de flechas,
+
+357
+00:22:13,240 --> 00:22:15,090
+estos punteros, y las cajas.
+
+358
+00:22:15,090 --> 00:22:18,860
+Lo único importante es cómo
+se conectan, no la disposición
+
+359
+00:22:18,860 --> 00:22:20,400
+geométrica, si dibujo el
+puntero
+
+360
+00:22:20,400 --> 00:22:23,160
+a través, hacia arriba, o hacia abajo.
+
+361
+00:22:23,160 --> 00:22:26,700
+Probablemente no sea obvio
+
+362
+00:22:26,700 --> 00:22:28,870
+por qué se llama estructura de lista.
+
+363
+00:22:28,870 --> 00:22:30,420
+No vamos a hablar de eso hoy.
+
+364
+00:22:30,420 --> 00:22:31,850
+Lo veremos la próxima vez.
+
+365
+00:22:37,870 --> 00:22:41,740
+Esos son pares, "cons" los construye.
+
+366
+00:22:41,740 --> 00:22:45,640
+Y lo que voy a saber de 
+"cons", "car" y "cdr"
+
+367
+00:22:45,640 --> 00:22:51,420
+es precisamente que si tengo
+cualquier "x" e "y"
+
+368
+00:22:51,420 --> 00:22:59,420
+y uso "cons" para construir un par,
+
+369
+00:22:59,420 --> 00:23:03,090
+luego "car" de ese par va a ser
+el "x" que puse,
+
+370
+00:23:03,090 --> 00:23:07,790
+y "cdr" del par será "y".
+
+371
+00:23:07,790 --> 00:23:12,360
+Ese es el comportamiento de estos
+operadores, "cons", "car" y "cdr".
+
+372
+00:23:12,360 --> 00:23:14,870
+A partir de ellos, es evidente
+cómo George puede ir
+
+373
+00:23:14,870 --> 00:23:17,520
+y construir los números racionales.
+
+374
+00:23:17,520 --> 00:23:19,390
+Todo lo que tiene que hacer--
+
+375
+00:23:19,390 --> 00:23:21,710
+recuerden que el problema de 
+George era implementar "make-RAT",
+
+376
+00:23:21,710 --> 00:23:23,320
+"numer" y "denom".
+
+377
+00:23:23,320 --> 00:23:34,980
+Todo lo que tiene que hacer George es
+definir "make-RAT" de
+
+378
+00:23:34,980 --> 00:23:37,110
+un "n" y un "d"--
+
+379
+00:23:37,110 --> 00:23:40,710
+y hacer "cons" de ellos.
+
+380
+00:23:40,710 --> 00:23:42,790
+Eso es "cons" de "n" y "d".
+
+381
+00:23:45,570 --> 00:23:48,300
+Y si luego quiero obtener el numerador,
+
+382
+00:23:48,300 --> 00:24:00,260
+definiría "numer" de un racional "x".
+
+383
+00:24:00,260 --> 00:24:03,010
+Si el racional está implementado
+como un par,
+
+384
+00:24:03,010 --> 00:24:06,190
+luego sólo hay que hacer "car" de "x".
+
+385
+00:24:06,190 --> 00:24:19,350
+Similarmente, "denom" será
+"cdr",
+
+386
+00:24:19,350 --> 00:24:21,430
+lo otro que puse en el par.
+
+387
+00:24:27,080 --> 00:24:28,960
+Ahora estamos listos.
+
+388
+00:24:28,960 --> 00:24:31,530
+Esa es una implementación
+
+389
+00:24:31,530 --> 00:24:33,810
+completa de números racionales.
+
+390
+00:24:33,810 --> 00:24:34,410
+Usémosla.
+
+391
+00:24:34,410 --> 00:24:37,270
+Supongamos que quiero pensar
+cómo sumar
+
+392
+00:24:37,270 --> 00:24:43,470
+1/2 más 1/4 y mirar
+al sistema trabajar.
+
+393
+00:24:43,470 --> 00:24:50,780
+Definamos "a".
+
+394
+00:24:50,780 --> 00:24:53,080
+Tengo que construir 1/2.
+
+395
+00:24:53,080 --> 00:24:55,980
+Ese es un número racional
+con numerador 1
+
+396
+00:24:55,980 --> 00:25:01,090
+y denominador 2, así que
+"a" será "make-RAT" de 1 y 2.
+
+397
+00:25:05,490 --> 00:25:07,770
+Y luego construiré 1/4.
+
+398
+00:25:07,770 --> 00:25:20,560
+Diremos que "b" será
+"make-RAT" de 1 y 4.
+
+399
+00:25:23,362 --> 00:25:25,440
+Si quisiera mirar la respuesta--
+
+400
+00:25:25,440 --> 00:25:27,710
+asumiento que no tengo nada
+que imprima
+
+401
+00:25:27,710 --> 00:25:30,100
+números racionales--
+
+402
+00:25:30,100 --> 00:25:41,622
+Podría decir, la respuesta
+será "+RAT"
+
+403
+00:25:41,622 --> 00:25:47,790
+de "a" y "b", y ahora pregunto
+"¿cuál es la respuesta"?
+
+404
+00:25:47,790 --> 00:25:50,900
+¿Cuál es el numerador y denominador
+de la respuesta?
+
+405
+00:25:50,900 --> 00:25:55,520
+Si sumo 1/2 y 1/4, ¿cuál será
+
+406
+00:25:55,520 --> 00:26:00,440
+el numerador de la respuesta?
+
+407
+00:26:04,230 --> 00:26:10,880
+El sistema dirá entonces: 6.
+
+408
+00:26:10,880 --> 00:26:13,250
+Malas noticias.
+
+409
+00:26:13,250 --> 00:26:22,790
+Y si digo ¿cuál es el denominador
+de la respuesta?
+
+410
+00:26:22,790 --> 00:26:26,430
+El sistema dirá: 8.
+
+411
+00:26:26,430 --> 00:26:30,400
+Así que en vez de lo que realmente querría,
+que es que
+
+412
+00:26:30,400 --> 00:26:36,550
+1/2 más 1/4 de 3/4,
+esta ilusa máquina
+
+413
+00:26:36,550 --> 00:26:40,450
+dirá: no, es 6/8.
+
+414
+00:26:40,450 --> 00:26:43,400
+Bueno, esas son malas noticias.
+
+415
+00:26:43,400 --> 00:26:44,650
+¿Dónde está el bug?
+
+416
+00:26:47,280 --> 00:26:48,780
+¿Por qué hace eso?
+
+417
+00:26:48,780 --> 00:26:51,400
+Es por como teníamos "+RAT".
+
+418
+00:26:51,400 --> 00:26:53,220
+"+RAT" simplemente--
+
+419
+00:26:53,220 --> 00:26:58,510
+decía: sumá el numerador
+por el denominador,
+
+420
+00:26:58,510 --> 00:27:01,230
+sumá eso al numerador
+por el denominador,
+
+421
+00:27:01,230 --> 00:27:03,140
+y poné eso sobre el producto
+de los
+
+422
+00:27:03,140 --> 00:27:05,890
+dos denominadores, y eso
+da 6/8.
+
+423
+00:27:05,890 --> 00:27:10,640
+¿Qué estaba mal con nuestra
+implementación de "+RAT"?
+
+424
+00:27:10,640 --> 00:27:12,110
+¿Cuál es el problema con esa
+
+425
+00:27:12,110 --> 00:27:15,880
+aritmética de racionales
+que hicimos antes de la pausa?
+
+426
+00:27:15,880 --> 00:27:17,730
+La respuesta es que una manera
+de verlo
+
+427
+00:27:17,730 --> 00:27:19,730
+es que no hay nada mal.
+
+428
+00:27:19,730 --> 00:27:21,070
+Esa implementación es correcta.
+
+429
+00:27:21,070 --> 00:27:26,285
+Sigue la matemática de quinto - sexto
+grado
+
+430
+00:27:26,285 --> 00:27:27,535
+para sumar fracciones.
+
+431
+00:27:30,000 --> 00:27:33,310
+Podemos decir que ese es
+el problema de George.
+
+432
+00:27:33,310 --> 00:27:37,030
+¿No fue George un tonto al pensar
+que puede obtener un racional
+
+433
+00:27:37,030 --> 00:27:39,960
+simplemente al pegar juntos
+
+434
+00:27:39,960 --> 00:27:42,900
+un numerador y un denominador?
+
+435
+00:27:42,900 --> 00:27:45,910
+¿No sería mejor que George,
+al construir un racional,
+
+436
+00:27:45,910 --> 00:27:50,970
+redujera sus componentes
+a los términos simplificados?
+
+437
+00:27:50,970 --> 00:27:55,750
+A lo que voy es, ¿no sería mejor
+que George, en vez de usar
+
+438
+00:27:55,750 --> 00:28:01,300
+su versión de "make-RAT",
+utilizara esta otra
+
+439
+00:28:01,300 --> 00:28:03,580
+en esta diapositiva?
+
+440
+00:28:03,580 --> 00:28:09,190
+En vez de decir "cons" de "n" y "d",
+lo que se hace
+
+441
+00:28:09,190 --> 00:28:13,650
+es computar el máximo común
+divisor de "n" y "d", y "mcd"
+
+442
+00:28:13,650 --> 00:28:16,540
+es el procedimiento que - será
+una función primitiva -
+
+443
+00:28:16,540 --> 00:28:20,628
+computa el máximo común divisor
+de dos números.
+
+444
+00:28:20,628 --> 00:28:24,890
+Así que la manera en que puedo construir
+un racional
+
+445
+00:28:24,890 --> 00:28:27,140
+es tomando el máximo común
+divisor,
+
+446
+00:28:27,140 --> 00:28:33,000
+lo llamaré "g", y en vez de hacer
+"cons" de "n" y "d",
+
+447
+00:28:33,000 --> 00:28:34,000
+los dividiré por "g".
+
+448
+00:28:34,000 --> 00:28:37,630
+Haré "cons" del cociente de "n" por "g"
+
+449
+00:28:37,630 --> 00:28:40,510
+y de "d" por "g".
+
+450
+00:28:40,510 --> 00:28:42,540
+Y eso reducirá al racional
+
+451
+00:28:42,540 --> 00:28:49,200
+a su manera más simple. Así,
+cuando haga la suma,
+
+452
+00:28:49,200 --> 00:28:54,330
+cuando "+RAT" llame a "make-RAT"--
+
+453
+00:28:54,330 --> 00:28:57,810
+para la definición de "+RAT"
+tenía un "make-RAT" ahí dentro--
+
+454
+00:28:57,810 --> 00:28:59,880
+sólo por el hecho de construir eso,
+esa cosa
+
+455
+00:28:59,880 --> 00:29:01,425
+quedará simplificada
+automáticamente.
+
+456
+00:29:09,612 --> 00:29:15,180
+Ok, este es un sistema completo.
+
+457
+00:29:15,180 --> 00:29:16,780
+Para una aritmética de racionales,
+
+458
+00:29:16,780 --> 00:29:19,590
+veamos qué hemos hecho.
+
+459
+00:29:19,590 --> 00:29:22,440
+Dijimos que queríamos construir
+una aritmética de racionales,
+
+460
+00:29:22,440 --> 00:29:27,230
+y teníamos algo llamado
+"+RAT".
+
+461
+00:29:27,230 --> 00:29:29,940
+Implementamos eso.
+
+462
+00:29:29,940 --> 00:29:34,660
+También les mostré la multiplicación,
+y si bien
+
+463
+00:29:34,660 --> 00:29:36,570
+no lo puse aquí,
+también querríamos
+
+464
+00:29:36,570 --> 00:29:39,860
+tener algo que reste racionales
+y, no lo sé,
+
+465
+00:29:39,860 --> 00:29:40,770
+todo tipo de cosas.
+
+466
+00:29:40,770 --> 00:29:43,120
+Cosas que comprueben igualdad en
+la división, y quizás
+
+467
+00:29:43,120 --> 00:29:46,190
+cosas que impriman racionales
+de alguna manera particular.
+
+468
+00:29:46,190 --> 00:29:52,330
+E implementamos esos en términos
+de pares.
+
+469
+00:29:52,330 --> 00:29:55,800
+Estos pares, "cons", "car" y "cdr", que
+están incluídos en Lisp.
+
+470
+00:29:55,800 --> 00:30:05,100
+Lo importante es que entre estos
+y estos
+
+471
+00:30:05,100 --> 00:30:07,622
+construímos una barrera de abstracción.
+
+472
+00:30:07,622 --> 00:30:09,260
+Implementamos una capa de abstracción.
+
+473
+00:30:17,310 --> 00:30:19,190
+¿Y cuál es esa capa?
+
+474
+00:30:19,190 --> 00:30:22,140
+La capa de abstracción es precisamente
+el constructor
+
+475
+00:30:22,140 --> 00:30:23,390
+y los selectores.
+
+476
+00:30:25,630 --> 00:30:34,730
+Esta capa fue "make-RAT", "numer"
+y "denom".
+
+477
+00:30:38,970 --> 00:30:43,670
+Otra manera de decir qué hace
+esta metodología
+
+478
+00:30:43,670 --> 00:30:53,960
+es que estamos separando la forma
+en que algo se usa,
+
+479
+00:30:53,960 --> 00:30:57,760
+el uso que se le da a los
+objetos de datos,
+
+480
+00:30:57,760 --> 00:30:59,350
+de su representación.
+
+481
+00:31:07,650 --> 00:31:10,010
+Así que acá arriba tenemos cómo
+
+482
+00:31:10,010 --> 00:31:12,620
+se manipulan los racionales,
+su aritmética.
+
+483
+00:31:12,620 --> 00:31:15,280
+Aquí abajo tenemos cómo se representan,
+
+484
+00:31:15,280 --> 00:31:17,950
+y están separados por un límite,
+
+485
+00:31:17,950 --> 00:31:19,605
+que son los constructores
+y selectores.
+
+486
+00:31:23,760 --> 00:31:25,920
+Esta metodología tiene un nombre.
+
+487
+00:31:25,920 --> 00:31:27,170
+Se llama abstracción de datos.
+
+488
+00:31:35,820 --> 00:31:39,030
+La abstracción de datos es en cierta forma
+una metodología de programación
+
+489
+00:31:39,030 --> 00:31:42,060
+en que se definen objetos de datos
+declarando sus constructores
+
+490
+00:31:42,060 --> 00:31:44,085
+y selectores, aislando su utilización
+
+491
+00:31:44,085 --> 00:31:47,550
+de la representación interna.
+
+492
+00:31:47,550 --> 00:31:49,060
+¿Por qué?
+
+493
+00:31:49,060 --> 00:31:51,750
+Después de todo, no teníamos
+por qué hacerlo así.
+
+494
+00:31:51,750 --> 00:31:55,450
+Es perfectamente posible hacer la suma
+de racionales
+
+495
+00:31:55,450 --> 00:31:57,550
+sin tener tipos de datos compuestos,
+y aquí
+
+496
+00:31:57,550 --> 00:32:00,060
+en la diapositiva hay un ejemplo.
+
+497
+00:32:00,060 --> 00:32:04,640
+Podríamos haber definido "+RAT", que toma
+
+498
+00:32:04,640 --> 00:32:07,830
+"x" e "y", y diremos "¿qué son
+estos racionales
+
+499
+00:32:07,830 --> 00:32:10,030
+realmente?"
+
+500
+00:32:10,030 --> 00:32:13,060
+Pues bien, son sólo pares, y el numerador
+es "car"
+
+501
+00:32:13,060 --> 00:32:16,180
+y el denominador es "cdr".
+Así que lo que haremos
+
+502
+00:32:16,180 --> 00:32:23,310
+será tomar "car" de "x" por
+el "cdr" de "y", multiplicarlos,
+
+503
+00:32:23,310 --> 00:32:26,470
+tomar "car" de "y" por "cdr" de "x",
+multiplicarlos,
+
+504
+00:32:26,470 --> 00:32:28,650
+sumarlos,
+
+505
+00:32:28,650 --> 00:32:31,960
+tomar "cdr" de "x" y "cdr" de "y",
+multiplicarlos, y luego
+
+506
+00:32:31,960 --> 00:32:33,210
+juntarlos.
+
+507
+00:32:35,450 --> 00:32:36,890
+Eso hace más o menos lo mismo.
+
+508
+00:32:41,560 --> 00:32:43,930
+Salvo que ignora el problema
+de la simplificación,
+
+509
+00:32:43,930 --> 00:32:47,680
+pero no nos preocupemos
+por eso ahora.
+
+510
+00:32:47,680 --> 00:32:48,200
+¿Entonces?
+
+511
+00:32:48,200 --> 00:32:50,790
+¿Por qué no lo hacemos así?
+
+512
+00:32:50,790 --> 00:32:50,960
+¿Verdad?
+
+513
+00:32:50,960 --> 00:32:53,220
+Después de todo, hay menos
+procedimientos a definir
+
+514
+00:32:53,220 --> 00:32:54,470
+y es mucho más directo.
+
+515
+00:32:57,210 --> 00:32:59,610
+Evita que hablemos de toda
+esta basura pedante
+
+516
+00:32:59,610 --> 00:33:00,850
+de la abstracción de datos.
+
+517
+00:33:00,850 --> 00:33:02,270
+Simplemente lo hacemos.
+
+518
+00:33:02,270 --> 00:33:04,870
+Quién sabe, quizás hasta es apenas
+más eficiente,
+
+519
+00:33:04,870 --> 00:33:07,930
+dependiendo de qué compilador
+estemos utilizando.
+
+520
+00:33:07,930 --> 00:33:11,500
+¿Cuál es el fin de aislar el uso
+
+521
+00:33:11,500 --> 00:33:13,910
+de la representación?
+
+522
+00:33:13,910 --> 00:33:17,130
+Bien, se remonta a la noción
+de nombrar.
+
+523
+00:33:17,130 --> 00:33:21,020
+Recuerden, una de las máximas más
+importantes
+
+524
+00:33:21,020 --> 00:33:23,770
+en la programación es también
+la de mayor
+
+525
+00:33:23,770 --> 00:33:25,660
+importancia en la hechicería,
+está bien?
+
+526
+00:33:25,660 --> 00:33:28,210
+Eso es que, si se cuenta con el nombre
+del espíritu,
+
+527
+00:33:28,210 --> 00:33:30,330
+se tiene control sobre éste.
+
+528
+00:33:30,330 --> 00:33:34,420
+Y si vuelven a ver esta diapositiva,
+verán que
+
+529
+00:33:34,420 --> 00:33:38,580
+lo que hay allí es "+RAT",
+pero en ningún lugar
+
+530
+00:33:38,580 --> 00:33:41,710
+del sistema - si tengo "+RAT", "-RAT",
+"*RAT", y cosas
+
+531
+00:33:41,710 --> 00:33:44,870
+del estilo, en ningún lugar
+del sistema tengo
+
+532
+00:33:44,870 --> 00:33:50,770
+algo que pueda señalar y decir
+que es un número racional.
+
+533
+00:33:53,550 --> 00:33:58,480
+No tengo, en un sistema como ese,
+la idea de número racional
+
+534
+00:33:58,480 --> 00:34:01,340
+como entidad conceptual.
+
+535
+00:34:01,340 --> 00:34:04,270
+¿Cuál es la ventaja de eso?
+
+536
+00:34:04,270 --> 00:34:07,200
+¿Cuál es la ventaja de aislar la idea
+de números racionales
+
+537
+00:34:07,200 --> 00:34:09,400
+como entidades conceptuales
+y ponerles nombres
+
+538
+00:34:09,400 --> 00:34:12,900
+con "make-RAT", "numer" y "denom"?
+
+539
+00:34:12,900 --> 00:34:18,659
+Bien, una ventaja es que quizás
+quieran tener una representación
+
+540
+00:34:18,659 --> 00:34:20,679
+alternativa.
+
+541
+00:34:20,679 --> 00:34:24,889
+Antes les mostré que una manera
+en que George puede resolver
+
+542
+00:34:24,889 --> 00:34:27,280
+el problema de la representación
+irreducible
+
+543
+00:34:27,280 --> 00:34:30,260
+es al construir un racional, dividirlo
+por el
+
+544
+00:34:30,260 --> 00:34:31,190
+máximo común divisor.
+
+545
+00:34:31,190 --> 00:34:36,650
+Acá pueden ver otra manera
+de hacer eso.
+
+546
+00:34:36,650 --> 00:34:38,810
+Puedo tener una representación
+alternativa para
+
+547
+00:34:38,810 --> 00:34:40,980
+los racionales; cuando los
+construyen
+
+548
+00:34:40,980 --> 00:34:43,409
+simplemente se usa "cons".
+
+549
+00:34:43,409 --> 00:34:46,610
+Sin embargo, al observar el
+numerador, en ese punto se
+
+550
+00:34:46,610 --> 00:34:50,929
+computa el mcd del contenido
+
+551
+00:34:50,929 --> 00:34:53,440
+del par, y se divide el resultado
+por el mcd.
+
+552
+00:34:57,970 --> 00:35:02,300
+Análogamente, al seleccionar
+el denominador, recién ahí
+
+553
+00:35:02,300 --> 00:35:03,990
+dividiré ese resultado
+
+554
+00:35:03,990 --> 00:35:05,420
+por el mcd al devolverlo.
+
+555
+00:35:05,420 --> 00:35:09,090
+La diferencia está en que
+en la representación vieja,
+
+556
+00:35:09,090 --> 00:35:13,680
+cuando aquí se construye la respuesta,
+digamos 6 y 8, en la primera forma
+
+557
+00:35:13,680 --> 00:35:16,260
+6 y 8 habrían sido reducidos
+
+558
+00:35:16,260 --> 00:35:20,380
+al construirse el par, y el numerador
+habría devuelto 3.
+
+559
+00:35:20,380 --> 00:35:23,850
+En cambio, de la última manera,
+la respuesta tomaría
+
+560
+00:35:23,850 --> 00:35:27,650
+6 y 8 dentro del par, y luego en algún
+punto al pedir el numerador,
+
+561
+00:35:27,650 --> 00:35:29,770
+cierta lógica se llevaría a cabo
+
+562
+00:35:29,770 --> 00:35:32,590
+para devolver 3 en vez de 6.
+
+563
+00:35:32,590 --> 00:35:34,520
+Esas son dos alternativas para hacerlo.
+
+564
+00:35:34,520 --> 00:35:37,530
+¿Cuál es mejor?
+
+565
+00:35:37,530 --> 00:35:38,460
+Bueno, depende, ¿no?
+
+566
+00:35:38,460 --> 00:35:41,230
+Si estamos armando un sistema
+donde más que nada construímos
+
+567
+00:35:41,230 --> 00:35:43,240
+racionales y casi nunca los observamos,
+
+568
+00:35:43,240 --> 00:35:46,520
+entonces quizás es mejor no hacer
+el cómputo del mcd
+
+569
+00:35:46,520 --> 00:35:47,776
+cuando los construyo.
+
+570
+00:35:47,776 --> 00:35:51,070
+Si en cambio en el sistema observamos
+mucho más
+
+571
+00:35:51,070 --> 00:35:54,470
+de lo que construímos, entonces
+probablemente sea mejor
+
+572
+00:35:54,470 --> 00:35:57,240
+hacer el trabajo al construir.
+
+573
+00:35:57,240 --> 00:35:58,170
+Ahí hay una elección.
+
+574
+00:35:58,170 --> 00:36:04,840
+Pero la realidad es que puede
+que no puedan decidir esto
+
+575
+00:36:04,840 --> 00:36:07,640
+al momento de tener que
+preocuparse por los racionales.
+
+576
+00:36:07,640 --> 00:36:14,470
+En general, como diseñadores
+de sistemas, se verán forzados
+
+577
+00:36:14,470 --> 00:36:16,350
+a tomar decisiones sobre cómo
+
+578
+00:36:16,350 --> 00:36:19,640
+hacer las cosas, y en general
+querrán
+
+579
+00:36:19,640 --> 00:36:22,720
+conservar flexibilidad tal que
+
+580
+00:36:22,720 --> 00:36:26,890
+nunca deban comprometerse
+con una decisión hasta que sea necesario.
+
+581
+00:36:26,890 --> 00:36:31,730
+El problema es que hay una línea
+muy fina entre
+
+582
+00:36:31,730 --> 00:36:34,765
+la toma de decisiones diferida y
+la procastinación.
+
+583
+00:36:38,760 --> 00:36:43,860
+Quisieran avanzar, pero al mismo tiempo
+
+584
+00:36:43,860 --> 00:36:45,020
+no estar limitados
+
+585
+00:36:45,020 --> 00:36:48,620
+por las consecuencias de sus decisiones.
+
+586
+00:36:48,620 --> 00:36:50,550
+La abstracción de datos es una respuesta.
+
+587
+00:36:50,550 --> 00:36:54,540
+Lo que hicimos fue tener fé.
+
+588
+00:36:54,540 --> 00:36:57,190
+Le asignamos un nombre a una decisión.
+
+589
+00:36:57,190 --> 00:37:01,340
+Dijimos, "make-RAT", "numer" y "denom"
+serán
+
+590
+00:37:01,340 --> 00:37:03,040
+lo que sea que vayan a ser,
+y cómo sera
+
+591
+00:37:03,040 --> 00:37:04,080
+es problema de George.
+
+592
+00:37:04,080 --> 00:37:07,100
+En verdad, lo que hicimos fue
+dar un nombre
+
+593
+00:37:07,100 --> 00:37:12,030
+a una decisión sobre cómo
+había que hacer algo, y continuamos
+
+594
+00:37:12,030 --> 00:37:14,400
+como si hubiéramos tomado esa decisión.
+
+595
+00:37:14,400 --> 00:37:17,110
+Eventualmente, cuando quisimos
+que funcionara de verdad,
+
+596
+00:37:17,110 --> 00:37:20,330
+volvimos y nos enfrentamos a
+lo que había que hacer.
+
+597
+00:37:20,330 --> 00:37:23,080
+De hecho, veremos algunas veces
+de aquí en más que
+
+598
+00:37:23,080 --> 00:37:25,440
+quizás nunca tengan que elegir
+una representación
+
+599
+00:37:25,440 --> 00:37:27,800
+específica, nunca, nunca.
+
+600
+00:37:27,800 --> 00:37:30,230
+En fin, esa es una poderosa
+técnica de diseño.
+
+601
+00:37:30,230 --> 00:37:32,295
+Es la clave por
+la que se abstrae.
+
+602
+00:37:34,830 --> 00:37:37,854
+Veremos esa idea una y otra vez.
+
+603
+00:37:37,854 --> 00:37:40,510
+Paremos para consultas.
+
+604
+00:37:40,510 --> 00:37:43,810
+AUDIENCIA: Cómo encaja esta toma de
+decisiones a través de
+
+605
+00:37:43,810 --> 00:37:47,500
+capas de abstracción con el axioma
+que dice "haz todo el diseño
+
+606
+00:37:47,500 --> 00:37:49,800
+antes de cualquier línea de código?"
+
+607
+00:37:49,800 --> 00:37:52,700
+PROFESOR: Bueno, ese axioma
+es de alguien, y apuesto
+
+608
+00:37:52,700 --> 00:37:54,990
+a que esa persona no ha implementado
+muchos
+
+609
+00:37:54,990 --> 00:37:56,600
+sistemas computacionales
+a gran escala.
+
+610
+00:38:01,220 --> 00:38:04,116
+Dije que las ciencias de la computación
+se parecen mucho a la magia,
+
+611
+00:38:04,116 --> 00:38:05,270
+en un buen sentido.
+
+612
+00:38:05,270 --> 00:38:06,690
+Hay un aspecto malo
+de la
+
+613
+00:38:06,690 --> 00:38:08,746
+computación, que se parece
+mucho a la religión.
+
+614
+00:38:08,746 --> 00:38:13,570
+En general, pienso que la gente
+que opina que hay que
+
+615
+00:38:13,570 --> 00:38:16,800
+diseñar todo antes de implementarlo
+son básicamente individuos
+
+616
+00:38:16,800 --> 00:38:18,440
+que no han diseñado muchas cosas.
+
+617
+00:38:21,230 --> 00:38:24,660
+El verdadero poder reside en que
+puedes pretender que has
+
+618
+00:38:24,660 --> 00:38:28,640
+tomado la decisión, y luego
+averiguar cuál es la correcta,
+
+619
+00:38:28,640 --> 00:38:30,550
+qué decisión deberías haber tomado.
+Y cuando
+
+620
+00:38:30,550 --> 00:38:32,870
+puedes hacer eso,
+tienes lo mejor de los dos mundos.
+
+621
+00:38:35,834 --> 00:38:37,330
+AUDIENCIA: ¿Puedes explicar la
+
+622
+00:38:37,330 --> 00:38:40,180
+diferencia entre "let" y "define"?
+
+623
+00:38:40,180 --> 00:38:43,520
+PROFESOR: Oh, ok.
+
+624
+00:38:43,520 --> 00:38:49,040
+"let" sirve para declarar
+nombres locales.
+
+625
+00:38:55,150 --> 00:38:57,430
+Dejame darte una suerte
+de respuesta a medias.
+
+626
+00:38:57,430 --> 00:39:00,970
+Luego podemos hablar
+
+627
+00:39:00,970 --> 00:39:02,960
+de todo lo complicado.
+
+628
+00:39:02,960 --> 00:39:06,000
+La gran diferencia por ahora,
+es que
+
+629
+00:39:06,000 --> 00:39:10,020
+cuando estás escribiendo en Lisp,
+lo estás haciendo en este entorno
+
+630
+00:39:10,020 --> 00:39:12,020
+donde creas definiciones.
+
+631
+00:39:12,020 --> 00:39:18,990
+Y cuando dicen "define a" [definir a]
+que sea 5, entonces
+
+632
+00:39:18,990 --> 00:39:25,640
+desde ese punto en adelante
+el sistema recordará que "a" es 5.
+
+633
+00:39:25,640 --> 00:39:29,460
+"let" es una manera de establecer
+un contexto local
+
+634
+00:39:29,460 --> 00:39:31,090
+donde hay una definición.
+
+635
+00:39:31,090 --> 00:39:37,695
+Luego, si escribo algo como "let a"--no,
+
+636
+00:39:37,695 --> 00:39:40,642
+no debería decir "a",
+
+637
+00:39:40,642 --> 00:39:50,480
+si dijera "let z be 10" [que "z" sea 10],
+y dentro de ese contexto quisiera
+
+638
+00:39:50,480 --> 00:39:54,280
+saber cuánto es "z" más "z",
+
+639
+00:39:54,280 --> 00:39:59,780
+si introdujera esa expresión en Lisp
+
+640
+00:39:59,780 --> 00:40:02,210
+esto devolvería 20.
+
+641
+00:40:02,210 --> 00:40:07,340
+Sin embargo, si luego preguntara
+qué es "z", la computadora
+
+642
+00:40:07,340 --> 00:40:10,910
+diría que es una variable libre.
+
+643
+00:40:10,910 --> 00:40:13,710
+Así que "let" sirve para crear
+un contexto donde puedes
+
+644
+00:40:13,710 --> 00:40:16,320
+hacer definiciones.
+
+645
+00:40:16,320 --> 00:40:19,320
+Pero esas definiciones son
+locales a ese contexto.
+
+646
+00:40:19,320 --> 00:40:27,990
+Y si dijera "a" aquí dentro,
+también devolvería 20.
+
+647
+00:40:27,990 --> 00:40:33,960
+Tampoco interferiría en absoluto
+con esta otra.
+
+648
+00:40:33,960 --> 00:40:36,210
+Así que si escribo esto, y luego
+esto otro,
+
+649
+00:40:36,210 --> 00:40:39,160
+y pregunto ¿cuánto es "a"?
+"a" seguirá siendo 5.
+
+650
+00:40:39,160 --> 00:40:42,220
+Hay otras diferencias sutiles
+entre "let"
+
+651
+00:40:42,220 --> 00:40:44,543
+y "define", pero esta
+es la más importante.
+
+652
+00:41:20,090 --> 00:41:22,980
+Hemos analizado la implementación
+
+653
+00:41:22,980 --> 00:41:27,470
+de este pequeño sistema para hacer
+aritmética con racionales
+
+654
+00:41:27,470 --> 00:41:31,096
+como ejemplo de la metodología
+de abstracción de datos.
+
+655
+00:41:31,096 --> 00:41:34,430
+Es una manera de controlar la
+complejidad
+
+656
+00:41:34,430 --> 00:41:39,530
+en sistemas grandes. Ahora bien,
+como en definición de procedimientos,
+
+657
+00:41:39,530 --> 00:41:41,420
+y como en toda otra forma que veamos
+para
+
+658
+00:41:41,420 --> 00:41:45,660
+controlar complejidad, el verdadero
+poder de estas cosas se ve
+
+659
+00:41:45,660 --> 00:41:49,370
+no al hacerlas - no es gran cosa
+
+660
+00:41:49,370 --> 00:41:52,430
+que hayamos hecho aritmética
+de racionales -
+
+661
+00:41:52,430 --> 00:41:57,150
+sino al utilizarlas como bloques
+para construir
+
+662
+00:41:57,150 --> 00:42:00,620
+cosas más complejas.
+
+663
+00:42:00,620 --> 00:42:03,460
+No es una súper idea que se
+puedan poner dos números juntos
+
+664
+00:42:03,460 --> 00:42:04,265
+para formar un par.
+
+665
+00:42:04,265 --> 00:42:06,890
+SI eso es todo lo que quisieran hacer,
+hay muchas maneras
+
+666
+00:42:06,890 --> 00:42:08,450
+de hacerlo.
+
+667
+00:42:08,450 --> 00:42:11,910
+El verdadero asunto es si pueden
+hacerlo de forma tal que
+
+668
+00:42:11,910 --> 00:42:14,420
+aquello que armen se vuelvan
+bloques de construcción
+
+669
+00:42:14,420 --> 00:42:16,945
+para construir algo aún más complicado.
+
+670
+00:42:16,945 --> 00:42:19,120
+Así que cuando alguien les muestre
+un método para controlar
+
+671
+00:42:19,120 --> 00:42:21,080
+complejidad, deberían decir: "muy lindo,
+pero
+
+672
+00:42:21,080 --> 00:42:22,330
+¿qué puedo construir con eso?"
+
+673
+00:42:25,290 --> 00:42:30,490
+Por ejemplo, permítanme
+pasar por otra cosa que se parece mucho
+
+674
+00:42:30,490 --> 00:42:32,090
+a la de los racionales
+
+675
+00:42:32,090 --> 00:42:35,760
+Supongamos que queremos representar
+puntos en el plano.
+
+676
+00:42:35,760 --> 00:42:38,130
+Diremos, bueno,
+hay un punto
+
+677
+00:42:38,130 --> 00:42:40,810
+y vamos a llamarlo "p".
+
+678
+00:42:40,810 --> 00:42:48,810
+Y ese punto podría tener
+coordenadas, por ejemplo
+
+679
+00:42:48,810 --> 00:42:50,330
+podría ser el punto (1,2).
+
+680
+00:42:50,330 --> 00:42:52,500
+La coordenada x sería 1,
+
+681
+00:42:52,500 --> 00:42:54,370
+y su coordenada y sería 2.
+
+682
+00:42:54,370 --> 00:42:57,310
+Haremos un pequeño sistema
+para manipular
+
+683
+00:42:57,310 --> 00:43:00,450
+puntos en el plano.
+
+684
+00:43:00,450 --> 00:43:03,040
+Aquí hay un sencillo
+
+685
+00:43:03,040 --> 00:43:04,290
+ejemplo al respecto.
+
+686
+00:43:07,070 --> 00:43:10,080
+Puede representar vectores, igual
+que puntos en el plano,
+
+687
+00:43:10,080 --> 00:43:17,550
+y diremos sí, hay un constructor
+llamado
+
+688
+00:43:17,550 --> 00:43:21,100
+"make-vector", el cual tomará
+dos coordenadas -
+
+689
+00:43:21,100 --> 00:43:24,280
+y aquí podemos implementarlas
+como pares si queremos - pero
+
+690
+00:43:24,280 --> 00:43:27,120
+lo importante que es que
+hay un constructor.
+
+691
+00:43:27,120 --> 00:43:31,890
+Luego, dado un vector "p",
+podemos obtener su coordenada x
+
+692
+00:43:31,890 --> 00:43:33,540
+o su coordenada y.
+
+693
+00:43:33,540 --> 00:43:36,270
+Así que tenemos un constructor
+y selectores
+
+694
+00:43:36,270 --> 00:43:39,010
+para puntos en el plano.
+
+695
+00:43:39,010 --> 00:43:41,310
+Dados estos puntos,
+podríamos querer usarlos
+
+696
+00:43:41,310 --> 00:43:42,420
+para construir algo.
+
+697
+00:43:42,420 --> 00:43:45,730
+Podríamos tener
+
+698
+00:43:45,730 --> 00:43:51,220
+un punto "p", otro "q",
+donde "p" sea (1,2) y
+
+699
+00:43:51,220 --> 00:43:54,790
+"q" sea (2,3).
+
+700
+00:43:54,790 --> 00:43:58,970
+Luego, podríamos querer hablar
+del segmento que
+
+701
+00:43:58,970 --> 00:44:01,570
+une a "p" con "q".
+
+702
+00:44:01,570 --> 00:44:05,180
+Ese podría ser el segmento "s".
+
+703
+00:44:05,180 --> 00:44:12,300
+Podríamos querer construir
+puntos en base a
+
+704
+00:44:12,300 --> 00:44:16,410
+números, y segmentos
+en función de vectores.
+
+705
+00:44:16,410 --> 00:44:18,240
+Para así representar segmentos
+
+706
+00:44:18,240 --> 00:44:19,920
+de manera exacta.
+
+707
+00:44:19,920 --> 00:44:22,300
+Para el segmento de "p" a "q",
+habrá un constructor
+
+708
+00:44:22,300 --> 00:44:23,640
+llamado "make-segment".
+
+709
+00:44:27,010 --> 00:44:30,270
+Y nombres inventados para
+los selectores, el punto de partida
+
+710
+00:44:30,270 --> 00:44:32,560
+del segmento, y su punto
+de llegada.
+
+711
+00:44:32,560 --> 00:44:35,290
+Nuevamente, podemos implementar
+un segmento usando "cons"
+
+712
+00:44:35,290 --> 00:44:39,610
+como par de puntos, donde "car" y "cdr"
+devuelven los puntos que juntamos
+
+713
+00:44:39,610 --> 00:44:40,860
+para definir el segmento.
+
+714
+00:44:44,820 --> 00:44:48,520
+Teniendo esto, podemos realizar
+
+715
+00:44:48,520 --> 00:44:51,920
+algunas operaciones sobre ellos.
+
+716
+00:44:51,920 --> 00:44:57,610
+Podríamos preguntarnos, ¿cuál es
+el punto medio del segmento?
+
+717
+00:44:57,610 --> 00:45:00,540
+Aquí hay un punto medio,
+será el punto
+
+718
+00:45:00,540 --> 00:45:05,880
+cuyas coordenadas sean
+el promedio
+
+719
+00:45:05,880 --> 00:45:07,310
+de los extremos.
+
+720
+00:45:07,310 --> 00:45:10,170
+Ok, acá está el punto medio.
+
+721
+00:45:10,170 --> 00:45:14,290
+Para obtener entonces el punto medio
+de un segmento "s",
+
+722
+00:45:14,290 --> 00:45:18,240
+tomaremos uno y otro extremo,
+
+723
+00:45:18,240 --> 00:45:21,640
+puntos del segmento, y luego
+
+724
+00:45:21,640 --> 00:45:26,480
+haremos un punto cuyas
+coordenadas sean, para x, el promedio
+
+725
+00:45:26,480 --> 00:45:28,510
+de las coordenadas x del primer
+
+726
+00:45:28,510 --> 00:45:31,930
+y segundo punto, y para y
+
+727
+00:45:31,930 --> 00:45:33,530
+el promedio de las coordenadas y.
+
+728
+00:45:33,530 --> 00:45:37,810
+Ahí hay una implementación
+del punto medio.
+
+729
+00:45:37,810 --> 00:45:42,400
+Asimismo, podemos construir
+algo como
+
+730
+00:45:42,400 --> 00:45:44,450
+la longitud del segmento.
+
+731
+00:45:44,450 --> 00:45:47,070
+La longitud del segmento--
+
+732
+00:45:50,410 --> 00:45:53,000
+usamos la regla de Pitágoras,
+el tamaño del segmento
+
+733
+00:45:53,000 --> 00:45:57,100
+es la raíz cuadrada de dx al cuadrado
+más dy al cuadrado.
+
+734
+00:45:57,100 --> 00:46:02,200
+Para obtener el tamaño del segmento,
+diremos que dx es
+
+735
+00:46:02,200 --> 00:46:09,030
+la diferencia entre las coordenadas x
+
+736
+00:46:09,030 --> 00:46:12,180
+de cada punto, y
+
+737
+00:46:12,180 --> 00:46:16,260
+dy será la diferencia
+de las coordenadas y.
+
+738
+00:46:16,260 --> 00:46:19,290
+Y luego tomaremos la raíz
+de la suma de los cuadrados
+
+739
+00:46:19,290 --> 00:46:22,251
+de dx y dy, y eso
+es lo que dice.
+
+740
+00:46:22,251 --> 00:46:26,190
+Ahí hay una implementación
+de longitud.
+
+741
+00:46:26,190 --> 00:46:35,760
+Otra vez, construímos un sistema
+en capas.
+
+742
+00:46:35,760 --> 00:46:39,730
+Tenemos un sistema que,
+acá arriba
+
+743
+00:46:39,730 --> 00:46:40,980
+hay segmentos.
+
+744
+00:46:47,430 --> 00:46:50,530
+Luego hay una barrera de 
+abstracción.
+
+745
+00:46:50,530 --> 00:46:56,880
+Esta barrera separa
+la implementación
+
+746
+00:46:56,880 --> 00:46:59,000
+de segmentos de la de
+vectores
+
+747
+00:46:59,000 --> 00:47:02,950
+y puntos, y esa barrera
+son los
+
+748
+00:47:02,950 --> 00:47:04,260
+constructores y selectores.
+
+749
+00:47:04,260 --> 00:47:14,340
+Son "make-segment" y
+"segment-start",
+
+750
+00:47:14,340 --> 00:47:15,590
+y "segment-end".
+
+751
+00:47:18,030 --> 00:47:20,120
+Y hay vectores,
+
+752
+00:47:20,120 --> 00:47:25,600
+que a su vez están construídos
+sobre pares y números.
+
+753
+00:47:25,600 --> 00:47:29,670
+Así que pares y números.
+
+754
+00:47:29,670 --> 00:47:33,250
+Eso tiene su propia barrera
+de abstracción, que es
+
+755
+00:47:33,250 --> 00:47:42,350
+"make-vector", "x-coordinate"
+e "y-coordinate"
+
+756
+00:47:46,920 --> 00:47:48,930
+Nuevamente, tenemos
+un sistema en capas.
+
+757
+00:47:48,930 --> 00:47:52,080
+Empiezan a ver que
+aquí hay capas.
+
+758
+00:47:52,080 --> 00:47:58,080
+Debo mencionar que hay algo
+muy importante
+
+759
+00:47:58,080 --> 00:47:59,330
+que dí por sentado.
+
+760
+00:48:02,016 --> 00:48:06,700
+Que en cierta forma es bastante natural,
+pero por otro lado
+
+761
+00:48:06,700 --> 00:48:07,580
+es muy importante.
+
+762
+00:48:07,580 --> 00:48:12,070
+Observen que para
+representar el segmento "s",
+
+763
+00:48:12,070 --> 00:48:16,600
+dije que era un par de puntos.
+
+764
+00:48:16,600 --> 00:48:19,120
+Y un punto es un par de números.
+
+765
+00:48:19,120 --> 00:48:22,180
+Si fuera a dibujar la estructura
+de caja y punteros para eso,
+
+766
+00:48:22,180 --> 00:48:27,180
+diría, pues bien, dadas
+
+767
+00:48:27,180 --> 00:48:29,900
+esas representaciones
+que mostré,
+
+768
+00:48:29,900 --> 00:48:38,070
+este segmento "s" es un par,
+y la primera parte de un par es
+
+769
+00:48:38,070 --> 00:48:45,430
+un vector, y un vector es un
+par de números.
+
+770
+00:48:45,430 --> 00:48:47,000
+Y eso es esto, eso es "p".
+
+771
+00:48:50,190 --> 00:48:55,330
+Y la otra parte en el segmento
+es "q", que es
+
+772
+00:48:55,330 --> 00:49:00,100
+un par de números.
+
+773
+00:49:00,100 --> 00:49:04,070
+Prácticamente dí esto por sentado
+cuando dije que "cons"
+
+774
+00:49:04,070 --> 00:49:08,960
+permite juntar cosas.
+
+775
+00:49:08,960 --> 00:49:13,110
+Pero es fácil no darse cuenta,
+porque
+
+776
+00:49:13,110 --> 00:49:17,650
+vean, algunas de las cosas
+que podemos juntar
+
+777
+00:49:17,650 --> 00:49:20,720
+son justamente pares también.
+
+778
+00:49:20,720 --> 00:49:23,510
+Déjenme introducir entonces una
+palabra de la que hablaré más
+
+779
+00:49:23,510 --> 00:49:26,915
+la próxima vez, es una de mis preferidas,
+llamada "closure".
+
+780
+00:49:30,640 --> 00:49:35,180
+Por "closure" me refiero a que
+los medios de combinación
+
+781
+00:49:35,180 --> 00:49:39,390
+en un sistema son tales que
+al juntar cosas a través
+
+782
+00:49:39,390 --> 00:49:43,430
+de ellos, como armar un par,
+puedes luego poner esos juntos
+
+783
+00:49:43,430 --> 00:49:45,080
+con los mismos medios de
+combinación.
+
+784
+00:49:45,080 --> 00:49:48,120
+Así que puedo no sólo tener
+un par de números, sino también
+
+785
+00:49:48,120 --> 00:49:49,370
+un par de pares.
+
+786
+00:49:51,710 --> 00:49:58,070
+Por ejemplo, hacer arreglos en un
+lenguaje como Fortran no es
+
+787
+00:49:58,070 --> 00:50:00,120
+un medio de combinación cerrado,
+porque puedo
+
+788
+00:50:00,120 --> 00:50:02,200
+hacer un arreglo de números,
+pero no puedo hacer
+
+789
+00:50:02,200 --> 00:50:03,450
+un arreglo de arreglos.
+
+790
+00:50:05,790 --> 00:50:09,060
+Una de las cosas que deberían preguntarse,
+una prueba de calidad
+
+791
+00:50:09,060 --> 00:50:12,430
+para un medio de combinación que alguien
+les muestre, es preguntarse
+
+792
+00:50:12,430 --> 00:50:16,500
+¿es el conjunto de cosas que puedo hacer
+cerrado bajo
+
+793
+00:50:16,500 --> 00:50:18,340
+ese mismo medio de combinación?
+
+794
+00:50:18,340 --> 00:50:21,290
+Los pares no serían ni remotamente
+interesantes si sólo pudiera
+
+795
+00:50:21,290 --> 00:50:23,160
+hacer pares de números.
+
+796
+00:50:23,160 --> 00:50:26,820
+No podría construir muchas estructuras.
+
+797
+00:50:26,820 --> 00:50:28,170
+Ok, volveremos sobre esto.
+
+798
+00:50:28,170 --> 00:50:29,300
+Sólo quería mencionarlo.
+
+799
+00:50:29,300 --> 00:50:32,170
+Verán más sobre "closures"
+luego.
+
+800
+00:50:32,170 --> 00:50:38,520
+También pueden ver el peligro
+de perder el control
+
+801
+00:50:38,520 --> 00:50:41,310
+de la complejidad en un sistema
+en capas si no usan
+
+802
+00:50:41,310 --> 00:50:44,030
+abstracción de datos.
+
+803
+00:50:44,030 --> 00:50:48,130
+Volvamos a ver esta diapositiva
+sobre longitud.
+
+804
+00:50:48,130 --> 00:50:53,190
+"length" funciona y es algo simple
+porque puedo decir,
+
+805
+00:50:53,190 --> 00:50:56,450
+cuando quiero obtener este valor,
+digo,
+
+806
+00:50:56,450 --> 00:51:00,430
+esa es la coordenada x del primer
+extremo del segmento.
+
+807
+00:51:02,990 --> 00:51:04,850
+Y cada uno de estos selectores,
+
+808
+00:51:04,850 --> 00:51:09,190
+"x-coordinate" y "endpoint", representan
+una decisión
+
+809
+00:51:09,190 --> 00:51:12,260
+cuyos detalles desconozco,
+y no necesito saber.
+
+810
+00:51:12,260 --> 00:51:15,070
+Podría decir perfectamente,
+como con los racionales,
+
+811
+00:51:15,070 --> 00:51:17,910
+bueno, en verdad un segmento
+
+812
+00:51:17,910 --> 00:51:21,180
+es un par de pares.
+
+813
+00:51:21,180 --> 00:51:24,810
+Y que la coordenada x del primer
+extremo del segmento
+
+814
+00:51:24,810 --> 00:51:26,770
+en verdad es--
+
+815
+00:51:26,770 --> 00:51:27,330
+bueno, ¿qué es?
+
+816
+00:51:27,330 --> 00:51:33,890
+Es "car" de "car" del segmento.
+
+817
+00:51:33,890 --> 00:51:37,500
+Podría ir y redefinir "length"
+sin ningún problema.
+
+818
+00:51:37,500 --> 00:51:48,614
+Diría, definir la longitud
+de algún segmento "s".
+
+819
+00:51:48,614 --> 00:51:51,050
+Podría empezar escribiendo
+algo como
+
+820
+00:51:51,050 --> 00:51:56,260
+"let dx be"-- bueno, ¿qué
+debería ser?
+
+821
+00:51:56,260 --> 00:51:58,380
+Debe ser la diferencia de las
+dos coordenadas,
+
+822
+00:51:58,380 --> 00:52:04,310
+eso es la diferencia de
+"car"
+
+823
+00:52:04,310 --> 00:52:13,070
+de "car" de "s" menos
+"car" de
+
+824
+00:52:13,070 --> 00:52:16,140
+la otra mida,
+"cdr" de "s".
+
+825
+00:52:21,530 --> 00:52:24,430
+Bien, luego
+"dy" sería
+
+826
+00:52:24,430 --> 00:52:27,780
+veamos, tendría al coordenada y,
+así que sería
+
+827
+00:52:27,780 --> 00:52:36,890
+la diferencia de "cdr" de "car" de "s"
+
+828
+00:52:36,890 --> 00:52:41,385
+menos "cdr" de "cdr" de "s", y así.
+
+829
+00:52:44,210 --> 00:52:46,980
+Pueden ver que esto es mucho
+más difícil de leer respecto
+
+830
+00:52:46,980 --> 00:52:48,270
+del programa anterior.
+
+831
+00:52:48,270 --> 00:52:52,075
+Peor que eso, supongamos
+que hubieran
+
+832
+00:52:52,075 --> 00:52:53,325
+implementado "length".
+
+833
+00:52:56,930 --> 00:52:59,150
+Y al día siguiente viene
+George y dice,
+
+834
+00:52:59,150 --> 00:53:01,030
+perdón, cambié de opinión.
+
+835
+00:53:01,030 --> 00:53:05,390
+Quiero escribir puntos
+con la coordenada y primero. Luego,
+
+836
+00:53:05,390 --> 00:53:06,940
+vuelven a este código,
+lo miran
+
+837
+00:53:06,940 --> 00:53:07,750
+y dicen, ¿qué era?
+
+838
+00:53:07,750 --> 00:53:15,510
+Eso era "car", así que tengo que
+cambiarlo a "cdr",
+
+839
+00:53:15,510 --> 00:53:20,770
+y esto es "cdr", ahora debe ser "car".
+
+840
+00:53:20,770 --> 00:53:23,900
+Y esto debe ser "car".
+
+841
+00:53:23,900 --> 00:53:26,050
+Lo cambian, y George viene al otro
+día y dice
+
+842
+00:53:26,050 --> 00:53:31,600
+perdón, los muchachos diseñando
+la pantalla quieren
+
+843
+00:53:31,600 --> 00:53:35,740
+que las líneas se impriman
+en la dirección opuesta,
+
+844
+00:53:35,740 --> 00:53:37,630
+así que debo cambiar el orden
+de los extremos.
+
+845
+00:53:37,630 --> 00:53:39,386
+Luego vuelven al código
+y dicen,
+
+846
+00:53:39,386 --> 00:53:42,400
+¿cómo era esto?
+
+847
+00:53:42,400 --> 00:53:45,520
+Ok, tengo que cambiar esto
+a "cdr", y este
+
+848
+00:53:45,520 --> 00:53:50,500
+se vuelve "car", este "car", y este "cdr".
+
+849
+00:53:50,500 --> 00:53:50,620
+"cdr".
+
+850
+00:53:50,620 --> 00:53:53,340
+Después de hacerlo,
+George viene otra vez y dice
+
+851
+00:53:53,340 --> 00:53:55,270
+perdón, a lo que me refería
+
+852
+00:53:55,270 --> 00:53:58,150
+es que los segmentos siempre
+deben imprimirse en pantalla
+
+853
+00:53:58,150 --> 00:53:59,660
+de izquierda a derecha.
+
+854
+00:53:59,660 --> 00:54:01,800
+Ahí está claro que deben ir
+y darle una trompada
+
+855
+00:54:01,800 --> 00:54:03,610
+en la cara a George.
+
+856
+00:54:03,610 --> 00:54:09,410
+Tan pronto como tenemos
+un sistema con diez capas,
+
+857
+00:54:09,410 --> 00:54:12,050
+ven cómo la complejidad
+aumenta al punto que algo
+
+858
+00:54:12,050 --> 00:54:16,250
+tan simple puede irse
+fuera de control.
+
+859
+00:54:16,250 --> 00:54:20,470
+La manera en que esquivamos esto
+es nombrando
+
+860
+00:54:20,470 --> 00:54:21,150
+al espíritu.
+
+861
+00:54:21,150 --> 00:54:26,560
+Construimos un sistema
+donde hay algo, que es
+
+862
+00:54:26,560 --> 00:54:29,510
+la elección de representación
+sobre cómo
+
+863
+00:54:29,510 --> 00:54:31,570
+vamos a hablar sobre vectores.
+
+864
+00:54:31,570 --> 00:54:34,430
+Y las elecciones sobre esa
+representación están localizadas
+
+865
+00:54:34,430 --> 00:54:35,670
+aquí.
+
+866
+00:54:35,670 --> 00:54:37,840
+No tienen sus entrañas desparramadas
+sobre cosas
+
+867
+00:54:37,840 --> 00:54:40,926
+como cómo computar la longitud y
+cómo computar el punto medio.
+
+868
+00:54:40,926 --> 00:54:45,660
+Ese es el verdadero poder del sistema.
+
+869
+00:54:45,660 --> 00:54:48,890
+Somos explícitos sobre ellos, tal que
+
+870
+00:54:48,890 --> 00:54:50,916
+tengamos el control.
+
+871
+00:54:50,916 --> 00:54:52,190
+Muy bien, ¿preguntas?
+
+872
+00:54:52,190 --> 00:54:54,685
+AUDIENCIA: ¿Qué sucede en caso
+de que no quieras
+
+873
+00:54:54,685 --> 00:54:56,660
+tratar a los objetos
+en función de pares?
+
+874
+00:54:56,660 --> 00:55:00,590
+Por ejemplo, en un espacio
+tridimensional tendrías
+
+875
+00:55:00,590 --> 00:55:01,680
+tres coordenadas.
+
+876
+00:55:01,680 --> 00:55:02,740
+O aún más, en caso de
+
+877
+00:55:02,740 --> 00:55:04,180
+un espacio n-dimensional,
+¿qué sucede?
+
+878
+00:55:04,180 --> 00:55:05,140
+PROFESOR: Bien, ok.
+
+879
+00:55:05,140 --> 00:55:08,374
+Esto es un adelanto de lo que
+diremos mañana.
+
+880
+00:55:08,374 --> 00:55:15,020
+Pero el punto es que una vez
+que tienes dos cosas,
+
+881
+00:55:15,020 --> 00:55:16,972
+tienes tantas cosas como quieras.
+
+882
+00:55:16,972 --> 00:55:17,370
+¿Está bien?
+
+883
+00:55:17,370 --> 00:55:19,970
+Pues, si quiero tener 3 cosas,
+
+884
+00:55:19,970 --> 00:55:26,970
+podría empezar con un par
+cuya primera parte sea 1,
+
+885
+00:55:26,970 --> 00:55:31,780
+y cuya segunda parte sea
+un par que tenga
+
+886
+00:55:31,780 --> 00:55:34,582
+2 y 3.
+
+887
+00:55:34,582 --> 00:55:35,760
+Y así, cientos de cosas.
+
+888
+00:55:35,760 --> 00:55:37,550
+Puedo anidarlas en función de pares.
+
+889
+00:55:37,550 --> 00:55:40,370
+Tomé una decisión arbitraria 
+sobre cómo hacerlo, pero
+
+890
+00:55:40,370 --> 00:55:41,770
+inmediatamente pueden ver que hay
+
+891
+00:55:41,770 --> 00:55:42,730
+muchas formas de hacerlo.
+
+892
+00:55:42,730 --> 00:55:45,210
+La próxima vez comenzaremos hablando
+sobre convenciones
+
+893
+00:55:45,210 --> 00:55:47,660
+para decidir este tipo de cosas.
+
+894
+00:55:47,660 --> 00:55:49,730
+Sin embargo, noten que esto depende
+del hecho
+
+895
+00:55:49,730 --> 00:55:51,950
+de que puedo componer pares con pares.
+
+896
+00:55:51,950 --> 00:55:53,380
+Si sólo pudiera hacer pares
+
+897
+00:55:53,380 --> 00:55:54,630
+de números, estaríamos limitados.
+
+898
+00:56:07,140 --> 00:56:09,236
+Ok.
+
+899
+00:56:09,236 --> 00:56:11,960
+Hagamos una pausa.
+
+900
+00:56:11,960 --> 00:56:55,580
+[MÚSICA SONANDO]
+
+901
+00:56:55,580 --> 00:57:00,210
+Muy buen, hemos hecho
+algunos ejemplos
+
+902
+00:57:00,210 --> 00:57:03,575
+sencillos de abstracción de datos.
+
+903
+00:57:03,575 --> 00:57:05,695
+Ahora quiero hacer algo
+más complicado.
+
+904
+00:57:05,695 --> 00:57:08,310
+Vamos a hablar sobre
+qué significa.
+
+905
+00:57:08,310 --> 00:57:11,590
+Esto será más difícil,
+porque en programación
+
+906
+00:57:11,590 --> 00:57:14,450
+siempre cuesta más hablar sobre
+el sentido de algo
+
+907
+00:57:14,450 --> 00:57:16,450
+que ir y hacerlo.
+
+908
+00:57:16,450 --> 00:57:22,070
+Volvamos casi al principio.
+
+909
+00:57:22,070 --> 00:57:27,050
+Vayamos al punto en que asumí
+
+910
+00:57:27,050 --> 00:57:32,370
+que había procedimientos,
+"make-RAT"
+
+911
+00:57:32,370 --> 00:57:38,480
+"numer" y "denom".
+
+912
+00:57:38,480 --> 00:57:41,570
+Volvamos al momento,
+bien al principio,
+
+913
+00:57:41,570 --> 00:57:46,210
+en que dados estos constructores
+y selectores definimos la aritmética
+
+914
+00:57:46,210 --> 00:57:47,210
+de números racionales.
+
+915
+00:57:47,210 --> 00:57:49,700
+Recuerden que entonces dije
+que estaba todo listo,
+
+916
+00:57:49,700 --> 00:57:51,990
+salvo por George.
+
+917
+00:57:51,990 --> 00:57:55,920
+¿Qué habíamos hecho en verdad
+hasta ese punto?
+
+918
+00:57:55,920 --> 00:57:59,420
+¿Qué se había hecho?
+
+919
+00:57:59,420 --> 00:58:03,540
+A lo que voy es que,
+lo realizado
+
+920
+00:58:03,540 --> 00:58:06,540
+luego de implementar las operaciones
+y sus términos, era que
+
+921
+00:58:06,540 --> 00:58:11,100
+habíamos definido una representación
+de racionales en términos de un
+
+922
+00:58:11,100 --> 00:58:12,390
+tipo de datos abstracto.
+
+923
+00:58:17,946 --> 00:58:21,090
+¿A qué me refiero con tipo abstracto
+de datos?
+
+924
+00:58:21,090 --> 00:58:26,630
+La idea es que al tener "+RAT",
+"*RAT", etc.,
+
+925
+00:58:26,630 --> 00:58:32,115
+cualquier implementación
+de "make-RAT",
+
+926
+00:58:32,115 --> 00:58:38,000
+"numer" y "denom" que George
+nos hubiera entregado
+
+927
+00:58:38,000 --> 00:58:39,520
+podía ser la base de una
+
+928
+00:58:39,520 --> 00:58:40,990
+representación de racionales.
+
+929
+00:58:40,990 --> 00:58:44,550
+O sea, no nos incumbía dónde
+se dividía
+
+930
+00:58:44,550 --> 00:58:48,980
+por el máximo común divisor,
+ni nada de eso.
+
+931
+00:58:48,980 --> 00:58:53,830
+La idea apunta a que habíamos construido
+un sistema de aritmética de racionales
+
+932
+00:58:53,830 --> 00:58:57,140
+que podía funcionar sobre
+cualquier representación.
+
+933
+00:58:57,140 --> 00:58:59,930
+¿Qué quiero decir
+con representación?
+
+934
+00:58:59,930 --> 00:59:02,950
+Obviamente no me refiero
+simplemente a que
+
+935
+00:59:02,950 --> 00:59:05,130
+George pudiera tomar una bolsa
+y sacar tres
+
+936
+00:59:05,130 --> 00:59:10,380
+procedimientos arbitrarios y decir,
+bueno, esta
+
+937
+00:59:10,380 --> 00:59:11,960
+es la implementación.
+
+938
+00:59:11,960 --> 00:59:14,080
+Eso no puede ser a lo que me refiero.
+
+939
+00:59:14,080 --> 00:59:18,990
+A lo que voy es que hay una forma
+de decidir
+
+940
+00:59:18,990 --> 00:59:23,950
+si dados tres procedimientos,
+van a ser adecuados
+
+941
+00:59:23,950 --> 00:59:26,690
+como base para una representación
+de racionales.
+
+942
+00:59:26,690 --> 00:59:30,750
+Si lo pensamos, con adecuado me refiero
+a que para asumir esto,
+
+943
+00:59:30,750 --> 00:59:36,220
+debemos tener que si "x"
+es el resultado
+
+944
+00:59:36,220 --> 00:59:54,130
+de hacer "make-RAT" de "n" sobre "d",
+luego el numerador
+
+945
+00:59:54,130 --> 01:00:06,400
+de "x" dividido por el denominador
+de "x"
+
+946
+01:00:06,400 --> 01:00:09,680
+equivale a "n" sobre "d".
+
+947
+01:00:09,680 --> 01:00:13,770
+Ese es el contrato de George.
+
+948
+01:00:13,770 --> 01:00:16,520
+Escribir un contrato para los
+racionales,
+
+949
+01:00:16,520 --> 01:00:18,790
+si lo piensan,
+es decir "esto es lo correcto".
+
+950
+01:00:18,790 --> 01:00:21,510
+Y los dos que mostramos hacen
+lo correcto.
+
+951
+01:00:21,510 --> 01:00:25,720
+Estoy dejando fuera el asunto
+de máximo divisor común,
+
+952
+01:00:25,720 --> 01:00:28,350
+no importa cuándo
+
+953
+01:00:28,350 --> 01:00:29,830
+o dónde lo hago, porque
+la idea
+
+954
+01:00:29,830 --> 01:00:32,380
+es que voy a simplificar.
+
+955
+01:00:32,380 --> 01:00:33,930
+Este es el contrato de George.
+
+956
+01:00:33,930 --> 01:00:37,160
+Nosotros le decimos, es tu 
+responsabilidad
+
+957
+01:00:37,160 --> 01:00:41,703
+ir y buscar tres procedimientos, 
+"make-RAT",
+
+958
+01:00:41,703 --> 01:00:45,810
+"numer" y "denom", tal que cumplan
+con este contrato
+
+959
+01:00:45,810 --> 01:00:46,870
+para cualquier elección de "n" y "d":
+
+960
+01:00:46,870 --> 01:00:51,080
+Y eso es a lo que nos referimos
+al decir que podemos usar
+
+961
+01:00:51,080 --> 01:00:54,540
+eso como base de una representación
+de racionales.
+
+962
+01:00:54,540 --> 01:00:57,130
+Tiene que cumplir con este contrato.
+
+963
+01:00:57,130 --> 01:00:59,292
+No nos importa cómo.
+
+964
+01:00:59,292 --> 01:01:00,410
+No es nuestro tema.
+
+965
+01:01:00,410 --> 01:01:02,330
+Está por debajo de la capa
+de abstracción.
+
+966
+01:01:07,010 --> 01:01:09,980
+De hecho, si queremos
+decir
+
+967
+01:01:09,980 --> 01:01:13,860
+¿qué es un racional en verdad?
+
+968
+01:01:13,860 --> 01:01:16,240
+Si queremos hablar sobre qué
+es un racional sin ir
+
+969
+01:01:16,240 --> 01:01:18,240
+debajo de la capa de abstracción,
+nos vemos
+
+970
+01:01:18,240 --> 01:01:24,820
+forzados a decir que un racional
+es esta suerte de axioma,
+
+971
+01:01:24,820 --> 01:01:28,830
+se compone de tres procedimientos,
+"make-RAT", "numer" y "denom",
+
+972
+01:01:28,830 --> 01:01:32,370
+que satisfacen este axioma.
+
+973
+01:01:32,370 --> 01:01:34,790
+En algún sentido abstracto,
+
+974
+01:01:34,790 --> 01:01:37,080
+eso es lo que es un racional.
+
+975
+01:01:41,490 --> 01:01:44,860
+Esto es fácil de escuchar
+
+976
+01:01:44,860 --> 01:01:47,190
+porque en su cabeza tienen la idea
+
+977
+01:01:47,190 --> 01:01:50,850
+sobre qué son los racionales
+
+978
+01:01:50,850 --> 01:01:52,950
+dado que los acabamos de construir.
+
+979
+01:01:58,830 --> 01:02:00,230
+Construimos racionales
+
+980
+01:02:00,230 --> 01:02:04,230
+sobre pares.
+
+981
+01:02:08,680 --> 01:02:11,170
+Abstractamente, podemos decir
+
+982
+01:02:11,170 --> 01:02:15,450
+que un racional es simplemente
+un axioma.
+
+983
+01:02:15,450 --> 01:02:17,370
+Pero ustedes lo toman cómodamente,
+
+984
+01:02:17,370 --> 01:02:20,510
+pues en verdad dicen, claro,
+un racional es un par,
+
+985
+01:02:20,510 --> 01:02:24,820
+y yo sólo los estoy molestando
+al tratar de abstraerme.
+
+986
+01:02:24,820 --> 01:02:29,960
+Como antídoto para esto,
+déjenme hacer algo
+
+987
+01:02:29,960 --> 01:02:32,636
+que creo los va a asustar mucho.
+
+988
+01:02:32,636 --> 01:02:36,920
+Los va a poner cara a cara
+
+989
+01:02:36,920 --> 01:02:40,090
+con esta suerte de realidad existencial
+de la que hablamos
+
+990
+01:02:40,090 --> 01:02:41,490
+cuando tratamos la abstracción.
+
+991
+01:02:41,490 --> 01:02:43,250
+Veamos,
+
+992
+01:02:43,250 --> 01:02:45,960
+¿qué son los pares realmente?
+
+993
+01:02:45,960 --> 01:02:48,710
+¿Qué les dije sobre los pares?
+
+994
+01:02:48,710 --> 01:02:49,420
+Los engañé, ¿no?
+
+995
+01:02:49,420 --> 01:02:52,115
+Dije que Lisp tenía estas
+primitivas llamadas "cons",
+
+996
+01:02:52,115 --> 01:02:53,520
+que construyen pares.
+
+997
+01:02:53,520 --> 01:02:56,470
+Pero, ¿qué les dije en verdad?
+
+998
+01:02:56,470 --> 01:03:00,060
+Si vuelven a cuando les mostré
+la diapositiva,
+
+999
+01:03:00,060 --> 01:03:04,090
+todo lo que dije sobre pares
+es que existen estas propiedades,
+
+1000
+01:03:04,090 --> 01:03:07,220
+o sea "cons", "car" y "cdr".
+
+1001
+01:03:07,220 --> 01:03:09,840
+Eso es todo
+
+1002
+01:03:09,840 --> 01:03:14,870
+lo que dije.
+
+1003
+01:03:14,870 --> 01:03:18,080
+Que si hago "cons" de "x" e "y",
+y le tomo
+
+1004
+01:03:18,080 --> 01:03:20,710
+"car", obtengo "x".
+
+1005
+01:03:20,710 --> 01:03:25,810
+Y si le tomo "cdr", obtengo "y".
+
+1006
+01:03:25,810 --> 01:03:31,670
+Aunque los persuadí 
+de pensar que hay algo
+
+1007
+01:03:31,670 --> 01:03:33,890
+en Lisp que hace eso,
+ustedes pretendieron
+
+1008
+01:03:33,890 --> 01:03:36,590
+que sabían que era, en verdad
+no les dije más sobre
+
+1009
+01:03:36,590 --> 01:03:39,750
+los pares que lo que lo otro
+decía sobre los racionales.
+
+1010
+01:03:39,750 --> 01:03:41,050
+Es sólo un axioma para los pares.
+
+1011
+01:03:44,720 --> 01:03:51,880
+Para consolidar esto
+y realmente asustarlos,
+
+1012
+01:03:51,880 --> 01:03:56,120
+les voy a mostrar en base
+a qué podríamos construir los pares.
+
+1013
+01:03:56,120 --> 01:04:00,470
+Veremos que pueden construir
+racionales,
+
+1014
+01:04:00,470 --> 01:04:02,960
+segmentos, vectores,
+
+1015
+01:04:02,960 --> 01:04:06,160
+y todas estas cosas
+en función de pares, y veremos aquí abajo
+
+1016
+01:04:06,160 --> 01:04:10,680
+que los pares pueden construirse
+de la nada.
+
+1017
+01:04:10,680 --> 01:04:12,680
+Pura abstracción.
+
+1018
+01:04:12,680 --> 01:04:17,800
+Les mostraré en esta diapositiva
+una implementación
+
+1019
+01:04:17,800 --> 01:04:23,080
+de "cons", "car" y "cdr".
+Lo veremos otra vez en un segundo,
+
+1020
+01:04:23,080 --> 01:04:26,480
+pero noten que la definición
+del procedimiento de "cons";
+
+1021
+01:04:26,480 --> 01:04:29,850
+"car" y "cdr" no tiene ningún
+dato dentro, lo que ven
+
+1022
+01:04:29,850 --> 01:04:34,720
+son lambdas.
+
+1023
+01:04:34,720 --> 01:04:39,630
+Así que "cons" va a devolver--
+es un procedimiento
+
+1024
+01:04:39,630 --> 01:04:44,630
+que devuelve un procedimiento--
+
+1025
+01:04:44,630 --> 01:04:49,050
+"cons" de "a" y "b" retorna
+un procedimiento de un argumento
+
+1026
+01:04:49,050 --> 01:04:55,265
+llamado "pick", y dice, si "pick"
+es igual a 1, entonces voy a devolve
+
+1027
+01:04:55,265 --> 01:04:59,220
+"a", y si "pick" es 2,
+
+1028
+01:04:59,220 --> 01:05:02,000
+voy a devolver "b", y eso es
+lo que será "cons".
+
+1029
+01:05:04,810 --> 01:05:11,600
+"car" de un par "x" será "x"
+
+1030
+01:05:11,600 --> 01:05:12,320
+aplicado a 1.
+
+1031
+01:05:12,320 --> 01:05:13,470
+Vean que eso tiene sentido.
+
+1032
+01:05:13,470 --> 01:05:16,690
+Puede que no entiendan por qué
+o cómo lo hago,
+
+1033
+01:05:16,690 --> 01:05:19,820
+pero al menos tiene sentido,
+porque lo que construyo con
+
+1034
+01:05:19,820 --> 01:05:24,630
+"cons" es un procedimiento,
+y "car" aplica eso a 1.
+
+1035
+01:05:24,630 --> 01:05:29,370
+"cdr" aplica lo mismo a 2.
+
+1036
+01:05:29,370 --> 01:05:33,290
+Yo digo que esta es una
+representación de "cons",
+
+1037
+01:05:33,290 --> 01:05:35,780
+"car" y "cdr", y notemos
+que no hay datos dentro.
+
+1038
+01:05:35,780 --> 01:05:37,190
+Es una construcción de la nada.
+
+1039
+01:05:37,190 --> 01:05:39,600
+Son sólo procedimientos.
+
+1040
+01:05:39,600 --> 01:05:43,660
+No ningún objeto en esa
+representación.
+
+1041
+01:05:43,660 --> 01:05:45,140
+¿Qué quiere decir esto?
+
+1042
+01:05:49,690 --> 01:05:54,990
+Si creen en esto, deben
+creer que
+
+1043
+01:05:54,990 --> 01:05:58,650
+para mostrar que esta es una
+representación válida
+
+1044
+01:05:58,650 --> 01:06:01,390
+de "cons", "car" y "cdr", todo lo
+que debo hacer es mostrar
+
+1045
+01:06:01,390 --> 01:06:03,550
+que satisface el axioma.
+
+1046
+01:06:03,550 --> 01:06:06,070
+Sólo debo convencerlos de que,
+por ejemplo,
+
+1047
+01:06:06,070 --> 01:06:23,760
+"car" de "cons" de 37 y 49
+es 37,
+
+1048
+01:06:23,760 --> 01:06:28,060
+para valores arbitrarios 37 y 49.
+
+1049
+01:06:28,060 --> 01:06:29,310
+Y "cdr" lo mismo.
+
+1050
+01:06:32,070 --> 01:06:35,050
+Si puedo demostrarles
+que esta
+
+1051
+01:06:35,050 --> 01:06:38,900
+extraña definición de procedimientos
+en base a la nada misma
+
+1052
+01:06:38,900 --> 01:06:42,860
+cumple con que satisface esto,
+entonces tienen que
+
+1053
+01:06:42,860 --> 01:06:46,520
+concederme que esta es una
+posible implementación
+
+1054
+01:06:46,520 --> 01:06:50,030
+de "cons", "car" y "cdr", sobre la cual
+puedo construir todo lo demás.
+
+1055
+01:06:50,030 --> 01:06:50,980
+Veamoslo.
+
+1056
+01:06:50,980 --> 01:06:53,820
+Esto será práctica del
+modelo de sustitución.
+
+1057
+01:06:59,320 --> 01:07:00,690
+¿Cómo lo podemos chequear?
+
+1058
+01:07:00,690 --> 01:07:01,840
+Creo que ya sabemos cómo.
+
+1059
+01:07:01,840 --> 01:07:05,920
+Es el mismo modelo de sustitución.
+
+1060
+01:07:05,920 --> 01:07:06,310
+Veamos.
+
+1061
+01:07:06,310 --> 01:07:07,910
+Empezamos diciendo, ¿qué es
+"car"
+
+1062
+01:07:07,910 --> 01:07:11,120
+de "cons" de 37 y 49?
+
+1063
+01:07:11,120 --> 01:07:11,720
+¿Qué hacemos?
+
+1064
+01:07:11,720 --> 01:07:13,085
+"cons" es un procedimiento.
+
+1065
+01:07:15,950 --> 01:07:19,530
+El valor de "cons" es un procedimiento
+que toma "a" y "b".
+
+1066
+01:07:19,530 --> 01:07:25,450
+Lo que devuelve "cons" acá es un cuerpo
+de procedimiento con esas variables
+
+1067
+01:07:25,450 --> 01:07:27,370
+sustituídas por 37 y 49,
+los parámetros.
+
+1068
+01:07:27,370 --> 01:07:32,770
+"a" será sustituído con 37 y "b" con 49.
+
+1069
+01:07:32,770 --> 01:07:36,710
+Así que esta expresión tiene el mismo
+significado que
+
+1070
+01:07:36,710 --> 01:07:37,170
+esta otra.
+
+1071
+01:07:37,170 --> 01:07:40,410
+Es "car" del cuerpo de "cons",
+que era
+
+1072
+01:07:40,410 --> 01:07:43,190
+una lambda.
+
+1073
+01:07:43,190 --> 01:07:46,730
+Dice, si "pick" equivale a 1, donde "pick"
+es este otro argumento, entonces
+
+1074
+01:07:46,730 --> 01:07:50,070
+es 37, mientras que si "pick"
+
+1075
+01:07:50,070 --> 01:07:55,240
+es 2, entonces es 49.
+
+1076
+01:07:55,240 --> 01:07:56,410
+Ese es el primer paso.
+
+1077
+01:07:56,410 --> 01:07:59,460
+Estoy haciendo la sustitución
+mecánicamente.
+
+1078
+01:07:59,460 --> 01:08:01,630
+Recuerden, en esta etapa del curso,
+si sienten
+
+1079
+01:08:01,630 --> 01:08:04,190
+que están confundidos,
+sigan mecánicamente
+
+1080
+01:08:04,190 --> 01:08:05,480
+el modelo de sustitución.
+
+1081
+01:08:05,480 --> 01:08:07,920
+¿A qué reduce esto?
+
+1082
+01:08:07,920 --> 01:08:15,050
+"car" dice toma tu argumento, que
+en este caso es esto,
+
+1083
+01:08:15,050 --> 01:08:16,060
+y aplícalo a 1.
+
+1084
+01:08:16,060 --> 01:08:17,979
+Esa era la definición de "car".
+
+1085
+01:08:17,979 --> 01:08:22,600
+Así que si miro "car",
+
+1086
+01:08:22,600 --> 01:08:24,470
+este fue el argumento de "car"
+
+1087
+01:08:24,470 --> 01:08:26,319
+aplicado a 1.
+
+1088
+01:08:29,580 --> 01:08:31,140
+¿Qué significa?
+
+1089
+01:08:31,140 --> 01:08:34,800
+Tomo 1, y sustituyo
+"pick", que es el nombre
+
+1090
+01:08:34,800 --> 01:08:36,630
+del argumento, por ese valor.
+
+1091
+01:08:36,630 --> 01:08:39,779
+¿Qué obtengo?
+
+1092
+01:08:39,779 --> 01:08:43,390
+Obtengo algo que dice "si 1 equivale
+a 1 entonces 37,
+
+1093
+01:08:43,390 --> 01:08:46,700
+y si 1 equivale a 2 entonces 49.
+Con lo cual la respuesta es 37.
+
+1094
+01:08:46,700 --> 01:08:49,880
+Asimismo, si hubiera tomado "cdr", eso
+habría aplicado a 2,
+
+1095
+01:08:49,880 --> 01:08:51,729
+y obtendría 49.
+
+1096
+01:08:51,729 --> 01:08:55,020
+Lo que demostré es que
+
+1097
+01:08:55,020 --> 01:08:57,560
+esta extraña implementación de
+"cons", "car" y
+
+1098
+01:08:57,560 --> 01:09:02,000
+"cdr" satisface los axiomas.
+Así que es una manera perfectamente válida
+
+1099
+01:09:02,000 --> 01:09:04,100
+de construir todos los objetos
+
+1100
+01:09:04,100 --> 01:09:05,620
+que veremos en Lisp.
+
+1101
+01:09:05,620 --> 01:09:07,930
+Así que si quieren, todos pueden
+construirse
+
+1102
+01:09:07,930 --> 01:09:09,670
+en base a un vacío existencial.
+
+1103
+01:09:09,670 --> 01:09:14,229
+Hasta donde saben,
+así es como funciona.
+
+1104
+01:09:14,229 --> 01:09:15,149
+No podrían distinguirlo.
+
+1105
+01:09:15,149 --> 01:09:18,580
+Si lo único que fueran a hacer
+fuera construir pares
+
+1106
+01:09:18,580 --> 01:09:20,890
+con "cons" y luego observarlos
+con "car" y "cdr",
+
+1107
+01:09:20,890 --> 01:09:24,270
+no podrían distinguir cómo funciona.
+
+1108
+01:09:24,270 --> 01:09:26,370
+Quizás los tranquilice si digo
+
+1109
+01:09:26,370 --> 01:09:29,470
+bueno, en verdad por varios motivos
+
+1110
+01:09:29,470 --> 01:09:32,930
+hay unas primitivas llamadas "cons",
+"car" y "cdr", y si les da miedo
+
+1111
+01:09:32,930 --> 01:09:35,330
+mirar qué hay dentro,
+
+1112
+01:09:35,330 --> 01:09:36,770
+no tienen por qué hacerlo.
+
+1113
+01:09:36,770 --> 01:09:40,060
+Quizás eso los haga sentir mejor,
+pero el punto es que
+
+1114
+01:09:40,060 --> 01:09:42,910
+realmente podría funcionar así,
+
+1115
+01:09:42,910 --> 01:09:46,590
+y al sistema no le haría
+ninguna diferencia.
+
+1116
+01:09:46,590 --> 01:09:48,979
+En cierto sentido, no necesitamos
+datos para
+
+1117
+01:09:48,979 --> 01:09:51,760
+construir estas abstracciones.
+
+1118
+01:09:51,760 --> 01:09:54,860
+Podemos hacer todo
+en base a procedimientos.
+
+1119
+01:09:54,860 --> 01:09:57,500
+Ok, ¿por qué los espanté
+de esta manera?
+
+1120
+01:09:57,500 --> 01:09:59,660
+Por un lado, quiero reforzar
+la idea
+
+1121
+01:09:59,660 --> 01:10:03,670
+de abstracción, de que se pueden hacer
+estas cosas
+
+1122
+01:10:03,670 --> 01:10:06,220
+de manera abstracta.
+
+1123
+01:10:06,220 --> 01:10:10,640
+Además, quiero introducir
+esta idea que usaremos
+
+1124
+01:10:10,640 --> 01:10:15,190
+cada vez más en este curso,
+que es que vamos a
+
+1125
+01:10:15,190 --> 01:10:17,440
+borronear la línea que divide
+qué son datos
+
+1126
+01:10:17,440 --> 01:10:19,715
+y qué son procedimientos.
+
+1127
+01:10:19,715 --> 01:10:22,350
+En esta implementación resultó
+ser que
+
+1128
+01:10:22,350 --> 01:10:26,340
+"cons" de algo está representado
+en términos
+
+1129
+01:10:26,340 --> 01:10:29,080
+de un procedimiento, a pesar
+de que lo pensamos como datos.
+
+1130
+01:10:31,940 --> 01:10:35,360
+Una de las cosas
+
+1131
+01:10:35,360 --> 01:10:38,050
+que veremos es que muchas
+de las técnicas importantes
+
+1132
+01:10:38,050 --> 01:10:42,150
+de programación de las que vamos
+a ver dependen fuertemente
+
+1133
+01:10:42,150 --> 01:10:45,840
+de borrar la línea tradicional
+
+1134
+01:10:45,840 --> 01:10:47,940
+que separa lo que se considera
+un procedimiento
+
+1135
+01:10:47,940 --> 01:10:48,950
+de lo que se considera datos.
+
+1136
+01:10:48,950 --> 01:10:50,060
+Veremos más y más sobre eso,
+
+1137
+01:10:50,060 --> 01:10:52,495
+especialmente la próxima vez.
+
+1138
+01:10:52,495 --> 01:10:55,190
+Ok, ¿preguntas?
+
+1139
+01:10:55,190 --> 01:10:57,290
+AUDIENCIA: Si le pidieras al sistema
+que
+
+1140
+01:10:57,290 --> 01:11:00,720
+imprimiera "a", ¿qué pasaría?
+
+1141
+01:11:00,720 --> 01:11:04,570
+PROFESOR: ¿Qué pasaría
+
+1142
+01:11:04,570 --> 01:11:05,600
+si pidiera imprimir "a"?
+
+1143
+01:11:05,600 --> 01:11:10,200
+Dada esta representación, ya saben
+la respuesta.
+
+1144
+01:11:10,200 --> 01:11:16,360
+La respuesta es "compound procedure a".
+
+1145
+01:11:16,360 --> 01:11:18,485
+Tal como la última vez.
+
+1146
+01:11:21,170 --> 01:11:22,590
+Diría "compound procedure"
+
+1147
+01:11:25,150 --> 01:11:26,420
+Podría decir un poco más.
+
+1148
+01:11:26,420 --> 01:11:28,250
+Podría decir "compound procedure lambda"
+
+1149
+01:11:28,250 --> 01:11:31,730
+o algo así, dependiendo en detalles
+de cómo lo haya llamado.
+
+1150
+01:11:31,730 --> 01:11:33,070
+Pero es un procedimiento.
+
+1151
+01:11:33,070 --> 01:11:35,790
+Y la única razón para eso
+es que no le he dicho al sistema
+
+1152
+01:11:35,790 --> 01:11:40,220
+nada en particular sobre cómo
+imprimir cosas así.
+
+1153
+01:11:40,220 --> 01:11:43,500
+Ahora bien, es verdad que con la 
+implementación
+
+1154
+01:11:43,500 --> 01:11:45,630
+de "cons" que hay en el sistema,
+
+1155
+01:11:45,630 --> 01:11:46,840
+este imprimiría otra cosa.
+
+1156
+01:11:46,840 --> 01:11:48,890
+Diría "esto es un par".
+
+1157
+01:11:53,500 --> 01:11:58,870
+AUDIENCIA: Cuando defines "cons",
+y luego lo pasas
+
+1158
+01:11:58,870 --> 01:12:03,840
+a valores, ¿cómo sabe
+dónde buscar los "cons"?
+
+1159
+01:12:03,840 --> 01:12:07,220
+Porque puedes usar "cons" una
+y otra vez.
+
+1160
+01:12:07,220 --> 01:12:11,442
+¿Cómo sabe dónde buscar para saber
+cuál es "a" y cuál "b"
+
+1161
+01:12:11,442 --> 01:12:13,500
+para devolverlos?
+
+1162
+01:12:13,500 --> 01:12:17,140
+No sé si me estoy expresando bien.
+
+1163
+01:12:17,140 --> 01:12:19,120
+¿Dónde se almacena?
+
+1164
+01:12:19,120 --> 01:12:24,760
+PROFESOR: Ok, la pregunta es,
+tengo "cons"
+
+1165
+01:12:24,760 --> 01:12:27,880
+con 37 y 49, y podría hacer
+otro "cons" con 1 y 2,
+
+1166
+01:12:27,880 --> 01:12:30,200
+y uno podría llamarse "a"
+
+1167
+01:12:30,200 --> 01:12:31,920
+y el otro "b".
+
+1168
+01:12:31,920 --> 01:12:33,400
+La pregunta es, ¿cómo sabe?
+
+1169
+01:12:33,400 --> 01:12:35,275
+¿Por qué no se confunden?
+
+1170
+01:12:35,275 --> 01:12:37,510
+Es una muy buena pregunta.
+
+1171
+01:12:40,820 --> 01:12:43,280
+Deben creer en que los procedimientos
+
+1172
+01:12:43,280 --> 01:12:45,550
+son objetos.
+
+1173
+01:12:45,550 --> 01:12:46,725
+Es como decir--
+probemos
+
+1174
+01:12:46,725 --> 01:12:49,340
+un ejemplo más sencillo.
+
+1175
+01:12:49,340 --> 01:12:51,190
+Digamos que pido la raíz cuadrada
+de 5.
+
+1176
+01:12:55,760 --> 01:12:59,220
+Y luego pregunto
+
+1177
+01:12:59,220 --> 01:13:06,470
+por la raíz de 20.
+
+1178
+01:13:06,470 --> 01:13:09,050
+Probablemente no estén
+ni un poco preocupados
+
+1179
+01:13:09,050 --> 01:13:11,470
+por el hecho de que puedo tomar raíz
+y aplicarla a 5,
+
+1180
+01:13:11,470 --> 01:13:14,880
+luego tomarla de nuevo y aplicarla a 20.
+
+1181
+01:13:14,880 --> 01:13:16,980
+No hay problema, nadie se pregunta
+si se confunde
+
+1182
+01:13:16,980 --> 01:13:19,630
+con qué parámetro está trabajando,
+5 o 20.
+
+1183
+01:13:19,630 --> 01:13:23,120
+Nadie se alarma porque están pensando
+
+1184
+01:13:23,120 --> 01:13:26,600
+que es un procedimiento que va
+y se ejecuta.
+
+1185
+01:13:26,600 --> 01:13:30,410
+De alguna forma, me estás preguntando
+lo mismo.
+
+1186
+01:13:30,410 --> 01:13:32,940
+Y te perturba, pero es por una
+
+1187
+01:13:32,940 --> 01:13:34,140
+muy buena razón.
+
+1188
+01:13:34,140 --> 01:13:37,150
+Porque cuando escribo eso, dices, claro,
+sé que es un procedimiento
+
+1189
+01:13:37,150 --> 01:13:38,300
+Pero no es
+
+1190
+01:13:38,300 --> 01:13:40,250
+un procedimiento que se ejecuta.
+
+1191
+01:13:40,250 --> 01:13:42,600
+Es un procedimiento que se queda
+quietito ahí.
+
+1192
+01:13:42,600 --> 01:13:45,570
+¿Y cómo puede ser que a veces
+este procedimiento
+
+1193
+01:13:45,570 --> 01:13:49,540
+tenga 37 y 49, y haya otro
+que tenga 5 y 6 dentro,
+
+1194
+01:13:49,540 --> 01:13:52,630
+y no se confundan?
+
+1195
+01:13:52,630 --> 01:13:55,910
+Hay algo muy importante
+
+1196
+01:13:55,910 --> 01:13:58,990
+que te está molestando.
+
+1197
+01:13:58,990 --> 01:14:01,380
+Y es crucial para lo que está sucediendo.
+
+1198
+01:14:01,380 --> 01:14:05,870
+De pronto, estamos diciendo que los
+
+1199
+01:14:05,870 --> 01:14:08,290
+procedimientos no sólo son el acto
+de hacer algo.
+
+1200
+01:14:08,290 --> 01:14:12,310
+Los procedimientos son entidades
+conceptuales, objetos, y si
+
+1201
+01:14:12,310 --> 01:14:16,080
+construyo "cons" con 37 y 49, ese es un
+procedimiento particular
+
+1202
+01:14:16,080 --> 01:14:18,070
+que se queda ahí.
+
+1203
+01:14:18,070 --> 01:14:21,490
+Y es distinto de "cons" de 3 y 4.
+
+1204
+01:14:21,490 --> 01:14:23,020
+Ese es otro procedimiento
+que espera.
+
+1205
+01:14:23,020 --> 01:14:24,060
+AUDIENCIA: Ambos existen 
+independientemente.
+
+1206
+01:14:24,060 --> 01:14:25,610
+PROFESOR: Y existen independientemente.
+
+1207
+01:14:25,610 --> 01:14:28,370
+AUDIENCIA: Y ambos pueden ser
+referenciados por "car" y "cdr".
+
+1208
+01:14:28,370 --> 01:14:30,350
+PROFESOR: Sí, tal como podría
+
+1209
+01:14:30,350 --> 01:14:35,500
+incrementar esto
+
+1210
+01:14:35,500 --> 01:14:38,270
+e incrementar eso otro.
+
+1211
+01:14:38,270 --> 01:14:39,960
+Son objetos.
+
+1212
+01:14:39,960 --> 01:14:41,730
+Y hacia allá es a donde vamos.
+
+1213
+01:14:41,730 --> 01:14:43,660
+El hecho de que pregunten estas cosas
+
+1214
+01:14:43,660 --> 01:14:46,330
+implica que están empezando a pensar
+sobre las implicancias
+
+1215
+01:14:46,330 --> 01:14:47,790
+de lo que está sucediendo.
+
+1216
+01:14:47,790 --> 01:14:50,820
+Es la diferencia entre decir
+que un procedimiento es apenas
+
+1217
+01:14:50,820 --> 01:14:53,070
+el acto de hacer algo,
+
+1218
+01:14:53,070 --> 01:14:56,270
+y que un procedimiento es un
+objeto que tiene existencia.
+
+1219
+01:14:56,270 --> 01:14:58,550
+AUDIENCIA: Entonces, cuando se construye
+el procedimiento,
+
+1220
+01:14:58,550 --> 01:15:01,930
+los valores actuales se sustituyen
+en "a" y "b"--
+
+1221
+01:15:01,930 --> 01:15:02,050
+PROFESOR: Eso es.
+
+1222
+01:15:02,050 --> 01:15:04,870
+AUDIENCIA: Y luego ese procedimiento
+existe como una lambda
+
+1223
+01:15:04,870 --> 01:15:07,720
+y "pick" es lo que le pasan.
+
+1224
+01:15:07,720 --> 01:15:11,850
+PROFESOR: Sí, cuando se llama a "cons",
+el resultado es un nuevo procedimiento
+
+1225
+01:15:11,850 --> 01:15:14,260
+y ese procedimiento
+
+1226
+01:15:14,260 --> 01:15:17,440
+tiene un argumento llamado "pick".
+
+1227
+01:15:17,440 --> 01:15:18,830
+AUDIENCIA: Pero ya no tiene 
+un "a" y un "b".
+
+1228
+01:15:18,830 --> 01:15:20,416
+Tanto "a" como "b" 
+son valores particulares
+
+1229
+01:15:20,416 --> 01:15:20,820
+que son pasados.
+
+1230
+01:15:20,820 --> 01:15:23,280
+PROFESOR: De acuerdo al modelo
+de sustitución,
+
+1231
+01:15:23,280 --> 01:15:26,340
+ya no tendrá esos nombres arbitarios
+"a" y "b"
+
+1232
+01:15:26,340 --> 01:15:31,560
+sino 37 y 49.
+
+1233
+01:15:31,560 --> 01:15:33,520
+Pero tienes razón, es algo
+difícil de aprehender,
+
+1234
+01:15:33,520 --> 01:15:35,150
+y es diferente de la forma
+en que venían
+
+1235
+01:15:35,150 --> 01:15:36,500
+pensando sobre procedimientos.
+
+1236
+01:15:36,500 --> 01:15:39,285
+AUDIENCIA: Y si tengo "cons" de 37
+y 49 otra vez,
+
+1237
+01:15:39,285 --> 01:15:41,300
+es un objeto diferente?
+
+1238
+01:15:41,300 --> 01:15:51,790
+PROFESOR: SI haces otro "cons" de 37 y 49,
+
+1239
+01:15:51,790 --> 01:15:54,390
+te metes en un maravilloso problema
+filosófico,
+
+1240
+01:15:54,390 --> 01:15:57,870
+que es de lo que tratará una clase
+a mitad
+
+1241
+01:15:57,870 --> 01:16:00,080
+del curso.
+
+1242
+01:16:00,080 --> 01:16:03,810
+Sería, si hago "cons" de 37 y 49,
+y lo hago otra vez,
+
+1243
+01:16:03,810 --> 01:16:06,490
+¿es la misma cosa o es algo distinto?
+
+1244
+01:16:06,490 --> 01:16:07,680
+¿Cómo podríamos diferenciarlo?
+
+1245
+01:16:07,680 --> 01:16:10,240
+¿Y cuándo podría importar?
+
+1246
+01:16:10,240 --> 01:16:18,110
+Eso es como decir, ¿es esta cosa
+
+1247
+01:16:18,110 --> 01:16:21,140
+lo mismo que esta?
+
+1248
+01:16:21,140 --> 01:16:23,850
+O ¿es esto lo mismo que eso?
+
+1249
+01:16:23,850 --> 01:16:25,150
+Es el mismo tipo de pregunta.
+
+1250
+01:16:25,150 --> 01:16:27,930
+Y es una muy muy profunda.
+
+1251
+01:16:27,930 --> 01:16:30,180
+No la puedo responder en menos de una hora.
+
+1252
+01:16:30,180 --> 01:16:31,770
+Pero lo haremos.

@@ -1,0 +1,4164 @@
+1
+00:00:25,680 --> 00:00:27,960
+Bueno, ayer fue fácil.
+
+2
+00:00:27,960 --> 00:00:33,020
+Aprendieron todas las reglas
+de programación y sobrevivieron.
+
+3
+00:00:33,020 --> 00:00:34,980
+Casi todas ellas.
+
+4
+00:00:34,980 --> 00:00:38,372
+Así que a esta altura, 
+son programadores certificados,
+
+5
+00:00:40,200 --> 00:00:48,890
+Sin embargo, supongo que 
+lo que hicimos fue llevarlos
+
+6
+00:00:48,890 --> 00:00:51,700
+un poco hacia un estado fácil.
+
+7
+00:00:51,700 --> 00:00:54,770
+Todavía creen que es posible
+que esto sea
+
+8
+00:00:54,770 --> 00:00:59,250
+programar en BASIC o Pascal
+sólo que con una sintáxis rara.
+
+9
+00:00:59,250 --> 00:01:01,770
+Hoy, esa ilusión--
+
+10
+00:01:01,770 --> 00:01:04,919
+No podrán sostener esa creencia.
+
+11
+00:01:04,919 --> 00:01:06,450
+Lo que haremos hoy será
+
+12
+00:01:06,450 --> 00:01:08,340
+destruirla completamente.
+
+13
+00:01:08,340 --> 00:01:13,590
+Así que empecemos escribiendo
+algunos programas
+
+14
+00:01:13,590 --> 00:01:15,895
+en el pizarrón que tienen
+mucho en común entre sí.
+
+15
+00:01:15,895 --> 00:01:19,540
+Intentaremos haces algunas abstracciones
+
+16
+00:01:19,540 --> 00:01:23,880
+que no son fáciles de hacer
+en la mayoría de los lenguajes.
+
+17
+00:01:23,880 --> 00:01:26,040
+Empecemos con unos simples
+que se pueden construir
+
+18
+00:01:26,040 --> 00:01:28,070
+en la mayoría de los lenguajes.
+
+19
+00:01:28,070 --> 00:01:32,130
+Supongan que quiero escribir
+la expresión matemática
+
+20
+00:01:32,130 --> 00:01:34,100
+que suma un montón de enteros.
+
+21
+00:01:34,100 --> 00:01:38,850
+Escribiría la suma desde 'i'
+
+22
+00:01:38,850 --> 00:01:41,410
+igual a 'a' hasta 'b' de 'i'.
+
+23
+00:01:41,410 --> 00:01:44,190
+Ahora bien, ustedes saben
+que eso es fácil de computar
+
+24
+00:01:44,190 --> 00:01:46,180
+en una forma cerrada, 
+y no estoy interesado en eso.
+
+25
+00:01:46,180 --> 00:01:47,140
+Pero voy a escribir un programa
+
+26
+00:01:47,140 --> 00:01:49,045
+que sume esos enteros.
+
+27
+00:01:49,045 --> 00:01:57,890
+Eso es bastante fácil de hacer.
+Diré que que quiero definir
+
+28
+00:01:57,890 --> 00:02:08,710
+la suma de enteros desde 'a' hasta b como --
+
+29
+00:02:08,710 --> 00:02:11,380
+bueno, es la siguiente de alguna
+de estas dos posibilidades.
+
+30
+00:02:11,380 --> 00:02:17,430
+Si 'a' es mayor a 'b', 
+entonces no hay nada
+
+31
+00:02:17,430 --> 00:02:19,582
+que hacer y la respuesta es cero.
+
+32
+00:02:19,582 --> 00:02:22,530
+Así es como tendrán que
+pensar recursivamente.
+
+33
+00:02:22,530 --> 00:02:24,880
+Si tienen un caso fácil,
+cuya respuesta conocen
+
+34
+00:02:24,880 --> 00:02:26,610
+solamente escríbanlo.
+
+35
+00:02:26,610 --> 00:02:29,890
+En otro caso, intenten
+reducir el problema
+
+36
+00:02:29,890 --> 00:02:31,060
+a uno más simple.
+
+37
+00:02:31,060 --> 00:02:33,000
+Y quizá en este caso, 
+haya que hacer un subproblema
+
+38
+00:02:33,000 --> 00:02:35,340
+del problema simple y luego
+operar con el resultado.
+
+39
+00:02:35,340 --> 00:02:41,290
+La manera más fácil de hacer esto
+es decir que sumaré
+
+40
+00:02:41,290 --> 00:02:46,530
+el índice, que en este caso es 'a',
+al resultado de sumar
+
+41
+00:02:46,530 --> 00:02:57,960
+los enteros desde 'a' más uno hasta 'b'.
+
+42
+00:03:02,343 --> 00:03:04,460
+A esta altura no deberían
+tener problemas al mirar
+
+43
+00:03:04,460 --> 00:03:06,190
+una definición como esta.
+
+44
+00:03:06,190 --> 00:03:09,740
+En efecto, quizá sea difícil que se les
+ocurra algo así
+
+45
+00:03:09,740 --> 00:03:12,230
+pero ser capaces de leerlo
+
+46
+00:03:12,230 --> 00:03:13,840
+les debería resultar fácil.
+
+47
+00:03:13,840 --> 00:03:18,220
+Y lo que les dice es que aquí
+está el subproblema
+
+48
+00:03:18,220 --> 00:03:19,520
+que voy a resolver.
+
+49
+00:03:19,520 --> 00:03:24,240
+Voy a intentar sumar los enteros,
+con un entero menos
+
+50
+00:03:24,240 --> 00:03:26,970
+que los del problema en su totalidad.
+
+51
+00:03:26,970 --> 00:03:31,270
+Voy a sumar con un entero menos&lt;
+y una vez que el subproblema
+
+52
+00:03:31,270 --> 00:03:35,150
+esté resuelto, voy a sumarle 'a' 
+a ese resultado
+
+53
+00:03:35,150 --> 00:03:38,550
+y esa será la solución del problema.
+
+54
+00:03:38,550 --> 00:03:41,626
+Y en el caso base, no debo hacer nada.
+
+55
+00:03:41,626 --> 00:03:44,990
+También voy a escribir otro
+programa simple como este
+
+56
+00:03:44,990 --> 00:03:49,617
+que es la expresión matemática de
+
+57
+00:03:49,617 --> 00:03:55,840
+la suma del cuadrado 
+desde 'i' igual a 'a' hasta 'b'.
+
+58
+00:03:55,840 --> 00:03:58,055
+De nuevo, es un programa muy simple.
+
+59
+00:04:11,220 --> 00:04:13,510
+Y de hecho, empieza de la misma manera.
+
+60
+00:04:16,029 --> 00:04:21,240
+Si 'a' es mayor que 'b',
+la respuesta es cero.
+
+61
+00:04:21,240 --> 00:04:24,160
+Y, por supuesto, nos empezamos
+a dar cuenta de que
+
+62
+00:04:24,160 --> 00:04:27,980
+hay algo mal con que esté escribiendo
+esto de nuevo.
+
+63
+00:04:27,980 --> 00:04:29,820
+Es el mismo programa.
+
+64
+00:04:29,820 --> 00:04:42,180
+Es la suma del cuadrado de 'a',
+y la suma del
+
+65
+00:04:42,180 --> 00:04:46,134
+cuadrado del incremento de 'a' y de 'b'.
+
+66
+00:04:50,880 --> 00:04:54,070
+Si los miramos
+estos programas
+
+67
+00:04:54,070 --> 00:04:56,380
+son casi idénticos.
+
+68
+00:04:56,380 --> 00:04:59,860
+No hay mucho que los distinga.
+
+69
+00:04:59,860 --> 00:05:03,140
+Tienen la misma primer cláusula 
+para el condicional y
+
+70
+00:05:03,140 --> 00:05:06,250
+el mismo predicado y la misma consecuencia
+
+71
+00:05:06,250 --> 00:05:08,910
+y las alternativas son muy similares.
+
+72
+00:05:08,910 --> 00:05:15,510
+Sólo difieren en el hecho de que
+donde acá aparece 'a',
+
+73
+00:05:15,510 --> 00:05:17,336
+aquí tengo el cuadrado de 'a'.
+
+74
+00:05:17,336 --> 00:05:22,020
+La única otra diferencia, 
+pero esta es no esencial,
+
+75
+00:05:22,020 --> 00:05:25,240
+es que el nombre de este procedimiento
+es 'sum int', mientras que
+
+76
+00:05:25,240 --> 00:05:27,560
+el nombre de este otro procedimiento
+es 'sum square'.
+
+77
+00:05:27,560 --> 00:05:29,820
+Así que las diferencias entre ambos
+
+78
+00:05:29,820 --> 00:05:33,250
+son muy pequeñas.
+
+79
+00:05:33,250 --> 00:05:36,080
+Cada vez que se vean
+escribiendo lo mismo
+
+80
+00:05:36,080 --> 00:05:38,340
+más de una vez, hay algo que está mal
+
+81
+00:05:38,340 --> 00:05:40,280
+y no lo deberían estar haciendo.
+
+82
+00:05:40,280 --> 00:05:43,420
+Y eso no es porque sea una 
+pérdida de tiempo
+
+83
+00:05:43,420 --> 00:05:45,540
+escribir algo más de una vez.
+
+84
+00:05:45,540 --> 00:05:50,720
+Es porque hay una idea aquí, 
+una idea muy simple,
+
+85
+00:05:50,720 --> 00:05:54,620
+relacionada con la notación 'sigma'--
+
+86
+00:05:54,620 --> 00:05:57,330
+Con esto de aquí
+
+87
+00:05:57,330 --> 00:06:01,255
+no dependiendo de lo que se está sumando.
+
+88
+00:06:01,255 --> 00:06:03,070
+Y quisiera poder --
+
+89
+00:06:03,070 --> 00:06:05,610
+Siempre, cada vez que estoy creando 
+sistemas complicados
+
+90
+00:06:05,610 --> 00:06:08,575
+y entendiéndolos, es crucial
+dividir las cosas en
+
+91
+00:06:08,575 --> 00:06:11,030
+tantas piezas como sea posible, 
+cada una de la cuales las entiendo
+
+92
+00:06:11,030 --> 00:06:13,050
+por separado.
+
+93
+00:06:13,050 --> 00:06:15,030
+Quisiera comprender la manera
+de sumar cosas
+
+94
+00:06:15,030 --> 00:06:19,540
+independientemente de lo que estoy sumando,
+para que lo pueda usar
+
+95
+00:06:19,540 --> 00:06:24,260
+habiéndolo depurado una vez,
+habiéndolo entendido una vez,
+
+96
+00:06:24,260 --> 00:06:29,400
+y habiendo podido compartirlo
+entre distintos usos.
+
+97
+00:06:29,400 --> 00:06:32,360
+Aquí hay otro ejemplo.
+
+98
+00:06:32,360 --> 00:06:40,400
+Esta es la fórmula de Leibnitz
+para hallar Pi sobre ocho.
+
+99
+00:06:40,400 --> 00:06:43,460
+Es un lío raro y feo.
+
+100
+00:06:43,460 --> 00:06:43,930
+¿Qué es?
+
+101
+00:06:43,930 --> 00:06:50,670
+Es algo como uno dividido uno,
+multiplicado por tres más uno sobre cinco por siete
+
+102
+00:06:50,670 --> 00:06:54,340
+más uno sobre nueve por once más--
+
+103
+00:06:54,340 --> 00:06:59,750
+Y por alguna razón, cosas como esta
+tienden a tener
+
+104
+00:06:59,750 --> 00:07:02,160
+valores interesantes como Pi dividido ocho.
+
+105
+00:07:02,160 --> 00:07:04,460
+¿Pero qué tenemos aquí?
+
+106
+00:07:04,460 --> 00:07:07,850
+¡Es el mismo programa, 
+o casi el mismo programa!
+
+107
+00:07:07,850 --> 00:07:09,290
+Es una suma.
+
+108
+00:07:09,290 --> 00:07:12,660
+Vemos la notación sigma, 
+aunque aquí
+
+109
+00:07:12,660 --> 00:07:17,320
+lidiamos con incrementos de a cuatro
+
+110
+00:07:17,320 --> 00:07:20,550
+así que es una problema ligeramente diferente,
+lo que significa que aquí
+
+111
+00:07:20,550 --> 00:07:25,560
+tengo que cambiar 'a' por cuatro,
+como lo pueden ver acá.
+
+112
+00:07:25,560 --> 00:07:28,390
+No por uno.
+
+113
+00:07:28,390 --> 00:07:31,150
+La otra diferencia, por supuesto
+es lo que está representado
+
+114
+00:07:31,150 --> 00:07:34,805
+por el cuadrado en la suma de cuadrados,
+
+115
+00:07:34,805 --> 00:07:36,400
+o 'a' en la suma de enteros.
+
+116
+00:07:36,400 --> 00:07:38,060
+Aquí tengo algo diferente
+que estoy sumando,
+
+117
+00:07:38,060 --> 00:07:44,290
+un término diferente,
+que es uno sobre 'a' por 'a' más dos.
+
+118
+00:07:44,290 --> 00:07:45,875
+Pero el resto del programa es idéntico.
+
+119
+00:07:48,530 --> 00:07:50,640
+Cada vez que tengamos cosas como esta
+
+120
+00:07:50,640 --> 00:07:53,200
+que son idénticas, tendremos que construir
+
+121
+00:07:53,200 --> 00:07:55,582
+una abstracción que las encubra.
+
+122
+00:07:55,582 --> 00:07:59,920
+Si piensan en esto,
+lo que aprendieron hasta ahora son
+
+123
+00:07:59,920 --> 00:08:03,370
+las reglas de algún lenguajes,
+algunas primitivas,
+
+124
+00:08:03,370 --> 00:08:06,310
+casi todos los medios de combinación
+
+125
+00:08:06,310 --> 00:08:09,730
+y casi todos los medios de abstracción.
+
+126
+00:08:09,730 --> 00:08:13,290
+Pero lo que no aprendieron
+son los patrones comunes de uso.
+
+127
+00:08:13,290 --> 00:08:15,150
+Casi siempre uno aprende expresiones
+idiomáticas cuando está
+
+128
+00:08:15,150 --> 00:08:18,380
+aprendiendo un lenguaje, un 
+patrón común que significa cosas
+
+129
+00:08:18,380 --> 00:08:20,760
+que son útiles saber rápidamente.
+
+130
+00:08:20,760 --> 00:08:22,760
+Y si construyes una gran cantidad de ellas,
+si eres un
+
+131
+00:08:22,760 --> 00:08:26,180
+programador en FORTRAN, 
+todos saben cómo --
+
+132
+00:08:26,180 --> 00:08:29,640
+Por ejemplo, cómo obtener el entero
+
+133
+00:08:29,640 --> 00:08:31,250
+que es el mayor entero en algo.
+
+134
+00:08:31,250 --> 00:08:32,600
+Es ejemplo clásico.
+
+135
+00:08:32,600 --> 00:08:34,350
+Cada programador en FORTRAN
+sabe cómo hacerlo.
+
+136
+00:08:34,350 --> 00:08:36,058
+Y si sabes cómo hacerlo,
+estás en problemas
+
+137
+00:08:36,058 --> 00:08:38,150
+porque toma mucho tiempo pensarlo.
+
+138
+00:08:38,150 --> 00:08:41,620
+Sin embargo, una de la cosas que
+se pueden hacer en este lenguaje
+
+139
+00:08:41,620 --> 00:08:43,900
+es no sólo conocer algo así,
+
+140
+00:08:43,900 --> 00:08:48,380
+sino darle un nombre a ese conocimiento.
+
+141
+00:08:48,380 --> 00:08:50,500
+Y eso es lo que buscamos hacer ahora.
+
+142
+00:08:53,530 --> 00:08:55,860
+Veamos lo que tienen en común estas cosas.
+
+143
+00:08:58,680 --> 00:09:02,560
+Aquí tenemos lo que parece ser
+un patrón general.
+
+144
+00:09:02,560 --> 00:09:06,470
+Un patrón general que cubre todos lo casos
+
+145
+00:09:06,470 --> 00:09:09,700
+que hemos visto hasta ahora.
+
+146
+00:09:09,700 --> 00:09:15,200
+Hay un procedimiento de suma
+que está siendo definido.
+
+147
+00:09:15,200 --> 00:09:17,680
+Tiene dos argumentos, 
+que son la cota inferior
+
+148
+00:09:17,680 --> 00:09:19,630
+y la cota superior.
+
+149
+00:09:19,630 --> 00:09:23,150
+Se comprueba que la cota inferior sea
+mayor que la cota superior.
+
+150
+00:09:23,150 --> 00:09:27,590
+Y si lo es, el resultado es cero.
+
+151
+00:09:27,590 --> 00:09:31,640
+En caso contrario,
+haremos algo con la cota inferior,
+
+152
+00:09:31,640 --> 00:09:35,540
+que es el índice, y sumar
+
+153
+00:09:35,540 --> 00:09:40,150
+ese resultado al resultado de
+llamar recursivamente
+
+154
+00:09:40,150 --> 00:09:45,050
+al procedimiento con la cota inferior
+incrementada por una próxima operación
+
+155
+00:09:45,050 --> 00:09:49,605
+con la misma cota superior que tenía antes.
+
+156
+00:09:53,710 --> 00:09:59,230
+Esto es un patrón general,
+y lo que quisiera hacer
+
+157
+00:09:59,230 --> 00:10:03,610
+es poder nombrar este patrón.
+
+158
+00:10:03,610 --> 00:10:06,550
+Eso es fácil, porque una de las cosas
+
+159
+00:10:06,550 --> 00:10:09,610
+que voy a hacer --
+No hay nada particularmente especial
+
+160
+00:10:09,610 --> 00:10:11,790
+acerca de los números.
+
+161
+00:10:11,790 --> 00:10:14,790
+Los números son sólo un tipo de dato.
+
+162
+00:10:14,790 --> 00:10:17,570
+Y me parece perfectamente razonable
+darle todo tipo de nombres
+
+163
+00:10:17,570 --> 00:10:23,260
+a todos tipo de datos,
+por ejemplo a los procedimientos.
+
+164
+00:10:23,260 --> 00:10:26,370
+Y muchos lenguajes permiten
+tener argumentos procedurales,
+
+165
+00:10:26,370 --> 00:10:27,830
+y ahora vamos a hablar acerca de
+
+166
+00:10:27,830 --> 00:10:29,120
+los argumentos procedurales.
+
+167
+00:10:29,120 --> 00:10:31,280
+Es bastante fácil lidiar con ellos.
+
+168
+00:10:31,280 --> 00:10:33,300
+Y en poco tiempo, 
+haremos cosas extraordinarias
+
+169
+00:10:33,300 --> 00:10:35,730
+que no son como los argumentos procedurales.
+
+170
+00:10:35,730 --> 00:10:43,190
+Definiremos nuestra notación sigma.
+
+171
+00:10:43,190 --> 00:10:55,450
+Se llama 'sum' y toma un término, un A,
+
+172
+00:10:55,450 --> 00:11:00,190
+un término de siguiente y a B como argumentos.
+
+173
+00:11:00,190 --> 00:11:03,420
+Toma cuatro argumentos.
+No hay nada particularmente
+
+174
+00:11:03,420 --> 00:11:06,580
+especial por lo que haya escrito 
+esto en minúscula.
+
+175
+00:11:06,580 --> 00:11:08,700
+Espero que no los confunda, 
+así que lo escribiré
+
+176
+00:11:08,700 --> 00:11:09,930
+en mayúscula ahora.
+
+177
+00:11:09,930 --> 00:11:11,180
+A la máquina no le interesa.
+
+178
+00:11:14,350 --> 00:11:17,180
+Pero estos dos argumentos son diferentes.
+
+179
+00:11:17,180 --> 00:11:19,360
+No son números.
+
+180
+00:11:19,360 --> 00:11:21,600
+Serán procedimientos para computar
+
+181
+00:11:21,600 --> 00:11:23,690
+algo dado un número.
+
+182
+00:11:23,690 --> 00:11:26,590
+'TERM' será un procedimiento que, 
+dado un índice
+
+183
+00:11:26,590 --> 00:11:29,920
+producirá el valor del término para ese índice.
+
+184
+00:11:29,920 --> 00:11:31,660
+A 'NEXT' le será dado un índice y
+
+185
+00:11:31,660 --> 00:11:34,050
+producirá el siguiente índice.
+
+186
+00:11:34,050 --> 00:11:36,000
+Esto será para contar.
+
+187
+00:11:36,000 --> 00:11:37,250
+Y es muy simple.
+
+188
+00:11:40,590 --> 00:11:43,400
+Es exactamente lo que ven.
+
+189
+00:11:43,400 --> 00:11:52,220
+Si A es mayor que B, 
+entonces el resultado es cero.
+
+190
+00:11:52,220 --> 00:12:04,970
+Caso contrario, es la suma de aplicar TERM a A
+y SUM de TERM , el próximo índice--
+
+191
+00:12:14,990 --> 00:12:16,480
+Déjenme escribirlo así.
+
+192
+00:12:29,370 --> 00:12:32,160
+Quisiera que en primer lugar,
+vieran algo.
+
+193
+00:12:32,160 --> 00:12:35,210
+Estaba escribiendo aquí y me quedé sin espacio.
+
+194
+00:12:35,210 --> 00:12:38,110
+Lo que hice fue empezar a indentar
+de acuerdo a la
+
+195
+00:12:38,110 --> 00:12:41,080
+regla de impresión bonita, que dice que
+alinee todos
+
+196
+00:12:41,080 --> 00:12:44,340
+los argumentos del procedimiento
+para que pueda ver
+
+197
+00:12:44,340 --> 00:12:47,060
+cúales son los que van juntos.
+
+198
+00:12:47,060 --> 00:12:49,840
+Y esto es algo que hago automáticamente,
+y quiero que
+
+199
+00:12:49,840 --> 00:12:51,530
+aprendan a hacerlo también, 
+para que sus programas puedan ser
+
+200
+00:12:51,530 --> 00:12:52,780
+leídos y entendidos.
+
+201
+00:12:54,750 --> 00:12:57,610
+¿Qué tenemos aquí?
+
+202
+00:12:57,610 --> 00:13:01,730
+Tenemos cuatro argumentos:
+el procedimiento, el menor índice --
+
+203
+00:13:01,730 --> 00:13:03,670
+el índice de la cota inferior --
+
+204
+00:13:03,670 --> 00:13:09,010
+La forma para obtener el próximo índice
+y la cota superior.
+
+205
+00:13:09,010 --> 00:13:13,890
+Lo que se pasa a la llamada recursiva
+es el mismo procedimiento
+
+206
+00:13:13,890 --> 00:13:18,110
+porque voy a necesitarlo otra vez.
+
+207
+00:13:18,110 --> 00:13:21,260
+El próximo índice, que usa el procedimiento 
+NEXT para computarse.
+
+208
+00:13:21,260 --> 00:13:23,332
+El procedimiento para calcular el próximo,
+que también tengo que tener
+
+209
+00:13:23,332 --> 00:13:25,250
+por separado y que es diferente.
+
+210
+00:13:25,250 --> 00:13:27,940
+El procedimiento para calcular el siguiente
+es diferente del
+
+211
+00:13:27,940 --> 00:13:30,680
+siguiente índice, que es el resultado
+de usar NEXT sobre
+
+212
+00:13:30,680 --> 00:13:32,510
+el último índice.
+
+213
+00:13:32,510 --> 00:13:34,210
+Y también tengo que pasar la cota superior.
+
+214
+00:13:37,090 --> 00:13:44,850
+Así, esto captura a ambos programas
+y a muchos otros lindos programas
+
+215
+00:13:44,850 --> 00:13:47,810
+con los que jugaremos.
+
+216
+00:13:47,810 --> 00:13:52,740
+Usando esto, podemos 
+escribir a los programas originales
+
+217
+00:13:52,740 --> 00:13:56,260
+como instancias de SUM de manera simple.
+
+218
+00:14:08,880 --> 00:14:17,620
+A y B. Voy a necesitar un procedimiento
+de identidad aquí,
+
+219
+00:14:17,620 --> 00:14:29,440
+porque la suma de enteros requiere que
+
+220
+00:14:29,440 --> 00:14:33,020
+en este caso compute un término por cada entero
+
+221
+00:14:33,020 --> 00:14:35,560
+pero el procedimiento original
+no quiere hacer nada con ese entero.
+
+222
+00:14:35,560 --> 00:14:41,460
+El procedimiento identidad de A,
+es A o X o lo que sea.
+
+223
+00:14:41,460 --> 00:14:52,420
+Y quiero definir que es SUM de usar
+la identidad como el procedimiento TERM,
+
+224
+00:14:52,420 --> 00:14:58,400
+A como índice inicial, el incrementador
+
+225
+00:14:58,400 --> 00:15:05,552
+como la manera de obtener 
+el próximo índice y B como
+
+226
+00:15:05,552 --> 00:15:07,870
+la cota superior.
+
+227
+00:15:07,870 --> 00:15:12,010
+Este procedimiento hace exactamente
+lo mismo que la suma de
+
+228
+00:15:12,010 --> 00:15:14,140
+enteros aquí. Computa la misma respuesta.
+
+229
+00:15:17,690 --> 00:15:21,520
+Una cosa que deben ver, por supuesto,
+es que no hay nada
+
+230
+00:15:21,520 --> 00:15:25,220
+muy especial sobre lo que usé como
+
+231
+00:15:25,220 --> 00:15:25,990
+el parámetro formal.
+
+232
+00:15:25,990 --> 00:15:27,230
+Podría haber escrito, por ejemplo, X.
+
+233
+00:15:27,230 --> 00:15:29,690
+No importa.
+
+234
+00:15:29,690 --> 00:15:33,760
+Sólo quería que vieran que este nombre
+no entra en conflicto
+
+235
+00:15:33,760 --> 00:15:35,140
+con este otro de ninguna manera.
+
+236
+00:15:35,140 --> 00:15:37,850
+Es un nombre interno.
+
+237
+00:15:37,850 --> 00:15:40,500
+Para el segundo procedimiento,
+la suma de cuadrados,
+
+238
+00:15:40,500 --> 00:15:41,750
+es incluso un poco más fácil.
+
+239
+00:15:53,760 --> 00:15:54,850
+¿Qué es lo que tenemos que hacer?
+
+240
+00:15:54,850 --> 00:16:02,560
+Nada más que sumar los cuadrados, 
+y este es el procedimiento que
+
+241
+00:16:02,560 --> 00:16:05,620
+recibirá cada índice--
+
+242
+00:16:05,620 --> 00:16:06,780
+Sí.
+
+243
+00:16:06,780 --> 00:16:10,410
+A cada índice se le aplicará esto 
+para obtener el término.
+
+244
+00:16:10,410 --> 00:16:13,570
+Es lo que coincide con TERM aquí.
+
+245
+00:16:13,570 --> 00:16:18,810
+Luego tengo A como cota inferior,
+el incrementador como el método para
+
+246
+00:16:18,810 --> 00:16:21,520
+obtener el próximo término,
+y B es la cota superior.
+
+247
+00:16:26,780 --> 00:16:29,030
+Y finalmente, para lo que hicimos
+con la suma de pi,
+
+248
+00:16:29,030 --> 00:16:33,270
+la suma de pi son como--
+
+249
+00:16:33,270 --> 00:16:35,840
+Bueno, es más fácil de pensar acerca
+de ellas de esta forma,
+
+250
+00:16:35,840 --> 00:16:36,610
+porque no tengo que pensar.
+
+251
+00:16:36,610 --> 00:16:41,110
+Lo que estoy haciendo es separar
+lo que estoy sumando del
+
+252
+00:16:41,110 --> 00:16:43,340
+método que hace la suma.
+
+253
+00:16:43,340 --> 00:16:57,200
+Y así tenemos, por ejemplo,
+PI-SUM A B
+
+254
+00:16:57,200 --> 00:16:59,890
+como la suma de cosas.
+
+255
+00:16:59,890 --> 00:17:03,350
+Voy a escribir esto procedimiento 
+explícitamente
+
+256
+00:17:03,350 --> 00:17:05,670
+sin darles un nombre.
+
+257
+00:17:05,670 --> 00:17:07,118
+Lo hago anónimanete.
+
+258
+00:17:07,118 --> 00:17:10,960
+No necesariamente tengo que nombrar algo
+
+259
+00:17:10,960 --> 00:17:12,310
+si lo quiero usar una única vez.
+
+260
+00:17:12,310 --> 00:17:18,050
+Y, por supuesto, puedo escribir
+una expresión
+
+261
+00:17:18,050 --> 00:17:19,579
+que produce un procedimiento.
+
+262
+00:17:19,579 --> 00:17:22,740
+Voy a escribir la letra griega lambda
+en vez de
+
+263
+00:17:22,740 --> 00:17:26,220
+LAMBDA para evitar ocupar espacio
+
+264
+00:17:26,220 --> 00:17:27,240
+en el pizarrón.
+
+265
+00:17:27,240 --> 00:17:28,270
+Pero desafortunadamente no tenemos
+
+266
+00:17:28,270 --> 00:17:29,960
+la tecla LAMBDA en nuestros teclados.
+
+267
+00:17:29,960 --> 00:17:32,170
+Quizá podamos convencer a nuestro amigos
+en la industria
+
+268
+00:17:32,170 --> 00:17:34,040
+de la computación que esto es importante.
+
+269
+00:17:34,040 --> 00:17:43,480
+Lambda de 'i' es el cociente de 1 
+y el producto entre 'i' y
+
+270
+00:17:43,480 --> 00:17:58,020
+la suma de 'i' y dos.
+Empezando por 'a' e incrementando
+
+271
+00:17:58,020 --> 00:18:08,666
+con el procedimiento de un índice 'i' que
+suma cuatro a 'i', y con b como
+
+272
+00:18:08,666 --> 00:18:09,916
+cota superior
+
+273
+00:18:12,270 --> 00:18:17,490
+Pueden ver que esta notación,
+la invención de un
+
+274
+00:18:17,490 --> 00:18:21,370
+procedimiento que toma
+un argumento procedural, nos permite
+
+275
+00:18:21,370 --> 00:18:26,066
+comprimir muchos de estos procedimentos
+en un sola cosa.
+
+276
+00:18:26,066 --> 00:18:32,780
+Este procedimiento, SUM, 
+cubre un montón de ideas.
+
+277
+00:18:32,780 --> 00:18:34,740
+¿Por qué esto es importante?
+
+278
+00:18:34,740 --> 00:18:37,370
+Intenté decir antes que nos ayuda
+a dividir un problema
+
+279
+00:18:37,370 --> 00:18:42,760
+en dos piezas y , de hecho, lo hace.
+Por ejemplo, si a alguien
+
+280
+00:18:42,760 --> 00:18:46,570
+se le ocurriera una manera 
+distinta de implementar esto,
+
+281
+00:18:46,570 --> 00:18:50,010
+que, por supuesto, es posible.
+
+282
+00:18:50,010 --> 00:18:51,230
+Aquí hay, por ejemplo,
+una implementación
+
+283
+00:18:51,230 --> 00:18:52,480
+iterativa de SUM.
+
+284
+00:18:55,900 --> 00:18:59,470
+Una implementación iterativa
+que por alguna razón podría ser mejor
+
+285
+00:18:59,470 --> 00:19:00,840
+que la implementación recursiva.
+
+286
+00:19:03,670 --> 00:19:06,460
+Pero lo importante es que es distinta.
+
+287
+00:19:06,460 --> 00:19:09,460
+Ahora, suponiendo que haya escrito
+mi programa de esta manera como ven
+
+288
+00:19:09,460 --> 00:19:14,310
+en el pizarrón a la izquierda.
+
+289
+00:19:14,310 --> 00:19:17,810
+Es correcto, a la izquierda.
+
+290
+00:19:17,810 --> 00:19:22,280
+Bueno, luego, si cambio
+el método de adición, entonces
+
+291
+00:19:22,280 --> 00:19:25,200
+tendría que cambiar cada uno de estos.
+
+292
+00:19:25,200 --> 00:19:30,210
+Mientras que si los escribo como
+esto que ven aquí, entonces
+
+293
+00:19:30,210 --> 00:19:32,430
+el método con el que hice la adición
+está encapsulado en
+
+294
+00:19:32,430 --> 00:19:34,850
+el procedimiento SUM.
+
+295
+00:19:34,850 --> 00:19:37,780
+Esta descomposición me permite
+cambiar independientemente cada
+
+296
+00:19:37,780 --> 00:19:43,210
+parte del programa y probarlo
+sin cambiar
+
+297
+00:19:43,210 --> 00:19:45,052
+la otra parte que fue escrita para algún
+
+298
+00:19:45,052 --> 00:19:46,630
+otro caso.
+
+299
+00:19:50,366 --> 00:19:51,010
+Gracias.
+
+300
+00:19:51,010 --> 00:19:52,420
+¿Hay alguna pregunta?
+
+301
+00:19:52,420 --> 00:19:53,190
+Sí, señor.
+
+302
+00:19:53,190 --> 00:19:55,150
+Podrías volver sobre
+NEXT A y sobre NEXT --
+
+303
+00:19:55,150 --> 00:19:55,640
+Sí.
+
+304
+00:19:55,640 --> 00:19:56,680
+Es el mismo problema.
+
+305
+00:19:56,680 --> 00:19:57,900
+Estoy seguro que tendrán--
+
+306
+00:19:57,900 --> 00:19:59,160
+Tendrán que trabajar en esto.
+
+307
+00:19:59,160 --> 00:20:01,280
+Es difícil y la primera vez que ven
+
+308
+00:20:01,280 --> 00:20:02,460
+algo así.
+
+309
+00:20:02,460 --> 00:20:06,300
+Lo que tengo aquí es que 
+los procedimientos
+
+310
+00:20:06,300 --> 00:20:07,550
+pueden ser nombrados por variables.
+
+311
+00:20:10,020 --> 00:20:12,710
+Los procedimientos no son especiales.
+
+312
+00:20:12,710 --> 00:20:15,230
+De hecho, SUM SQUARE es una variable,
+a la que se le asignó
+
+313
+00:20:15,230 --> 00:20:18,640
+un valor, que es un procedimiento.
+
+314
+00:20:18,640 --> 00:20:20,030
+Esto es definir SQUARE SUM como
+
+315
+00:20:20,030 --> 00:20:23,310
+lambda de A y B.
+
+316
+00:20:23,310 --> 00:20:24,700
+Así que los procedimientos 
+pueden ser nombrados.
+
+317
+00:20:24,700 --> 00:20:27,900
+Por lo tanto, pueden ser pasados
+de uno hacia otro,
+
+318
+00:20:27,900 --> 00:20:31,430
+un procedimiento hacia otro,
+como argumentos.
+
+319
+00:20:31,430 --> 00:20:33,630
+Bueno, lo que estamos haciendo aquí
+es pasar el procedimiento
+
+320
+00:20:33,630 --> 00:20:38,190
+TERM como un argumento a SUM
+para que lo tengamos
+
+321
+00:20:38,190 --> 00:20:41,060
+en la próxima recursión.
+
+322
+00:20:41,060 --> 00:20:45,350
+También estamos pasando
+el procedimiento NEXT
+
+323
+00:20:45,350 --> 00:20:47,630
+como un argumento.
+
+324
+00:20:47,630 --> 00:20:50,120
+Sin embargo, aquí estamos usando
+el procedimiento NEXT.
+
+325
+00:20:50,120 --> 00:20:51,690
+Eso es lo que significan los paréntesis.
+
+326
+00:20:51,690 --> 00:20:56,750
+Estamos aplicando NEXT a A para obtener
+el próximo valor de A. Si
+
+327
+00:20:56,750 --> 00:20:59,390
+miran a lo que coincide NEXT con,
+recuerden que
+
+328
+00:20:59,390 --> 00:21:02,390
+la manera de pensar sobre esto es
+substituir los
+
+329
+00:21:02,390 --> 00:21:06,800
+argumentos por los parámetros
+formales en el cuerpo.
+
+330
+00:21:06,800 --> 00:21:10,590
+Si alguna vez están confundidos,
+piensen en las cosas de esa forma.
+
+331
+00:21:10,590 --> 00:21:14,730
+Bueno, aquí, con la suma de enteros,
+
+332
+00:21:14,730 --> 00:21:21,150
+substituyo la identidad por TERM y
+más uno,
+
+333
+00:21:21,150 --> 00:21:26,070
+el incrementador, por NEXT en el cuerpo.
+
+334
+00:21:26,070 --> 00:21:30,600
+Bueno, el procedimiento identidad en A
+es lo que tengo aquí.
+
+335
+00:21:30,600 --> 00:21:35,170
+La identidad está siendo pasado
+y aquí tengo
+
+336
+00:21:35,170 --> 00:21:41,040
+incrementar en uno siendo aplicado a A
+y más uno siendo
+
+337
+00:21:41,040 --> 00:21:42,980
+pasado.
+
+338
+00:21:42,980 --> 00:21:46,340
+¿Clarifica eso la situación?
+
+339
+00:21:46,340 --> 00:21:49,355
+También podríamos definir
+explícitamente esas dos
+
+340
+00:21:49,355 --> 00:21:51,300
+funciones y pasarlas.
+
+341
+00:21:51,300 --> 00:21:52,360
+Seguro.
+
+342
+00:21:52,360 --> 00:21:54,950
+Lo que podemos hacer es darles nombre,
+
+343
+00:21:54,950 --> 00:21:55,770
+justo como hice aquí.
+
+344
+00:21:55,770 --> 00:21:57,530
+De hecho, les di varias formas para
+que ustedes
+
+345
+00:21:57,530 --> 00:21:59,390
+puedan verlo. Una variedad.
+
+346
+00:21:59,390 --> 00:22:05,130
+Aquí, defino la cosa cuyo nombre pasé.
+
+347
+00:22:05,130 --> 00:22:07,850
+Lo referencio por su nombre.
+
+348
+00:22:07,850 --> 00:22:10,400
+Pero es en realidad este procedimiento
+de un argumento X,
+
+349
+00:22:10,400 --> 00:22:14,300
+que es X. Y el procedimiento identidad 
+es sólo
+
+350
+00:22:14,300 --> 00:22:20,870
+lambda de X X. Y eso es lo que ven aquí.
+
+351
+00:22:20,870 --> 00:22:26,190
+Aquí, escribí el nombre canónico para
+
+352
+00:22:26,190 --> 00:22:27,440
+que ustedes lo vean.
+
+353
+00:22:31,730 --> 00:22:33,020
+¿Nos tomamos un
+descanso de cinco minutos?
+
+354
+00:23:15,850 --> 00:23:19,780
+Como dije, computadoras para hacer
+feliz a la gente, no gente
+
+355
+00:23:19,780 --> 00:23:21,070
+para hacer feliz a la computadora.
+
+356
+00:23:21,070 --> 00:23:23,080
+La razón por la que introdujimos toda
+
+357
+00:23:23,080 --> 00:23:26,440
+esta abstracción es para que
+los programas puedan
+
+358
+00:23:26,440 --> 00:23:29,940
+ser más fácilmente escritos y 
+más fácilmente leídos.
+
+359
+00:23:29,940 --> 00:23:32,930
+Intentemos entender al programa
+más complicado
+
+360
+00:23:32,930 --> 00:23:36,280
+que vimos hasta ahora usando un poco
+
+361
+00:23:36,280 --> 00:23:38,120
+de abstracciones.
+
+362
+00:23:38,120 --> 00:23:44,560
+Si miran la diapositiva, 
+este el método de Herón de Alejandría
+
+363
+00:23:44,560 --> 00:23:51,590
+para computar raíces cuadradas
+que vimos ayer.
+
+364
+00:23:51,590 --> 00:23:56,460
+Veamos.
+
+365
+00:23:56,460 --> 00:24:00,780
+En cualquier caso, este programa
+es un poco
+
+366
+00:24:00,780 --> 00:24:01,805
+complicado.
+
+367
+00:24:01,805 --> 00:24:04,800
+Y en su estado pensamiento actual,
+no pueden
+
+368
+00:24:04,800 --> 00:24:07,320
+mirar eso y decir que
+significado algo
+
+369
+00:24:07,320 --> 00:24:10,380
+muy claramente.
+
+370
+00:24:10,380 --> 00:24:12,930
+No es evidente al mirar
+
+371
+00:24:12,930 --> 00:24:17,060
+al programa qué es lo que computa.
+
+372
+00:24:17,060 --> 00:24:21,890
+Hay un ciclo ahí dentro en TRY, 
+y el ciclo hace algo sobre
+
+373
+00:24:21,890 --> 00:24:26,030
+probar la mejora de 'y'.
+
+374
+00:24:26,030 --> 00:24:30,170
+Hay algo que se llama IMPROVE,
+que hace
+
+375
+00:24:30,170 --> 00:24:33,270
+algún promedio y cocientes y 
+cosas por el estilo.
+
+376
+00:24:33,270 --> 00:24:34,840
+Pero, ¿Cuál es la verdadera idea?
+
+377
+00:24:34,840 --> 00:24:38,930
+¿Podemos dejar en claro cuál es la idea?
+
+378
+00:24:38,930 --> 00:24:41,610
+Creo que sí.
+
+379
+00:24:41,610 --> 00:24:45,070
+Creo que podemos usar lo que aprendimos
+de abstracción hasta ahora
+
+380
+00:24:45,070 --> 00:24:48,990
+para clarificar lo que está pasando.
+
+381
+00:24:48,990 --> 00:24:54,720
+Tenemos matemáticamente
+un procedimiento
+
+382
+00:24:54,720 --> 00:24:58,411
+para mejorar una aproximación
+a una raíz cuadrada.
+
+383
+00:24:58,411 --> 00:25:02,610
+Y si 'y' es una aproximación de una raíz
+cuadrada, entonces lo que queremos
+
+384
+00:25:02,610 --> 00:25:04,570
+obtener --
+A esto lo llamaremos una función 'f'.
+
+385
+00:25:04,570 --> 00:25:07,660
+Es un medio de mejora.
+
+386
+00:25:07,660 --> 00:25:17,510
+Lo que quiero obtener es 'y' más 'x' dividido 'y' ,
+todo sobre dos, que es el promedio de 'y' y 'x'
+
+387
+00:25:17,510 --> 00:25:24,080
+dividido 'y' como el valor mejorado
+de la raíz cuadrada de 'x'.
+
+388
+00:25:24,080 --> 00:25:27,920
+Tal que -- Algo que pueden notar sobre
+esta función 'f'
+
+389
+00:25:27,920 --> 00:25:36,310
+es que 'f' de la raíz cuadrada de 'x'
+es de hecho
+
+390
+00:25:36,310 --> 00:25:38,460
+la raíz cuadrada de x.
+
+391
+00:25:38,460 --> 00:25:41,670
+Si tomo la raíz cuadrada de 'x' y
+
+392
+00:25:41,670 --> 00:25:44,930
+la substituyo por 'y' aquí, 
+tengo la raíz cuadrada de 'x' más
+
+393
+00:25:44,930 --> 00:25:47,560
+'x' dividido la raíz cuadrada de 'x',
+que es la raíz cuadrada de x.
+
+394
+00:25:47,560 --> 00:25:49,890
+Es decir, dos veces la raíz cuadrada de 'x'
+dividido dos, que es
+
+395
+00:25:49,890 --> 00:25:51,640
+la raíz cuadrada de 'x'.
+
+396
+00:25:51,640 --> 00:25:55,630
+Así que, en efecto, lo que 
+estamos haciendo es buscar
+
+397
+00:25:55,630 --> 00:26:12,850
+un punto fijo, un punto fijo de la función 'f'.
+
+398
+00:26:17,570 --> 00:26:22,650
+Un punto fijo es un lugar 
+que tiene la propiedad de que si
+
+399
+00:26:22,650 --> 00:26:24,850
+lo ponés en la función, 
+obtienes el mismo valor.
+
+400
+00:26:27,620 --> 00:26:29,700
+Supongo que si estuviera dando
+una linda y aburrida
+
+401
+00:26:29,700 --> 00:26:34,480
+clase, y ustedes tuvieran enfrente una
+calculadora de escritorio
+
+402
+00:26:34,480 --> 00:26:36,380
+HP-35 como yo lo tenía cuando
+
+403
+00:26:36,380 --> 00:26:38,170
+iba a clases aburridas,
+
+404
+00:26:38,170 --> 00:26:41,120
+y si pensaran que fuera realmente
+aburrida, la pondrían en
+
+405
+00:26:41,120 --> 00:26:44,720
+modo de radianes, apretarían coseno
+y apretarían coseno
+
+406
+00:26:44,720 --> 00:26:45,780
+y apretarían coseno.
+
+407
+00:26:45,780 --> 00:26:48,770
+Y eventualmente, obtendrían 0.734 o
+
+408
+00:26:48,770 --> 00:26:50,090
+algo parecido.
+
+409
+00:26:50,090 --> 00:26:53,250
+0.743, no recuerdo exactamente,
+y cada vez
+
+410
+00:26:53,250 --> 00:26:54,810
+se acerca más y más a eso.
+
+411
+00:26:54,810 --> 00:26:57,980
+Algunas funciones tiene la propiedad
+de que puedes hallar
+
+412
+00:26:57,980 --> 00:27:03,420
+su punto fijo iterando la función, y eso
+
+413
+00:27:03,420 --> 00:27:07,170
+es lo que esencialmente está ocurriendo
+en el programa de raíz cuadrada con
+
+414
+00:27:07,170 --> 00:27:08,420
+el método de Herón.
+
+415
+00:27:11,550 --> 00:27:14,732
+Veamos si podemos escribir esa idea.
+
+416
+00:27:14,732 --> 00:27:17,670
+No les voy a decir cómo computo
+puntos fijos por ahora.
+
+417
+00:27:17,670 --> 00:27:19,240
+Quizá haya más de una manera.
+
+418
+00:27:19,240 --> 00:27:22,750
+Pero lo primero que haré es escribir
+
+419
+00:27:22,750 --> 00:27:24,310
+lo que dije recién.
+
+420
+00:27:24,310 --> 00:27:27,460
+Lo haré específicamente 
+para la raíz cuadrada.
+
+421
+00:27:32,440 --> 00:27:48,210
+La raíz cuadrada de 'x' es el
+punto fijo del procedimiento
+
+422
+00:27:48,210 --> 00:27:59,180
+que toma un argumento 'y'
+y promedia 'x'
+
+423
+00:27:59,180 --> 00:28:02,330
+dividido 'y' e 'y'.
+
+424
+00:28:05,620 --> 00:28:08,120
+Y vamos a comenzar 
+con una estimación inicial para el
+
+425
+00:28:08,120 --> 00:28:09,630
+punto fijo igual a uno.
+
+426
+00:28:09,630 --> 00:28:11,860
+No importa dónde empieza.
+
+427
+00:28:11,860 --> 00:28:13,940
+Un teorema que tiene que ver 
+con raíces cuadradas.
+
+428
+00:28:18,610 --> 00:28:21,410
+Lo que están viendo aquí
+es que estoy intentando escribir
+
+429
+00:28:21,410 --> 00:28:22,560
+con un pensamiento ilusorio.
+
+430
+00:28:22,560 --> 00:28:24,380
+No sé cómo voy a 
+calcular el punto fijo.
+
+431
+00:28:24,380 --> 00:28:26,290
+Nos preocuparemos de eso luego.
+
+432
+00:28:26,290 --> 00:28:29,570
+Pero si de alguna manera, tuviera 
+alguna forma para hallar el punto fijo de
+
+433
+00:28:29,570 --> 00:28:33,590
+la función computada por 
+este procedimiento, entonces tendría--
+
+434
+00:28:33,590 --> 00:28:36,120
+Eso sería la raíz cuadrada que estoy buscando.
+
+435
+00:28:39,770 --> 00:28:41,500
+Ahora veamos cómo vamos a escribir--
+
+436
+00:28:41,500 --> 00:28:43,470
+Cómo vamos a obtener los puntos fijos.
+
+437
+00:28:43,470 --> 00:28:44,890
+Es bastante simple de hecho.
+
+438
+00:28:44,890 --> 00:28:47,180
+Voy a escribir una versión abreviada aquí
+
+439
+00:28:47,180 --> 00:28:48,430
+para que la entendamos.
+
+440
+00:29:00,450 --> 00:29:03,310
+Voy a hallar el punto fijo 
+de una función 'f' --
+
+441
+00:29:03,310 --> 00:29:06,140
+en realidad, el punto fijo de la función
+computada por el
+
+442
+00:29:06,140 --> 00:29:09,990
+procedimiento cuyo nombre será 'f'
+en este procedimiento.
+
+443
+00:29:09,990 --> 00:29:11,025
+¿Qué les parece?
+
+444
+00:29:11,025 --> 00:29:13,230
+Una oración larga--
+
+445
+00:29:13,230 --> 00:29:14,820
+Empezando con un valor 
+inicial particular.
+
+446
+00:29:19,920 --> 00:29:22,660
+Voy a tener un pequeño ciclo aquí,
+
+447
+00:29:22,660 --> 00:29:25,800
+que apretará el botón 
+de la calculadora repetidamente,
+
+448
+00:29:25,800 --> 00:29:28,940
+con la esperanza de que 
+eventualmente converga.
+
+449
+00:29:28,940 --> 00:29:35,290
+Y diremos aquí--
+Los ciclos internos se escriben definiendo
+
+450
+00:29:35,290 --> 00:29:36,540
+procedimientos internos.
+
+451
+00:29:39,340 --> 00:29:41,860
+Algo que voy a tener que hacer es decir
+
+452
+00:29:41,860 --> 00:29:43,690
+cuándo terminé.
+
+453
+00:29:43,690 --> 00:29:45,410
+Y la manera en que decidiré
+cuándo terminé es cuando
+
+454
+00:29:45,410 --> 00:29:47,760
+el viejo valor y el nuevo están
+tan cerca que ya
+
+455
+00:29:47,760 --> 00:29:50,820
+no los puedo distinguir.
+
+456
+00:29:50,820 --> 00:29:53,510
+Eso es lo que comúnmente 
+haces en la calculadora a menos que
+
+457
+00:29:53,510 --> 00:29:54,970
+busque más precisión, 
+aunque eventualmente
+
+458
+00:29:54,970 --> 00:29:57,820
+te quedas sin más precisión.
+
+459
+00:29:57,820 --> 00:30:06,530
+Así que los valores viejo y nuevo
+y diré aquí
+
+460
+00:30:06,530 --> 00:30:14,758
+que si no puedo distinguirlos,
+si están lo bastante cerca, --
+
+461
+00:30:14,758 --> 00:30:16,830
+y nos tendremos que preocupar 
+de eso dentro de poco --
+
+462
+00:30:20,780 --> 00:30:22,580
+Si los valores viejo y nuevo
+están lo bastante cerca entre sí,
+
+463
+00:30:22,580 --> 00:30:25,880
+entonces elegiremos 
+el nuevo valor como la respuesta.
+
+464
+00:30:25,880 --> 00:30:33,520
+En caso contrario, voy a iterar
+con el nuevo valor
+
+465
+00:30:33,520 --> 00:30:39,020
+para OLD como el actual valor de NEW
+
+466
+00:30:39,020 --> 00:30:43,160
+y el nuevo valor de NEW como 
+el resultado de llamar a 'f' de NEW.
+
+467
+00:30:54,810 --> 00:30:57,680
+Y esta es mi ciclo de iteración
+que presiona el botón
+
+468
+00:30:57,680 --> 00:30:58,600
+de la calculadora.
+
+469
+00:30:58,600 --> 00:31:00,760
+Básicamente pienso en ellos como
+tener dos registros en la
+
+470
+00:31:00,760 --> 00:31:02,495
+calculadora: OLD y NEW.
+
+471
+00:31:02,495 --> 00:31:09,070
+Y en cada paso, NEW se convierte en OLD
+y F de NEW se convierte en NEW.
+
+472
+00:31:09,070 --> 00:31:13,080
+Aquí es dónde obtengo
+el siguiente valor.
+
+473
+00:31:13,080 --> 00:31:20,970
+Y ahora, voy a empezar esto
+
+474
+00:31:20,970 --> 00:31:22,220
+dándole dos valores.
+
+475
+00:31:28,470 --> 00:31:30,570
+Escribí lento en el pizarrón
+
+476
+00:31:30,570 --> 00:31:31,640
+para que puedan ver esto.
+
+477
+00:31:31,640 --> 00:31:34,650
+Es la primera vez que ven algo tan
+
+478
+00:31:34,650 --> 00:31:37,700
+complicado, creo.
+
+479
+00:31:37,700 --> 00:31:44,710
+Sin embargo, quizá querramos ver todo esto
+
+480
+00:31:44,710 --> 00:31:50,720
+en la transparencia o diapositiva.
+
+481
+00:31:50,720 --> 00:31:57,200
+Lo que tenemos aquí son todos
+los detalles requeridos para
+
+482
+00:31:57,200 --> 00:31:58,500
+hacer funcionar a esta cosa.
+
+483
+00:31:58,500 --> 00:32:01,660
+Tengo una manera para dar
+una tolerancia para el procedimiento 'close-enuf?',
+
+484
+00:32:01,660 --> 00:32:03,080
+que vemos aquí.
+
+485
+00:32:03,080 --> 00:32:06,030
+El procedimiento 'close-enuf?' 
+prueba si 'u' y 'v' están
+
+486
+00:32:06,030 --> 00:32:09,170
+lo suficientemente cerca mirando 
+si el valor absoluto de la
+
+487
+00:32:09,170 --> 00:32:12,460
+diferencia entre 'u' y 'v' es menor
+que la tolerancia dada.
+
+488
+00:32:12,460 --> 00:32:14,440
+Y aquí está el ciclo de iteración
+que escribí en el
+
+489
+00:32:14,440 --> 00:32:17,930
+pizarrón y una inicialización para éste,
+
+490
+00:32:17,930 --> 00:32:19,180
+que está aquí.
+
+491
+00:32:21,680 --> 00:32:22,930
+Es muy simple.
+
+492
+00:32:34,210 --> 00:32:34,880
+Pero veamos.
+
+493
+00:32:34,880 --> 00:32:36,630
+No les dije suficiente.
+
+494
+00:32:36,630 --> 00:32:39,500
+En realidad es más fácil que esto.
+
+495
+00:32:39,500 --> 00:32:42,120
+Hay más estructura para este problema
+de la que ya
+
+496
+00:32:42,120 --> 00:32:43,310
+les comenté.
+
+497
+00:32:43,310 --> 00:32:45,700
+¿Por qué esto debería funcionar?
+
+498
+00:32:45,700 --> 00:32:48,070
+¿Por qué debería converger?
+
+499
+00:32:48,070 --> 00:32:50,930
+Hay un teorema matemático aquí
+
+500
+00:32:50,930 --> 00:32:52,760
+en esto que he escrito.
+
+501
+00:32:52,760 --> 00:32:55,890
+¿Por qué es que asumo que 
+al iterar y promediar
+
+502
+00:32:55,890 --> 00:32:57,780
+el cociente de 'x' e 'y' e 'y'
+
+503
+00:32:57,780 --> 00:33:00,110
+obtendré la respuesta correcta?
+
+504
+00:33:00,110 --> 00:33:01,360
+No es tan obvio.
+
+505
+00:33:03,710 --> 00:33:07,280
+Seguramente hay otros procedimientos que
+
+506
+00:33:07,280 --> 00:33:09,870
+computan funciones cuyo punto fijo 
+también sería
+
+507
+00:33:09,870 --> 00:33:12,040
+la raíz cuadrada.
+
+508
+00:33:12,040 --> 00:33:20,480
+Por ejemplo, el más obvio sería
+una nueva función 'g',
+
+509
+00:33:20,480 --> 00:33:25,330
+que envía 'y' a 'x/y'.
+
+510
+00:33:27,950 --> 00:33:30,870
+Es incluso más simple.
+
+511
+00:33:30,870 --> 00:33:34,540
+El punto fijo de 'g' es también
+la raíz cuadrada y es
+
+512
+00:33:34,540 --> 00:33:37,400
+un procedimiento más simple.
+
+513
+00:33:37,400 --> 00:33:39,020
+¿Por qué no lo estoy usando?
+
+514
+00:33:39,020 --> 00:33:40,470
+Bueno, supongo que saben.
+
+515
+00:33:40,470 --> 00:33:44,970
+Supongamos que 'x' es dos 
+y que empiezo con uno y si divido dos
+
+516
+00:33:44,970 --> 00:33:47,700
+por uno, obtengo dos.
+
+517
+00:33:47,700 --> 00:33:49,610
+Y luego si divido dos por dos, obtengo uno.
+
+518
+00:33:49,610 --> 00:33:52,740
+Y si divido dos por uno, obtengo dos,
+y dos por dos, obtengo uno y
+
+519
+00:33:52,740 --> 00:33:55,480
+nunca me acerco a la raíz cuadrada.
+
+520
+00:33:55,480 --> 00:33:56,730
+Sólamente oscila.
+
+521
+00:33:59,080 --> 00:34:03,110
+Lo que tenemos aquí es un sistema
+de procesamiento de señal,
+
+522
+00:34:03,110 --> 00:34:06,230
+un circuito eléctico que está
+oscilando y yo quiero
+
+523
+00:34:06,230 --> 00:34:07,480
+amortiguar esas oscilaciones.
+
+524
+00:34:10,530 --> 00:34:11,840
+Bueno, puedo hacerlo.
+
+525
+00:34:11,840 --> 00:34:14,190
+Verán, lo que realmente 
+estoy haciendo al tomar mi
+
+526
+00:34:14,190 --> 00:34:17,290
+promedio, es promediar 
+los últimos dos valores
+
+527
+00:34:17,290 --> 00:34:21,350
+de algo que oscila,
+obteniendo algo en el medio.
+
+528
+00:34:21,350 --> 00:34:24,480
+La manera clásica de amortiguar
+oscilaciones en un sistema
+
+529
+00:34:24,480 --> 00:34:25,730
+de procesamiento de señal.
+
+530
+00:34:28,460 --> 00:34:31,719
+¿Así que por qué no escribimos
+la estrategia que acabo de contar
+
+531
+00:34:31,719 --> 00:34:33,871
+de una manera más clara?
+
+532
+00:34:33,871 --> 00:34:35,520
+Es bastante fácil.
+
+533
+00:34:38,639 --> 00:34:53,790
+Voy a definir la raíz cuadradada de 'x'
+como el punto fijo
+
+534
+00:34:53,790 --> 00:34:58,510
+del procedimiento que resulta
+en amortiguar promedios.
+
+535
+00:34:58,510 --> 00:35:10,780
+Así que tengo un procedimiento que resulta
+en amortiguar promedios
+
+536
+00:35:10,780 --> 00:35:24,820
+del procedimiento que recibe 'y' 
+y divide 'x' por 'y'
+
+537
+00:35:24,820 --> 00:35:26,070
+empezando por uno.
+
+538
+00:35:29,840 --> 00:35:33,520
+Pero 'average-dump' es un procedimiento
+especial que va
+
+539
+00:35:33,520 --> 00:35:35,720
+a tomar un procedimiento como su argumento
+y retornará
+
+540
+00:35:35,720 --> 00:35:38,080
+un procedimiento como su resultado.
+
+541
+00:35:38,080 --> 00:35:42,090
+Es una generalización que dice que
+dado un procedimiento,
+
+542
+00:35:42,090 --> 00:35:45,090
+es la cosa que produce un procedimiento
+que promedia el
+
+543
+00:35:45,090 --> 00:35:47,980
+último valor y el valor anterior y posterior
+
+544
+00:35:47,980 --> 00:35:51,320
+del procedimiento.
+
+545
+00:35:51,320 --> 00:35:53,260
+Lo pueden usar para cualquiera cosa
+si quieren amortiguar
+
+546
+00:35:53,260 --> 00:35:54,880
+oscilaciones.
+
+547
+00:35:54,880 --> 00:35:56,495
+Escribámoslo.
+
+548
+00:35:56,495 --> 00:35:57,745
+Es bastante fácil.
+
+549
+00:36:00,624 --> 00:36:04,590
+Y estilísticamente, 
+voy a usar la notación lambda
+
+550
+00:36:04,590 --> 00:36:06,950
+porque es mucho más simple de pensar
+cuando estás lidiando con
+
+551
+00:36:06,950 --> 00:36:08,845
+procedimientos, para enteder que
+
+552
+00:36:08,845 --> 00:36:11,552
+los procedimientos son los objetos
+con los que estoy tratando, así que
+
+553
+00:36:11,552 --> 00:36:13,830
+voy a usar la notación lambda aquí.
+
+554
+00:36:13,830 --> 00:36:14,490
+No siempre.
+
+555
+00:36:14,490 --> 00:36:18,110
+No siempre voy a usarla, sino aquí
+específicamente para
+
+556
+00:36:18,110 --> 00:36:22,040
+expandir en la idea, para elucidarla.
+
+557
+00:36:28,590 --> 00:36:33,810
+Bueno, 'average-damp' 
+es un procedimiento que toma
+
+558
+00:36:33,810 --> 00:36:37,560
+a otro procedimiento como argumento,
+al que llamaremos 'f'.
+
+559
+00:36:37,560 --> 00:36:38,710
+¿Y qué produce?
+
+560
+00:36:38,710 --> 00:36:40,340
+Produce como su valor--
+
+561
+00:36:40,340 --> 00:36:43,890
+El cuerpo de este procedimiento
+es una cosa que produce un
+
+562
+00:36:43,890 --> 00:36:47,260
+procedimiento, la construcción 
+del procedimiento está aquí,
+
+563
+00:36:47,260 --> 00:37:00,440
+de un argumento 'x' 
+y que promedia 'x' con 'f(x)'.
+
+564
+00:37:10,420 --> 00:37:14,070
+Esto es algo muy especial.
+
+565
+00:37:14,070 --> 00:37:17,730
+Creo que es la primera vez
+que ven un procedimiento
+
+566
+00:37:17,730 --> 00:37:21,730
+que produce un procedimiento
+como su valor.
+
+567
+00:37:21,730 --> 00:37:25,690
+El procedimiento toma el 
+procedimiento 'f' y hace algo
+
+568
+00:37:25,690 --> 00:37:29,360
+con el para producir un nuevo
+procedimiento de un argumento 'x',
+
+569
+00:37:29,360 --> 00:37:31,050
+que promedia 'f'--
+
+570
+00:37:31,050 --> 00:37:31,950
+Esta f--
+
+571
+00:37:31,950 --> 00:37:36,040
+aplicada a 'x' con 'x' mismo.
+
+572
+00:37:36,040 --> 00:37:40,280
+Usando el contexto aquí, aplico
+'average-damping' al
+
+573
+00:37:40,280 --> 00:37:44,670
+procedimiento, que divide 'x' por 'y'.
+
+574
+00:37:44,670 --> 00:37:45,920
+Es una división.
+
+575
+00:37:48,122 --> 00:37:51,980
+Y estoy buscando el punto fijo de eso,
+y esa es una manera más
+
+576
+00:37:51,980 --> 00:37:54,460
+clara de escribir lo que escribí
+
+577
+00:37:54,460 --> 00:37:57,796
+por aquí, donde sea que esté.
+
+578
+00:37:57,796 --> 00:38:01,110
+Aquí. Porque me dice porqué estoy
+escribiendo esto.
+
+579
+00:38:07,910 --> 00:38:11,110
+Supongo que esto clarifica
+en cierta medida lo que Herón
+
+580
+00:38:11,110 --> 00:38:14,260
+de Alejandría pensaba.
+
+581
+00:38:14,260 --> 00:38:15,130
+Supongo que voy a parar ahora.
+
+582
+00:38:15,130 --> 00:38:16,380
+¿Hay alguna pregunta?
+
+583
+00:38:18,190 --> 00:38:21,282
+¿Cuándo defines 'average-damp'
+no necesitas
+
+584
+00:38:21,282 --> 00:38:25,210
+tener una variable en 'f'?
+
+585
+00:38:25,210 --> 00:38:28,150
+La pregunta fue
+y aquí tenemos,
+
+586
+00:38:28,150 --> 00:38:29,900
+de nuevo, van a tener que
+aprender la sintaxis.
+
+587
+00:38:29,900 --> 00:38:33,840
+La pregunta fue si al definir
+'average-damp' no necesito tener
+
+588
+00:38:33,840 --> 00:38:38,070
+una variable definida con 'f'.
+
+589
+00:38:38,070 --> 00:38:40,310
+¿Estás preguntando por el parámetro
+formal de 'f'?
+
+590
+00:38:40,310 --> 00:38:41,290
+Sí.
+
+591
+00:38:41,290 --> 00:38:42,810
+Bien.
+
+592
+00:38:42,810 --> 00:38:45,580
+El parámetro formal de 'f' está aquí.
+
+593
+00:38:45,580 --> 00:38:47,318
+El parámetro formal de 'f'--
+
+594
+00:38:47,318 --> 00:38:50,190
+El parámetro formal de 'average-damp'.
+
+595
+00:38:50,190 --> 00:38:51,890
+'f' está siendo usada para aplicarla
+
+596
+00:38:51,890 --> 00:38:54,400
+a un argumento, ¿verdad?.
+
+597
+00:38:54,400 --> 00:38:57,780
+Es cierto que 'f' tiene que tener
+un parámetro formal.
+
+598
+00:38:57,780 --> 00:39:00,380
+Veamos cuál es el parámetro
+formal de 'f'.
+
+599
+00:39:00,380 --> 00:39:02,440
+El parámetro formal de 'average-dump'.
+
+600
+00:39:02,440 --> 00:39:04,700
+'f' es el parámetro formal
+de 'average-dump'.
+
+601
+00:39:04,700 --> 00:39:05,500
+Lo siento.
+
+602
+00:39:05,500 --> 00:39:07,910
+Estás confundiendo algo sintáctico.
+
+603
+00:39:07,910 --> 00:39:10,470
+Podría haber escrito esto de la otra manera.
+
+604
+00:39:10,470 --> 00:39:12,520
+No había entendido tu pregunta.
+
+605
+00:39:12,520 --> 00:39:13,910
+Por supuesto, podría haber escrito
+de esta otra manera.
+
+606
+00:39:19,340 --> 00:39:21,540
+Estas son notaciones idénticas.
+
+607
+00:39:21,540 --> 00:39:25,607
+Es una manera diferente de escribir esto.
+
+608
+00:39:31,710 --> 00:39:33,280
+Vas a tener que acostumbrarte
+a la notación lambda
+
+609
+00:39:33,280 --> 00:39:35,520
+porque voy a usarla.
+
+610
+00:39:35,520 --> 00:39:40,460
+Lo que dice aquí es: estoy definiendo
+el nombre 'average-dump'
+
+611
+00:39:40,460 --> 00:39:44,600
+para nombrar al procedimiento
+cuyo único argumento es 'f'.
+
+612
+00:39:44,600 --> 00:39:49,250
+Ése es el parámetro formal
+del procedimiento 'average-dump'.
+
+613
+00:39:49,250 --> 00:39:56,550
+Lo que hace 'define' es 
+dale a este nombre este valor.
+
+614
+00:39:56,550 --> 00:39:57,860
+Este es el valor.
+
+615
+00:40:01,310 --> 00:40:05,100
+Eso de allí resulta ser una sintaxis rara
+para hacerlo
+
+616
+00:40:05,100 --> 00:40:08,085
+más fácil es algunos casos.
+Es puramente por conveniencia.
+
+617
+00:40:10,900 --> 00:40:14,540
+Pero la razón por la que lo escribí así
+aquí es para enfatizar
+
+618
+00:40:14,540 --> 00:40:16,530
+que estoy tratando 
+con un procedimiento que toma
+
+619
+00:40:16,530 --> 00:40:18,100
+a un procedimiento como su argumento
+y produce un
+
+620
+00:40:18,100 --> 00:40:19,350
+procedimiento como su valor.
+
+621
+00:40:23,640 --> 00:40:25,800
+No entiendo por qué usas lambda dos veces.
+
+622
+00:40:25,800 --> 00:40:27,760
+¿No podría usar una única lambda
+y tomar dos
+
+623
+00:40:27,760 --> 00:40:29,230
+argumentos 'f' y 'x'?
+
+624
+00:40:29,230 --> 00:40:29,520
+No.
+
+625
+00:40:29,520 --> 00:40:30,330
+¿No puedes?
+
+626
+00:40:30,330 --> 00:40:32,500
+No, eso sería algo diferente.
+
+627
+00:40:32,500 --> 00:40:36,190
+Si fuera a escribir el procedimiento
+lambda de 'f' y 'x',
+
+628
+00:40:36,190 --> 00:40:40,090
+el promedio de 'f' de 'x' y 'x',
+eso no sería algo a lo que se
+
+629
+00:40:40,090 --> 00:40:42,810
+le permitiera tomar un procedimiento 
+como argumento y que
+
+630
+00:40:42,810 --> 00:40:44,580
+produjera un procedimiento como su valor.
+
+631
+00:40:44,580 --> 00:40:46,330
+Eso sería algo que toma un procedimiento
+
+632
+00:40:46,330 --> 00:40:48,700
+como su argumento y 
+un número como su argumento y
+
+633
+00:40:48,700 --> 00:40:50,620
+produce un nuevo número.
+
+634
+00:40:50,620 --> 00:40:53,650
+Pero lo que estoy produciendo aquí
+es un procedimiento para que ocupe
+
+635
+00:40:53,650 --> 00:40:56,090
+el espacio aquí arriba,
+que será
+
+636
+00:40:56,090 --> 00:40:58,860
+usado aquí.
+
+637
+00:40:58,860 --> 00:41:01,450
+Así que el número tiene que venir de aquí.
+
+638
+00:41:01,450 --> 00:41:04,440
+Esta es la cosa que eventualmente
+terminará en el 'x'.
+
+639
+00:41:04,440 --> 00:41:07,810
+Y si estás confundido, podrías
+hacer alguna sustituciones
+
+640
+00:41:07,810 --> 00:41:09,060
+y ver por ti mismo.
+
+641
+00:41:12,010 --> 00:41:12,746
+¿Sí?
+
+642
+00:41:12,746 --> 00:41:15,870
+¿Podrías mostrar la definición de 'average-
+
+643
+00:41:15,870 --> 00:41:19,320
+damp' sin usar la notación lambda
+en ninguno de los dos casos?
+
+644
+00:41:19,320 --> 00:41:21,490
+No puedo hacer uno tan simple como ese.
+
+645
+00:41:21,490 --> 00:41:22,990
+Sin embargo, déjenme hacerlo por ustedes.
+
+646
+00:41:22,990 --> 00:41:26,530
+Puedo deshacerme de este lambda
+fácilmente.
+
+647
+00:41:26,530 --> 00:41:27,780
+No quiero ser--
+
+648
+00:41:32,760 --> 00:41:33,810
+De hecho, les estoy mintiendo.
+
+649
+00:41:33,810 --> 00:41:37,170
+No quiero hacer lo que pides
+porque pienso que es más
+
+650
+00:41:37,170 --> 00:41:39,310
+confuso que lo que piensas.
+
+651
+00:41:39,310 --> 00:41:40,560
+No voy a escribir lo que quieres.
+
+652
+00:41:55,450 --> 00:41:56,500
+Así que vamos a tener que ponerle un nombre.
+
+653
+00:41:56,500 --> 00:42:13,370
+FOO de 'x' es -- De F de 'x' y 'x',
+y retorna FOO como valor.
+
+654
+00:42:17,140 --> 00:42:20,406
+Esto es equivalente, pero tuve que
+inventar un nombre
+
+655
+00:42:20,406 --> 00:42:21,700
+arbitrario para él.
+
+656
+00:42:21,700 --> 00:42:26,290
+Esto es equivalente a esto sin los lambdas
+
+657
+00:42:26,290 --> 00:42:31,240
+Lambda es muy conveniente para nombrar
+procedimiento anónimos.
+
+658
+00:42:31,240 --> 00:42:34,080
+Es el nombre anónimo de algo.
+
+659
+00:42:34,080 --> 00:42:39,780
+Ahora bien, si realmente quiere conocer
+una linda manera de hacer esto,
+
+660
+00:42:39,780 --> 00:42:41,820
+lo hablaremos luego.
+
+661
+00:42:41,820 --> 00:42:44,680
+Vamos a tener que definir
+el procedimiento anónimo.
+
+662
+00:42:44,680 --> 00:42:45,930
+¿Alguna otra pregunta?
+
+663
+00:42:49,116 --> 00:42:50,880
+Vamos a otro descanso.
+
+664
+00:43:31,740 --> 00:43:35,380
+Ahora hemos visto como usar
+procedimiento de algo orden,
+
+665
+00:43:35,380 --> 00:43:36,490
+así es como se llaman,
+
+666
+00:43:36,490 --> 00:43:38,570
+que son procedimiento que toman
+argumentos procedurales y
+
+667
+00:43:38,570 --> 00:43:43,310
+producen valores procedurales para
+ayudarnos a clarificar y abstraer
+
+668
+00:43:43,310 --> 00:43:46,470
+procesos que de otra manera
+serían muy complicados.
+
+669
+00:43:46,470 --> 00:43:48,500
+Supongo que lo que quiero hacer ahora
+es divertirme un poco
+
+670
+00:43:48,500 --> 00:43:54,080
+con eso y practicarlo también
+
+671
+00:43:54,080 --> 00:43:56,290
+Así que juguemos con la raíz cuadrada
+una vez más.
+
+672
+00:43:56,290 --> 00:43:59,800
+Ahondemos en ello y entendamos
+lo que está ocurriendo y
+
+673
+00:43:59,800 --> 00:44:04,270
+hagamos uso de esta estilo de programación.
+
+674
+00:44:04,270 --> 00:44:08,680
+Algo que quizá sepan, 
+es que hay un método general
+
+675
+00:44:08,680 --> 00:44:12,990
+llamado método de Newton cuyo propósito es
+
+676
+00:44:12,990 --> 00:44:15,180
+hallar las raíces--
+
+677
+00:44:15,180 --> 00:44:17,280
+es decir los ceros--
+
+678
+00:44:17,280 --> 00:44:19,130
+de funciones.
+
+679
+00:44:19,130 --> 00:44:38,420
+Por ejemplo, para hallar un 'y' 
+tal que 'f(y)' sea cero,
+
+680
+00:44:38,420 --> 00:44:40,280
+empezamos con una estimación inicial.
+
+681
+00:44:40,280 --> 00:44:41,530
+Ese es el método de Newton.
+
+682
+00:44:51,260 --> 00:44:55,860
+Y la estimación con la que empezamos
+la llamaremos 'y0', y luego
+
+683
+00:44:55,860 --> 00:45:01,100
+iteraremos la siguiente expresión.
+
+684
+00:45:01,100 --> 00:45:04,880
+'y' 'n+1'-- esta es una ecuación diferente--
+
+685
+00:45:04,880 --> 00:45:17,366
+es 'yn' menos 'f(yn)' sobre la derivada
+respecto de 'y'
+
+686
+00:45:17,366 --> 00:45:23,270
+de 'f' evaluada en 'y' igual a 'yn'
+
+687
+00:45:23,270 --> 00:45:26,430
+Una notación muy extraña.
+
+688
+00:45:26,430 --> 00:45:31,700
+Debo decir--
+
+689
+00:45:31,700 --> 00:45:35,990
+La derivada de 'f' respecto de 'y'
+es una función.
+
+690
+00:45:35,990 --> 00:45:38,420
+Estoy un poco infeliz con eso, pero
+
+691
+00:45:38,420 --> 00:45:39,120
+está bien.
+
+692
+00:45:39,120 --> 00:45:41,050
+Resulta que en el mundo de
+los lenguajes de programación
+
+693
+00:45:41,050 --> 00:45:43,930
+la notación es mucho más clara.
+
+694
+00:45:43,930 --> 00:45:45,950
+Ahora bien, ¿Qué es esto?
+
+695
+00:45:45,950 --> 00:45:47,330
+La gente lo llama 
+el método de Newton.
+
+696
+00:45:47,330 --> 00:45:54,250
+Es un método para hallar
+las raíces de una función 'f'.
+
+697
+00:45:54,250 --> 00:45:56,410
+Y, por supuesto, a veces converge,
+y cuando lo hace,
+
+698
+00:45:56,410 --> 00:45:59,310
+lo hace muy rápido. Y a veces,
+
+699
+00:45:59,310 --> 00:46:03,230
+no converge, y bueno, 
+tenemos que hacer otra cosa.
+
+700
+00:46:03,230 --> 00:46:07,190
+Pero hablemos de raíz cuadrada 
+por el método de Newton.
+
+701
+00:46:07,190 --> 00:46:08,680
+Bueno, es bastante interesante.
+
+702
+00:46:08,680 --> 00:46:11,340
+Hagamos exactamente lo mismo
+que hicimos la última vez: un poco
+
+703
+00:46:11,340 --> 00:46:13,490
+de pensamiento ilusorio.
+
+704
+00:46:13,490 --> 00:46:18,210
+Aplicaremos el método de Newton,
+asumiendo que sabemos cómo hacerlo.
+
+705
+00:46:18,210 --> 00:46:20,620
+No saben como hacerlo aún.
+
+706
+00:46:20,620 --> 00:46:21,870
+Bueno, vamos.
+
+707
+00:46:25,090 --> 00:46:26,070
+¿Qué tengo aquí?
+
+708
+00:46:26,070 --> 00:46:27,320
+La raíz cuadrada de 'x'.
+
+709
+00:46:31,410 --> 00:46:37,480
+Es el método de Newton, aplicado
+a un procedimiento que
+
+710
+00:46:37,480 --> 00:46:39,990
+representará esa función de 'y',
+que computará esa
+
+711
+00:46:39,990 --> 00:46:42,480
+función de 'y'.
+
+712
+00:46:42,480 --> 00:46:48,820
+Bueno, ese procedimiento es 
+el procedimiento de 'y' que es la
+
+713
+00:46:48,820 --> 00:46:51,810
+diferencia entre 'x' y el cuadrado de 'y'.
+
+714
+00:47:00,080 --> 00:47:07,570
+En efecto, si tuviera un valor de 'y' para el cual
+esto fuera cero, entonces
+
+715
+00:47:07,570 --> 00:47:10,020
+'y' sería la raíz cuadrada de 'x'.
+
+716
+00:47:13,730 --> 00:47:15,550
+¿Ven eso?
+
+717
+00:47:15,550 --> 00:47:19,250
+Bien, voy a empezar a buscando por uno.
+
+718
+00:47:19,250 --> 00:47:23,570
+De nuevo, es por una propiedad completamente
+arbitraria de la raíces cuadradas
+
+719
+00:47:23,570 --> 00:47:24,820
+que puedo hacer eso.
+
+720
+00:47:27,950 --> 00:47:31,480
+Ahora bien, ¿cómo voy a computar
+el método de Newton?
+
+721
+00:47:31,480 --> 00:47:32,170
+Bueno, este es el método.
+
+722
+00:47:32,170 --> 00:47:34,310
+Lo tengo aquí.
+
+723
+00:47:34,310 --> 00:47:37,740
+De hecho, lo que estoy haciendo
+es buscar el punto fijo de
+
+724
+00:47:37,740 --> 00:47:41,240
+algún procedimiento.
+
+725
+00:47:41,240 --> 00:47:45,190
+Este procedimiento involucra
+alguna expresiones complicadas
+
+726
+00:47:45,190 --> 00:47:47,150
+en término de otras cosas complicadas.
+
+727
+00:47:47,150 --> 00:47:48,800
+Bueno, voy a intentar hallar
+el punto fijo de esto.
+
+728
+00:47:48,800 --> 00:47:54,620
+Quiero hallar los valores de 'y'
+para los que si pongo 'y' aquí,
+
+729
+00:47:54,620 --> 00:48:00,130
+obtengo el mismo valor aquí,
+con algún grado de precisión.
+
+730
+00:48:00,130 --> 00:48:02,710
+Bueno, ya tengo un proceso
+de punto fijo
+
+731
+00:48:02,710 --> 00:48:05,040
+para que haga eso.
+
+732
+00:48:05,040 --> 00:48:07,350
+Así que definamos el método de Newton aquí.
+
+733
+00:48:19,430 --> 00:48:21,680
+Un procedimiento que computa una función y
+
+734
+00:48:21,680 --> 00:48:26,640
+una estimación inicial.
+
+735
+00:48:26,640 --> 00:48:28,920
+Voy a tener que hacer algo aquí.
+
+736
+00:48:28,920 --> 00:48:33,280
+Voy a necesitar la derivada de la función.
+
+737
+00:48:33,280 --> 00:48:36,550
+Voy a necesitar un procedimiento 
+que calcule la derivada
+
+738
+00:48:36,550 --> 00:48:39,490
+de la función computada 
+por el procedimiento 'f'.
+
+739
+00:48:42,140 --> 00:48:44,440
+Voy a tener mucho cuidado con lo que digo.
+
+740
+00:48:44,440 --> 00:48:46,270
+No quiero mezclar las palabras
+'función' y 'procedimiento'.
+
+741
+00:48:46,270 --> 00:48:47,875
+'Función' es una palabra matemática.
+
+742
+00:48:47,875 --> 00:48:52,950
+Dice que estoy asignado valores
+a otros valores, un conjunto
+
+743
+00:48:52,950 --> 00:48:55,430
+de pares ordenados.
+
+744
+00:48:55,430 --> 00:49:00,380
+Pero a veces voy a 
+mezclarlos accidentalmente.
+
+745
+00:49:00,380 --> 00:49:01,655
+Los procedimientos computan funciones.
+
+746
+00:49:07,400 --> 00:49:12,100
+Así que voy a definir la derivada de 'f' con
+
+747
+00:49:12,100 --> 00:49:12,930
+pensamiento ilusorio de vuelta.
+
+748
+00:49:12,930 --> 00:49:14,720
+No sé cómo voy a hacerlo.
+
+749
+00:49:14,720 --> 00:49:15,970
+Nos preocuparemos de eso luego.
+
+750
+00:49:18,612 --> 00:49:25,340
+De F. Así que si F es un procedimiento,
+que resulta ser este de aquí
+
+751
+00:49:25,340 --> 00:49:31,800
+para la raíz cuadrada,
+entonces DF será la derivada de éste,
+
+752
+00:49:31,800 --> 00:49:34,890
+que también es la derivada de la función
+
+753
+00:49:34,890 --> 00:49:36,080
+computada por ese procedimiento.
+
+754
+00:49:36,080 --> 00:49:38,760
+DF será un procedimiento que computa
+la derivada de una
+
+755
+00:49:38,760 --> 00:49:42,920
+función computada por el procedimento F.
+Y una vez dado eso,
+
+756
+00:49:42,920 --> 00:49:44,850
+iré buscando el punto fijo.
+
+757
+00:49:51,910 --> 00:49:53,710
+¿Cuál es el punto fijo que estoy buscando?
+
+758
+00:49:53,710 --> 00:49:57,580
+Es el de ese procedimiento 
+de un argumento 'x',
+
+759
+00:49:57,580 --> 00:50:00,500
+que computo al subtraer de 'x'--
+
+760
+00:50:00,500 --> 00:50:04,870
+Ese es el viejo-- Es el 'yn' aquí.
+
+761
+00:50:04,870 --> 00:50:21,110
+El cociento de 'f' de 'x' y DF de 'x', empezando
+
+762
+00:50:21,110 --> 00:50:22,360
+con la estimación inicial.
+
+763
+00:50:29,450 --> 00:50:32,640
+Es bastante simple.
+
+764
+00:50:32,640 --> 00:50:35,130
+Hay una parte que todavía 
+no he escrito, y quiero que
+
+765
+00:50:35,130 --> 00:50:37,720
+vean el proceso por el cual
+escribo estas cosas,
+
+766
+00:50:37,720 --> 00:50:40,150
+porque esto es de verdad.
+
+767
+00:50:40,150 --> 00:50:43,810
+Empiezo con una idea matemática, quizá.
+
+768
+00:50:43,810 --> 00:50:48,440
+Con pensamiento ilusorio, asumo que
+mediante alguna magia puedo hacer
+
+769
+00:50:48,440 --> 00:50:50,980
+algo para lo que tengo un nombre.
+
+770
+00:50:50,980 --> 00:50:54,850
+No me voy a preocupar cómo lo hago aún.
+
+771
+00:50:54,850 --> 00:50:57,970
+Luego sigo y digo, bueno,
+mediante alguna magia,
+
+772
+00:50:57,970 --> 00:51:01,142
+voy a descubrir cómo resolver eso, pero
+
+773
+00:51:01,142 --> 00:51:04,330
+voy a escribir mi programa de cualquier manera.
+
+774
+00:51:04,330 --> 00:51:07,990
+Pensamiento ilusorio, esencial
+para una buena ingeniería y
+
+775
+00:51:07,990 --> 00:51:10,060
+ciertamente esencial para una buena
+ciencia del computador.
+
+776
+00:51:12,770 --> 00:51:15,900
+De cualquiera manera, 
+¿cuántos de ustedes desean
+
+777
+00:51:15,900 --> 00:51:17,150
+que su computadora corriera más rápido?
+
+778
+00:51:21,120 --> 00:51:23,390
+Bueno, la derivada no es tan malo tampoco.
+
+779
+00:51:23,390 --> 00:51:24,640
+Es caso como amortiguar promedios.
+
+780
+00:51:28,922 --> 00:51:34,010
+La derivada es un procedimiento que toma
+un procedimiento que
+
+781
+00:51:34,010 --> 00:51:38,560
+computa una función como su argumento
+y produce un
+
+782
+00:51:38,560 --> 00:51:42,230
+procedimiento que computa una función, 
+que necesita
+
+783
+00:51:42,230 --> 00:51:43,930
+un argumento 'x'.
+
+784
+00:51:43,930 --> 00:51:46,270
+Bueno, todos conocen esta definición.
+
+785
+00:51:46,270 --> 00:51:49,040
+Es 'f' de 'x' más delta 'x' menos
+'f' de 'x' sobre delta 'x', ¿cierto?
+
+786
+00:51:49,040 --> 00:51:50,800
+Para algún delta 'x' pequeño.
+
+787
+00:51:50,800 --> 00:51:59,850
+Así que es el cociente de la diferencia
+de 'f' de la suma de 'x'
+
+788
+00:51:59,850 --> 00:52:10,345
+y 'dx' menos 'f' de 'x',
+dividido por 'dx'.
+
+789
+00:52:18,530 --> 00:52:21,360
+Creo que estaba bien alineado
+cuando balanceé
+
+790
+00:52:21,360 --> 00:52:22,610
+los paréntesis.
+
+791
+00:52:25,120 --> 00:52:27,070
+Ahora bien, quiero que vean esto.
+
+792
+00:52:27,070 --> 00:52:28,320
+Sólo vean.
+
+793
+00:52:31,330 --> 00:52:33,220
+Todavía no les dije qué es 'dx'.
+
+794
+00:52:33,220 --> 00:52:44,880
+En algún lugar del mundo voy a tener
+que escribir
+
+795
+00:52:44,880 --> 00:52:45,770
+algo así.
+
+796
+00:52:45,770 --> 00:52:48,150
+No me interesa.
+
+797
+00:52:48,150 --> 00:52:52,970
+Este es un procedimiento que toma
+un procedimiento y produce
+
+798
+00:52:52,970 --> 00:52:55,950
+una aproximación, un procedimiento
+que computa una aproximación
+
+799
+00:52:55,950 --> 00:52:58,010
+de la derivada de la función
+computada
+
+800
+00:52:58,010 --> 00:53:02,740
+por el procedimiento dado usando
+los métodos estándar que todos
+
+801
+00:53:02,740 --> 00:53:04,800
+conocen y aman.
+
+802
+00:53:04,800 --> 00:53:08,920
+Podría ser el caso que hacer
+esta operación no sea
+
+803
+00:53:08,920 --> 00:53:11,390
+una buena manera de aproximar
+una derivada.
+
+804
+00:53:11,390 --> 00:53:14,800
+Los analistas numéricos aquí
+deberían saltar sobre mí y decirme
+
+805
+00:53:14,800 --> 00:53:16,690
+que no haga eso.
+
+806
+00:53:16,690 --> 00:53:20,150
+Computar derivadas produce
+respuestas ruidosas, lo que es cierto.
+
+807
+00:53:20,150 --> 00:53:24,850
+Sin embargo, esto es en 
+función del entendimiento.
+
+808
+00:53:24,850 --> 00:53:26,620
+Veamos lo que tenemos.
+
+809
+00:53:26,620 --> 00:53:29,040
+Empezamos con lo que aparentemente es
+una cosa matemáticamente
+
+810
+00:53:29,040 --> 00:53:31,210
+compleja.
+
+811
+00:53:31,610 --> 00:53:35,370
+Y luego de unos cuantos pizarrones llenos, 
+pudimos descomponer el
+
+812
+00:53:35,370 --> 00:53:37,900
+problema de computar las raíces cuadradas
+de la forma en las que les
+
+813
+00:53:37,900 --> 00:53:41,770
+enseñaron en su clase de 
+cálculo universitaria--
+
+814
+00:53:41,770 --> 00:53:43,720
+El método de Newton--
+
+815
+00:53:43,720 --> 00:53:45,830
+para que pueda ser entendido.
+
+816
+00:53:45,830 --> 00:53:47,840
+Es claro.
+
+817
+00:53:47,840 --> 00:53:51,231
+Veamos la estructura de lo que tenemos.
+
+818
+00:53:51,231 --> 00:53:54,660
+Veamos esta diapositiva.
+
+819
+00:53:54,660 --> 00:54:03,110
+Este es un diagrama de la máquina descrita
+
+820
+00:54:03,110 --> 00:54:05,520
+por el programa del pizarrón.
+
+821
+00:54:05,520 --> 00:54:08,940
+Hay una máquina descrita aquí.
+
+822
+00:54:08,940 --> 00:54:10,700
+¿Y qué tengo?
+
+823
+00:54:10,700 --> 00:54:17,690
+Aquí está la función 'f' 
+del método de Newton que
+
+824
+00:54:17,690 --> 00:54:21,040
+tenemos en el pizarrón más a la izquierda.
+
+825
+00:54:21,040 --> 00:54:24,990
+Es la cosa que toma un argumento
+llamado 'y' y devuelve la
+
+826
+00:54:24,990 --> 00:54:32,500
+diferencia entre 'x' y el cuadrado de 'y',
+donde 'x' es
+
+827
+00:54:32,500 --> 00:54:35,400
+una especie de variable libre
+que viene de afuera
+
+828
+00:54:35,400 --> 00:54:38,050
+por arte de magia.
+
+829
+00:54:38,050 --> 00:54:43,430
+Así que rutina de la raíz cuadrada
+toma un 'x' y construye este
+
+830
+00:54:43,430 --> 00:54:47,750
+procedimiento, 
+en el que introduzco la 'x'
+
+831
+00:54:47,750 --> 00:54:50,170
+mediante sustitución.
+
+832
+00:54:50,170 --> 00:54:58,930
+Ahora, este procedimiento en la nubes
+se envía como la 'f' del
+
+833
+00:54:58,930 --> 00:55:01,630
+método de Newton, que está aquí.
+Esta caja.
+
+834
+00:55:04,650 --> 00:55:08,790
+La 'f' se dispersa.
+
+835
+00:55:08,790 --> 00:55:12,130
+Parte de ella va a otro lado, y otra parte
+
+836
+00:55:12,130 --> 00:55:15,670
+va a través del procedimiento de derivada 
+hacia otro lugar para
+
+837
+00:55:15,670 --> 00:55:20,570
+producir un procedimiento, que computa
+una función que es la
+
+838
+00:55:20,570 --> 00:55:24,090
+función de iteración del método de Newton,
+cuando usamos
+
+839
+00:55:24,090 --> 00:55:27,450
+el método del punto fijo.
+
+840
+00:55:27,450 --> 00:55:33,030
+Así que este procedimiento,
+que contiene por sustitución--
+
+841
+00:55:33,030 --> 00:55:37,730
+Recuerden, el método de Newton aquí,
+el método de Newton construye
+
+842
+00:55:37,730 --> 00:55:43,010
+este procedimiento, y el método de Newton
+tiene dentro definido a 'f'
+
+843
+00:55:43,010 --> 00:55:48,900
+y 'df', así que esos se capturan aquí:
+'f' y 'df'.
+
+844
+00:55:48,900 --> 00:55:51,930
+Empezando por este procedimiento,
+ahora puedo enviar esto al proceso
+
+845
+00:55:51,930 --> 00:55:55,260
+de punto fijo dentro de una aproximación
+inicial que viene
+
+846
+00:55:55,260 --> 00:55:59,135
+del exterior para producir
+
+847
+00:55:59,135 --> 00:56:00,385
+la raíz cuadrada de 'x'.
+
+848
+00:56:03,680 --> 00:56:07,680
+Así que lo que construimos es una motor
+muy poderoso, que nos permite
+
+849
+00:56:07,680 --> 00:56:11,256
+hacer lindas cosas como esta.
+
+850
+00:56:11,256 --> 00:56:19,000
+Ahora, quiero terminar esto con 
+básicamente una idea de Chris
+
+851
+00:56:19,000 --> 00:56:21,520
+Strachey, uno de
+
+852
+00:56:21,520 --> 00:56:23,230
+los abuelos de las ciencias del computador.
+
+853
+00:56:23,230 --> 00:56:27,440
+Es un lógico que vivió en --
+
+854
+00:56:27,440 --> 00:56:30,320
+Supongo que hace diez o quince años murió.
+
+855
+00:56:30,320 --> 00:56:31,840
+No recuerdo exactamente cuándo.
+
+856
+00:56:31,840 --> 00:56:33,250
+Él es uno de los inventores de algo llamado
+
+857
+00:56:33,250 --> 00:56:34,820
+semántica denotacional.
+
+858
+00:56:34,820 --> 00:56:40,560
+Era un gran abogado de hacer a los
+procedimientos o funciones
+
+859
+00:56:40,560 --> 00:56:43,950
+ciudadanos de primera clase
+en un lenguaje de programación.
+
+860
+00:56:43,950 --> 00:56:46,910
+Estos son los derechos y privilegios
+de los ciudadanos de primera clase
+
+861
+00:56:46,910 --> 00:56:50,690
+en un lenguaje de programación.
+
+862
+00:56:50,690 --> 00:56:53,070
+Te permiten hacer cualquier abstracción
+que quieras si
+
+863
+00:56:53,070 --> 00:56:57,710
+tienen funciones como ciudadanos de
+primera clase.
+
+864
+00:56:57,710 --> 00:56:59,030
+Tiene que ser posible nombrar
+a los ciudadanos
+
+865
+00:56:59,030 --> 00:57:02,270
+de primera clases con variables.
+
+866
+00:57:02,270 --> 00:57:04,600
+Y me ven haciendo eso todo el tiempo.
+
+867
+00:57:04,600 --> 00:57:07,700
+Aquí hay una linda variable que nombra
+un procedimiento
+
+868
+00:57:07,700 --> 00:57:08,950
+que computa algo.
+
+869
+00:57:13,270 --> 00:57:15,370
+Tienen que ser pasado como argumentos
+a procedimientos.
+
+870
+00:57:15,370 --> 00:57:18,540
+Ciertamente hemos visto eso.
+
+871
+00:57:18,540 --> 00:57:20,640
+Tenemos que poder retornarlas como valores
+
+872
+00:57:20,640 --> 00:57:23,340
+de procedimientos.
+
+873
+00:57:23,340 --> 00:57:25,300
+Y supongo que hemos visto eso.
+
+874
+00:57:25,300 --> 00:57:27,970
+No hemos visto nada sobre
+estructuras de datos.
+
+875
+00:57:27,970 --> 00:57:31,490
+Lo haremos pronto, pero también
+es el caso que para poder tener un
+
+876
+00:57:31,490 --> 00:57:33,940
+ciudadano de primera clase
+en un lenguaje de programación,
+
+877
+00:57:33,940 --> 00:57:37,200
+al objeto tiene que permitírsele
+ser parte de una estructura de datos.
+
+878
+00:57:37,200 --> 00:57:39,110
+Veremos eso pronto.
+
+879
+00:57:39,110 --> 00:57:43,530
+Así que quiero cerrar con esto y decir que
+tener cosas como
+
+880
+00:57:43,530 --> 00:57:46,180
+procedimientos como estructuras 
+de datos de primera clase,
+
+881
+00:57:46,180 --> 00:57:50,780
+datos de primera clase, nos permite hacer
+abstracciones poderosas, que engloban
+
+882
+00:57:50,780 --> 00:57:53,110
+métodos generales como el método de Newton
+
+883
+00:57:53,110 --> 00:57:54,780
+de manera muy clara.
+
+884
+00:57:54,780 --> 00:57:57,430
+¿Hay alguna pregunta?
+
+885
+00:57:57,430 --> 00:57:57,780
+Sí.
+
+886
+00:57:57,780 --> 00:58:00,040
+¿Podría poner 'deriv' en vez de DF
+
+887
+00:58:00,040 --> 00:58:02,570
+directamente en el punto fijo?
+
+888
+00:58:02,570 --> 00:58:03,810
+Seguro.
+
+889
+00:58:03,810 --> 00:58:09,220
+Sí podría haber puesto 'deriv' de 'f' aquí,
+sin dudas.
+
+890
+00:58:11,810 --> 00:58:16,190
+Cada vez que ven algo definido,
+pueden poner la
+
+891
+00:58:16,190 --> 00:58:18,950
+la definición porque
+
+892
+00:58:18,950 --> 00:58:21,060
+obtendrían el mismo resultado.
+
+893
+00:58:21,060 --> 00:58:22,800
+De hecho, cómo se vería eso,
+sería interesante.
+
+894
+00:58:22,800 --> 00:58:23,750
+Lambda.
+
+895
+00:58:23,750 --> 00:58:24,085
+¿Qué?
+
+896
+00:58:24,085 --> 00:58:25,970
+Podría poner la expresión lambda ahí.
+
+897
+00:58:25,970 --> 00:58:29,990
+También podría poner la derivada de 'f' aquí.
+
+898
+00:58:29,990 --> 00:58:32,640
+Se vería interesante por el
+paréntesis abierto,
+
+899
+00:58:32,640 --> 00:58:38,610
+paréntesis abierto, derivada de 'f',
+paréntesis cerrado sobre una 'x'.
+
+900
+00:58:38,610 --> 00:58:40,900
+Eso tendría la mala propiedad de computar
+
+901
+00:58:40,900 --> 00:58:43,980
+la derivada muchas veces, porque
+cada vez que corro este
+
+902
+00:58:43,980 --> 00:58:45,490
+procedimiento, computaría la derivada de nuevo.
+
+903
+00:58:48,030 --> 00:58:52,510
+Sin embargo, los dos paréntesis abiertos
+aquí tendrían mucho significado.
+
+904
+00:58:52,510 --> 00:58:54,600
+Quiero que entiendan que eso es algo
+
+905
+00:58:54,600 --> 00:58:55,350
+sintácticamente sensible.
+
+906
+00:58:55,350 --> 00:58:58,190
+Porque si fuera a reescribir 
+este programa-- y lo haré
+
+907
+00:58:58,190 --> 00:59:00,210
+aquí para que puedan ver porque
+
+908
+00:59:00,210 --> 00:59:01,460
+esa es una buena pregunta--
+
+909
+00:59:11,490 --> 00:59:25,430
+De F y 'guess' como el punto fijo
+de ese procedimiento de un
+
+910
+00:59:25,430 --> 00:59:34,920
+argumento 'x', que sustrae de 'x'
+el cociente de F
+
+911
+00:59:34,920 --> 00:59:45,045
+aplicado a 'x' y 'deriv' de F aplicado a 'x'.
+
+912
+00:59:53,459 --> 00:59:54,709
+Este es 'guess'.
+
+913
+00:59:59,960 --> 01:00:02,680
+Este es un programa 
+perfectamente legítimo,
+
+914
+01:00:02,680 --> 01:00:04,250
+porque lo que tengo aquí--
+
+915
+01:00:04,250 --> 01:00:05,910
+Recuerden la regla de evalución.
+
+916
+01:00:05,910 --> 01:00:08,760
+La regla de evaluación es evaluar
+todas las partes de la
+
+917
+01:00:08,760 --> 01:00:12,070
+combinación: el operador
+y los operandos.
+
+918
+01:00:12,070 --> 01:00:14,575
+Este es el operador de 
+esta combinación.
+
+919
+01:00:17,080 --> 01:00:21,080
+Evaluar este operador producirá,
+por supuesto,
+
+920
+01:00:21,080 --> 01:00:28,250
+la derivada de F.
+
+921
+01:00:28,250 --> 01:00:30,300
+Para ir un paso más allá, podrías poner
+
+922
+01:00:30,300 --> 01:00:31,200
+la expresión lambda allí también.
+
+923
+01:00:31,200 --> 01:00:33,180
+Por supuesto.
+
+924
+01:00:33,180 --> 01:00:37,620
+Cada vez que tomo algo que está definido, 
+puedo poner su
+
+925
+01:00:37,620 --> 01:00:40,420
+definición en el lugar en el que está
+
+926
+01:00:40,420 --> 01:00:42,420
+la cosa definida.
+
+927
+01:00:42,420 --> 01:00:44,430
+No recuerdo cuál es el 'definiens' y cuál es
+
+928
+01:00:44,430 --> 01:00:45,680
+el 'definiendum'.
+
+929
+01:00:47,490 --> 01:00:50,230
+Cuando intento descubrir cómo
+hacer una clase como esta
+
+930
+01:00:50,230 --> 01:00:54,160
+en un curso de primer año, 
+uso palabras así y les digo que está
+
+931
+01:00:54,160 --> 01:00:55,440
+bien decírselo a sus amigos.
+
+932
+01:00:59,470 --> 01:01:01,460
+Bien, creo que eso es todo.

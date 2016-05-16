@@ -1,0 +1,5450 @@
+1
+00:00:21,130 --> 00:00:24,770
+La última vez hablamos
+sobre datos compuestos,
+
+2
+00:00:24,770 --> 00:00:29,800
+y había dos ideas principales.
+
+3
+00:00:29,800 --> 00:00:31,640
+En primer lugar, había una metodología
+de abstracción
+
+4
+00:00:31,640 --> 00:00:35,010
+de datos, y la razón para ello era que
+uno podría
+
+5
+00:00:35,010 --> 00:00:40,500
+aislar la manera en que los objetos
+de datos se usan de la manera
+
+6
+00:00:40,500 --> 00:00:43,170
+en que están representados.
+Esta idea que hay una persona,
+
+7
+00:00:43,170 --> 00:00:45,600
+George, haces un contrato con él, y
+
+8
+00:00:45,600 --> 00:00:47,800
+es su responsabilidad representar
+esos objetos de datos. Y en el
+
+9
+00:00:47,800 --> 00:00:49,880
+momento es que los usas, no piensas
+
+10
+00:00:49,880 --> 00:00:52,220
+en el problema de George.
+
+11
+00:00:52,220 --> 00:00:55,460
+En segundo lugar, estaba esta manera
+particular que tiene Lisp
+
+12
+00:00:55,460 --> 00:01:00,770
+de pegar cosas entre sí para formar
+objetos llamados pares.
+
+13
+00:01:00,770 --> 00:01:03,870
+Y eso se hace con CONS, CAR y CDR.
+Y la manera en que
+
+14
+00:01:03,870 --> 00:01:06,480
+CONS, CAR y CDR están implementados
+es básicamente
+
+15
+00:01:06,480 --> 00:01:07,790
+irrelevante.
+
+16
+00:01:07,790 --> 00:01:09,230
+Es como el problema de George de cómo
+
+17
+00:01:09,230 --> 00:01:10,030
+construir esas cosas.
+
+18
+00:01:10,030 --> 00:01:11,160
+Se podría hacer como primitivas.
+
+19
+00:01:11,160 --> 00:01:13,780
+Se podría hacer usando procedimientos
+de alguna manera rara,
+
+20
+00:01:13,780 --> 00:01:16,210
+pero no nos vamos a preocupar por eso.
+
+21
+00:01:16,210 --> 00:01:20,230
+Como ejemplo, vimos a la aritmética de 
+números racionales.
+
+22
+00:01:20,230 --> 00:01:21,800
+Vimos a los vectores y aquí este ee
+
+23
+00:01:21,800 --> 00:01:24,160
+un repaso de vectores.
+
+24
+00:01:24,160 --> 00:01:28,355
+Esta es una operación que toma la suma 
+de dos vectores.
+
+25
+00:01:28,355 --> 00:01:32,390
+Queremos sumar este vector v1, 
+y este vector v2
+
+26
+00:01:32,390 --> 00:01:34,680
+y obtener la suma.
+
+27
+00:01:34,680 --> 00:01:39,120
+Y la suma es el vector cuyas coordenadas
+son la suma
+
+28
+00:01:39,120 --> 00:01:41,380
+de las coordenadas de las piezas 
+que estás sumando.
+
+29
+00:01:41,380 --> 00:01:45,440
+Podría decir, para definir 'make-vect'-- 
+Para sumar dos
+
+30
+00:01:45,440 --> 00:01:50,710
+vectores tengo que hacer un vector,
+cuya coordenada x es la suma de las
+
+31
+00:01:50,710 --> 00:01:53,810
+dos coordenadas x, y cuya coordenada y
+es la suma de las
+
+32
+00:01:53,810 --> 00:01:56,760
+dos coordenadas y.
+
+33
+00:01:56,760 --> 00:02:03,520
+Y luego, similarmente, podríamos tener
+una operación que escala
+
+34
+00:02:03,520 --> 00:02:09,449
+vectores, así que aquí hay un procedimiento
+'scale' que multiplica
+
+35
+00:02:09,449 --> 00:02:13,160
+un vector v por un número s.
+
+36
+00:02:13,160 --> 00:02:17,270
+Aquí esta v, v va desde allí hasta allí 
+y escalo v y
+
+37
+00:02:17,270 --> 00:02:21,520
+obtengo un vector en la misma dirección
+pero más largo.
+
+38
+00:02:21,520 --> 00:02:23,850
+Y para escalara un vector
+multiplico las sucesivas
+
+39
+00:02:23,850 --> 00:02:24,320
+coordenadas.
+
+40
+00:02:24,320 --> 00:02:29,090
+Así que hago ese vector, cuya coordenada
+x es el factor de escala multiplicado po
+
+41
+00:02:29,090 --> 00:02:31,900
+la coordenada x y cuya coordenada y es
+
+42
+00:02:31,900 --> 00:02:34,340
+el factor de escala multiplicado por
+la coordenada y.
+
+43
+00:02:34,340 --> 00:02:38,970
+Estas son dos operaciones que
+están implementadas usando
+
+44
+00:02:38,970 --> 00:02:40,570
+la representación de vectores.
+
+45
+00:02:40,570 --> 00:02:42,900
+Y la representación de vectores,
+por ejemplo, es
+
+46
+00:02:42,900 --> 00:02:45,640
+algo que podemos construir en
+término de pares.
+
+47
+00:02:45,640 --> 00:02:48,760
+George fue e implementó para
+nosotros 'make-vector'' y
+
+48
+00:02:48,760 --> 00:02:53,960
+coordenada x y coordenada y, 
+y esto podría hacerse,
+
+49
+00:02:53,960 --> 00:03:04,380
+por ejemplo, usando CONS, CAR y CDR.
+Y noten que aquí
+
+50
+00:03:04,380 --> 00:03:08,320
+escribí esto ligeramente diferente.
+
+51
+00:03:08,320 --> 00:03:10,660
+En los procedimientos que vimos
+hasta ahora, decía algo como
+
+52
+00:03:10,660 --> 00:03:16,170
+'make-vector'de x e y:
+CONS de x e y.
+
+53
+00:03:16,170 --> 00:03:18,870
+Y aquí sólo escribí
+'make-vector cons'.
+
+54
+00:03:18,870 --> 00:03:20,920
+Y eso significa algo
+ligeramente distinto.
+
+55
+00:03:20,920 --> 00:03:23,990
+Anteriormente decíamos, definir 
+'make-vector' como el procedimiento
+
+56
+00:03:23,990 --> 00:03:26,870
+que toma dos argumento, x e y, y hace
+
+57
+00:03:26,870 --> 00:03:28,150
+CONS de x e y.
+
+58
+00:03:28,150 --> 00:03:32,870
+Y aquí estoy definiendo 
+'make-vector' como lo mismo
+
+59
+00:03:32,870 --> 00:03:38,630
+que CONS, y eso es casi igual
+a la otra manera
+
+60
+00:03:38,630 --> 00:03:39,670
+en que estuvimos escribiendo cosas.
+
+61
+00:03:39,670 --> 00:03:43,510
+Y quiero que se acostumbren 
+a la idea de que
+
+62
+00:03:43,510 --> 00:03:46,360
+los procedimientos pueden ser objetos
+y de que pueden nombrarlos.
+
+63
+00:03:48,960 --> 00:03:52,640
+Bueno, esa es la representación
+de vectores. Y de nuevo, si
+
+64
+00:03:52,640 --> 00:03:54,650
+eso fuera todo lo que 
+hubiera para hacer,
+
+65
+00:03:54,650 --> 00:03:56,666
+esto sería bastante aburrido.
+
+66
+00:03:56,666 --> 00:04:00,290
+Recuerden que pueden usar CONS para pegar
+
+67
+00:04:00,290 --> 00:04:02,790
+cosas entre sí, no sólo números
+para formar pares, sino para pegar
+
+68
+00:04:02,790 --> 00:04:04,270
+entre sí cosas arbitrarias.
+
+69
+00:04:04,270 --> 00:04:11,500
+Por ejemplo, si quisiéramos
+representar un segmento,
+
+70
+00:04:11,500 --> 00:04:16,959
+digamos el segmento que va desde
+un cierto vector,
+
+71
+00:04:16,959 --> 00:04:27,160
+un segmento desde el vector (2,3) hasta 
+el punto representado por
+
+72
+00:04:27,160 --> 00:04:28,270
+el vector (5,1).
+
+73
+00:04:28,270 --> 00:04:33,770
+Si quisiéramos representar ese segmento,
+
+74
+00:04:33,770 --> 00:04:35,785
+podríamos construirlo 
+como un par de pares.
+
+75
+00:04:41,130 --> 00:04:42,990
+Podríamos representar segmentos.
+
+76
+00:04:42,990 --> 00:04:48,150
+Podríamos hacer un constructor que
+crea un segmento usando CONS.
+
+77
+00:04:48,150 --> 00:04:50,760
+Selecciona el inicio del segmento.
+Y selecciona el punto
+
+78
+00:04:50,760 --> 00:04:57,310
+final del segmento. Y si lo miramos,
+
+79
+00:04:57,310 --> 00:05:00,040
+si quitamos la capa de abstracción,
+
+80
+00:05:00,040 --> 00:05:05,160
+lo que es realmente es un par de pares.
+
+81
+00:05:05,160 --> 00:05:06,290
+Ese es un par.
+
+82
+00:05:06,290 --> 00:05:07,540
+Aquí hay un segmento.
+
+83
+00:05:10,320 --> 00:05:15,030
+Su CAR, su puntero CAR es un par y su
+
+84
+00:05:15,030 --> 00:05:21,130
+CDR también es un par. Y el CAR es--
+Aquí está
+
+85
+00:05:21,130 --> 00:05:26,110
+el CAR, eso es un par de dos y de tres.
+
+86
+00:05:26,110 --> 00:05:28,090
+Y similarmente su CDR es un par
+de dos y de tres.
+
+87
+00:05:28,090 --> 00:05:30,800
+Y déjenme recordarles 
+que mucha gente tiene
+
+88
+00:05:30,800 --> 00:05:35,110
+la idea de que si hubiera tomado
+esta flecha y la hubiera hecho
+
+89
+00:05:35,110 --> 00:05:36,870
+apuntar hacia abajo, entonces
+eso significaría algo distinto.
+
+90
+00:05:36,870 --> 00:05:38,980
+Eso es irrelevante.
+
+91
+00:05:38,980 --> 00:05:40,900
+Es sobre cómo están conectadas
+y no sobre si
+
+92
+00:05:40,900 --> 00:05:43,280
+la flecha es vertical u horizontal.
+
+93
+00:05:47,770 --> 00:05:49,930
+Y también para recordarles, teníamos
+
+94
+00:05:49,930 --> 00:05:52,860
+la noción de clausura.
+
+95
+00:05:52,860 --> 00:06:02,900
+Verán, la clausura era la cosa
+que nos permitía empezar
+
+96
+00:06:02,900 --> 00:06:06,910
+a construir complejidad, que no
+nos dejaba sólo con pares.
+
+97
+00:06:06,910 --> 00:06:12,610
+Particularmente, lo que quiero decir
+es que las cosas que hacemos,
+
+98
+00:06:12,610 --> 00:06:16,970
+combinando cosas usando CONS
+para obtener un par, esas
+
+99
+00:06:16,970 --> 00:06:21,330
+mismas cosas pueden ser combinadas
+usando CONS para hacer
+
+100
+00:06:21,330 --> 00:06:23,800
+cosas aún más complicadas.
+
+101
+00:06:23,800 --> 00:06:27,360
+O cómo diría un matemático,
+el conjunto de objetos de datos
+
+102
+00:06:27,360 --> 00:06:34,130
+en Lisp es cerrado con respecto
+a la operación de formar pares.
+
+103
+00:06:34,130 --> 00:06:36,360
+Eso es lo que nos permite
+construir complejidad.
+
+104
+00:06:36,360 --> 00:06:40,000
+Y eso parece obvio, pero recuerden
+que muchas de las cosas
+
+105
+00:06:40,000 --> 00:06:42,480
+que hay en los lenguajes de programación
+usa la gente no son cerradas.
+
+106
+00:06:42,480 --> 00:06:47,120
+Por ejemplo, formar arreglos 
+en BASIC o en FORTRAN no es
+
+107
+00:06:47,120 --> 00:06:50,390
+una operación cerrada, porque
+puedes hacer un arreglo de números
+
+108
+00:06:50,390 --> 00:06:52,690
+o de caracteres, pero no puedes hacer
+
+109
+00:06:52,690 --> 00:06:54,800
+un arreglo de arreglos.
+
+110
+00:06:54,800 --> 00:06:59,260
+Y cuando miras a los medios
+de combinación, deberías
+
+111
+00:06:59,260 --> 00:07:01,260
+preguntarte si las cosas son cerradas
+
+112
+00:07:01,260 --> 00:07:02,510
+con respecto a esos medios 
+de combinación.
+
+113
+00:07:05,280 --> 00:07:09,100
+En cualquier caso, como podemos
+formar pares de pares, podemos
+
+114
+00:07:09,100 --> 00:07:11,980
+empezar a usar pares para
+pegar cosas entre sí de
+
+115
+00:07:11,980 --> 00:07:14,230
+muchas maneras diferentes.
+
+116
+00:07:14,230 --> 00:07:17,300
+Por ejemplo, si quisiera pegar entre sí
+cuatro cosas
+
+117
+00:07:17,300 --> 00:07:20,880
+1,2,3 y 4, hay muchas maneras en que
+lo puedo hacer.
+
+118
+00:07:20,880 --> 00:07:25,050
+Podría, por ejemplo, como hicimos
+con el segmento,
+
+119
+00:07:25,050 --> 00:07:32,990
+hacer un par que tuviera un 1 y un 2
+
+120
+00:07:32,990 --> 00:07:36,900
+y otro que tuviera un 3 y un 4, ¿verdad?
+
+121
+00:07:36,900 --> 00:07:40,090
+O si quisiera, podría hacer algo así.
+
+122
+00:07:40,090 --> 00:07:46,580
+Podría hacer un par, cuyo primer
+elemento es un par, cuyo
+
+123
+00:07:46,580 --> 00:07:53,010
+CAR es uno y cuyo CDR 
+es un par que tiene al 2
+
+124
+00:07:53,010 --> 00:07:56,660
+y al 3, y luego podría poner el 4 aquí arriba.
+
+125
+00:07:56,660 --> 00:07:59,420
+Como ven, hay un montón de maneras
+diferentes en las que puedo
+
+126
+00:07:59,420 --> 00:08:02,560
+empezar a usar pares para pegar cosas
+entre sí, así que será
+
+127
+00:08:02,560 --> 00:08:07,540
+una buena idea establecer alguna
+especia de convención,
+
+128
+00:08:07,540 --> 00:08:10,830
+que nos permita lidiar con esta cosa
+de alguna forma
+
+129
+00:08:10,830 --> 00:08:12,590
+convencional, para que no estemos
+constantemente
+
+130
+00:08:12,590 --> 00:08:16,070
+tomando una decisión ad hoc.
+
+131
+00:08:16,070 --> 00:08:21,650
+Y Lisp tiene una convención particular
+para representar una
+
+132
+00:08:21,650 --> 00:08:26,730
+secuencias de cosas como, 
+esencialmente, una cadena de pares,
+
+133
+00:08:26,730 --> 00:08:34,581
+y eso se llama Lista.
+
+134
+00:08:34,581 --> 00:08:39,169
+Y una Lista es esencialmente una 
+convención para
+
+135
+00:08:39,169 --> 00:08:40,929
+representar una secuencia.
+
+136
+00:08:40,929 --> 00:08:45,790
+Representaría la secuencia 1,2,3 y 4 con
+
+137
+00:08:45,790 --> 00:08:48,420
+una secuencia de pares.
+
+138
+00:08:48,420 --> 00:08:53,920
+Pondría 1 aquí y luego el CDR de esto
+apuntaría a otro par
+
+139
+00:08:53,920 --> 00:09:01,490
+cuyo CAR sería el próximo elemento
+en la secuencia
+
+140
+00:09:01,490 --> 00:09:06,260
+y el CDR apuntaría a otro par 
+cuyo CAR sería
+
+141
+00:09:06,260 --> 00:09:08,400
+el próximo elemento en la secuencia--
+
+142
+00:09:08,400 --> 00:09:09,550
+y luego otro más.
+
+143
+00:09:09,550 --> 00:09:15,450
+Así que para cada
+elemento en la secuencia tendría un par,
+
+144
+00:09:15,450 --> 00:09:21,130
+Y ahora no hay más, así que pongo un
+marcador especial que
+
+145
+00:09:21,130 --> 00:09:28,760
+significa que no hay nada más en la lista.
+Bien, esa es
+
+146
+00:09:28,760 --> 00:09:31,750
+una manera convencional para pegar
+cosas entre sí si quieres representar
+
+147
+00:09:31,750 --> 00:09:34,450
+una secuencia.
+
+148
+00:09:34,450 --> 00:09:42,570
+Y lo que es es un montón de pares,
+cuyos los sucesivos CARs
+
+149
+00:09:42,570 --> 00:09:46,470
+de cada par son los elementos
+que quieres pegar entre sí y cuyos
+
+150
+00:09:46,470 --> 00:09:50,330
+CDRs apuntan al próximo par.
+
+151
+00:09:50,330 --> 00:09:52,710
+Ahora bien, si realmente quisiera 
+construir eso,
+
+152
+00:09:52,710 --> 00:09:57,630
+lo que escribiría en Lisp, 
+lo construiría diciendo
+
+153
+00:09:57,630 --> 00:10:07,640
+bueno, esta cosa es el CONS de 1 
+con el CONS de 2
+
+154
+00:10:07,640 --> 00:10:14,390
+con el CONS de 3 con el CONS de 4 con,
+
+155
+00:10:14,390 --> 00:10:15,150
+bueno, esta este nil.
+
+156
+00:10:15,150 --> 00:10:21,050
+Y nil es una nombre para
+el marcador de fin de la lista.
+
+157
+00:10:21,050 --> 00:10:22,960
+Es un nombre especial, que significa
+que es el final de la
+
+158
+00:10:22,960 --> 00:10:29,980
+lista. Bien, así que como construiría esto.
+
+159
+00:10:37,195 --> 00:10:40,670
+Por supuesto, es terriblemente molesto
+tener que estar constantemente
+
+160
+00:10:40,670 --> 00:10:43,000
+escribiendo algo como CONS de 1 
+con CONS de 2 con
+
+161
+00:10:43,000 --> 00:10:45,310
+CONS de 3, cuando quieres hacer algo así.
+
+162
+00:10:45,310 --> 00:10:54,270
+Así que Lisp tiene una operación 
+que se llama LIST. Y LIST
+
+163
+00:10:54,270 --> 00:10:59,160
+es una abreviación para este nido de CONSs.
+
+164
+00:10:59,160 --> 00:11:02,310
+Podría construir eso diciendo que es
+
+165
+00:11:02,310 --> 00:11:08,010
+LIST de 1,2,3 y 4.
+
+166
+00:11:08,010 --> 00:11:11,310
+Y esto es otra manera, 
+un pedazo de azúcar
+
+167
+00:11:11,310 --> 00:11:13,550
+sintáctico, una manera 
+más conveniente para escribir
+
+168
+00:11:13,550 --> 00:11:15,390
+esta cadena de CONSs--
+
+169
+00:11:15,390 --> 00:11:18,410
+CONS de CONS de CONS de CONS
+de CONS de CONS de nil.
+
+170
+00:11:18,410 --> 00:11:21,810
+Así que por ejemplo, podría
+construir esto y decir
+
+171
+00:11:21,810 --> 00:11:39,150
+definir 1-TO-4 como LIST de 1,2,3 y 4.
+
+172
+00:11:48,070 --> 00:11:51,890
+Bueno, vean algunas 
+de las consecuencias de usar esta
+
+173
+00:11:51,890 --> 00:11:54,190
+convención.
+
+174
+00:11:54,190 --> 00:11:57,520
+Primero, si tengo esta lista,
+1,2,3 y 4,
+
+175
+00:11:57,520 --> 00:11:59,290
+el CAR de todo esto 
+es el primer elemento
+
+176
+00:11:59,290 --> 00:12:04,100
+en la lista.
+
+177
+00:12:04,100 --> 00:12:05,400
+¿Cómo obtengo el 2?
+
+178
+00:12:05,400 --> 00:12:21,850
+Bueno, 2 sería el CAR del CDR
+de este 1-TO-4,
+
+179
+00:12:21,850 --> 00:12:25,160
+ese sería el 2.
+
+180
+00:12:25,160 --> 00:12:30,050
+Tomo esta cosa, tomo su CDR,
+que es esto
+
+181
+00:12:30,050 --> 00:12:38,760
+y el CAR de eso es 2.
+Y similarmente, el CAR del
+
+182
+00:12:38,760 --> 00:12:48,060
+CDR del CRD de 1-TO-4--
+CDR,CDR,CAR--
+
+183
+00:12:48,060 --> 00:12:52,898
+me daría 3, y así.
+
+184
+00:12:52,898 --> 00:12:54,650
+Veamos eso en la pantalla
+
+185
+00:12:54,650 --> 00:12:55,900
+de la computadora por un momento.
+
+186
+00:12:57,880 --> 00:13:07,050
+Podría ir a Lisp y tipear
+'define 1-TO-4' como la
+
+187
+00:13:07,050 --> 00:13:14,190
+lista de 1,2,3 y 4.
+
+188
+00:13:14,190 --> 00:13:19,690
+Y le diré eso a Lisp, y me responderá
+"bien, esa es la
+
+189
+00:13:19,690 --> 00:13:22,540
+definición de 1-TO-4".
+
+190
+00:13:22,540 --> 00:13:28,950
+Y podría preguntarle, por ejemplo,
+¿cuál es el CAR del CDR del
+
+191
+00:13:28,950 --> 00:13:38,096
+CDR de 1-TO-4, cierro paréntesis,
+cierro paréntesis.
+
+192
+00:13:38,096 --> 00:13:43,916
+Bien, entonces el CAR del CDR
+del CDR sería 3.
+
+193
+00:13:43,916 --> 00:13:51,660
+O podría preguntarle qué es
+1-TO-4.
+
+194
+00:13:51,660 --> 00:13:56,160
+Y ven que Lisp imprimió
+1,2,3,4 encerrado en
+
+195
+00:13:56,160 --> 00:13:59,630
+paréntesis, y esta notación,
+escribir los elementos
+
+196
+00:13:59,630 --> 00:14:02,930
+de la lista encerrados 
+entre paréntesis es la forma
+
+197
+00:14:02,930 --> 00:14:07,660
+convencional de Lisp para imprimir
+esta cadena de pares
+
+198
+00:14:07,660 --> 00:14:09,190
+que representa una secuencia.
+
+199
+00:14:09,190 --> 00:14:19,520
+Así que por ejemplo, si preguntara
+cuál es el CDR de 1-TO-4,
+
+200
+00:14:19,520 --> 00:14:22,080
+eso sería el resto de la lista.
+Es lo que está siendo
+
+201
+00:14:22,080 --> 00:14:25,410
+apuntado por el primer par,
+que es, de nuevo, una secuencia
+
+202
+00:14:25,410 --> 00:14:28,880
+que comienza con 2.
+
+203
+00:14:28,880 --> 00:14:36,740
+O por ejemplo, podría preguntar
+cuál es el CDR del CDR de
+
+204
+00:14:36,740 --> 00:14:44,990
+1-TO-4, y eso es 3,4.
+
+205
+00:14:44,990 --> 00:14:58,205
+O podría preguntar cuál es el 
+CDR del CDR del CDR del CDR
+
+206
+00:14:58,205 --> 00:15:07,090
+de 1-TO-4 y estaría mirando
+al puntero del final de la lista
+
+207
+00:15:07,090 --> 00:15:09,340
+y Lisp lo imprime como
+
+208
+00:15:09,340 --> 00:15:10,780
+un paréntesis abierto
+y uno cerrado.
+
+209
+00:15:10,780 --> 00:15:13,805
+Podrían verlo como una lista
+que no contiene nada.
+
+210
+00:15:13,805 --> 00:15:16,190
+Al final, lo que hice ahí es mirar
+
+211
+00:15:16,190 --> 00:15:22,150
+al CDR del CDR del CDR de 1-TO-4,
+y me quedé
+
+212
+00:15:22,150 --> 00:15:24,880
+con el puntero del final de la lista.
+
+213
+00:15:24,880 --> 00:15:26,450
+Y eso se imprime como
+paréntesis abierto y cerrado.
+
+214
+00:15:34,350 --> 00:15:37,660
+Bueno, esa es una manera convencional
+
+215
+00:15:37,660 --> 00:15:42,080
+para trabajar con una lista tomando
+
+216
+00:15:42,080 --> 00:15:43,340
+los sucesivos CDR de las cosas.
+
+217
+00:15:43,340 --> 00:15:47,470
+Se le dice "CDRear" una lista.
+Y por supuesto
+
+218
+00:15:47,470 --> 00:15:49,840
+es bastante molesto escribir todos
+esos CDR a mano.
+
+219
+00:15:49,840 --> 00:15:50,570
+No haces eso.
+
+220
+00:15:50,570 --> 00:15:53,220
+Escribes procedimientos que hacen eso.
+
+221
+00:15:53,220 --> 00:15:56,300
+Y de hecho, algo muy, muy común
+que se hace en Lisp es
+
+222
+00:15:56,300 --> 00:16:02,290
+escribir procedimiento que toman
+una lista de cosas y
+
+223
+00:16:02,290 --> 00:16:05,630
+le hacen algo a cada elemento de la lista,
+y retornas una lista
+
+224
+00:16:05,630 --> 00:16:07,400
+con los resultados.
+
+225
+00:16:07,400 --> 00:16:10,550
+Lo que quiero decir, por ejemplo,
+es que podría escribir un procedimiento
+
+226
+00:16:10,550 --> 00:16:18,440
+llamado Scale-List y podría decir
+que quiero
+
+227
+00:16:18,440 --> 00:16:27,640
+escalar por 10 la lista 1-TO-4 entera.
+Y eso me devolvería
+
+228
+00:16:27,640 --> 00:16:36,513
+la lista 10, 20, 30 y 40.
+
+229
+00:16:38,480 --> 00:16:46,360
+Retorna una lista, y pueden ver
+que habrá
+
+230
+00:16:46,360 --> 00:16:48,320
+una especie de estrategia
+
+231
+00:16:48,320 --> 00:16:49,320
+recursiva para hacerlo.
+
+232
+00:16:49,320 --> 00:16:52,800
+¿Cómo escribiría este procedimiento?
+
+233
+00:16:52,800 --> 00:16:56,760
+La idea sería si quisieras 
+construir una lista
+
+234
+00:16:56,760 --> 00:17:01,140
+donde multiplicas cada elemento por 10,
+
+235
+00:17:01,140 --> 00:17:06,010
+imaginar que tomaste el resto de la lista--
+
+236
+00:17:06,010 --> 00:17:08,560
+lo que está representado por el CDR
+de la lista y
+
+237
+00:17:08,560 --> 00:17:12,868
+supongan que ya construí una lista
+donde cada uno de estos elementos
+
+238
+00:17:12,868 --> 00:17:16,470
+fue multiplicado por 10 --
+
+239
+00:17:16,470 --> 00:17:20,784
+Eso sería Scale-List del CDR de la lista.
+Y luego
+
+240
+00:17:20,784 --> 00:17:25,098
+todo lo que tendría que hacer es multiplicar
+el CAR de la lista por 10, y luego
+
+241
+00:17:25,098 --> 00:17:28,666
+hacer CONS de eso y el resto de la lista,
+y así obtendría una lista.
+
+242
+00:17:28,666 --> 00:17:31,610
+Y luego similarmente,
+para escalar el CDR de la
+
+243
+00:17:31,610 --> 00:17:35,020
+lista, escalaría su CRD y haría CONS
+del 2 multiplicado por 10
+
+244
+00:17:35,020 --> 00:17:36,830
+y eso.
+
+245
+00:17:36,830 --> 00:17:38,690
+Y finalmente cuando llegué al final,
+
+246
+00:17:38,690 --> 00:17:41,672
+solamente tengo el puntero 
+de fin de lista.
+
+247
+00:17:41,672 --> 00:17:43,640
+Bueno, esta cosa cuyo nombre es nil--
+bueno, solo
+
+248
+00:17:43,640 --> 00:17:45,455
+retorno un puntero a fin de lista.
+
+249
+00:17:45,455 --> 00:17:47,700
+Así que hay una estrategia recursiva
+para hacer eso.
+
+250
+00:17:47,700 --> 00:17:51,180
+Este es el procedimiento
+que hace esto.
+
+251
+00:17:51,180 --> 00:17:53,810
+Este es un ejemplo de 
+una estrategia general para
+
+252
+00:17:53,810 --> 00:17:56,800
+"CDRear" una lista y "CONSear"
+
+253
+00:17:56,800 --> 00:17:58,310
+el resultado.
+
+254
+00:17:58,310 --> 00:18:06,090
+Para escalar la lista por algún
+factor de escala s, ¿qué es lo que hago?
+
+255
+00:18:06,090 --> 00:18:10,560
+Bueno, hay una prueba. Y Lisp
+tiene un predicado llamado 'null'.
+
+256
+00:18:10,560 --> 00:18:14,060
+'Null' dice si ese es el puntero
+del fin de lista.
+
+257
+00:18:14,060 --> 00:18:16,700
+Otra forma de pensarlo es preguntar
+si hay algún elemento
+
+258
+00:18:16,700 --> 00:18:17,810
+en la lista.
+
+259
+00:18:17,810 --> 00:18:20,820
+En cualquier caso, si estoy mirando
+al puntero de final de lista,
+
+260
+00:18:20,820 --> 00:18:23,640
+entonces devuelvo
+el puntero de final de lista.
+
+261
+00:18:23,640 --> 00:18:32,290
+Retorno nil. Caso contrario,
+hago CONS del resultado de
+
+262
+00:18:32,290 --> 00:18:35,850
+hacer lo que tengo que hacer
+con el primer elemento de la lista,
+
+263
+00:18:35,850 --> 00:18:40,920
+en este caso tomar el CAR de la lista y
+multiplicarlo por s, y le aplico
+
+264
+00:18:40,920 --> 00:18:50,240
+CONS con el resultado de escalar
+recursivamente el resto de la lista.
+
+265
+00:18:50,240 --> 00:18:53,730
+De nuevo, la idea general
+es que recursivamente
+
+266
+00:18:53,730 --> 00:18:56,740
+le haces algo al resto de la lista, 
+al CDR de la lista
+
+267
+00:18:56,740 --> 00:18:59,560
+y luego aplicas CONS de
+hacer algo con el primer
+
+268
+00:18:59,560 --> 00:19:02,230
+elemento de la lista y eso. 
+Cuando llegas al final,
+
+269
+00:19:02,230 --> 00:19:07,810
+devuelves el puntero de final de lista, y eso
+
+270
+00:19:07,810 --> 00:19:16,400
+es un patrón general 
+para hacerle algo a una lista.
+
+271
+00:19:16,400 --> 00:19:19,540
+Ya deberían saber que el hecho
+de que haya un
+
+272
+00:19:19,540 --> 00:19:21,190
+patrón general aquí significa que
+no debería
+
+273
+00:19:21,190 --> 00:19:23,140
+estar escribiendo este procedimiento.
+
+274
+00:19:23,140 --> 00:19:25,500
+Lo que debería hacer es escribir un
+procedimiento que el patrón
+
+275
+00:19:25,500 --> 00:19:28,350
+general que diga que haga algo
+a todos los elementos de la
+
+276
+00:19:28,350 --> 00:19:30,870
+lista y definir esto en
+términos de aquello.
+
+277
+00:19:30,870 --> 00:19:33,050
+Hacer algún procedimiento
+de alto orden, y este es
+
+278
+00:19:33,050 --> 00:19:34,390
+el procedimiento de 
+alto orden que lo hace.
+
+279
+00:19:34,390 --> 00:19:40,100
+Se llama MAP, y lo que hace MAP
+es tomar una lista,
+
+280
+00:19:40,100 --> 00:19:45,700
+y un procedimiento p y retorna
+
+281
+00:19:45,700 --> 00:19:49,840
+la lista de los elementos
+que se obtienen al aplicar p a cada
+
+282
+00:19:49,840 --> 00:19:53,445
+elemento sucesivo de la lista.
+Es decir, p de e1,
+
+283
+00:19:53,445 --> 00:19:56,480
+p de e2, p de en.
+
+284
+00:19:56,480 --> 00:19:59,670
+Pienso en tomar esta lista
+y transformarla
+
+285
+00:19:59,670 --> 00:20:02,720
+aplicando p a cada elemento.
+
+286
+00:20:02,720 --> 00:20:06,200
+Y pueden ver que este procedimiento
+es exactamente la estrategia
+
+287
+00:20:06,200 --> 00:20:07,030
+general que mencioné.
+
+288
+00:20:07,030 --> 00:20:09,370
+En vez de multiplicar por 10,
+es aplicar el procedimiento.
+
+289
+00:20:09,370 --> 00:20:13,150
+Si la lista está vacía, retorno nil.
+
+290
+00:20:13,150 --> 00:20:17,240
+Caso contrario, aplico p al
+primer elemento de la lista.
+
+291
+00:20:17,240 --> 00:20:21,990
+Aplico p a CAR de la lista,
+y hago CONS de eso y el resultado
+
+292
+00:20:21,990 --> 00:20:26,450
+de aplicar p a todos los elementos
+en el CDR de la lista, y eso
+
+293
+00:20:26,450 --> 00:20:30,110
+es un procedimiento general
+llamado MAP.
+
+294
+00:20:30,110 --> 00:20:39,590
+Y podría definir Scale-List
+en términos de MAP.
+
+295
+00:20:39,590 --> 00:20:43,265
+Déjenme mostrarles eso primero.
+
+296
+00:20:43,265 --> 00:20:46,650
+Pero podría decir que otra forma
+de definir Scale-List es aplicar
+
+297
+00:20:46,650 --> 00:20:53,950
+MAP a la lista con el procedimiento
+que toma un elemento
+
+298
+00:20:53,950 --> 00:20:55,430
+y lo multiplica por s.
+
+299
+00:20:58,208 --> 00:21:01,260
+Esta es la verdadera forma
+con la que debería pensar
+
+300
+00:21:01,260 --> 00:21:04,640
+para escalar la lista, hacer
+la recursión en la
+
+301
+00:21:04,640 --> 00:21:07,570
+estrategia general, no en cada 
+procedimiento particular que escribo.
+
+302
+00:21:07,570 --> 00:21:09,900
+Y por supuesto, uno de los ventajas
+de hacer eso es que
+
+303
+00:21:09,900 --> 00:21:11,962
+empiezas a ver las cosas en común.
+
+304
+00:21:11,962 --> 00:21:16,420
+Están capturando patrones
+generales de uso.
+
+305
+00:21:16,420 --> 00:21:22,610
+Por ejemplo, si usara MAP con el
+procedimiento 'square' en la
+
+306
+00:21:22,610 --> 00:21:32,690
+lista 1-TO-4, obtendría
+1,4,9 y 16.
+
+307
+00:21:32,690 --> 00:21:42,710
+O si aplicara MAP en la lista
+con lambda de x igual a x más diez,
+
+308
+00:21:42,710 --> 00:21:51,020
+si le aplicara MAP a 1-TO-4,
+entonces obtendría la lista
+
+309
+00:21:51,020 --> 00:21:55,020
+donde a acá elemento se le sumó diez.
+Entonces obtendría 11
+
+310
+00:21:55,020 --> 00:22:00,400
+12,13 y 14.
+
+311
+00:22:00,400 --> 00:22:03,480
+Y pueden ver que será una idea
+muy común:
+
+312
+00:22:03,480 --> 00:22:08,760
+hacerle algo a cada elemento de la lista.
+
+313
+00:22:08,760 --> 00:22:11,240
+Algo en que podría pensar es
+en escribir MAP de
+
+314
+00:22:11,240 --> 00:22:12,350
+un modo iterativo.
+
+315
+00:22:12,350 --> 00:22:15,460
+La versión que escribí usa
+un proceso recursivo,
+
+316
+00:22:15,460 --> 00:22:18,050
+pero podríamos haber construido
+uno que usara un
+
+317
+00:22:18,050 --> 00:22:19,390
+proceso iterativo.
+
+318
+00:22:19,390 --> 00:22:21,610
+Lo interesante es que una vez que
+
+319
+00:22:21,610 --> 00:22:24,270
+empiezas a pensar en
+términos de MAP--
+
+320
+00:22:24,270 --> 00:22:27,170
+Una vez que dices que 'scale' es sólo MAP,
+dejas de pensas
+
+321
+00:22:27,170 --> 00:22:29,200
+acerca de si es iterativo o recursivo y dices
+
+322
+00:22:29,200 --> 00:22:32,380
+que existe este agregado, existe esta lista
+
+323
+00:22:32,380 --> 00:22:34,490
+y que lo quieres hacer es transformar
+cada elemento de la lista, y
+
+324
+00:22:34,490 --> 00:22:37,360
+dejas de pensar acerca de la 
+estructura de control
+
+325
+00:22:37,360 --> 00:22:39,050
+particular.
+
+326
+00:22:39,050 --> 00:22:45,190
+Esa esa una idea muy, 
+pero muy importante y supongo
+
+327
+00:22:45,190 --> 00:22:46,530
+que en realidad proviene de APL.
+
+328
+00:22:46,530 --> 00:22:49,370
+La idea realmente importante de APL
+
+329
+00:22:49,370 --> 00:22:52,020
+en la que dejas de pensar es estructuras
+de control y empiezas
+
+330
+00:22:52,020 --> 00:22:55,580
+a pensar sobre operaciones en agregados,
+y luego, cerca de la
+
+331
+00:22:55,580 --> 00:22:58,330
+mitad de este curso, 
+veremos cuando hablemos
+
+332
+00:22:58,330 --> 00:23:00,940
+de algo llamado procesamiento en flujo, 
+cómo esa visión
+
+333
+00:23:00,940 --> 00:23:02,670
+del mundo realmente entra en la gloria.
+
+334
+00:23:02,670 --> 00:23:05,400
+Esta es una especie de linda idea.
+
+335
+00:23:05,400 --> 00:23:09,520
+Pero veremos muchas más
+aplicaciones de eso más adelante.
+
+336
+00:23:09,520 --> 00:23:13,560
+Déjenme mencionarles que hay algo
+muy parecido
+
+337
+00:23:13,560 --> 00:23:17,680
+a MAP que también es una idea muy útil.
+
+338
+00:23:17,680 --> 00:23:23,130
+Verán, MAP toma una lista y le
+aplica algo a cada elemento,
+
+339
+00:23:23,130 --> 00:23:26,220
+y retorna una lista con los valores
+sucesivos.
+
+340
+00:23:26,220 --> 00:23:28,200
+Hay otra cosa que querría hacer,
+que es muy
+
+341
+00:23:28,200 --> 00:23:32,850
+similar, que consiste en tomar la 
+lista y alguna acción que querría hacer
+
+342
+00:23:32,850 --> 00:23:36,470
+y luego hacerla a cada elemento
+de la lista en secuencia.
+
+343
+00:23:36,470 --> 00:23:38,240
+No hagas una lista con los valores,
+sólo haz
+
+344
+00:23:38,240 --> 00:23:40,810
+esta acción particular y eso es algo
+
+345
+00:23:40,810 --> 00:23:45,040
+que es muy parecido a MAP.
+
+346
+00:23:45,040 --> 00:23:49,130
+Se llama for-each y toma un procedimiento
+
+347
+00:23:49,130 --> 00:23:52,970
+y una lista y lo que hará
+es hacerle algo a cada
+
+348
+00:23:52,970 --> 00:23:56,830
+elemento de la lista.
+Básicamente, si la lista
+
+349
+00:23:56,830 --> 00:24:02,250
+no es vacía, 
+es decir si no es null, entonces
+
+350
+00:24:02,250 --> 00:24:05,830
+lo que hace es aplicar el procedimiento
+en el primer elemento de la
+
+351
+00:24:05,830 --> 00:24:12,130
+lista, y luego lo hago para el resto
+de la lita.
+
+352
+00:24:12,130 --> 00:24:15,610
+Aplico for-each al CDR de la lista.
+
+353
+00:24:15,610 --> 00:24:17,660
+Se lo hago al primero de la lista, 
+se lo hago
+
+354
+00:24:17,660 --> 00:24:20,930
+al resto de la lista y, por supuesto,
+cuando lo llamo
+
+355
+00:24:20,930 --> 00:24:22,920
+recursivamente, eso se lo hará
+al resto del resto
+
+356
+00:24:22,920 --> 00:24:24,050
+de la lista y así.
+
+357
+00:24:24,050 --> 00:24:27,540
+Y finalmente, cuando termino, 
+tengo que hacer algo para
+
+358
+00:24:27,540 --> 00:24:30,930
+indicar que terminó, así
+que retorno el mensaje "done". Y eso
+
+359
+00:24:30,930 --> 00:24:32,980
+es muy similar a MAP.
+
+360
+00:24:32,980 --> 00:24:35,680
+Difiere en lo que retorna.
+
+361
+00:24:35,680 --> 00:24:38,920
+Y si por ejemplo, tuviera algún
+procedimiento que imprimiera
+
+362
+00:24:38,920 --> 00:24:42,030
+cosas en pantalla, si quisiera imprimir
+cada elemento
+
+363
+00:24:42,030 --> 00:24:47,160
+de la lista podría decir for-each print
+de la lista. O si
+
+364
+00:24:47,160 --> 00:24:50,660
+tuviera una lista de figuras, 
+y quisiera dibujarlas en la
+
+365
+00:24:50,660 --> 00:24:53,900
+pantalla, podría decir for-each
+mostrar en pantalla
+
+366
+00:24:53,900 --> 00:24:55,150
+esta figura.
+
+367
+00:24:57,750 --> 00:25:00,970
+Tomemos algunas preguntas.
+
+368
+00:25:00,970 --> 00:25:03,810
+Crea una nueva copia con algo
+aplicado al elemento,
+
+369
+00:25:03,810 --> 00:25:06,744
+a menos que explícitamente le
+digas que lo haga.
+
+370
+00:25:06,744 --> 00:25:08,010
+¿Es eso correcto?
+
+371
+00:25:08,010 --> 00:25:10,030
+Correcto.
+
+372
+00:25:10,030 --> 00:25:10,980
+Sí, eso es correcto.
+
+373
+00:25:10,980 --> 00:25:14,020
+For-each no crea una lista, simplemente
+
+374
+00:25:14,020 --> 00:25:15,350
+hace algo.
+
+375
+00:25:15,350 --> 00:25:18,180
+Si tuvieras muchas cosas que
+quisieras hacer y
+
+376
+00:25:18,180 --> 00:25:19,720
+no te preocupas acerca de valores
+como imprimir
+
+377
+00:25:19,720 --> 00:25:22,030
+algo o dibujar algo en pantalla
+
+378
+00:25:22,030 --> 00:25:24,610
+o sonar la campana del terminal, o algo,
+
+379
+00:25:24,610 --> 00:25:26,760
+podrías decir for-each, es decir,
+haz esto para
+
+380
+00:25:26,760 --> 00:25:29,770
+cada elemento de la lista,
+mientras que MAP en efecto construye
+
+381
+00:25:29,770 --> 00:25:31,780
+esta nueva colección de valores que
+
+382
+00:25:31,780 --> 00:25:32,570
+quizá quieras usar.
+
+383
+00:25:32,570 --> 00:25:34,380
+Es una sutil diferencia entre ambos.
+
+384
+00:25:34,380 --> 00:25:37,590
+¿Podrías escribir MAP usando for-each, 
+haciendo una
+
+385
+00:25:37,590 --> 00:25:39,640
+especie de CONS o algo para construir
+
+386
+00:25:39,640 --> 00:25:41,520
+la lista de nuevo?
+
+387
+00:25:41,520 --> 00:25:42,510
+Podría.
+
+388
+00:25:42,510 --> 00:25:44,570
+Quiero decir, probablemente podría.
+
+389
+00:25:44,570 --> 00:25:48,810
+En este momento no se me ocurre cómo
+hacerlo, pero sí, podría
+
+390
+00:25:48,810 --> 00:25:51,380
+arreglar algo.
+
+391
+00:25:51,380 --> 00:25:52,830
+La diferencia principal entre MAP y 
+for-each es
+
+392
+00:25:52,830 --> 00:25:57,320
+que una es recursiva y la otra no lo es
+en el sentido en el que
+
+393
+00:25:57,320 --> 00:26:01,570
+la definiste ayer.
+Creo.
+
+394
+00:26:01,570 --> 00:26:03,660
+Sí, sobre MAP, for-each y recursión.
+
+395
+00:26:03,660 --> 00:26:05,390
+Sí, es un buen punto.
+
+396
+00:26:09,420 --> 00:26:11,615
+Para el procedimiento MAP
+que escribí, eso resulta
+
+397
+00:26:11,615 --> 00:26:13,880
+ser un procedimiento recursivo.
+
+398
+00:26:13,880 --> 00:26:16,130
+Y la razón para hacerlo así
+es que cuando le has hecho
+
+399
+00:26:16,130 --> 00:26:19,000
+esto al resto de la lista, 
+estás esperando el valor
+
+400
+00:26:19,000 --> 00:26:21,830
+para que se lo puedas unir con el
+principio de la lista,
+
+401
+00:26:21,830 --> 00:26:23,340
+mientras que for-each no tiene
+realmente ningún
+
+402
+00:26:23,340 --> 00:26:24,740
+valor por el cual esperar.
+
+403
+00:26:24,740 --> 00:26:26,680
+Y eso resulta ser un proceso iterativo.
+
+404
+00:26:26,680 --> 00:26:27,590
+No es fundamental.
+
+405
+00:26:27,590 --> 00:26:30,920
+Podría haber definido MAP
+de manera tal que involucrara
+
+406
+00:26:30,920 --> 00:26:31,770
+un proceso iterativo.
+
+407
+00:26:31,770 --> 00:26:33,670
+Simplemente no lo hice.
+
+408
+00:26:33,670 --> 00:26:37,780
+Si usaras for-each
+con CONS y una lista
+
+409
+00:26:37,780 --> 00:26:43,210
+de listas, imagino que funcionaría,
+¿cierto?
+
+410
+00:26:43,210 --> 00:26:47,300
+¿Te daría los elementos
+internos de cada una
+
+411
+00:26:47,300 --> 00:26:48,940
+de esas listas internas?
+
+412
+00:26:48,940 --> 00:26:50,430
+La pregunta fue si llamo a
+
+413
+00:26:50,430 --> 00:26:54,420
+for-each o MAP, con una lista
+que tuviera
+
+414
+00:26:54,420 --> 00:26:56,406
+listas como elementos--
+
+415
+00:26:56,406 --> 00:26:59,430
+aunque no la hayamos visto
+todavía--
+
+416
+00:26:59,430 --> 00:27:01,310
+¿eso funcionaría?
+
+417
+00:27:01,310 --> 00:27:04,610
+Y la respuesta es sí en lo que yo defino
+como funcionar y no en el
+
+418
+00:27:04,610 --> 00:27:09,140
+sentido en que tú defines como funcionar,
+porque todo --
+
+419
+00:27:09,140 --> 00:27:16,190
+Si les doy una lista, dónde aquí
+hubiera
+
+420
+00:27:16,190 --> 00:27:19,700
+algo que no es un número,
+quizás otra lista, u
+
+421
+00:27:19,700 --> 00:27:22,670
+otro CONS o algo, for-each sólo dice
+
+422
+00:27:22,670 --> 00:27:25,240
+que haga algo a cada elemento de la lista.
+Baja la lista
+
+423
+00:27:25,240 --> 00:27:26,965
+mirando sucesivamente a los CDRs.
+
+424
+00:27:26,965 --> 00:27:27,220
+Bien.
+
+425
+00:27:27,220 --> 00:27:29,140
+Y en lo que a él respecta,
+el primer elemento de la
+
+426
+00:27:29,140 --> 00:27:30,830
+lista es cualquier cosa que este allí.
+
+427
+00:27:31,830 --> 00:27:33,780
+Podría o no ser la cosa correcta.
+
+428
+00:27:33,780 --> 00:27:35,670
+Así que descendería hacia--
+
+429
+00:27:35,670 --> 00:27:37,030
+Absolutamente no.
+
+430
+00:27:37,030 --> 00:27:38,380
+Podría escribir otra cosa.
+
+431
+00:27:38,380 --> 00:27:40,930
+Hay otra-- Lo que estás
+buscando es otro patrón
+
+432
+00:27:40,930 --> 00:27:43,600
+común de uso llamado árbol
+de recursión, dónde tomas
+
+433
+00:27:43,600 --> 00:27:46,523
+una lista y desciendes hasta el final, 
+a lo que se
+
+434
+00:27:46,523 --> 00:27:48,140
+conoce como las hojas del árbol.
+
+435
+00:27:48,140 --> 00:27:50,140
+Y podría escribir algo así, pero
+no sería for-each
+
+436
+00:27:50,140 --> 00:27:52,420
+y no sería MAP.
+
+437
+00:27:52,420 --> 00:27:53,590
+Recuerden, estas cosas son
+
+438
+00:27:53,590 --> 00:27:55,492
+realmente muy simples.
+
+439
+00:27:55,492 --> 00:27:57,390
+¿No hay más preguntas?
+
+440
+00:27:57,390 --> 00:27:58,998
+Bien, tomemos un descanso.
+
+441
+00:28:42,480 --> 00:28:46,220
+Lo que quisiera hacer ahora es
+dedicar el resto del
+
+442
+00:28:46,220 --> 00:28:50,960
+tiempo hablando de un ejemplo.
+Y este ejemplo,
+
+443
+00:28:50,960 --> 00:28:53,510
+creo, resume todo lo que hemos visto
+
+444
+00:28:53,510 --> 00:28:58,050
+hasta ahora: la estructura de lista, y los
+
+445
+00:28:58,050 --> 00:29:02,360
+temas de abstracciónn y representación
+y captura de cosas
+
+446
+00:29:02,360 --> 00:29:05,620
+en común con procedimiento
+de alto orden, y también
+
+447
+00:29:05,620 --> 00:29:09,290
+introducirá algo de lo que no hemos
+hablamos mucho
+
+448
+00:29:09,290 --> 00:29:13,160
+hasta ahora, lo que dije que era 
+el tercer gran tema de este
+
+449
+00:29:13,160 --> 00:29:17,190
+curso: abstracción meta linguística,
+que es la idea
+
+450
+00:29:17,190 --> 00:29:20,930
+de que una de las manera de atacar
+a la complejidad
+
+451
+00:29:20,930 --> 00:29:27,750
+en diseño ingenieril es construir
+un lenguajes apropiadamente poderoso.
+
+452
+00:29:27,750 --> 00:29:31,370
+Recordarán que les dije que la cosa más
+
+453
+00:29:31,370 --> 00:29:33,620
+importante que les contaremos en este
+
+454
+00:29:33,620 --> 00:29:39,010
+curso es que cuando piensas
+sobre un lenguajes, piensas
+
+455
+00:29:39,010 --> 00:29:43,470
+sobre él en términos de cuáles
+son las primitivas y cuáles son
+
+456
+00:29:43,470 --> 00:29:46,225
+los medios de combinación.
+
+457
+00:29:49,560 --> 00:29:52,310
+Es decir, cuáles son las cosas que
+te permiten construir cosas
+
+458
+00:29:52,310 --> 00:29:54,945
+más grandes. Y también en cuáles son
+los medios de abstracción.
+
+459
+00:30:01,170 --> 00:30:05,800
+Cómo tomas esas cosas más grandes
+que has construído y le
+
+460
+00:30:05,800 --> 00:30:09,620
+pones cajas negras alrededor y las
+usas como elementos
+
+461
+00:30:09,620 --> 00:30:12,846
+para hacer algo incluso más
+complicado.
+
+462
+00:30:12,846 --> 00:30:18,170
+Ahora bien, el lenguaje particular
+del que les voy a hablar es
+
+463
+00:30:18,170 --> 00:30:21,675
+un ejemplo que se le ocurrió
+a un amigo nuestro
+
+464
+00:30:21,675 --> 00:30:22,925
+llamado Peter Henderson.
+
+465
+00:30:28,130 --> 00:30:29,800
+Peter Henderson está en la Universidad
+
+466
+00:30:29,800 --> 00:30:32,870
+de Stirling en Escocia.
+
+467
+00:30:32,870 --> 00:30:39,170
+Y este lenguaje trata sobre hacer figuras
+
+468
+00:30:39,170 --> 00:30:42,090
+que se ven así.
+
+469
+00:30:42,090 --> 00:30:49,470
+Esta es una xilografía hecha por Escher
+llamada "Square Limit".
+
+470
+00:30:49,470 --> 00:30:52,860
+Ven, tiene esta complicada, casi
+
+471
+00:30:52,860 --> 00:30:59,170
+recursiva, figura casi recursiva, 
+dónde está
+
+472
+00:30:59,170 --> 00:31:02,060
+el patrón del pez en el medio
+y cosas que
+
+473
+00:31:02,060 --> 00:31:04,570
+salen hacia afuera cada vez 
+más chicas de manera similiar.
+
+474
+00:31:08,610 --> 00:31:11,450
+De cualquiera manera, el lenguaje
+de Peter Henderson era para describir
+
+475
+00:31:11,450 --> 00:31:15,990
+figuras que se ven así y para diseñar
+nuevas figuras que
+
+476
+00:31:15,990 --> 00:31:20,240
+se ven así y dibujarlas en la pantalla.
+
+477
+00:31:20,240 --> 00:31:26,930
+Hay otro tema que veremos ilustrado
+en este
+
+478
+00:31:26,930 --> 00:31:31,030
+ejemplo y es esa cuestión que Gerry y yo
+les hemos
+
+479
+00:31:31,030 --> 00:31:34,300
+mencionado un montón: que no hay una 
+verdadera diferencia
+
+480
+00:31:34,300 --> 00:31:37,340
+entre los procedimientos y los datos.
+
+481
+00:31:37,340 --> 00:31:41,820
+Y supongo que al final de esta mañana,
+si no lo están ya,
+
+482
+00:31:41,820 --> 00:31:45,470
+quedarán completamente confundidos
+sobre cuáles son las
+
+483
+00:31:45,470 --> 00:31:47,715
+diferencias entre procedimientos y datos,
+
+484
+00:31:47,715 --> 00:31:51,190
+si es que no estaban confundidos ya.
+
+485
+00:31:51,190 --> 00:31:55,370
+En cualquier caso, empecemos a
+describir el lenguaje de Peter.
+
+486
+00:31:55,370 --> 00:31:58,410
+Debería empezar diciéndoles 
+cuáles con las primitivas.
+
+487
+00:31:58,410 --> 00:31:59,690
+Este lenguaje es muy simple porque
+
+488
+00:31:59,690 --> 00:32:00,940
+hay una única primitiva.
+
+489
+00:32:03,380 --> 00:32:07,480
+Una primitiva no es lo que
+ustedes piensan que es.
+
+490
+00:32:07,480 --> 00:32:09,970
+Hay una única primitiva llamada imagen,
+y una
+
+491
+00:32:09,970 --> 00:32:12,200
+imagen no es lo que ustedes piensan.
+
+492
+00:32:12,200 --> 00:32:13,950
+Aquí hay un ejemplo.
+
+493
+00:32:13,950 --> 00:32:15,220
+Esta es una imagen de George.
+
+494
+00:32:18,980 --> 00:32:23,990
+La idea es que una imagen en
+este lenguajes será algo que
+
+495
+00:32:23,990 --> 00:32:30,640
+dibuja una figura escalada
+para que cupiera en un rectángulo que
+
+496
+00:32:30,640 --> 00:32:33,030
+ustedes especifican.
+
+497
+00:32:33,030 --> 00:32:34,200
+Así que aquí ven
+
+498
+00:32:34,570 --> 00:32:37,070
+el contorno del rectángulo, que
+no es parte de la
+
+499
+00:32:37,070 --> 00:32:43,210
+imagen, pero a la imagen
+
+500
+00:32:43,210 --> 00:32:45,270
+ustedes le dan un rectángulo
+y dibujará esta figura
+
+501
+00:32:45,270 --> 00:32:47,100
+escalada para que quepa en el 
+rectángulo.
+
+502
+00:32:47,100 --> 00:32:50,930
+Por ejemplo, ahí está George,
+y aquí,
+
+503
+00:32:50,930 --> 00:32:52,840
+este también es George.
+
+504
+00:32:52,840 --> 00:32:55,480
+Es la misma imagen, sólo que escalada
+
+505
+00:32:55,480 --> 00:32:57,920
+para que quepa en otro rectángulo.
+
+506
+00:32:57,920 --> 00:32:59,290
+Aquí está George como un niño gordo.
+
+507
+00:33:02,400 --> 00:33:03,920
+Es el mismo George.
+
+508
+00:33:03,920 --> 00:33:05,260
+Son todas la misma figura.
+
+509
+00:33:05,260 --> 00:33:07,810
+Y todas estas tres cosas son la
+
+510
+00:33:07,810 --> 00:33:09,670
+misma imagen en el lenguaje.
+
+511
+00:33:09,670 --> 00:33:12,900
+Sólo les estoy dando diferentes
+rectángulos para que se escalen.
+
+512
+00:33:16,300 --> 00:33:19,150
+Bien, esas son las primitivas.
+
+513
+00:33:19,150 --> 00:33:21,420
+Esa es la primitiva.
+
+514
+00:33:21,420 --> 00:33:24,440
+Ahora empecemos a hablar de los
+medio de combinación y de
+
+515
+00:33:24,440 --> 00:33:25,960
+las operaciones.
+
+516
+00:33:25,960 --> 00:33:31,080
+Existe, por ejemplo, una operación
+llamada Rotate.
+
+517
+00:33:31,080 --> 00:33:35,900
+Y lo que hace Rotate es, 
+si tengo una imagen, por ejemplo
+
+518
+00:33:35,900 --> 00:33:42,080
+una imagen que dibuja una "A"
+en algún rectángulo que le doy,
+
+519
+00:33:42,080 --> 00:33:43,080
+aplicar Rotate en eso --
+
+520
+00:33:43,080 --> 00:33:47,490
+Digamos el Rotate de noventa grados,
+haría dado un
+
+521
+00:33:47,490 --> 00:33:52,850
+rectángulo, dibujaría la misma imagen, 
+pero de nuevo, escalada para
+
+522
+00:33:52,850 --> 00:33:54,100
+caber en ese rectángulo.
+
+523
+00:33:56,160 --> 00:33:58,400
+Así que ese es Rotate por 90 grados.
+
+524
+00:33:58,400 --> 00:34:00,700
+Hay otra operación llamada Flip
+que da vuelta
+
+525
+00:34:00,700 --> 00:34:04,351
+algo, tanto horizontal
+como verticalmente.
+
+526
+00:34:04,351 --> 00:34:06,450
+Bueno, esas son las operaciones, 
+o pueden pensar
+
+527
+00:34:06,450 --> 00:34:11,010
+en ellas como los medios de 
+combinación de un elemento.
+
+528
+00:34:11,010 --> 00:34:12,880
+Puedo poner estas cosas juntas.
+
+529
+00:34:12,880 --> 00:34:17,350
+Hay un medio de combinación
+llamado Beside, y lo que hace es
+
+530
+00:34:17,350 --> 00:34:24,525
+tomar dos imágenes, digamos A y B --
+
+531
+00:34:29,489 --> 00:34:31,230
+Y por imagen me refiero a algo
+que va a dibujar
+
+532
+00:34:31,230 --> 00:34:34,159
+una imagen en el rectángulo
+especificado --
+
+533
+00:34:34,159 --> 00:34:38,159
+y Beside hará --
+
+534
+00:34:38,159 --> 00:34:42,719
+Tengo que decir Beside de A y B, 
+Beside de dos imágenes
+
+535
+00:34:42,719 --> 00:34:45,590
+y un número s.
+
+536
+00:34:45,590 --> 00:34:47,639
+Y s será un número entre cero y uno.
+
+537
+00:34:50,960 --> 00:34:52,620
+Y Beside dibujará una imagen 
+que se ve así.
+
+538
+00:34:52,620 --> 00:34:55,100
+Tomará el rectángulo que le dan
+
+539
+00:34:55,100 --> 00:34:56,480
+y escalará su base por s.
+
+540
+00:34:56,480 --> 00:34:57,730
+Digamos que s es 0.5.
+
+541
+00:35:00,240 --> 00:35:04,980
+Y por aquí dibujará --
+
+542
+00:35:04,980 --> 00:35:12,070
+Pondrá la primer imagen,
+y aquí pondrá la
+
+543
+00:35:12,070 --> 00:35:14,100
+segunda imagen.
+
+544
+00:35:14,100 --> 00:35:17,250
+O por ejemplo, si le diera otro valor de s,
+
+545
+00:35:17,250 --> 00:35:27,390
+y si dijera Beside con 0.25, 
+haría lo mismo,
+
+546
+00:35:27,390 --> 00:35:28,640
+solo que A sería mucho más delgado.
+
+547
+00:35:32,230 --> 00:35:38,230
+Así que dibujaría algo como eso.
+
+548
+00:35:38,230 --> 00:35:41,110
+Así que hay un medio de
+combinación llamado Beside, y
+
+549
+00:35:41,110 --> 00:35:43,410
+similarmente hay un Above, que
+hace lo mismo
+
+550
+00:35:43,410 --> 00:35:45,230
+excepto que los pone verticalmente
+en vez de horizontalmente.
+
+551
+00:35:47,990 --> 00:35:50,470
+Veamos eso.
+
+552
+00:35:50,470 --> 00:35:58,830
+Bien, está George y su 
+hermano pequeño, que está
+
+553
+00:35:58,830 --> 00:36:10,630
+construído tomando a George
+y aplicándole Beside
+
+554
+00:36:10,630 --> 00:36:11,760
+de Above
+
+555
+00:36:11,760 --> 00:36:13,440
+de la imagen vacía, hay una
+cosa llamada
+
+556
+00:36:13,440 --> 00:36:16,650
+imagen vacía, que hace lo obvio
+
+557
+00:36:16,650 --> 00:36:19,515
+poniendo la imagen vacía sobre
+la copia de George, y luego
+
+558
+00:36:19,515 --> 00:36:21,100
+poniendo todo eso al lado de George.
+
+559
+00:36:28,900 --> 00:36:38,230
+Aquí hay algo llamado P 
+que es, de nuevo, George
+
+560
+00:36:38,230 --> 00:36:42,550
+al lado de dar vuelta a George, creo, 
+horizontalmente en este caso, y
+
+561
+00:36:42,550 --> 00:36:46,400
+luego rotando todo el resultado
+180 grados y poniéndolos
+
+562
+00:36:46,400 --> 00:36:50,510
+uno al lado de del otro,
+con el rectángulo básico dividido
+
+563
+00:36:50,510 --> 00:36:59,320
+por 0.5, y puedo llamarlo P.
+Y luego puedo tomar P
+
+564
+00:36:59,320 --> 00:37:04,100
+y ponerlo sobre una copia volteada
+de sí mismo, y llamar a eso
+
+565
+00:37:04,100 --> 00:37:09,650
+Q.
+
+566
+00:37:09,650 --> 00:37:15,570
+Noten qué tan rápido hemos
+construido complejidad.
+
+567
+00:37:15,570 --> 00:37:18,640
+En 15 segundos, pasaron de George a esa
+
+568
+00:37:18,640 --> 00:37:22,260
+cosa Q. ¿Por qué es esto?
+
+569
+00:37:22,260 --> 00:37:26,100
+¿Por qué somos capaces de hacer
+eso tan rápido?
+
+570
+00:37:26,100 --> 00:37:28,670
+La respuesta es la propiedad
+de clausura.
+
+571
+00:37:28,670 --> 00:37:31,810
+El hecho de que cuando tomo 
+una imagen y la pongo
+
+572
+00:37:31,810 --> 00:37:35,560
+al lado de otra imagen, 
+obtengo otra imagen
+
+573
+00:37:35,560 --> 00:37:39,090
+a la que puedo rotar o voltear
+o poner sobre otra cosa.
+
+574
+00:37:39,090 --> 00:37:41,645
+Cuando tomo ese elemento P, 
+que es el Beside o el
+
+575
+00:37:41,645 --> 00:37:43,450
+Flip o el Rotate de algo,
+
+576
+00:37:43,450 --> 00:37:45,560
+eso es también una imagen.
+
+577
+00:37:45,560 --> 00:37:49,420
+El mundo de las imágenes
+está cerrado con respecto a esos medios
+
+578
+00:37:49,420 --> 00:37:50,830
+de combinación.
+
+579
+00:37:50,830 --> 00:37:53,570
+Así que siempre que tengo algo,
+puedo tomarlo y
+
+580
+00:37:53,570 --> 00:37:56,480
+usarlo como un elemento en algo más.
+
+581
+00:37:56,480 --> 00:37:59,010
+Quizá mejor que con listas y con
+segmentos, eso les da
+
+582
+00:37:59,010 --> 00:38:02,020
+una imagen de qué tan rápido
+pueden construir complejidad, porque
+
+583
+00:38:02,020 --> 00:38:03,270
+las operaciones son cerradas.
+
+584
+00:38:07,500 --> 00:38:12,440
+Antes que construyamos más cosas,
+
+585
+00:38:12,440 --> 00:38:14,345
+hablemos acerca de cómo 
+este lenguaje está implementado.
+
+586
+00:38:17,200 --> 00:38:23,270
+El elemento básico aquí es una
+
+587
+00:38:23,270 --> 00:38:27,610
+cosa llamada rectángulo,
+y lo que un rectánguo será
+
+588
+00:38:27,610 --> 00:38:36,900
+es una cosa que está especificada
+por un origen que
+
+589
+00:38:36,900 --> 00:38:38,910
+será un vector que dice dónde
+
+590
+00:38:38,910 --> 00:38:40,390
+comienza el rectángulo.
+
+591
+00:38:40,390 --> 00:38:44,020
+Y también habrá otro vector
+
+592
+00:38:44,020 --> 00:38:49,020
+que voy a llamar la parte horizontal
+del rectángulo y
+
+593
+00:38:49,020 --> 00:38:57,650
+otro vector llamado
+
+594
+00:38:57,650 --> 00:39:00,640
+la parte vertical del rectángulo.
+
+595
+00:39:00,640 --> 00:39:03,790
+Y esas tres piezas son los elementos, 
+dónde está el menor
+
+596
+00:39:03,790 --> 00:39:08,200
+vértice, cómo llegas al vértice de aquí,
+y cómo
+
+597
+00:39:08,200 --> 00:39:09,630
+llegas al vértice de aquí.
+
+598
+00:39:09,630 --> 00:39:11,590
+Los tres vectores especifican
+un rectángulo.
+
+599
+00:39:16,080 --> 00:39:18,380
+Ahora bien, para realmente
+construir rectángulos, lo que voy a asumir
+
+600
+00:39:18,380 --> 00:39:23,380
+es que tenemos un constructor llamado
+'make-rectangle' o
+
+601
+00:39:23,380 --> 00:39:37,910
+'make-rect-, y selectores
+para horiz, vert y origin que
+
+602
+00:39:37,910 --> 00:39:39,720
+devuelven las piezas del rectángulo.
+
+603
+00:39:39,720 --> 00:39:42,500
+Y bueno, saben un montón de maneras
+de hacer esto.
+
+604
+00:39:42,500 --> 00:39:47,190
+Lo pueden hacer usando pares 
+de alguna manera o una usando
+
+605
+00:39:47,190 --> 00:39:47,670
+una lista.
+
+606
+00:39:47,670 --> 00:39:50,130
+Pero en cualquier caso, 
+la implementación de esas cosas
+
+607
+00:39:50,130 --> 00:39:51,320
+es problema de George.
+
+608
+00:39:51,320 --> 00:39:53,300
+Es sólo un problema 
+de representación de datos.
+
+609
+00:39:53,300 --> 00:39:55,500
+Así que asumamos que tenemos
+estos rectángulos para trabajar.
+
+610
+00:39:58,902 --> 00:40:00,152
+Bien.
+
+611
+00:40:02,310 --> 00:40:05,090
+La idea de esto es, recuerden
+lo que va a ocurrir.
+
+612
+00:40:05,090 --> 00:40:10,250
+De alguna forma tenemos que
+preocuparnos de tomar la figura y escalarla
+
+613
+00:40:10,250 --> 00:40:15,260
+para que quepa en un rectángulo que le dan,
+eso es lo básico que tienen
+
+614
+00:40:15,260 --> 00:40:18,340
+que organizar de lo que las imágenes
+pueden hacer.
+
+615
+00:40:22,440 --> 00:40:23,460
+¿Cómo pensamos en eso?
+
+616
+00:40:23,460 --> 00:40:26,010
+Bueno, una forma de hacerlo
+es que cada vez que le doy
+
+617
+00:40:26,010 --> 00:40:40,050
+un rectángulo, eso define,
+en algún sentido, una
+
+618
+00:40:40,050 --> 00:40:43,340
+transformación del cuadrado
+
+619
+00:40:43,340 --> 00:40:45,685
+estándar a ese rectángulo.
+
+620
+00:40:45,685 --> 00:40:46,960
+Déjenme que les muestre
+lo que quiero decir.
+
+621
+00:40:46,960 --> 00:40:49,540
+Por cuadrado estándar me refiero
+a algo que es
+
+622
+00:40:49,540 --> 00:40:58,420
+un cuadrada cuyas coordenadas con
+0,0 ; 1,0 ; 0,1 y 1,1.
+
+623
+00:41:01,830 --> 00:41:04,590
+Y hay una transformación de escala
+
+624
+00:41:04,590 --> 00:41:10,180
+obvio que asigna esto a aquello y
+esto otro a aquello,
+
+625
+00:41:10,180 --> 00:41:11,920
+y como que estira todo uniformemente.
+
+626
+00:41:11,920 --> 00:41:22,755
+Así que tomamos un segmento como este
+y lo asignamos a un
+
+627
+00:41:22,755 --> 00:41:31,390
+segmento como ese, así que
+algún punto x,y va a otro
+
+628
+00:41:31,390 --> 00:41:33,000
+punto allí arriba.
+
+629
+00:41:33,000 --> 00:41:36,870
+Y aunque no es importante,
+con un poco
+
+630
+00:41:36,870 --> 00:41:39,190
+de álgebra de vectores podrían
+escribir esa fórmula.
+
+631
+00:41:39,190 --> 00:41:43,670
+La cosa a la que envío a x,y,
+el punto al que envío a x,y
+
+632
+00:41:43,670 --> 00:41:48,950
+se obtiene tomando el origen del 
+rectángulo y luego sumándole eso
+
+633
+00:41:48,950 --> 00:41:51,280
+como un vector a --
+
+634
+00:41:51,280 --> 00:41:54,300
+Bueno, tomo x, la coordenada x, 
+que es algo
+
+635
+00:41:54,300 --> 00:42:01,030
+entre cero y uno, multiplico eso
+por el vector horizontal
+
+636
+00:42:01,030 --> 00:42:09,670
+del rectángulo; y tomo la coordenada
+y , que también es algo
+
+637
+00:42:09,670 --> 00:42:14,460
+entre cero y uno y multiplico eso por
+
+638
+00:42:14,460 --> 00:42:16,690
+el vector vertical del rectángulo.
+
+639
+00:42:16,690 --> 00:42:19,280
+Es un poco de álgebra linear.
+
+640
+00:42:19,280 --> 00:42:22,600
+De cualquier manera, ésa es la fórmula,
+que es correcta y obvia
+
+641
+00:42:22,600 --> 00:42:26,100
+transformación que toma cosas en
+el cuadrado unitario y las envía
+
+642
+00:42:26,100 --> 00:42:27,760
+al interior de ese rectángulo.
+
+643
+00:42:31,790 --> 00:42:35,200
+Bueno, veamos eso
+como un procedimiento.
+
+644
+00:42:35,200 --> 00:42:39,830
+Lo que queremos es a la cosa
+que nos dice la transformación
+
+645
+00:42:39,830 --> 00:42:44,070
+particular que define ese
+rectángulo.
+
+646
+00:42:44,070 --> 00:42:45,860
+Este es el procedimiento.
+
+647
+00:42:45,860 --> 00:42:48,010
+Lo llamaré 'coordinate-map'.
+
+648
+00:42:48,010 --> 00:42:51,180
+Coordinate-map es una cosa que
+toma como argumento a un
+
+649
+00:42:51,180 --> 00:42:57,605
+rectángulo y devuelve un 
+procedimiento sobre puntos.
+
+650
+00:43:00,690 --> 00:43:03,600
+Por cada rectángulo obtienes
+una manera para transformar
+
+651
+00:43:03,600 --> 00:43:07,310
+un punto x,y dentro de ese
+rectángulo.
+
+652
+00:43:07,310 --> 00:43:08,020
+¿Y cómo lo obtienen?
+
+653
+00:43:08,020 --> 00:43:08,750
+Bueno sólo
+
+654
+00:43:08,750 --> 00:43:10,890
+escribiré en Lisp lo que escribí
+en el pizarrón--
+
+655
+00:43:10,890 --> 00:43:18,300
+Le sumo al origen del rectángulo
+
+656
+00:43:18,300 --> 00:43:20,540
+el resultado de sumar --
+
+657
+00:43:20,540 --> 00:43:26,080
+Tomo la parte horizontal del
+rectángulo y lo escalo por
+
+658
+00:43:26,080 --> 00:43:29,880
+la coordenada x del punto.
+
+659
+00:43:29,880 --> 00:43:33,750
+Tomo el vector vertical
+del rectángulo
+
+660
+00:43:33,750 --> 00:43:37,720
+y lo escalo por la coordenada y
+del punto y
+
+661
+00:43:37,720 --> 00:43:40,380
+luego sumo esas tres cosas.
+
+662
+00:43:40,380 --> 00:43:41,320
+Ese es el procedimiento.
+
+663
+00:43:41,320 --> 00:43:44,045
+Ese es el procedimiento que
+le voy a aplicar a un punto.
+
+664
+00:43:46,890 --> 00:43:53,170
+Y todo esto se genera
+para cualquier rectángulo.
+
+665
+00:43:53,170 --> 00:43:55,900
+Así que cada rectángulo define un
+Coordinate-map, que es un
+
+666
+00:43:55,900 --> 00:43:59,370
+procedimiento sobre puntos.
+
+667
+00:43:59,370 --> 00:44:00,620
+Bien.
+
+668
+00:44:06,720 --> 00:44:12,020
+Por ejemplo, George aquí, mi George
+
+669
+00:44:12,020 --> 00:44:14,900
+original, podría haber sido algo
+que especifiqué con
+
+670
+00:44:14,900 --> 00:44:20,970
+segmentos del cuadrado unitario, y 
+luego para cada rectángulo que le
+
+671
+00:44:20,970 --> 00:44:27,600
+doy a esta cosa, voy a dibujar
+esos segmentos dentro
+
+672
+00:44:27,600 --> 00:44:28,180
+de ese rectángulo.
+
+673
+00:44:28,180 --> 00:44:30,630
+¿Cómo hago efectivamente eso?
+
+674
+00:44:30,630 --> 00:44:35,820
+Bueno, tomo cada segmento
+en la referencia de George original
+
+675
+00:44:35,820 --> 00:44:40,080
+que está especificada y para cada uno
+de los puntos finales de esos
+
+676
+00:44:40,080 --> 00:44:42,490
+segmentos, le aplico
+coordinate-map del
+
+677
+00:44:42,490 --> 00:44:44,440
+rectángulo particular
+sobre el que quiero dibujar.
+
+678
+00:44:44,440 --> 00:44:47,530
+Por ejemplo, este rectángulo
+de aquí abajo, este rectángulo de
+
+679
+00:44:47,530 --> 00:44:51,370
+George como un niño gordo, tiene
+su coordinate-map.
+
+680
+00:44:51,370 --> 00:44:56,310
+Y si quisiera dibujar esta imagen,
+lo que hago es para cada uno
+
+681
+00:44:56,310 --> 00:45:01,500
+de los segmentos aquí, digamos para
+este segmento, transformo ese
+
+682
+00:45:01,500 --> 00:45:04,600
+punto con el coordinate-map,
+transformo ese punto con el
+
+683
+00:45:04,600 --> 00:45:04,990
+coordinate-map.
+
+684
+00:45:04,990 --> 00:45:07,890
+Eso me dará este punto y este otro, 
+y dibujará el
+
+685
+00:45:07,890 --> 00:45:10,150
+segmento entre ellos.
+
+686
+00:45:10,150 --> 00:45:12,970
+Bien, esa es la idea.
+
+687
+00:45:12,970 --> 00:45:14,570
+Y si le doy un rectángulo
+diferente como este
+
+688
+00:45:14,570 --> 00:45:16,200
+otro, ese sería otro 
+coordinate-map diferente, así
+
+689
+00:45:16,200 --> 00:45:19,281
+que obtendría una imagen
+diferente de esos segmentos.
+
+690
+00:45:19,281 --> 00:45:22,500
+¿Cómo obtenemos una imagen
+en primer lugar?
+
+691
+00:45:22,500 --> 00:45:25,250
+Puedo construir inicialmente
+una imagen de una lista de
+
+692
+00:45:25,250 --> 00:45:27,750
+segmentos.
+
+693
+00:45:27,750 --> 00:45:31,680
+Este es un procedimiento que construye 
+lo que yo llamo una imagen
+
+694
+00:45:31,680 --> 00:45:35,570
+primitiva, es decir una que obtuve
+pero que no provino de
+
+695
+00:45:35,570 --> 00:45:37,680
+Beside o Rotate o algo así.
+
+696
+00:45:37,680 --> 00:45:43,270
+Empieza con una lista de segmentos, 
+y ahora
+
+697
+00:45:43,270 --> 00:45:44,090
+hace lo que dije.
+
+698
+00:45:44,090 --> 00:45:45,600
+¿Qué es lo que tiene que ser una imagen?
+
+699
+00:45:45,600 --> 00:45:48,790
+En primer lugar, es un procedimiento
+que está definido sobre rectángulos.
+
+700
+00:45:52,060 --> 00:45:53,190
+¿Qué es lo que hace?
+
+701
+00:45:53,190 --> 00:45:54,880
+Dice para cada --
+
+702
+00:45:54,880 --> 00:45:57,480
+esto será una lista de segmentos--
+
+703
+00:45:57,480 --> 00:46:02,510
+para cada segmento, para cada s, 
+que es un segmento en esta
+
+704
+00:46:02,510 --> 00:46:07,410
+lista de segmentos, dibuja una línea.
+
+705
+00:46:07,410 --> 00:46:10,690
+¿Qué línea dibuja?
+
+706
+00:46:10,690 --> 00:46:16,230
+Toma el punto de inicio del segmento,
+y lo transforma usando
+
+707
+00:46:16,230 --> 00:46:19,920
+el coordinate-map del rectángulo.
+
+708
+00:46:19,920 --> 00:46:21,830
+Ese es el primer punto que quiere crear.
+
+709
+00:46:21,830 --> 00:46:24,160
+Luega toma el punto final del segmento
+y lo transforma usando
+
+710
+00:46:24,160 --> 00:46:27,310
+el coordinate-map del rectángulo,
+y luego dibuja una
+
+711
+00:46:27,310 --> 00:46:27,990
+línea entre ellos.
+
+712
+00:46:27,990 --> 00:46:30,180
+Asumamos que 'drawline' es una primitiva
+que está construida dentro
+
+713
+00:46:30,180 --> 00:46:34,250
+del sistema que dibuja una línea
+en la pantalla.
+
+714
+00:46:34,250 --> 00:46:35,980
+Bien, así que transforma los
+puntos extremos con el
+
+715
+00:46:35,980 --> 00:46:37,670
+coordinate-map del rectángulo, 
+dibuja una línea
+
+716
+00:46:37,670 --> 00:46:43,110
+entre ellos, y lo hace para cada s
+
+717
+00:46:43,110 --> 00:46:46,220
+en la lista de segmentos.
+
+718
+00:46:46,220 --> 00:46:49,000
+Y recuerden de nuevo, una imagen
+es un procedimiento que
+
+719
+00:46:49,000 --> 00:46:51,550
+toma un rectángulo como argumento.
+
+720
+00:46:51,550 --> 00:46:53,610
+Así que cuando le das un rectángulo,
+esto es lo que hace:
+
+721
+00:46:53,610 --> 00:46:57,140
+dibuja esas líneas.
+
+722
+00:46:57,140 --> 00:46:59,690
+Bien, así que allí --
+
+723
+00:46:59,690 --> 00:47:01,260
+¿Cómo voy a usar esta cosa?
+
+724
+00:47:01,260 --> 00:47:03,325
+Hagámoslo un poco más concreto.
+
+725
+00:47:05,890 --> 00:47:21,070
+Diría, por ejemplo,
+definir R como
+
+726
+00:47:21,070 --> 00:47:26,520
+'make-rectangle- de algo, 
+y tendría que especificar algunos
+
+727
+00:47:26,520 --> 00:47:30,080
+vectores aquí usando 'make-vector'.
+
+728
+00:47:30,080 --> 00:47:45,010
+Y luego podría decir, definir G 
+como 'make-picture' y luego
+
+729
+00:47:45,010 --> 00:47:47,100
+algo más.
+
+730
+00:47:47,100 --> 00:47:51,540
+Y lo que tendría que especificar aquí es
+la lista de
+
+731
+00:47:51,540 --> 00:47:55,250
+segmentos, usando 'make-segment'.
+
+732
+00:47:55,250 --> 00:47:57,480
+'make-segment' podría estar compuesto
+por vectores y los vectores podrían
+
+733
+00:47:57,480 --> 00:47:59,610
+estar compuestos por puntos.
+
+734
+00:47:59,610 --> 00:48:03,970
+Y luego, si quisiera ver la imagen de G
+dentro de un
+
+735
+00:48:03,970 --> 00:48:10,280
+rectángulo. Bueno, una imagen
+es un procedimiento que toma un
+
+736
+00:48:10,280 --> 00:48:11,940
+rectángulo como argumento.
+
+737
+00:48:11,940 --> 00:48:18,720
+Así que si luego llamo a G con
+R como entrada, eso haría
+
+738
+00:48:18,720 --> 00:48:22,520
+que cualquier imagen que representa
+G se dibujara dentro del
+
+739
+00:48:22,520 --> 00:48:26,722
+rectángulo R. 
+Bien, así es como lo usarían.
+
+740
+00:49:08,072 --> 00:49:12,530
+Bueno, ¿por qué dije que este 
+ejemplo era lindo?
+
+741
+00:49:12,530 --> 00:49:13,680
+Probablemente a ustedes 
+no les pareció lindo.
+
+742
+00:49:13,680 --> 00:49:15,540
+Probablemente piensen que es más
+raro que lindo.
+
+743
+00:49:15,540 --> 00:49:18,740
+Representar estas imágenes
+como procedimientos, que
+
+744
+00:49:18,740 --> 00:49:21,430
+hacen cosas complicadas con
+rectángulos.
+
+745
+00:49:21,430 --> 00:49:22,680
+¿Por qué es lindo?
+
+746
+00:49:25,460 --> 00:49:29,070
+La razón por la que lo es
+es que una vez que implementaron
+
+747
+00:49:29,070 --> 00:49:32,670
+las primitivas de esta manera,
+los medios de combinación se
+
+748
+00:49:32,670 --> 00:49:36,390
+realizan implementando 
+procedimientos.
+
+749
+00:49:36,390 --> 00:49:37,400
+Déjenme mostrarles lo que
+quiero decir.
+
+750
+00:49:37,400 --> 00:49:38,650
+Supongan que quiero implementar Beside.
+
+751
+00:49:41,980 --> 00:49:44,040
+Quisiera --
+
+752
+00:49:44,040 --> 00:49:46,310
+Supongan que tengo una imagen.
+
+753
+00:49:46,310 --> 00:49:47,620
+Llamémosla P1.
+
+754
+00:49:47,620 --> 00:49:49,500
+P1 será --
+Recuerden lo que una
+
+755
+00:49:49,500 --> 00:49:50,780
+imagen realmente es.
+
+756
+00:49:50,780 --> 00:49:56,800
+Es una cosa a la que si le puedes
+dar un rectángulo
+
+757
+00:49:56,800 --> 00:50:00,920
+entonces hará que una imagen
+se dibuje en cualquier rectángulo
+
+758
+00:50:00,920 --> 00:50:03,520
+que le des.
+
+759
+00:50:03,520 --> 00:50:08,210
+Y supongan que P2 es otra imagen
+y que le dan
+
+760
+00:50:08,210 --> 00:50:09,570
+un rectángulo.
+
+761
+00:50:09,570 --> 00:50:11,220
+Y sin importar el rectángulo
+que le pases,
+
+762
+00:50:11,220 --> 00:50:12,470
+dibuja una imagen.
+
+763
+00:50:14,920 --> 00:50:25,230
+Y ahora si quisiera implementar
+Beside de P1 y P2
+
+764
+00:50:25,230 --> 00:50:28,380
+con un factor de escala A,
+¿qué es lo que tendría que ser?
+
+765
+00:50:28,380 --> 00:50:29,950
+Tendría que ser una imagen.
+
+766
+00:50:29,950 --> 00:50:32,440
+Tendría que ser la cosa a 
+la que le pasas un rectángulo y
+
+767
+00:50:32,440 --> 00:50:34,800
+dibuja algo en ese rectángulo.
+
+768
+00:50:34,800 --> 00:50:38,350
+Así que si le paso a Beside
+este rectángulo --
+
+769
+00:50:38,350 --> 00:50:41,206
+Le paso un rectángulo.
+
+770
+00:50:41,206 --> 00:50:42,860
+¿Qué es lo que hará?
+
+771
+00:50:42,860 --> 00:50:45,900
+Tomará este rectángulo
+y lo dividirá en dos
+
+772
+00:50:45,900 --> 00:50:53,470
+con una proporción A, y 1-A.
+Y dirá que
+
+773
+00:50:53,470 --> 00:50:54,895
+ahora tiene dos rectángulos.
+
+774
+00:51:02,370 --> 00:51:05,560
+Y luego va a P1 y le dice que se
+dibuje en
+
+775
+00:51:05,560 --> 00:51:10,220
+este rectángulo y va a P2, y le dice
+
+776
+00:51:10,220 --> 00:51:13,490
+que se dibuje en este rectángulo.
+
+777
+00:51:13,490 --> 00:51:15,690
+El único cómputo que
+hay que hacer es ver cuáles
+
+778
+00:51:15,690 --> 00:51:17,550
+son estos rectángulos.
+
+779
+00:51:17,550 --> 00:51:21,660
+Recuerden que un rectángulo
+está especificado por un orgien
+
+780
+00:51:21,660 --> 00:51:24,480
+y un vector horizontal y un vector
+vertical, por lo que hay que
+
+781
+00:51:24,480 --> 00:51:27,400
+averiguar cuáles son estas cosas.
+
+782
+00:51:27,400 --> 00:51:30,740
+Así que para el primer rectángulo,
+el origen resulta ser el
+
+783
+00:51:30,740 --> 00:51:34,370
+orgien del rectángulo original, 
+y el vector
+
+784
+00:51:34,370 --> 00:51:36,810
+vertical es el mismo que el vector
+vertical del
+
+785
+00:51:36,810 --> 00:51:38,930
+rectángulo original.
+
+786
+00:51:38,930 --> 00:51:43,510
+El vector horizontal es el vector
+horizontal del
+
+787
+00:51:43,510 --> 00:51:47,740
+rectángulo original escalado en A.
+
+788
+00:51:47,740 --> 00:51:49,680
+Y ese es el primer rectángulo.
+
+789
+00:51:49,680 --> 00:51:55,390
+Para el segundo rectángulo,
+el origen es el origen original
+
+790
+00:51:55,390 --> 00:52:01,910
+más el vector horizontal escalado en A.
+el vector
+
+791
+00:52:01,910 --> 00:52:05,060
+horizontal del segundo rectángulo
+es el resto del vector
+
+792
+00:52:05,060 --> 00:52:10,780
+horizontal del primero, que es 1-A 
+veces el
+
+793
+00:52:10,780 --> 00:52:15,660
+H original y el vector vertical
+sigue siendo v. Pero
+
+794
+00:52:15,660 --> 00:52:17,570
+básicamente va y construye
+estos dos
+
+795
+00:52:17,570 --> 00:52:19,890
+rectángulos y lo importante
+una vez construidos los
+
+796
+00:52:19,890 --> 00:52:22,940
+rectángulos es decirle a P1
+que se dibuje allí
+
+797
+00:52:22,940 --> 00:52:25,080
+y a P2 que se dibuje allí. Y eso
+
+798
+00:52:25,080 --> 00:52:27,480
+es todo lo que Beside tiene que hacer.
+
+799
+00:52:27,480 --> 00:52:29,115
+Bien, veamos esta pieza de código.
+
+800
+00:52:34,500 --> 00:52:45,420
+Beside de una imagen y otra imagen
+con una proporción
+
+801
+00:52:45,420 --> 00:52:51,030
+de escalado es ,en primer lugar,
+ya que es una imagen, un
+
+802
+00:52:51,030 --> 00:52:55,590
+procedimiento que va a tomar
+a un rectángulo como argumento.
+
+803
+00:52:55,590 --> 00:52:57,050
+¿Qué es lo que hará?
+
+804
+00:52:57,050 --> 00:53:00,650
+Le dice a P1 que se dibuje en 
+algún rectángulo y a P2
+
+805
+00:53:00,650 --> 00:53:03,190
+que se dibuje en otro 
+rectángulo.
+
+806
+00:53:03,190 --> 00:53:04,530
+¿Y cuáles son esos rectángulos?
+
+807
+00:53:04,530 --> 00:53:05,550
+Bueno, aquí está el cómputo.
+
+808
+00:53:05,550 --> 00:53:08,680
+Crea un rectángulo, y esta
+es el álgebra que hice
+
+809
+00:53:08,680 --> 00:53:11,140
+en el pizarrón: el origen, una cosa; 
+el vector
+
+810
+00:53:11,140 --> 00:53:13,030
+horizontal, otra cosa; y el vector 
+vertical, otra cosa.
+
+811
+00:53:13,030 --> 00:53:17,790
+Y para P2, el rectángulo que quiere
+tiene otros origen
+
+812
+00:53:17,790 --> 00:53:19,820
+vector horizontal y vector vertical.
+
+813
+00:53:19,820 --> 00:53:23,330
+Pero lo importante es que
+todo lo que está diciendo es a
+
+814
+00:53:23,330 --> 00:53:25,990
+P1 que hago algo en un rectángulo; y a P2
+
+815
+00:53:25,990 --> 00:53:27,890
+que lo haga en otro rectángulo.
+
+816
+00:53:27,890 --> 00:53:30,920
+Eso es todo lo que Beside tiene que hacer.
+
+817
+00:53:30,920 --> 00:53:37,060
+Similarmente Rotate--
+
+818
+00:53:37,060 --> 00:53:44,180
+Si tengo esta imagen A
+y quiero ver digamos
+
+819
+00:53:44,180 --> 00:53:51,050
+a la rotación de A en noventa grados,
+lo que eso debería significar es
+
+820
+00:53:51,050 --> 00:53:57,010
+toma este rectángulo, que es un origen,
+
+821
+00:53:57,010 --> 00:54:01,570
+un vector horizontal y un vector vertical, 
+pretende que realmente es el
+
+822
+00:54:01,570 --> 00:54:05,710
+rectángulo que se parece a este,
+que tiene un origen,
+
+823
+00:54:05,710 --> 00:54:09,690
+un vector horizontal aquí arriba, y un
+vector vertical allí y
+
+824
+00:54:09,690 --> 00:54:13,620
+ahora dibújate con respecto
+a ese rectángulo.
+
+825
+00:54:13,620 --> 00:54:17,120
+Déjenme mostrarles eso
+como un procedimiento.
+
+826
+00:54:17,120 --> 00:54:21,570
+Bueno, Rotate90 de una
+imagen es, de nuevo,
+
+827
+00:54:21,570 --> 00:54:24,870
+un procedimiento de un rectángulo
+que le dice a la imagen que dibuje
+
+828
+00:54:24,870 --> 00:54:29,190
+en algún rectángulo. Y luego
+este álgebra es la
+
+829
+00:54:29,190 --> 00:54:30,580
+transformación del rectángulo.
+
+830
+00:54:30,580 --> 00:54:33,370
+Es la que hace que este rectángulo
+parezca
+
+831
+00:54:33,370 --> 00:54:35,220
+de costado, el origen en otro lado y el
+
+832
+00:54:35,220 --> 00:54:37,670
+vector vertical en otro lado y el vector
+
+833
+00:54:37,670 --> 00:54:38,965
+horizontal en otro lado y el vector
+
+834
+00:54:38,965 --> 00:54:41,704
+vertical en otro lado.
+
+835
+00:54:41,704 --> 00:54:43,117
+¿Bien?
+
+836
+00:54:43,117 --> 00:54:44,367
+Bien.
+
+837
+00:54:46,890 --> 00:54:50,810
+De nuevo, noten que lo crucial
+que está ocurriendo aquí es que
+
+838
+00:54:50,810 --> 00:54:57,080
+están usando la representación
+de imágenes como
+
+839
+00:54:57,080 --> 00:55:01,910
+procedimientos para automáticamente
+obtener la propiedad de clausura.
+
+840
+00:55:01,910 --> 00:55:05,320
+Porque lo que pasa es, Beside 
+sólo tiene esta cosa P1.
+
+841
+00:55:05,320 --> 00:55:08,430
+No le importa si es una imagen
+primitiva o si son
+
+842
+00:55:08,430 --> 00:55:11,760
+segmentos o si P1 es 
+el resultado de hacer
+
+843
+00:55:11,760 --> 00:55:12,950
+Above o Beside o Rotates.
+
+844
+00:55:12,950 --> 00:55:17,380
+Todo lo que Beside tiene que sabes
+es que si le pasa un rectángulo
+
+845
+00:55:17,380 --> 00:55:21,070
+a P1, entonces algo se dibujará.
+
+846
+00:55:21,070 --> 00:55:23,550
+Y más allá de ese nivel, Beside no--
+
+847
+00:55:23,550 --> 00:55:27,321
+No es de su incumbencia cómo
+P1 logra hacer ese dibujo.
+
+848
+00:55:27,321 --> 00:55:31,140
+Bien, así que están usando
+la representación procedural
+
+849
+00:55:31,140 --> 00:55:32,390
+para asegurar la clausura.
+
+850
+00:55:34,440 --> 00:55:35,830
+Bien.
+
+851
+00:55:35,830 --> 00:55:40,010
+Así que implementar imágenes
+como procedimiento hace estos
+
+852
+00:55:40,010 --> 00:55:43,090
+medios de combinación
+tanto simples como también,
+
+853
+00:55:43,090 --> 00:55:46,040
+creo yo, elegantes.
+
+854
+00:55:46,040 --> 00:55:49,370
+Pero ese no es el verdadero remate.
+
+855
+00:55:49,370 --> 00:55:52,030
+El verdadero remate es cuando
+ves a los medios de
+
+856
+00:55:52,030 --> 00:55:54,870
+abstracción de este lenguaje.
+
+857
+00:55:54,870 --> 00:55:56,300
+Porque, ¿qué hemos hecho?
+
+858
+00:55:56,300 --> 00:56:02,760
+Hemos implementado a los 
+mismos medios de combinación
+
+859
+00:56:02,760 --> 00:56:04,010
+como procedimientos.
+
+860
+00:56:05,950 --> 00:56:08,870
+Y lo que eso significa es que
+vayamos a abstraer en este
+
+861
+00:56:08,870 --> 00:56:14,890
+lenguaje, todo lo que Lisp
+nos provee para manipular
+
+862
+00:56:14,890 --> 00:56:20,600
+procedimientos estará automáticamente 
+disponible para hacer cosas en
+
+863
+00:56:20,600 --> 00:56:22,010
+este lenguaje de imágenes.
+
+864
+00:56:22,010 --> 00:56:25,520
+El término técnico que quiero decir
+es que no sólo este
+
+865
+00:56:25,520 --> 00:56:29,900
+lenguaje está implementado en Lisp,
+obviamente lo está, sino que también
+
+866
+00:56:29,900 --> 00:56:39,890
+el lenguaje está bien integrado a Lisp.
+Lo que quiero decir es que
+
+867
+00:56:39,890 --> 00:56:44,800
+al integrar el lenguaje de esta manera,
+todo el poder de Lisp
+
+868
+00:56:44,800 --> 00:56:47,680
+está automáticamente disponible
+como una extensión
+
+869
+00:56:47,680 --> 00:56:49,880
+de lo que sea que quieren hacer.
+
+870
+00:56:49,880 --> 00:56:52,030
+¿Qué quiero decir con eso?
+
+871
+00:56:52,030 --> 00:56:57,410
+Ejemplo: supongan que 
+quiero hacer algo que tome
+
+872
+00:56:57,410 --> 00:57:06,090
+cuatro imágenes A,B,C y D
+y crea una configuración
+
+873
+00:57:06,090 --> 00:57:07,340
+que se ve así.
+
+874
+00:57:12,870 --> 00:57:14,670
+Lo podrían llamar, cuatro imágenes
+
+875
+00:57:14,670 --> 00:57:17,110
+o algo así, una configuración
+de cuatro imágenes.
+
+876
+00:57:17,110 --> 00:57:17,740
+¿Cómo hago eso?
+
+877
+00:57:17,740 --> 00:57:18,700
+Bueno, obviamente puedo hacerlo.
+
+878
+00:57:18,700 --> 00:57:26,140
+Sólo escribo un procedimiento 
+que toma B sobre D y A sobre C
+
+879
+00:57:26,140 --> 00:57:28,350
+y pone esas cosas una al lado
+de la otra.
+
+880
+00:57:28,350 --> 00:57:31,150
+Así que automáticamente tengo
+la habilidad de Lisp de componer
+
+881
+00:57:31,150 --> 00:57:33,090
+procedimientos.
+
+882
+00:57:33,090 --> 00:57:34,960
+Y no tuve que hacer eso específicamente
+
+883
+00:57:34,960 --> 00:57:35,790
+en el lenguaje de imágenes.
+
+884
+00:57:35,790 --> 00:57:38,710
+Es automático por el hecho
+que los medios de combinación
+
+885
+00:57:38,710 --> 00:57:41,100
+son procedimientos.
+
+886
+00:57:41,100 --> 00:57:43,570
+O supongan que quiero hacer algo
+un poco más
+
+887
+00:57:43,570 --> 00:57:44,200
+complicado.
+
+888
+00:57:44,200 --> 00:57:46,670
+Quisiera poner un parámetro
+tal que para cada uno de estos
+
+889
+00:57:46,670 --> 00:57:50,530
+podría especificar una rotación
+de noventa grados.
+
+890
+00:57:50,530 --> 00:57:53,200
+Eso es sólo poner un parámetro
+al procedimiento.
+
+891
+00:57:53,200 --> 00:57:55,430
+Está automáticamente ahí.
+
+892
+00:57:55,430 --> 00:57:58,470
+Proviene automáticamente
+de la integración.
+
+893
+00:57:58,470 --> 00:58:04,850
+O incluso más, supongan que
+quisiera usar recursión.
+
+894
+00:58:04,850 --> 00:58:09,560
+Veamos un medio
+
+895
+00:58:09,560 --> 00:58:10,740
+de combinación recursivo 
+para imágenes.
+
+896
+00:58:10,740 --> 00:58:12,620
+Podría decir, 'define'--
+
+897
+00:58:12,620 --> 00:58:14,890
+veamos si pueden averiguar
+cuál es este -- supongan
+
+898
+00:58:14,890 --> 00:58:22,990
+que defina a 'right-push' de una
+imagen,
+
+899
+00:58:22,990 --> 00:58:28,770
+'right-push' de una imagen y un entero N
+y un factor de escalado
+
+900
+00:58:28,770 --> 00:58:40,000
+A. Lo definiré así. Si N es igual a cero, 
+entonces
+
+901
+00:58:40,000 --> 00:58:42,340
+la respuesta es la imagen.
+
+902
+00:58:42,340 --> 00:58:49,724
+Caso contrario, voy a poner --
+
+903
+00:58:49,724 --> 00:58:59,080
+Cambio de nombre: P. Caso contrario,
+voy a tomar P
+
+904
+00:58:59,080 --> 00:59:09,460
+y ponerla al lado del resultado
+del llamado recursivo con P
+
+905
+00:59:09,460 --> 00:59:25,660
+N-1 y A, usando el factor de escala A.
+
+906
+00:59:25,660 --> 00:59:31,080
+Si N es cero, devuelvo P, caso contrario
+pongo P con una factor de escalado A--
+
+907
+00:59:31,080 --> 00:59:33,610
+Perdón, no alinée esto correctamente--
+
+908
+00:59:33,610 --> 00:59:37,070
+recursivamente al lado del resultado
+de hacer 'right-push' de P, N-1 veces
+
+909
+00:59:37,070 --> 00:59:38,550
+con un factor de escalado A.
+
+910
+00:59:38,550 --> 00:59:43,860
+Eso es un medio de combinación
+recurisvo.
+
+911
+00:59:43,860 --> 00:59:44,790
+¿Cómo se ve esto?
+
+912
+00:59:44,790 --> 00:59:46,060
+Bueno, se ve así.
+
+913
+00:59:46,060 --> 00:59:54,250
+Ahí está George luego de aplicar
+'right-push' dos veces con un
+
+914
+00:59:54,250 --> 00:59:59,520
+factor de escalado igual a 0.75.
+
+915
+00:59:59,520 --> 01:00:00,020
+Bien
+
+916
+01:00:00,020 --> 01:00:00,850
+¿De dónde vino eso?
+
+917
+01:00:00,850 --> 01:00:02,260
+¿Cómo obtuve esa recursión?
+
+918
+01:00:02,260 --> 01:00:02,960
+Y la respuesta es
+
+919
+01:00:02,960 --> 01:00:05,240
+automáticamente, absolutamente
+automático.
+
+920
+01:00:05,240 --> 01:00:08,370
+Como estos son procedimientos, 
+la integración nos permite
+
+921
+01:00:08,370 --> 01:00:10,440
+poder definir procedimientos
+recursivos.
+
+922
+01:00:10,440 --> 01:00:13,830
+No tuve que organizar eso.
+
+923
+01:00:13,830 --> 01:00:15,320
+Y,por supuesto, puedo hacer 
+cosas más
+
+924
+01:00:15,320 --> 01:00:16,440
+complicadas del mismo tipo-
+
+925
+01:00:16,440 --> 01:00:18,240
+Podría hacer algo parecido
+pero hacia arriba.
+
+926
+01:00:18,240 --> 01:00:21,740
+Es algo que se hace poniendo
+recursivamente
+
+927
+01:00:21,740 --> 01:00:22,670
+algo arriba.
+
+928
+01:00:22,670 --> 01:00:25,730
+O podría hacer algo
+
+929
+01:00:25,730 --> 01:00:26,590
+con este esquema.
+
+930
+01:00:26,590 --> 01:00:33,430
+Podría empezar con una imagen
+y luego,
+
+931
+01:00:33,430 --> 01:00:38,250
+recursivamente empujarla hacia
+el costado y hacia arriba, y eso
+
+932
+01:00:38,250 --> 01:00:39,420
+podría poner algo ahí.
+
+933
+01:00:39,420 --> 01:00:42,590
+Y luego aquí arriba pongo
+la misma cosa recursiva y
+
+934
+01:00:42,590 --> 01:00:45,220
+obtengo algo parecido a esto.
+
+935
+01:00:45,220 --> 01:00:49,650
+Ese es un procedimiento
+que es un poco más
+
+936
+01:00:49,650 --> 01:00:53,800
+complicado que 'right-push', 
+pero no por mucho.
+
+937
+01:00:53,800 --> 01:00:56,670
+Hago Above y Beside
+
+938
+01:00:56,670 --> 01:00:57,920
+en vez que sólo Beside.
+
+939
+01:01:01,380 --> 01:01:05,780
+Ahora si tomo eso y lo aplico
+con la idea de poner
+
+940
+01:01:05,780 --> 01:01:09,500
+cuatro imágenes juntos, que es
+algo que seguramente puedo hacer, y hago
+
+941
+01:01:09,500 --> 01:01:16,460
+y le aplico eso a Q, que definimos aquí,
+
+942
+01:01:16,460 --> 01:01:22,310
+obtengo esta cosa que es como
+
+943
+01:01:22,310 --> 01:01:25,045
+el "Square Limit" de Q, hecho dos veces.
+
+944
+01:01:27,970 --> 01:01:31,960
+Y luego podemos compararlo
+con el "Square Limit"
+
+945
+01:01:31,960 --> 01:01:35,110
+de Escher. Y como pueden ver, es 
+casi la misma ida.
+
+946
+01:01:35,110 --> 01:01:37,040
+El de Escher es, por supuesto,
+muchísimo más bonito.
+
+947
+01:01:37,040 --> 01:01:43,250
+Si volvemos y miramos a George, 
+si miramos a
+
+948
+01:01:43,250 --> 01:01:44,340
+George aquí --
+
+949
+01:01:44,340 --> 01:01:47,970
+Ven, empecé con una diseño
+arbitrario, esta imagen de
+
+950
+01:01:47,970 --> 01:01:51,170
+George e hice cosas
+con ella.
+
+951
+01:01:51,170 --> 01:01:54,420
+Si miramos a la imagen de Escher,
+
+952
+01:01:54,420 --> 01:01:56,200
+la imagen de Escher no es un diseño
+arbitrario.
+
+953
+01:01:56,200 --> 01:01:59,130
+Es algo muy ingenioso, 
+tal que si uno toma
+
+954
+01:01:59,130 --> 01:02:03,590
+este cuerpo de pez, lo rota y
+lo encoge, entonces
+
+955
+01:02:03,590 --> 01:02:04,990
+se funde con el siguiente 
+realmente bien.
+
+956
+01:02:07,620 --> 01:02:10,320
+Y, por supuesto, con George 
+no hice nada
+
+957
+01:02:10,320 --> 01:02:12,140
+parecido a eso.
+
+958
+01:02:12,140 --> 01:02:16,300
+Si vemos a George, hay un poqutio
+
+959
+01:02:16,300 --> 01:02:18,670
+de coincidencia, pero no tan bien,
+y es bastante arbitrario.
+
+960
+01:02:18,670 --> 01:02:23,710
+Un muy lindo proyecto, por cierto,
+sería escribir un
+
+961
+01:02:23,710 --> 01:02:27,120
+procedimiento que tomara una 
+figura básica como este George
+
+962
+01:02:27,120 --> 01:02:30,050
+y empezara a mover los extremos
+de las líneas, para
+
+963
+01:02:30,050 --> 01:02:33,170
+que obtengas una imagen lindo
+cuando aplicaras el proceso
+
+964
+01:02:33,170 --> 01:02:34,720
+de "Square Limit".
+
+965
+01:02:34,720 --> 01:02:38,360
+Eso sería algo lindo para pensar.
+
+966
+01:02:38,360 --> 01:02:39,710
+Bien, entonces podemos 
+combinar cosas.
+
+967
+01:02:39,710 --> 01:02:40,980
+Podemos tener procedimientos
+recursivos.
+
+968
+01:02:40,980 --> 01:02:44,680
+Podemos hacer un montón de cosas.
+Y todo eso es automático.
+
+969
+01:02:44,680 --> 01:02:47,050
+Es lo importante, la diferencia entre
+meramente
+
+970
+01:02:47,050 --> 01:02:49,370
+implementar algo en un lenguaje
+e integrar
+
+971
+01:02:49,370 --> 01:02:51,570
+algo en un lenguaje, tal que
+no pierdes el
+
+972
+01:02:51,570 --> 01:02:53,280
+poder original del lenguaje.
+Y para lo que Lisp
+
+973
+01:02:53,280 --> 01:02:56,680
+es genial-- Verán, Lisp
+es un horrible lenguaje para hacer
+
+974
+01:02:56,680 --> 01:02:57,600
+cualquier problema particular.
+
+975
+01:02:57,600 --> 01:03:00,260
+Para lo que es bueno es para averiguar
+el lenguaje correcto
+
+976
+01:03:00,260 --> 01:03:04,000
+que quieres e integrarlo en Lisp.
+Ese es el verdadero poder
+
+977
+01:03:04,000 --> 01:03:05,980
+de este abordaje al diseño.
+
+978
+01:03:05,980 --> 01:03:06,880
+Por supuesto, podemos ir más allá.
+
+979
+01:03:06,880 --> 01:03:10,970
+Vieron que la otra cosa
+que podemos hacer en Lisp es
+
+980
+01:03:10,970 --> 01:03:16,800
+capturar métodos generales para
+hacer cosas como procedimientos
+
+981
+01:03:16,800 --> 01:03:19,090
+de alto orden.
+
+982
+01:03:19,090 --> 01:03:21,800
+Y probablemente al verme dibujarlo
+tuvieron la idea de que
+
+983
+01:03:21,800 --> 01:03:25,600
+'right-push' y el otro análogo
+donde se empuja hacia
+
+984
+01:03:25,600 --> 01:03:31,570
+arriba y arriba y arriba y arriba y
+este otro empuje de aquí son
+
+985
+01:03:31,570 --> 01:03:34,690
+todas generalizaciones de
+una misma idea común.
+
+986
+01:03:34,690 --> 01:03:38,210
+Así que sólo para ilustrar y darles
+práctica en leer este
+
+987
+01:03:38,210 --> 01:03:41,340
+complejo uso de procedimientos
+de alto orden, déjenme
+
+988
+01:03:41,340 --> 01:03:45,280
+mostrarles la idea general
+de empujar un medio
+
+989
+01:03:45,280 --> 01:03:48,510
+de combinación para
+recursivamente repetirlo.
+
+990
+01:03:48,510 --> 01:03:51,240
+Este es uno bueno para descifrar.
+
+991
+01:03:51,240 --> 01:03:59,550
+Definiremos lo que es empujar
+usando un medio de
+
+992
+01:03:59,550 --> 01:04:01,800
+combinación.
+
+993
+01:04:01,800 --> 01:04:05,582
+Comb será algo como Beside o Above.
+
+994
+01:04:05,582 --> 01:04:07,240
+¿Qué será eso?
+
+995
+01:04:07,240 --> 01:04:10,540
+Será un procedimiento,
+recuerden lo que
+
+996
+01:04:10,540 --> 01:04:13,480
+Beside era realmente.
+
+997
+01:04:13,480 --> 01:04:18,700
+Tomaba una imagen, dos imágenes
+y un factor de escala.
+
+998
+01:04:18,700 --> 01:04:21,740
+Usando eso producía algo
+que tomaba un número,
+
+999
+01:04:21,740 --> 01:04:24,800
+una imagen y un factor de escala, 
+que llamé
+
+1000
+01:04:24,800 --> 01:04:26,310
+'right-push'
+
+1001
+01:04:26,310 --> 01:04:27,700
+Así que esto será algo que toma
+
+1002
+01:04:27,700 --> 01:04:32,700
+una imagen, un número, un factor
+de escala y
+
+1003
+01:04:32,700 --> 01:04:33,950
+dirá--
+
+1004
+01:04:36,320 --> 01:04:39,520
+Voy a repetir una operación.
+
+1005
+01:04:39,520 --> 01:04:46,100
+Voy a repetidamente aplicar
+este procedimiento que toma una
+
+1006
+01:04:46,100 --> 01:04:53,540
+imagen y aplica los medios
+de combinación de la imagen
+
+1007
+01:04:53,540 --> 01:04:58,160
+y la imagen original y la que tomé aquí
+
+1008
+01:04:58,160 --> 01:05:06,100
+y el factor de escala y hago esto
+que repite este
+
+1009
+01:05:06,100 --> 01:05:15,370
+procedimiento N veces, y aplico
+todo eso a mi
+
+1010
+01:05:15,370 --> 01:05:16,620
+imagen original.
+
+1011
+01:05:19,600 --> 01:05:23,390
+Repetido aquí, en caso de que no
+lo hayan notado, es otro
+
+1012
+01:05:23,390 --> 01:05:29,660
+procedimiento de alto orden que toma
+un procedimiento y un número
+
+1013
+01:05:29,660 --> 01:05:32,510
+y retorna otro procedimiento
+que aplica este
+
+1014
+01:05:32,510 --> 01:05:36,150
+procedimiento N veces.
+
+1015
+01:05:36,150 --> 01:05:38,690
+Y creo que algunos de ustedes
+y han escrito 'repeated' como un
+
+1016
+01:05:38,690 --> 01:05:41,520
+ejercicio, pero si no lo hicieron,
+es un gran ejercicio para
+
+1017
+01:05:41,520 --> 01:05:43,910
+pensar sobre procedimientos
+de alto orden.
+
+1018
+01:05:43,910 --> 01:05:46,320
+En cualquier cas, el resultado
+de 'repeated' es lo que aplico
+
+1019
+01:05:46,320 --> 01:05:47,570
+a la imagen.
+
+1020
+01:05:49,510 --> 01:05:52,880
+Y habiendo hecho eso, 
+eso va a capturar--
+
+1021
+01:05:52,880 --> 01:05:56,700
+Es esto, la manera que obtuve
+de la idea de Beside a la
+
+1022
+01:05:56,700 --> 01:06:00,760
+idea de 'right-push'. Habiendo
+hecho eso, podría decir
+
+1023
+01:06:00,760 --> 01:06:12,790
+definir 'right-push' como
+push de Beside.
+
+1024
+01:06:17,640 --> 01:06:20,770
+O si definiese 'up-push' como
+push de Above, obtendría
+
+1025
+01:06:20,770 --> 01:06:23,480
+algo análogo, o si definiese
+'corner-push' como push
+
+1026
+01:06:23,480 --> 01:06:25,745
+de algo apropiado que hiciera
+Beside y Above, o
+
+1027
+01:06:25,745 --> 01:06:28,340
+podría hacer push 
+de cualquier cosa.
+
+1028
+01:06:28,340 --> 01:06:31,660
+Si tienen problemas con lambdas,
+
+1029
+01:06:31,660 --> 01:06:33,840
+este es un ejercicio excelente
+
+1030
+01:06:33,840 --> 01:06:36,100
+para averiguar qué signfican.
+
+1031
+01:06:36,100 --> 01:06:42,190
+Bueno, hay un montón para
+aprender de este ejemplo.
+
+1032
+01:06:42,190 --> 01:06:46,040
+El punto principal sobre el
+que estuve rondando es la noción
+
+1033
+01:06:46,040 --> 01:06:50,760
+de un lenguaje integrado
+dentro de otro lenguaje.
+
+1034
+01:06:50,760 --> 01:06:54,700
+Tal que todo el poder este lenguaje
+como Lisp,
+
+1035
+01:06:54,700 --> 01:06:57,270
+el lenguaje que engloba, sigue
+siendo accesible y
+
+1036
+01:06:57,270 --> 01:06:59,270
+aparece como una extensión
+natural del
+
+1037
+01:06:59,270 --> 01:07:01,000
+lenguaje que se construye.
+
+1038
+01:07:01,000 --> 01:07:06,140
+Eso es algo que este ejemplo
+muestra muy bien.
+
+1039
+01:07:06,140 --> 01:07:07,990
+Bien.
+
+1040
+01:07:07,990 --> 01:07:10,960
+Otra cosa es, si vuelven
+y piensan sobre eso,
+
+1041
+01:07:10,960 --> 01:07:12,180
+qué son procedimientos
+y qué son datos.
+
+1042
+01:07:12,180 --> 01:07:15,320
+Saben, al momento de
+llegar hasta aquí, por Dios,
+
+1043
+01:07:15,320 --> 01:07:16,190
+¿Qué está pasando?
+
+1044
+01:07:16,190 --> 01:07:18,620
+Quiero decir, este es un procedimiento
+que toma
+
+1045
+01:07:18,620 --> 01:07:20,380
+una imagen y un argumento.
+¿Y qué es una imagen?
+
+1046
+01:07:20,380 --> 01:07:22,700
+Una imagen era, como recuerdan,
+un procedimiento que
+
+1047
+01:07:22,700 --> 01:07:23,630
+toma un rectángulo
+
+1048
+01:07:23,630 --> 01:07:26,090
+Y un rectángulo es 
+alguna abstracción.
+
+1049
+01:07:26,090 --> 01:07:31,300
+Y espero que a esta altura
+estén completamente perdidos
+
+1050
+01:07:31,300 --> 01:07:32,580
+con la pregunta de qué en el sistema
+
+1051
+01:07:32,580 --> 01:07:33,590
+es un procedimiento y qué es un dato.
+
+1052
+01:07:33,590 --> 01:07:35,500
+Verán, no hay ninguna diferencia.
+
+1053
+01:07:35,500 --> 01:07:38,020
+Realmente no la hay.
+
+1054
+01:07:38,020 --> 01:07:39,850
+Y pueden pensar en una imagen
+a veces como
+
+1055
+01:07:39,850 --> 01:07:42,790
+un procedimiento y a veces como datos
+
+1056
+01:07:42,790 --> 01:07:44,860
+pero eso es sólo
+para hacerlos sentir cómodos.
+
+1057
+01:07:44,860 --> 01:07:48,640
+Es realmente ambos en algún
+sentido o ninguno en algún sentido.
+
+1058
+01:07:48,640 --> 01:07:56,370
+Hay un punto más general
+sobre la estructura
+
+1059
+01:07:56,370 --> 01:08:03,510
+del sistema para crear un
+lenguaje, viendo
+
+1060
+01:08:03,510 --> 01:08:08,030
+el proceso de diseño ingenieril
+como uno para crear lenguajes
+
+1061
+01:08:08,030 --> 01:08:12,730
+o como para crear
+una especie de secuencias
+
+1062
+01:08:12,730 --> 01:08:14,830
+de capas de lenguaje.
+
+1063
+01:08:14,830 --> 01:08:18,010
+Verán, existe esta metodología, 
+o debería
+
+1064
+01:08:18,010 --> 01:08:22,460
+decir mitología, caritativamente
+llamado
+
+1065
+01:08:22,460 --> 01:08:24,988
+entre comillas ingeniería de software.
+
+1066
+01:08:24,988 --> 01:08:27,090
+Y lo que dice es que uno va
+
+1067
+01:08:27,090 --> 01:08:29,140
+y averigua su tarea, 
+y averigua exactamente
+
+1068
+01:08:29,140 --> 01:08:30,520
+qué es lo que quiere hacer.
+
+1069
+01:08:30,520 --> 01:08:32,080
+Y una vez que lo haces,
+
+1070
+01:08:32,080 --> 01:08:34,490
+observas que se divide en tres
+sub tareas, y uno
+
+1071
+01:08:34,490 --> 01:08:36,710
+va y empieza a trabajar-- 
+y trabaja en esta
+
+1072
+01:08:36,710 --> 01:08:38,770
+sub tarea, y averigua qué
+es exactamante.
+
+1073
+01:08:38,770 --> 01:08:40,649
+Y observas que eso se divide en tres
+
+1074
+01:08:40,649 --> 01:08:43,380
+sub tareas, y las especificas
+completamente y vas
+
+1075
+01:08:43,380 --> 01:08:45,920
+y trabajas en esas dos, y luego trabajas
+en esta otra, y lo
+
+1076
+01:08:45,920 --> 01:08:47,229
+especificas exactamente.
+
+1077
+01:08:47,229 --> 01:08:48,990
+Y luego finalmente cuando terminaste,
+vuelves aquí arriba
+
+1078
+01:08:48,990 --> 01:08:51,779
+y trabajas en la segunda sub tareas, y
+
+1079
+01:08:51,779 --> 01:08:53,370
+lo especificas y lo trabajas.
+
+1080
+01:08:53,370 --> 01:08:55,490
+Y terminas con --
+
+1081
+01:08:55,490 --> 01:08:57,680
+terminar al final con esta
+hermosa edificación.
+
+1082
+01:08:57,680 --> 01:09:03,120
+Terminas con un árbol maravilloso,
+donde
+
+1083
+01:09:03,120 --> 01:09:05,590
+dividiste las tareas en sub tareas
+y cada una de ellas
+
+1084
+01:09:05,590 --> 01:09:07,260
+en sub tareas y también
+divides esas
+
+1085
+01:09:07,260 --> 01:09:10,370
+en sub tareas.
+
+1086
+01:09:10,370 --> 01:09:15,200
+Y cada uno de estos nodos
+está exacta y precisamente definido
+
+1087
+01:09:15,200 --> 01:09:17,779
+para que la maravillosa y hermos
+tarea encaje
+
+1088
+01:09:17,779 --> 01:09:19,180
+en toda la edificación.
+
+1089
+01:09:19,180 --> 01:09:21,080
+Eso es mitología.
+
+1090
+01:09:21,080 --> 01:09:23,970
+Sólo un computador científico,
+podría pensar que se
+
+1091
+01:09:23,970 --> 01:09:28,220
+contruyen sistemas complejos así.
+
+1092
+01:09:28,220 --> 01:09:32,700
+Contraste eso con el ejemplo
+de Henderson.
+
+1093
+01:09:32,700 --> 01:09:35,319
+No lo hicimos así.
+
+1094
+01:09:35,319 --> 01:09:37,359
+Lo que pasó fue que
+hubo una secuencia
+
+1095
+01:09:37,359 --> 01:09:41,319
+de capas de lenguaje.
+
+1096
+01:09:41,319 --> 01:09:41,990
+¿Qué pasó?
+
+1097
+01:09:41,990 --> 01:09:47,770
+Había una capa de algo
+que nos permitía construir
+
+1098
+01:09:47,770 --> 01:09:49,020
+imágenes primitivas.
+
+1099
+01:09:51,569 --> 01:09:56,440
+Hay imágenes primitivas
+y eso era un lenguaje.
+
+1100
+01:09:56,440 --> 01:09:57,530
+No dije mucho sobre eso.
+
+1101
+01:09:57,530 --> 01:09:59,900
+Hablamos sobre cómo construir a George,
+pero
+
+1102
+01:09:59,900 --> 01:10:01,950
+era un lenguaje donde hablabas
+de vector y segmentos
+
+1103
+01:10:01,950 --> 01:10:06,520
+y punto y dónde estaban en el
+cuadrado unitario.
+
+1104
+01:10:06,520 --> 01:10:12,000
+Y luego, encima de eso,
+encima de eso --
+
+1105
+01:10:12,000 --> 01:10:13,850
+Este es el lenguaje 
+de imágenes primitivas.
+
+1106
+01:10:17,100 --> 01:10:19,240
+Que habla sobre segmentos
+en imágenes
+
+1107
+01:10:19,240 --> 01:10:21,620
+particulares en el cuadrado unitario.
+
+1108
+01:10:21,620 --> 01:10:24,110
+Encima de eso había todo otro
+lenguaje.
+
+1109
+01:10:24,110 --> 01:10:33,110
+Había un lenguaje de combinadores
+geométricos,
+
+1110
+01:10:33,110 --> 01:10:41,340
+un lenguaje de posiciones geométricas,
+que habla de
+
+1111
+01:10:41,340 --> 01:10:48,240
+cosas como Above y Beside 
+y 'right-push' y Rotate.
+
+1112
+01:10:48,240 --> 01:10:53,600
+Y esas cosas ocurrían
+en referencia a las
+
+1113
+01:10:53,600 --> 01:10:55,470
+cosas sobre las que hablaba
+este lenguaje.
+
+1114
+01:10:58,640 --> 01:11:03,070
+Y luego, si queremos, vimos
+que encima de eso había
+
+1115
+01:11:03,070 --> 01:11:14,810
+un lenguaje de esquemas 
+de combinación.
+
+1116
+01:11:21,410 --> 01:11:25,930
+Por ejemplo, push, que hablaba
+sobre repetidamente hacer
+
+1117
+01:11:25,930 --> 01:11:28,540
+algo con un factor de escalado.
+
+1118
+01:11:28,540 --> 01:11:31,130
+Y las cosas que estaban siendo 
+discutidas en ese lenguaje
+
+1119
+01:11:31,130 --> 01:11:36,280
+era las cosas que pasaban aquí debajo.
+
+1120
+01:11:36,280 --> 01:11:41,310
+Entonces lo que tienen
+en cada nivel, es que los objetos
+
+1121
+01:11:41,310 --> 01:11:46,090
+sobre los que se está hablando
+son las cosas que se erigieron
+
+1122
+01:11:46,090 --> 01:11:48,270
+en el nivel anterior.
+
+1123
+01:11:48,270 --> 01:11:53,270
+¿Cuál es la diferencia entre
+esto y esto otro?
+
+1124
+01:11:53,270 --> 01:11:59,890
+La respuesta que es que allí
+en el árbol, cada nodo y,
+
+1125
+01:11:59,890 --> 01:12:03,610
+de hecho, cada descomposición
+está diseñada para hacer
+
+1126
+01:12:03,610 --> 01:12:09,640
+algo específico, mientras que en 
+el otro esquema, lo que
+
+1127
+01:12:09,640 --> 01:12:13,900
+tienes es un rango completo
+de poder
+
+1128
+01:12:13,900 --> 01:12:15,940
+linguístico en cada nivel.
+
+1129
+01:12:15,940 --> 01:12:21,340
+Así que eso está pasando allí,
+en cualquier nivel, es que no está
+
+1130
+01:12:21,340 --> 01:12:23,310
+compuesto para hacer una tarea particular.
+
+1131
+01:12:23,310 --> 01:12:27,710
+Está siendo compuesto para hablar
+de un gran rango de cosas.
+
+1132
+01:12:27,710 --> 01:12:31,810
+La consecuencia de eso para el diseño
+es que algo
+
+1133
+01:12:31,810 --> 01:12:36,620
+que está diseñado con ese método
+es posiblemente más robusto,
+
+1134
+01:12:36,620 --> 01:12:40,470
+donde por robusto me refiero
+a que si voy y cambio algo
+
+1135
+01:12:40,470 --> 01:12:46,820
+en la descripción, es más probable
+que sea capturado por el cambio
+
+1136
+01:12:46,820 --> 01:12:51,070
+correspondiente, en la manera
+en que el lenguajes está
+
+1137
+01:12:51,070 --> 01:12:55,460
+implementado en el siguiente nivel, porque
+has hecho
+
+1138
+01:12:55,460 --> 01:12:56,660
+estos niveles completos.
+
+1139
+01:12:56,660 --> 01:12:59,980
+Así que no estás hablando de algo
+particular como Beside.
+
+1140
+01:12:59,980 --> 01:13:02,880
+Te has dado a tí mismo un vocabulario 
+completo para expresar cosas
+
+1141
+01:13:02,880 --> 01:13:06,540
+de ese estilo, así que si vas y cambias
+un poco tus especificaciones
+
+1142
+01:13:06,540 --> 01:13:09,580
+es más probable que tu metodología
+
+1143
+01:13:09,580 --> 01:13:13,680
+pueda adaptarse para captura
+ese cambio, mientras que un diseño
+
+1144
+01:13:13,680 --> 01:13:15,770
+como este no será robusto, porque si voy
+
+1145
+01:13:15,770 --> 01:13:18,310
+y cambio algo que está aquí, eso 
+podría afectar completamente
+
+1146
+01:13:18,310 --> 01:13:20,840
+la manera en que descompuse
+cada cosa,
+
+1147
+01:13:20,840 --> 01:13:23,240
+bajando por el árbol.
+
+1148
+01:13:23,240 --> 01:13:26,350
+Es una gran diferencia
+en el panorama de decomposición.
+
+1149
+01:13:26,350 --> 01:13:28,590
+Niveles de lenguaje, en vez de
+
+1150
+01:13:28,590 --> 01:13:30,580
+de una jerarquía estricta.
+
+1151
+01:13:30,580 --> 01:13:33,750
+No sólo eso, sino que cuando
+tienes niveles de lenguaje te has
+
+1152
+01:13:33,750 --> 01:13:37,390
+dado a tí mismo diferentes
+vocabularios para hablar
+
+1153
+01:13:37,390 --> 01:13:38,780
+del diseño en diferentes niveles.
+
+1154
+01:13:38,780 --> 01:13:42,260
+Y si volvemos y miramos a George
+una última vez, si
+
+1155
+01:13:42,260 --> 01:13:46,610
+quisiera cambiar esta imagen George, 
+de repente tengo un
+
+1156
+01:13:46,610 --> 01:13:48,800
+montón de maneras diferentes
+de describir ese cambio.
+
+1157
+01:13:48,800 --> 01:13:52,320
+Como, por ejemplo, podría querer 
+ir al diseño básico
+
+1158
+01:13:52,320 --> 01:13:57,640
+primitivo y mover el final de un vector.
+
+1159
+01:13:57,640 --> 01:14:01,140
+Ese es un cambio que discutiría
+en el nivel más bajo.
+
+1160
+01:14:01,140 --> 01:14:03,420
+Diría que el punto final
+está en otro lado.
+
+1161
+01:14:03,420 --> 01:14:05,440
+O podría ir y decir que lo
+próximo que quiero
+
+1162
+01:14:05,440 --> 01:14:10,320
+hacer es, este pequeño elemento
+replicado, lo quisiera hacer
+
+1163
+01:14:10,320 --> 01:14:10,990
+de otra manera.
+
+1164
+01:14:10,990 --> 01:14:13,740
+Podría querer poner un factor
+de escalado en ese Beside.
+
+1165
+01:14:13,740 --> 01:14:17,850
+Ese es un cambio
+que discutiría en el siguiente nivel
+
+1166
+01:14:17,850 --> 01:14:19,350
+de diseño, el nivel de los combinadores.
+
+1167
+01:14:19,350 --> 01:14:22,580
+O podría querer decir que quisiera
+cambiar la manera básica
+
+1168
+01:14:22,580 --> 01:14:27,510
+en la que tomo este patrón
+y hago una descomposición
+
+1169
+01:14:27,510 --> 01:14:29,400
+recursiva, quizá no yendo hacia los
+
+1170
+01:14:29,400 --> 01:14:30,960
+bordes o algo así.
+
+1171
+01:14:30,960 --> 01:14:33,150
+Ese sería un cambio que discutiría
+
+1172
+01:14:33,150 --> 01:14:34,260
+en el nivel más alto.
+
+1173
+01:14:34,260 --> 01:14:36,700
+Y como estructuré al sistema
+de esta manera,
+
+1174
+01:14:36,700 --> 01:14:39,120
+tengo todos estos vocabularios
+para hablar acerca del cambio
+
+1175
+01:14:39,120 --> 01:14:41,580
+de muchas maneras y mucha
+flexibilidad para decidir cuál
+
+1176
+01:14:41,580 --> 01:14:42,830
+es apropiado.
+
+1177
+01:14:44,810 --> 01:14:48,370
+Bueno, eso es un gran punto
+acerca de la diferencia
+
+1178
+01:14:48,370 --> 01:14:51,470
+en la metodología de software
+que se obtiene de Lisp, y todo
+
+1179
+01:14:51,470 --> 01:14:54,840
+proviene de la noción de que
+realmente el proceso
+
+1180
+01:14:54,840 --> 01:14:58,430
+de diseño no es tanto
+implementar programas, sino
+
+1181
+01:14:58,430 --> 01:14:59,370
+más bien implementar lenguajes.
+
+1182
+01:14:59,370 --> 01:15:02,870
+Y ese es realmente el poder de Lisp.
+Bien, gracias.
+
+1183
+01:15:02,870 --> 01:15:04,480
+Tomemos un descanso.
