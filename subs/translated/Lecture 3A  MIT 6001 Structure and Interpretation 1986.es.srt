@@ -25,7 +25,7 @@ de datos se usan de la manera
 6
 00:00:40,500 --> 00:00:43,170
 en que están representados.
-Esta idea que hay una persona,
+Esta idea de que hay una persona,
 
 7
 00:00:43,170 --> 00:00:45,600
@@ -38,7 +38,7 @@ esos objetos de datos. Y en el
 
 9
 00:00:47,800 --> 00:00:49,880
-momento es que los usas, no piensas
+momento en que los usas, no piensas
 
 10
 00:00:49,880 --> 00:00:52,220
@@ -96,7 +96,7 @@ números racionales.
 
 22
 00:01:20,230 --> 00:01:21,800
-Vimos a los vectores y aquí este ee
+Vimos a los vectores y este es
 
 23
 00:01:21,800 --> 00:01:24,160
@@ -171,7 +171,7 @@ pero más largo.
 
 38
 00:02:21,520 --> 00:02:23,850
-Y para escalara un vector
+Y para escalar a un vector
 multiplico las sucesivas
 
 39
@@ -181,7 +181,7 @@ coordenadas.
 40
 00:02:24,320 --> 00:02:29,090
 Así que hago ese vector, cuya coordenada
-x es el factor de escala multiplicado po
+x es el factor de escala multiplicado por
 
 41
 00:02:29,090 --> 00:02:31,900
@@ -257,7 +257,7 @@ Anteriormente decíamos, definir
 
 56
 00:03:23,990 --> 00:03:26,870
-que toma dos argumento, x e y, y hace
+que toma dos argumentos, x e y, y hace
 
 57
 00:03:26,870 --> 00:03:28,150
